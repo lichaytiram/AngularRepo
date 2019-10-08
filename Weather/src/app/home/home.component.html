@@ -2,12 +2,12 @@
 
     <div style="text-align: center">
         <input type="text" placeholder="Enter a country" [(ngModel)]="country"><br>
-        <button *ngIf="country" (click)="findKey()">submit</button><br>
+        <button *ngIf="country" (click)="findKey()">Submit</button><br>
     </div>
 
     <button (click)="save()" class="heart"></button>
     <div>
-        <h2>your country is {{weather.country}}</h2>
-        <h2>and temperature is {{weather.temperature}}</h2>
+        <h2>Your country is {{weather.country}}</h2>
+        <h2>And temperature is {{weather.temperature}}</h2>
     </div>
 </div>
