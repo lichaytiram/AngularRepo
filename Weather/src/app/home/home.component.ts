@@ -9,7 +9,7 @@ import { Weather } from '../shared/models/Weather';
 })
 export class HomeComponent implements OnInit {
 
-  private apikey: string = "aSzj6pADTUKhZken1sVkwK1dZmkgvTkV";
+  private apikey: string = "zW5POrQ5pcWliMFmiWcNSauUro1B9vhm";
   private country: string = null;
 
   // objects
@@ -40,11 +40,16 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  public findTemperature() {
+  public findTemperature(): void {
 
     this.countryService.getTemperatureByKey(this.apikey, this.weather.key).subscribe(
 
-      res => this.weather.temperature = res[0].Temperature.Metric.Value,
+      res => {
+
+        this.weather.temperature = res[0].Temperature.Metric.Value;
+        this.weather.temperatureMood = res[0].WeatherText;
+
+      },
 
       err => alert(err.error.Message)
 
@@ -52,9 +57,9 @@ export class HomeComponent implements OnInit {
 
   }
 
-  public save() {
+  public save(): void {
 
-    let weather: Weather = new Weather(this.weather.key, this.weather.country, this.weather.temperature);
+    let weather: Weather = new Weather(this.weather.key, this.weather.country);
     if (localStorage.getItem(weather.country))
       localStorage.removeItem(weather.country)
     else
@@ -62,6 +67,12 @@ export class HomeComponent implements OnInit {
 
   }
 
+  public isFavoriteExists(): boolean {
 
+    if (localStorage.getItem(this.weather.country) != null)
+      return true;
+    return false;
+
+  }
 
 }

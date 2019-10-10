@@ -3,5 +3,6 @@ export class Weather {
         public key: string,
         public country: string,
         public temperature?: number,
+        public temperatureMood?: string,
     ) { }
 }

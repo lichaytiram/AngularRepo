@@ -5,9 +5,14 @@
         <button *ngIf="country" (click)="findKey()">Submit</button><br>
     </div>
 
-    <button (click)="save()" class="heart"></button>
+    <div>
+        <button *ngIf="!isFavoriteExists()" (click)="save()" style="color: red" class="far fa-heart"></button>
+        <button *ngIf="isFavoriteExists()" (click)="save()" style="color: red" class="fas fa-heart"></button>
+    </div>
+
     <div>
         <h2>Your country is {{weather.country}}</h2>
         <h2>And temperature is {{weather.temperature}}</h2>
     </div>
+
 </div>

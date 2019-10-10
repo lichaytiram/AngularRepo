@@ -1,1 +1,9 @@
-<p>favorite works!</p>
+<div>
+
+    <h2 *ngFor="let weather of weathers">
+        {{weather.country}}
+        {{weather.temperature}} &#8451;
+        {{weather.temperatureMood}}
+    </h2>
+
+</div>
