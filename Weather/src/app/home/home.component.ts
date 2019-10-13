@@ -10,7 +10,7 @@ import { WeatherFiveDays } from '../shared/models/WeatherFiveDays';
 })
 export class HomeComponent implements OnInit {
 
-  private apikey: string = "6CIgfFcbj3TvnhexjOtWsafbHgz880Ta";
+  private apikey: string = "CHXBbUvZYnHcIRg9TRRzgzVYzRQyDAIz";
   private country: string = null;
 
   // objects

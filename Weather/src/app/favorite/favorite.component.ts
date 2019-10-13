@@ -9,7 +9,7 @@ import { Weather } from '../shared/models/Weather';
 })
 export class FavoriteComponent implements OnInit {
 
-  private apikey: string = "6CIgfFcbj3TvnhexjOtWsafbHgz880Ta";
+  private apikey: string = "CHXBbUvZYnHcIRg9TRRzgzVYzRQyDAIz";
   private weathers: Weather[] = [];
 
   constructor(private countryService: CountryService) { }
