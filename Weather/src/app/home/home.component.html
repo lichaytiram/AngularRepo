@@ -5,14 +5,27 @@
         <button *ngIf="country" (click)="findKey()">Submit</button><br>
     </div>
 
-    <div>
-        <button *ngIf="!isFavoriteExists()" (click)="save()" style="color: red" class="far fa-heart"></button>
-        <button *ngIf="isFavoriteExists()" (click)="save()" style="color: red" class="fas fa-heart"></button>
-    </div>
+    <div class="card">
 
-    <div>
-        <h2>Your country is {{weather.country}}</h2>
-        <h2>And temperature is {{weather.temperature}}</h2>
+        <div class="container">
+            <h2>Country: {{weather.country}}</h2>
+            <h2>Temperature: {{weather.temperature}}</h2>
+        </div>
+
+        <div>
+            <button *ngIf="!isFavoriteExists()" (click)="save()" class="far fa-heart favorite fa-5x"></button>
+            <button *ngIf="isFavoriteExists()" (click)="save()" class="fas fa-heart favorite fa-5x"></button>
+        </div>
+
+
+        <div class="container inner" style=" box-shadow: none">
+            week day
+
+            <div>
+<button>"</button>
+            </div>
+        </div>
+
     </div>
 
 </div>

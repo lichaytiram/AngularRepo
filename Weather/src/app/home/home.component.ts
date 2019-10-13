@@ -9,7 +9,7 @@ import { Weather } from '../shared/models/Weather';
 })
 export class HomeComponent implements OnInit {
 
-  private apikey: string = "zW5POrQ5pcWliMFmiWcNSauUro1B9vhm";
+  private apikey: string = "PaRNApnZPrUijLoRAJm7eAnc7bMWHSH3";
   private country: string = null;
 
   // objects
