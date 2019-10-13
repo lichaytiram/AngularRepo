@@ -1,8 +1,8 @@
 <div>
 
-    <div style="text-align: center">
+    <div style="text-align: center;margin: 5px;">
         <input type="text" placeholder="Enter a country" [(ngModel)]="country"><br>
-        <button *ngIf="country" (click)="findKey()">Submit</button><br>
+        <button *ngIf="country" (click)="findKey()">Submit</button>
     </div>
 
     <div class="card">
@@ -19,11 +19,23 @@
 
 
         <div class="container inner" style=" box-shadow: none">
-            week day
+            week days
 
-            <div>
-<button>"</button>
+            <div *ngIf="weatherFiveDays">
+
+                current day: {{weatherFiveDays.day}}
+                <div style="margin: 0 auto;">
+
+                    <h3 class="box " *ngFor="let weatherFiveDays of weatherFiveDays.weather">
+                        Temperature: {{weatherFiveDays.temperature}} &#8451; <br>
+                        Temperature mood: {{weatherFiveDays.temperatureMood}}
+                    </h3>
+
+                </div>
+
+
             </div>
+
         </div>
 
     </div>
