@@ -11,11 +11,11 @@ import { WeatherFiveDays } from '../shared/models/WeatherFiveDays';
 export class HomeComponent implements OnInit {
 
   private apikey: string = "CHXBbUvZYnHcIRg9TRRzgzVYzRQyDAIz";
-  private country: string = null;
+  public country: string = null;
 
   // objects
-  private weather: Weather = new Weather("215854", "Tel Aviv");
-  private weatherFiveDays: WeatherFiveDays = null;
+  public weather: Weather = new Weather("215854", "Tel Aviv");
+  public weatherFiveDays: WeatherFiveDays = null;
 
   constructor(private countryService: CountryService) { }
 
