@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryService } from '../shared/services/country.service';
 import { Weather } from '../shared/models/Weather';
 import { WeatherFiveDays } from '../shared/models/WeatherFiveDays';
+import { CountryService } from '../shared/services/country.service';
 
 @Component({
   selector: 'app-home',
