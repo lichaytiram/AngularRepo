@@ -1,0 +1,43 @@
+<div>
+
+    <div style="text-align: center;margin: 5px;">
+        <input type="text" placeholder="Enter a country" [(ngModel)]="country"><br>
+        <button *ngIf="country" (click)="findKey()">Submit</button>
+    </div>
+
+    <div class="card">
+
+        <div class="container">
+            <h2>Country: {{weather.country}}</h2>
+            <h2>Temperature: {{weather.temperature}}</h2>
+        </div>
+
+        <div>
+            <button *ngIf="!isFavoriteExists()" (click)="save()" class="far fa-heart favorite fa-5x"></button>
+            <button *ngIf="isFavoriteExists()" (click)="save()" class="fas fa-heart favorite fa-5x"></button>
+        </div>
+
+        <div class="container inner" style=" box-shadow: none">
+            week days
+
+            <div *ngIf="weatherFiveDays">
+
+                current day: {{weatherFiveDays.day}}
+                <div style="margin: 0 auto;">
+
+                    <h3 class="box " *ngFor="let weatherFiveDays of weatherFiveDays.weather">
+                        Temperature: {{weatherFiveDays.temperature}} &#8451; <br>
+                        Temperature mood: {{weatherFiveDays.temperatureMood}}
+                    </h3>
+
+                    <img class="image" src="assets\weather_og.png">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
