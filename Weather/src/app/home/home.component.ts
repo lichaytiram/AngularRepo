@@ -10,8 +10,9 @@ import { CountryService } from '../shared/services/country.service';
 })
 export class HomeComponent implements OnInit {
 
-  private apikey: string = "CHXBbUvZYnHcIRg9TRRzgzVYzRQyDAIz";
+  private apikey: string = "he595QKe3mhlSk8TAeSe2iUq54Fhl6YV";
   public country: string = null;
+  public isCelsius: boolean = null;
 
   // objects
   public weather: Weather = new Weather("215854", "Tel Aviv");
@@ -20,28 +21,41 @@ export class HomeComponent implements OnInit {
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
+
+    this.isCelsius = JSON.parse(sessionStorage.getItem("isCelsius"))
     this.findTemperature();
     this.findTemperatureForFiveDays();
+
   }
 
   public findKey(): void {
 
-    this.countryService.getKeyByCountry(this.apikey, this.country).subscribe(
+    var regex = /\d/g;
 
-      res => {
+    // check if allowed to find a key
+    if (regex.test(this.country)) {
+      alert("Searching should be done in English letters only");
 
-        if (res[0] == null)
-          return;
+    } else {
 
-        this.weather = new Weather(res[0].Key, res[0].LocalizedName);
-        this.findTemperature();
-        this.findTemperatureForFiveDays();
+      this.countryService.getKeyByCountry(this.apikey, this.country).subscribe(
 
-      },
+        res => {
 
-      err => alert(err.error.Message)
+          if (res[0] == null)
+            return;
 
-    )
+          this.weather = new Weather(res[0].Key, res[0].LocalizedName);
+          this.findTemperature();
+          this.findTemperatureForFiveDays();
+
+        },
+
+        err => alert(err.error.Message)
+
+      )
+    }
+
   }
 
   public findTemperature(): void {
@@ -50,7 +64,11 @@ export class HomeComponent implements OnInit {
 
       res => {
 
-        this.weather.temperature = res[0].Temperature.Metric.Value;
+        if (this.isCelsius)
+          this.weather.temperature = res[0].Temperature.Metric.Value;
+        else
+          this.weather.temperature = res[0].Temperature.Imperial.Value;
+
         this.weather.temperatureMood = res[0].WeatherText;
 
       },
@@ -83,7 +101,8 @@ export class HomeComponent implements OnInit {
           let temperatureMood: string = res.DailyForecasts[index].Day.IconPhrase;
 
           //conver from fahrenheit to celsius
-          temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
+          if (this.isCelsius)
+            temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
 
           weather[index] = new Weather(key, country, temperature, temperatureMood);
 
@@ -113,6 +132,30 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem(this.weather.country) != null)
       return true;
     return false;
+
+  }
+
+  // conver from celsius to fahrenheit && fahrenheit to celsius 
+  public switch(): void {
+
+    if (this.weather && this.weatherFiveDays) {
+
+      let newTemperature: number;
+      this.isCelsius = !this.isCelsius;
+
+      newTemperature = parseFloat((this.isCelsius ? ((this.weather.temperature - 32) * 5 / 9).toFixed(1) : (this.weather.temperature * 9 / 5 + 32).toFixed(1)));
+      this.weather.temperature = newTemperature;
+
+      for (let weather of this.weatherFiveDays.weather) {
+
+        newTemperature = parseFloat((this.isCelsius ? ((weather.temperature - 32) * 5 / 9).toFixed(1) : (weather.temperature * 9 / 5 + 32).toFixed(1)));
+        weather.temperature = newTemperature;
+
+      }
+
+    }
+
+    sessionStorage.setItem("isCelsius", JSON.stringify(this.isCelsius));
 
   }
 

@@ -9,7 +9,8 @@ import { Weather } from '../shared/models/Weather';
 })
 export class FavoriteComponent implements OnInit {
 
-  private apikey: string = "CHXBbUvZYnHcIRg9TRRzgzVYzRQyDAIz";
+  private apikey: string = "he595QKe3mhlSk8TAeSe2iUq54Fhl6YV";
+  private isCelsius: boolean = false;
   public weathers: Weather[] = [];
 
   constructor(private countryService: CountryService) { }
@@ -24,6 +25,8 @@ export class FavoriteComponent implements OnInit {
       let weather: Weather = JSON.parse(localStorage.getItem(key));
       this.findTemperature(weather);
 
+      this.isCelsius = JSON.parse(sessionStorage.getItem("isCelsius"));
+
     }
 
   }
@@ -35,6 +38,11 @@ export class FavoriteComponent implements OnInit {
       res => {
 
         weather.temperature = res[0].Temperature.Metric.Value;
+        if (this.isCelsius)
+          weather.temperature = res[0].Temperature.Metric.Value;
+        else
+          weather.temperature = res[0].Temperature.Imperial.Value;
+
         weather.temperatureMood = res[0].WeatherText;
         this.weathers.push(weather);
 

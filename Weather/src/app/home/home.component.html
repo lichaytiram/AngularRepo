@@ -3,13 +3,32 @@
     <div style="text-align: center;margin: 5px;">
         <input type="text" placeholder="Enter a country" [(ngModel)]="country"><br>
         <button *ngIf="country" (click)="findKey()">Submit</button>
+        <button (click)="switch()">switch
+
+            <span *ngIf="isCelsius">
+                <span style="color: blue;font-weight: bold;">&#8451;</span>
+                /
+                <span style="color: red;">&#8457;</span>
+            </span>
+
+            <span *ngIf="!isCelsius">
+                <span style="color: red;">&#8451;</span>
+                /
+                <span style="color: blue;font-weight: bold;">&#8457;</span>
+            </span>
+
+        </button>
     </div>
 
     <div class="card">
 
         <div class="container">
             <h2>Country: {{weather.country}}</h2>
-            <h2>Temperature: {{weather.temperature}}</h2>
+            <h2>Temperature: {{weather.temperature}}
+                <span *ngIf="isCelsius" style="color: blue;">&#8451;</span>
+                <span *ngIf="!isCelsius" style="color: blue;">&#8457;</span>
+            </h2>
+
         </div>
 
         <div>
@@ -26,7 +45,10 @@
                 <div style="margin: 0 auto;">
 
                     <h3 class="box " *ngFor="let weatherFiveDays of weatherFiveDays.weather">
-                        Temperature: {{weatherFiveDays.temperature}} &#8451; <br>
+                        Temperature: {{weatherFiveDays.temperature}}
+                        <span *ngIf="isCelsius" style="color: blue;">&#8451;</span>
+                        <span *ngIf="!isCelsius" style="color: blue;">&#8457;</span>
+                        <br>
                         Temperature mood: {{weatherFiveDays.temperatureMood}}
                     </h3>
 

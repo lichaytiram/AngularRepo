@@ -8,7 +8,9 @@ import { Weather } from '../models/Weather';
 })
 export class CountryService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    sessionStorage.setItem("isCelsius", JSON.parse("true"));
+  }
 
   public getKeyByCountry(apiKey: string, country: string): Observable<Weather> {
     return this.http.get<Weather>(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${country}`)

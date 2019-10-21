@@ -2,7 +2,9 @@
 
     <h2 *ngFor="let weather of weathers">
         Country: {{weather.country}}
-        Temperature: {{weather.temperature}} &#8451;
+        Temperature: {{weather.temperature}}
+        <span *ngIf="isCelsius" style="color: blue;">&#8451;</span>
+        <span *ngIf="!isCelsius" style="color: blue;">&#8457;</span>
         Temperature mood: {{weather.temperatureMood}}
     </h2>
 
