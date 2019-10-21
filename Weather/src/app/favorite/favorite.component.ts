@@ -9,7 +9,7 @@ import { Weather } from '../shared/models/Weather';
 })
 export class FavoriteComponent implements OnInit {
 
-  private apikey: string = "he595QKe3mhlSk8TAeSe2iUq54Fhl6YV";
+  private apikey: string = "KpQgHJYTBKfTjAPSNJpH1mY2onFsXn6G";
   public weathers: Weather[] = [];
   public isCelsius: boolean = null;
 

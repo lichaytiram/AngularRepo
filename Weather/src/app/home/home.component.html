@@ -37,14 +37,15 @@
         </div>
 
         <div class="container inner" style=" box-shadow: none">
-            week days
+
+            <h2>Week days</h2>
 
             <div *ngIf="weatherFiveDays">
 
-                current day: {{weatherFiveDays.day}}
                 <div style="margin: 0 auto;">
 
-                    <h3 class="box " *ngFor="let weatherFiveDays of weatherFiveDays.weather">
+                    <h3 class="box " *ngFor="let weatherFiveDays of weatherFiveDays">
+                        Day: {{weatherFiveDays.day}} <br>
                         Temperature: {{weatherFiveDays.temperature}}
                         <span *ngIf="isCelsius" style="color: blue;">&#8451;</span>
                         <span *ngIf="!isCelsius" style="color: blue;">&#8457;</span>

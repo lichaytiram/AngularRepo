@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Weather } from '../shared/models/Weather';
-import { WeatherFiveDays } from '../shared/models/WeatherFiveDays';
 import { CountryService } from '../shared/services/country.service';
 
 @Component({
@@ -10,13 +9,13 @@ import { CountryService } from '../shared/services/country.service';
 })
 export class HomeComponent implements OnInit {
 
-  private apikey: string = "he595QKe3mhlSk8TAeSe2iUq54Fhl6YV";
+  private apikey: string = "KpQgHJYTBKfTjAPSNJpH1mY2onFsXn6G";
   public country: string = null;
   public isCelsius: boolean = null;
 
   // Objects
   public weather: Weather = new Weather("215854", "Tel Aviv");
-  public weatherFiveDays: WeatherFiveDays = null;
+  public weatherFiveDays: Weather[] = null;
 
   constructor(private countryService: CountryService) { }
 
@@ -85,12 +84,6 @@ export class HomeComponent implements OnInit {
 
       res => {
 
-        let day: string = res.Headline.Text;
-        day = this.splitDay(day)
-
-        this.weatherFiveDays = new WeatherFiveDays(day);
-        this.weatherFiveDays.weather = res.DailyForecasts;
-
         let weather: Weather[] = [];
 
         for (let index = 0; index < 5; index++) {
@@ -99,16 +92,18 @@ export class HomeComponent implements OnInit {
           let country: string = this.weather.country;
           let temperature: number = res.DailyForecasts[index].Temperature.Minimum.Value;
           let temperatureMood: string = res.DailyForecasts[index].Day.IconPhrase;
+          let date: Date = new Date(res.DailyForecasts[index].Date);
+          let day: string = this.getDay(date);
 
           // Conver from fahrenheit to celsius
           if (this.isCelsius)
             temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
 
-          weather[index] = new Weather(key, country, temperature, temperatureMood);
+          weather[index] = new Weather(key, country, temperature, temperatureMood, day);
 
         }
 
-        this.weatherFiveDays.weather = weather;
+        this.weatherFiveDays = weather;
       },
 
       err => alert(err.error.Message)
@@ -146,7 +141,7 @@ export class HomeComponent implements OnInit {
       newTemperature = parseFloat((this.isCelsius ? ((this.weather.temperature - 32) * 5 / 9).toFixed(1) : (this.weather.temperature * 9 / 5 + 32).toFixed(1)));
       this.weather.temperature = newTemperature;
 
-      for (let weather of this.weatherFiveDays.weather) {
+      for (let weather of this.weatherFiveDays) {
 
         newTemperature = parseFloat((this.isCelsius ? ((weather.temperature - 32) * 5 / 9).toFixed(1) : (weather.temperature * 9 / 5 + 32).toFixed(1)));
         weather.temperature = newTemperature;
@@ -159,11 +154,13 @@ export class HomeComponent implements OnInit {
 
   }
 
-  // Split the day from entire string
-  public splitDay(day: string): string {
+  public getDay(date: Date): string {
 
-    let splitDay: string[] = day.split(" ");
-    return day = splitDay[1];
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let index: number = date.getDay();
+    let day: string = days[index];
+
+    return day;
 
   }
 
