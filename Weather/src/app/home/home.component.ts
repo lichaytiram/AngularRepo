@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   public country: string = null;
   public isCelsius: boolean = null;
 
-  // objects
+  // Objects
   public weather: Weather = new Weather("215854", "Tel Aviv");
   public weatherFiveDays: WeatherFiveDays = null;
 
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
     var regex = /\d/g;
 
-    // check if allowed to find a key
+    // Check if allowed to find a key
     if (regex.test(this.country)) {
       alert("Searching should be done in English letters only");
 
@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
           let temperature: number = res.DailyForecasts[index].Temperature.Minimum.Value;
           let temperatureMood: string = res.DailyForecasts[index].Day.IconPhrase;
 
-          //conver from fahrenheit to celsius
+          // Conver from fahrenheit to celsius
           if (this.isCelsius)
             temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
 
@@ -135,7 +135,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  // conver from celsius to fahrenheit && fahrenheit to celsius 
+  // Conver from celsius to fahrenheit && fahrenheit to celsius (by this.isCelsius' value )
   public switch(): void {
 
     if (this.weather && this.weatherFiveDays) {
@@ -159,7 +159,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  // split the day from entire string
+  // Split the day from entire string
   public splitDay(day: string): string {
 
     let splitDay: string[] = day.split(" ");

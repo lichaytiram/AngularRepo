@@ -10,22 +10,23 @@ import { Weather } from '../shared/models/Weather';
 export class FavoriteComponent implements OnInit {
 
   private apikey: string = "he595QKe3mhlSk8TAeSe2iUq54Fhl6YV";
-  private isCelsius: boolean = false;
   public weathers: Weather[] = [];
+  public isCelsius: boolean = null;
 
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
 
+    this.isCelsius = JSON.parse(sessionStorage.getItem("isCelsius"));
+
     let length = localStorage.length;
 
+    // Find the temperature
     for (let index = 0; index < length; index++) {
 
       let key: string = localStorage.key(index);
       let weather: Weather = JSON.parse(localStorage.getItem(key));
       this.findTemperature(weather);
-
-      this.isCelsius = JSON.parse(sessionStorage.getItem("isCelsius"));
 
     }
 
