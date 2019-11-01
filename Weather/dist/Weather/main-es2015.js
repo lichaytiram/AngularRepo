@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div>\n    <link rel=\"stylesheet\" href=\"https://kit-free.fontawesome.com/releases/latest/css/free.min.css\" media=\"all\">\n    <script src=\"https://use.fontawesome.com/c5b6b20517.js\"></script>\n  </div>\n\n<div style=\"text-align: center\">\n\n  <h1 style=\"color: cornflowerblue\">{{title}} web</h1>\n\n</div>\n<nav style=\"text-align: center\">\n  <button routerLink=\"/home\" routerLinkActive=\"active\">Home</button> |\n  <button routerLink=\"/favorite\" routerLinkActive=\"active\">Favorite</button>\n</nav>\n\n<br>\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div style=\"text-align: center\">\n\n  <h1 style=\"color: cornflowerblue\">{{title}} web</h1>\n\n</div>\n\n<nav style=\"text-align: center\">\n  <button routerLink=\"/home\" routerLinkActive=\"active\">Home</button> |\n  <button routerLink=\"/favorite\" routerLinkActive=\"active\">Favorite</button>\n</nav>\n\n<br>\n<router-outlet></router-outlet>");
 
 /***/ }),
 
