@@ -24,7 +24,8 @@
             <input type="tel" pattern="^\d{10}$" required [class.red]="phone.touched && phone.invalid" name="phone"
                 #phone="ngModel" [(ngModel)]="userModel.phone">
             <br>
-            <small class="text" [class.display]="phone.untouched || !phone.errors.required">Phone number is required</small>
+            <small class="text" [class.display]="phone.untouched || !phone.errors.required">Phone number is
+                required</small>
             <small class="text" [class.display]="phone.untouched || !phone.errors.pattern">Phone number must contain 10
                 digits</small>
 
