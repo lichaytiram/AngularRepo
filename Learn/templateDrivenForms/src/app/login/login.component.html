@@ -1,0 +1,75 @@
+<div>
+
+    <h2>Enter info for login</h2>
+
+    <form #userForm="ngForm">
+
+        <!-- {{userForm.value | json}}
+        <hr>
+        {{userModel | json}} -->
+
+        <div>
+            <label>Name </label>
+            <input type="text" [class.red]="name.touched && name.pristine" name="name" #name="ngModel"
+                [(ngModel)]="userModel.name">
+        </div>
+
+        <div>
+            <label>Email </label>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="userModel.email">
+        </div>
+
+        <div>
+            <label>Phone </label>
+            <input type="tel" pattern="^\d{10}$" required [class.red]="phone.touched && phone.invalid" name="phone"
+                #phone="ngModel" [(ngModel)]="userModel.phone">
+            <br>
+            <small class="text" [class.display]="phone.untouched || !phone.errors.required">Phone number is required</small>
+            <small class="text" [class.display]="phone.untouched || !phone.errors.pattern">Phone number must contain 10
+                digits</small>
+
+        </div>
+
+        <div ngModelGroup="address">
+
+            <div>
+                <label>Country </label>
+                <input type="text" name="country" #country="ngModel" [(ngModel)]="userModel.address.country">
+            </div>
+
+            <div>
+                <label>City </label>
+                <input type="text" name="city" #city="ngModel" [(ngModel)]="userModel.address.city">
+            </div>
+
+        </div>
+
+        <div>
+            <label>Topics </label>
+
+            <select name="topic" #topic="ngModel" [(ngModel)]="userModel.topic">
+                <option value="">I am interested in</option>
+                <option *ngFor="let topic of topics">{{topic}}</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Time preference</label><br>
+            <input type="radio" name="timePreference" value="morning" #timePreference="ngModel"
+                [(ngModel)]="userModel.timePreference">
+            <label> Morning</label><br>
+            <input type="radio" name="timePreference" value="evening" #timePreference="ngModel"
+                [(ngModel)]="userModel.timePreference">
+            <label> Evening</label>
+        </div>
+
+        <div>
+            <input type="checkbox" name="subscribe" #subscribe="ngModel" [(ngModel)]="userModel.subscribe">
+            <label> Send me promotional offers</label>
+        </div>
+
+        <button type="submit">Submit form</button>
+
+    </form>
+
+</div>

@@ -1,0 +1,12 @@
+.red {
+    border: red;
+    border-style: solid;
+}
+
+.text {
+    color: red;
+}
+
+.display {
+    display: none;
+}
