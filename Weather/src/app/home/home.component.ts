@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private countryService: CountryService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.isCelsius = JSON.parse(sessionStorage.getItem("isCelsius"))
     this.findTemperature();
