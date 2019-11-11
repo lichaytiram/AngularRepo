@@ -21,14 +21,12 @@ export class FavoriteComponent implements OnInit {
 
     let length = localStorage.length;
 
-    // Find the temperature
-    for (let index = 0; index < length; index++) {
-
-      let key: string = localStorage.key(index);
+    // Find the temperature    
+    let keys: string[] = Object.keys(localStorage);
+    keys.forEach(key => {
       let weather: Weather = JSON.parse(localStorage.getItem(key));
       this.findTemperature(weather);
-
-    }
+    });
 
   }
 
