@@ -19,8 +19,6 @@ export class FavoriteComponent implements OnInit {
 
     this.isCelsius = JSON.parse(sessionStorage.getItem("isCelsius"));
 
-    let length = localStorage.length;
-
     // Find the temperature    
     let keys: string[] = Object.keys(localStorage);
     keys.forEach(key => {
