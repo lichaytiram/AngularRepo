@@ -1,0 +1,10 @@
+button {
+    border-radius: 40%;
+    outline: inherit;
+    border: 0;
+}
+
+.background {
+    background: lightblue;
+    border-radius: 100%;
+}

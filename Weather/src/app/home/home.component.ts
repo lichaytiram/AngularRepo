@@ -84,9 +84,29 @@ export class HomeComponent implements OnInit {
 
       res => {
 
-        let weather: Weather[] = [];
+        // let weather: Weather[] = [];
 
-        for (let index = 0; index < 5; index++) {
+        // for (let index = 0; index < 5; index++) {
+
+        //   let key: string = this.weather.key;
+        //   let country: string = this.weather.country;
+        //   let temperature: number = res.DailyForecasts[index].Temperature.Minimum.Value;
+        //   let temperatureMood: string = res.DailyForecasts[index].Day.IconPhrase;
+        //   let date: Date = new Date(res.DailyForecasts[index].Date);
+        //   let day: string = this.getDay(date);
+
+        //   // Convert from fahrenheit to celsius
+        //   if (this.isCelsius)
+        //     temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
+
+        //   weather[index] = new Weather(key, country, temperature, temperatureMood, day);
+
+        // }
+
+
+        let weather: Weather[] = new Array(undefined, undefined, undefined, undefined, undefined);
+
+        weather = weather.map((value, index) => {
 
           let key: string = this.weather.key;
           let country: string = this.weather.country;
@@ -95,13 +115,13 @@ export class HomeComponent implements OnInit {
           let date: Date = new Date(res.DailyForecasts[index].Date);
           let day: string = this.getDay(date);
 
-          // Conver from fahrenheit to celsius
+          // Convert from fahrenheit to celsius
           if (this.isCelsius)
             temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
 
-          weather[index] = new Weather(key, country, temperature, temperatureMood, day);
+          return new Weather(key, country, temperature, temperatureMood, day);
 
-        }
+        }) as Array<Weather>;
 
         this.weatherFiveDays = weather;
       },
@@ -130,7 +150,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  // Conver from celsius to fahrenheit && fahrenheit to celsius (by this.isCelsius' value )
+  // Convert from celsius to fahrenheit && fahrenheit to celsius (by this.isCelsius value )
   public switch(): void {
 
     if (this.weather && this.weatherFiveDays) {
@@ -141,12 +161,10 @@ export class HomeComponent implements OnInit {
       newTemperature = parseFloat((this.isCelsius ? ((this.weather.temperature - 32) * 5 / 9).toFixed(1) : (this.weather.temperature * 9 / 5 + 32).toFixed(1)));
       this.weather.temperature = newTemperature;
 
-      for (let weather of this.weatherFiveDays) {
-
+      this.weatherFiveDays.forEach(weather => {
         newTemperature = parseFloat((this.isCelsius ? ((weather.temperature - 32) * 5 / 9).toFixed(1) : (weather.temperature * 9 / 5 + 32).toFixed(1)));
         weather.temperature = newTemperature;
-
-      }
+      });
 
     }
 
