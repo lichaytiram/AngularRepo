@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div style=\"text-align: center\">\n\n  <h1 style=\"color: cornflowerblue\">{{title}} web</h1>\n\n</div>\n\n<nav style=\"text-align: center\">\n  <button routerLink=\"/home\" routerLinkActive=\"active\">Home</button> |\n  <button routerLink=\"/favorite\" routerLinkActive=\"active\">Favorite</button>\n</nav>\n\n<br>\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div style=\"text-align: center\">\r\n\r\n  <h1 style=\"color: cornflowerblue\">{{title}} web</h1>\r\n\r\n  <app-navbar></app-navbar>\r\n  <br>\r\n  <router-outlet></router-outlet>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"card\">\n\n    <h2 *ngFor=\"let weather of weathers\">\n        Country: {{weather.country}}\n        Temperature: {{weather.temperature}}\n        <span *ngIf=\"isCelsius\" style=\"color: blue;\">&#8451;</span>\n        <span *ngIf=\"!isCelsius\" style=\"color: blue;\">&#8457;</span>\n        Temperature mood: {{weather.temperatureMood}}\n    </h2>\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"card\">\r\n\r\n    <h2 *ngFor=\"let weather of weathers\">\r\n        Country: {{weather.country}}\r\n        Temperature: {{weather.temperature}}\r\n        <span *ngIf=\"isCelsius\" style=\"color: blue;\">&#8451;</span>\r\n        <span *ngIf=\"!isCelsius\" style=\"color: blue;\">&#8457;</span>\r\n        Temperature mood: {{weather.temperatureMood}}\r\n    </h2>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -58,7 +58,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div>\n\n    <div style=\"text-align: center;margin: 5px;\">\n        <input type=\"text\" placeholder=\"Enter a country\" [(ngModel)]=\"country\"><br>\n        <button *ngIf=\"country\" (click)=\"findKey()\">Submit</button>\n        <button (click)=\"switch()\">Switch\n\n            <span *ngIf=\"isCelsius\">\n                <span style=\"color: blue;font-weight: bold;\">&#8451;</span>\n                /\n                <span style=\"color: red;\">&#8457;</span>\n            </span>\n\n            <span *ngIf=\"!isCelsius\">\n                <span style=\"color: red;\">&#8451;</span>\n                /\n                <span style=\"color: blue;font-weight: bold;\">&#8457;</span>\n            </span>\n\n        </button>\n    </div>\n\n    <div class=\"card\">\n\n        <div class=\"container\">\n            <h2>Country: {{weather.country}}</h2>\n            <h2>Temperature: {{weather.temperature}}\n                <span *ngIf=\"isCelsius\" style=\"color: blue;\">&#8451;</span>\n                <span *ngIf=\"!isCelsius\" style=\"color: blue;\">&#8457;</span>\n            </h2>\n\n        </div>\n\n        <div>\n            <button *ngIf=\"!isFavoriteExists()\" (click)=\"save()\" class=\"far fa-heart favorite fa-5x\"></button>\n            <button *ngIf=\"isFavoriteExists()\" (click)=\"save()\" class=\"fas fa-heart favorite fa-5x\"></button>\n        </div>\n\n        <div class=\"container inner\" style=\" box-shadow: none\">\n\n            <h2>Week days</h2>\n\n            <div *ngIf=\"weatherFiveDays\">\n\n                <div style=\"margin: 0 auto;\">\n\n                    <h3 class=\"box \" *ngFor=\"let weatherFiveDays of weatherFiveDays\">\n                        Day: {{weatherFiveDays.day}} <br>\n                        Temperature: {{weatherFiveDays.temperature}}\n                        <span *ngIf=\"isCelsius\" style=\"color: blue;\">&#8451;</span>\n                        <span *ngIf=\"!isCelsius\" style=\"color: blue;\">&#8457;</span>\n                        <br>\n                        Temperature mood: {{weatherFiveDays.temperatureMood}}\n                    </h3>\n\n                    <img class=\"image\" src=\"assets\\weather_og.png\">\n\n                </div>\n\n            </div>\n\n        </div>\n\n    </div>\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n    <div style=\"text-align: center;margin: 5px;\">\r\n        <input type=\"text\" placeholder=\"Enter a country\" [(ngModel)]=\"country\"><br>\r\n        <button *ngIf=\"country\" (click)=\"findKey()\">Submit</button>\r\n        <button (click)=\"switch()\">Switch\r\n\r\n            <span *ngIf=\"isCelsius\">\r\n                <span style=\"color: blue;font-weight: bold;\">&#8451;</span>\r\n                /\r\n                <span style=\"color: red;\">&#8457;</span>\r\n            </span>\r\n\r\n            <span *ngIf=\"!isCelsius\">\r\n                <span style=\"color: red;\">&#8451;</span>\r\n                /\r\n                <span style=\"color: blue;font-weight: bold;\">&#8457;</span>\r\n            </span>\r\n\r\n        </button>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n\r\n        <div class=\"container\">\r\n            <h2>Country: {{weather.country}}</h2>\r\n            <h2>Temperature: {{weather.temperature}}\r\n                <span *ngIf=\"isCelsius\" style=\"color: blue;\">&#8451;</span>\r\n                <span *ngIf=\"!isCelsius\" style=\"color: blue;\">&#8457;</span>\r\n            </h2>\r\n\r\n        </div>\r\n\r\n        <div>\r\n            <button *ngIf=\"!isFavoriteExists()\" (click)=\"save()\" class=\"far fa-heart favorite fa-5x\"></button>\r\n            <button *ngIf=\"isFavoriteExists()\" (click)=\"save()\" class=\"fas fa-heart favorite fa-5x\"></button>\r\n        </div>\r\n\r\n        <div class=\"container inner\" style=\" box-shadow: none\">\r\n\r\n            <h2>Week days</h2>\r\n\r\n            <div *ngIf=\"weatherFiveDays\">\r\n\r\n                <div style=\"margin: 0 auto;\">\r\n\r\n                    <h3 class=\"box \" *ngFor=\"let weatherFiveDays of weatherFiveDays\">\r\n                        Day: {{weatherFiveDays.day}} <br>\r\n                        Temperature: {{weatherFiveDays.temperature}}\r\n                        <span *ngIf=\"isCelsius\" style=\"color: blue;\">&#8451;</span>\r\n                        <span *ngIf=\"!isCelsius\" style=\"color: blue;\">&#8457;</span>\r\n                        <br>\r\n                        Temperature mood: {{weatherFiveDays.temperatureMood}}\r\n                    </h3>\r\n\r\n                    <img class=\"image\" src=\"assets\\weather_og.png\">\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"background\">\n  <button routerLink=\"/home\" routerLinkActive=\"active\">Home</button> |\n  <button routerLink=\"/favorite\" routerLinkActive=\"active\">Favorite</button>\n</nav>");
 
 /***/ }),
 
@@ -393,6 +406,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./favorite/favorite.component */ "./src/app/favorite/favorite.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+
 
 
 
@@ -409,7 +424,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
             _home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"],
-            _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_6__["FavoriteComponent"]
+            _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_6__["FavoriteComponent"],
+            _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__["NavbarComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -435,7 +451,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".card {\n    border-style: solid;\n    height: 80%;\n    width: 80%;\n    -webkit-padding-after: 25%;\n            padding-block-end: 25%;\n    margin: 0 auto;\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n    flex-direction: row;\n    flex: 1 auto;\n}\n\nh2 {\n    text-align: center;\n    box-shadow: 3px 3px 3px 3px #A3B1B6;\n    border-style: solid;\n    height: auto;\n    width: 20%;\n}\n\nh2:hover {\n    box-shadow: 3px 3px 3px 3px black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsVUFBVTtJQUNWLDBCQUFzQjtZQUF0QixzQkFBc0I7SUFDdEIsY0FBYztJQUNkLGFBQWE7SUFDYiw2QkFBNkI7SUFDN0IsZUFBZTtJQUNmLG1CQUFtQjtJQUNuQixZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLG1DQUFtQztJQUNuQyxtQkFBbUI7SUFDbkIsWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGlDQUFpQztBQUNyQyIsImZpbGUiOiJzcmMvYXBwL2Zhdm9yaXRlL2Zhdm9yaXRlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZCB7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBoZWlnaHQ6IDgwJTtcbiAgICB3aWR0aDogODAlO1xuICAgIHBhZGRpbmctYmxvY2stZW5kOiAyNSU7XG4gICAgbWFyZ2luOiAwIGF1dG87XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBmbGV4OiAxIGF1dG87XG59XG5cbmgyIHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYm94LXNoYWRvdzogM3B4IDNweCAzcHggM3B4ICNBM0IxQjY7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBoZWlnaHQ6IGF1dG87XG4gICAgd2lkdGg6IDIwJTtcbn1cblxuaDI6aG92ZXIge1xuICAgIGJveC1zaGFkb3c6IDNweCAzcHggM3B4IDNweCBibGFjaztcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".card {\r\n    border-style: solid;\r\n    height: 80%;\r\n    width: 80%;\r\n    -webkit-padding-after: 25%;\r\n            padding-block-end: 25%;\r\n    margin: 0 auto;\r\n    display: flex;\r\n    justify-content: space-around;\r\n    flex-wrap: wrap;\r\n    flex-direction: row;\r\n    flex: 1 auto;\r\n}\r\n\r\nh2 {\r\n    text-align: center;\r\n    box-shadow: 3px 3px 3px 3px #A3B1B6;\r\n    border-style: solid;\r\n    height: auto;\r\n    width: 20%;\r\n}\r\n\r\nh2:hover {\r\n    box-shadow: 3px 3px 3px 3px black;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsVUFBVTtJQUNWLDBCQUFzQjtZQUF0QixzQkFBc0I7SUFDdEIsY0FBYztJQUNkLGFBQWE7SUFDYiw2QkFBNkI7SUFDN0IsZUFBZTtJQUNmLG1CQUFtQjtJQUNuQixZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLG1DQUFtQztJQUNuQyxtQkFBbUI7SUFDbkIsWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGlDQUFpQztBQUNyQyIsImZpbGUiOiJzcmMvYXBwL2Zhdm9yaXRlL2Zhdm9yaXRlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZCB7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgaGVpZ2h0OiA4MCU7XHJcbiAgICB3aWR0aDogODAlO1xyXG4gICAgcGFkZGluZy1ibG9jay1lbmQ6IDI1JTtcclxuICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xyXG4gICAgZmxleC13cmFwOiB3cmFwO1xyXG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcclxuICAgIGZsZXg6IDEgYXV0bztcclxufVxyXG5cclxuaDIge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgYm94LXNoYWRvdzogM3B4IDNweCAzcHggM3B4ICNBM0IxQjY7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgd2lkdGg6IDIwJTtcclxufVxyXG5cclxuaDI6aG92ZXIge1xyXG4gICAgYm94LXNoYWRvdzogM3B4IDNweCAzcHggM3B4IGJsYWNrO1xyXG59Il19 */");
 
 /***/ }),
 
@@ -464,13 +480,9 @@ let FavoriteComponent = class FavoriteComponent {
     }
     ngOnInit() {
         this.isCelsius = JSON.parse(sessionStorage.getItem("isCelsius"));
-        let length = localStorage.length;
-        // Find the temperature
-        for (let index = 0; index < length; index++) {
-            let key = localStorage.key(index);
-            let weather = JSON.parse(localStorage.getItem(key));
-            this.findTemperature(weather);
-        }
+        // Find the temperature    
+        Object.keys(localStorage)
+            .forEach(key => this.findTemperature(JSON.parse(localStorage.getItem(key))));
     }
     findTemperature(weather) {
         this.countryService.getTemperatureByKey(this.apikey, weather.key).subscribe(res => {
@@ -508,7 +520,7 @@ FavoriteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".card {\n    border-style: solid;\n    height: 80%;\n    width: 80%;\n    -webkit-padding-after: 25%;\n            padding-block-end: 25%;\n    margin: 0 auto;\n    padding: 0;\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    justify-content: space-around;\n    flex: 1 auto;\n}\n\n.container {\n    text-align: center;\n    box-shadow: 3px 3px 3px 3px #A3B1B6;\n    border-style: solid;\n    height: auto;\n    width: 50%;\n}\n\n.box {\n    text-align: center;\n    border-style: solid;\n    margin: 1px;\n    -webkit-padding-after: 1%;\n            padding-block-end: 1%;\n    border-radius: 10px;\n}\n\n.inner {\n    border: inherit;\n    flex: auto;\n    flex-direction: row;\n}\n\n.container:hover {\n    box-shadow: 3px 3px 3px 3px black;\n}\n\n.box:hover {\n    background: #96F0FE;\n}\n\n.favorite {\n    color: red;\n    padding: 0;\n    border: none;\n    background: none;\n}\n\n.image {\n    border: 2px solid black;\n    padding: 2px;\n    width: 98%;\n    height: 250px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxtQkFBbUI7SUFDbkIsV0FBVztJQUNYLFVBQVU7SUFDViwwQkFBc0I7WUFBdEIsc0JBQXNCO0lBQ3RCLGNBQWM7SUFDZCxVQUFVO0lBQ1YsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixlQUFlO0lBQ2YsNkJBQTZCO0lBQzdCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsbUNBQW1DO0lBQ25DLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osVUFBVTtBQUNkOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gseUJBQXFCO1lBQXJCLHFCQUFxQjtJQUNyQixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxlQUFlO0lBQ2YsVUFBVTtJQUNWLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFVBQVU7SUFDVixVQUFVO0lBQ1YsWUFBWTtJQUNaLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLHVCQUF1QjtJQUN2QixZQUFZO0lBQ1osVUFBVTtJQUNWLGFBQWE7QUFDakIiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXJkIHtcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgIGhlaWdodDogODAlO1xuICAgIHdpZHRoOiA4MCU7XG4gICAgcGFkZGluZy1ibG9jay1lbmQ6IDI1JTtcbiAgICBtYXJnaW46IDAgYXV0bztcbiAgICBwYWRkaW5nOiAwO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gICAgZmxleDogMSBhdXRvO1xufVxuXG4uY29udGFpbmVyIHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYm94LXNoYWRvdzogM3B4IDNweCAzcHggM3B4ICNBM0IxQjY7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBoZWlnaHQ6IGF1dG87XG4gICAgd2lkdGg6IDUwJTtcbn1cblxuLmJveCB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgbWFyZ2luOiAxcHg7XG4gICAgcGFkZGluZy1ibG9jay1lbmQ6IDElO1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XG59XG5cbi5pbm5lciB7XG4gICAgYm9yZGVyOiBpbmhlcml0O1xuICAgIGZsZXg6IGF1dG87XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbn1cblxuLmNvbnRhaW5lcjpob3ZlciB7XG4gICAgYm94LXNoYWRvdzogM3B4IDNweCAzcHggM3B4IGJsYWNrO1xufVxuXG4uYm94OmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kOiAjOTZGMEZFO1xufVxuXG4uZmF2b3JpdGUge1xuICAgIGNvbG9yOiByZWQ7XG4gICAgcGFkZGluZzogMDtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgYmFja2dyb3VuZDogbm9uZTtcbn1cblxuLmltYWdlIHtcbiAgICBib3JkZXI6IDJweCBzb2xpZCBibGFjaztcbiAgICBwYWRkaW5nOiAycHg7XG4gICAgd2lkdGg6IDk4JTtcbiAgICBoZWlnaHQ6IDI1MHB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".card {\r\n    border-style: solid;\r\n    height: 80%;\r\n    width: 80%;\r\n    -webkit-padding-after: 25%;\r\n            padding-block-end: 25%;\r\n    margin: 0 auto;\r\n    padding: 0;\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    justify-content: space-around;\r\n    flex: 1 auto;\r\n}\r\n\r\n.container {\r\n    text-align: center;\r\n    box-shadow: 3px 3px 3px 3px #A3B1B6;\r\n    border-style: solid;\r\n    height: auto;\r\n    width: 50%;\r\n}\r\n\r\n.box {\r\n    text-align: center;\r\n    border-style: solid;\r\n    margin: 1px;\r\n    -webkit-padding-after: 1%;\r\n            padding-block-end: 1%;\r\n    border-radius: 10px;\r\n}\r\n\r\n.inner {\r\n    border: inherit;\r\n    flex: auto;\r\n    flex-direction: row;\r\n}\r\n\r\n.container:hover {\r\n    box-shadow: 3px 3px 3px 3px black;\r\n}\r\n\r\n.box:hover {\r\n    background: #96F0FE;\r\n}\r\n\r\n.favorite {\r\n    color: red;\r\n    padding: 0;\r\n    border: none;\r\n    background: none;\r\n    outline: inherit;\r\n}\r\n\r\n.image {\r\n    border: 2px solid black;\r\n    padding: 2px;\r\n    width: 98%;\r\n    height: 250px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxtQkFBbUI7SUFDbkIsV0FBVztJQUNYLFVBQVU7SUFDViwwQkFBc0I7WUFBdEIsc0JBQXNCO0lBQ3RCLGNBQWM7SUFDZCxVQUFVO0lBQ1YsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixlQUFlO0lBQ2YsNkJBQTZCO0lBQzdCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsbUNBQW1DO0lBQ25DLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osVUFBVTtBQUNkOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gseUJBQXFCO1lBQXJCLHFCQUFxQjtJQUNyQixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxlQUFlO0lBQ2YsVUFBVTtJQUNWLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFVBQVU7SUFDVixVQUFVO0lBQ1YsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSx1QkFBdUI7SUFDdkIsWUFBWTtJQUNaLFVBQVU7SUFDVixhQUFhO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZCB7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgaGVpZ2h0OiA4MCU7XHJcbiAgICB3aWR0aDogODAlO1xyXG4gICAgcGFkZGluZy1ibG9jay1lbmQ6IDI1JTtcclxuICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xyXG4gICAgZmxleC13cmFwOiB3cmFwO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICBmbGV4OiAxIGF1dG87XHJcbn1cclxuXHJcbi5jb250YWluZXIge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgYm94LXNoYWRvdzogM3B4IDNweCAzcHggM3B4ICNBM0IxQjY7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgd2lkdGg6IDUwJTtcclxufVxyXG5cclxuLmJveCB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgbWFyZ2luOiAxcHg7XHJcbiAgICBwYWRkaW5nLWJsb2NrLWVuZDogMSU7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG59XHJcblxyXG4uaW5uZXIge1xyXG4gICAgYm9yZGVyOiBpbmhlcml0O1xyXG4gICAgZmxleDogYXV0bztcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbn1cclxuXHJcbi5jb250YWluZXI6aG92ZXIge1xyXG4gICAgYm94LXNoYWRvdzogM3B4IDNweCAzcHggM3B4IGJsYWNrO1xyXG59XHJcblxyXG4uYm94OmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQ6ICM5NkYwRkU7XHJcbn1cclxuXHJcbi5mYXZvcml0ZSB7XHJcbiAgICBjb2xvcjogcmVkO1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcbiAgICBvdXRsaW5lOiBpbmhlcml0O1xyXG59XHJcblxyXG4uaW1hZ2Uge1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgYmxhY2s7XHJcbiAgICBwYWRkaW5nOiAycHg7XHJcbiAgICB3aWR0aDogOTglO1xyXG4gICAgaGVpZ2h0OiAyNTBweDtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -572,19 +584,32 @@ let HomeComponent = class HomeComponent {
     }
     findTemperatureForFiveDays() {
         this.countryService.getTemperatureForFiveDaysByKey(this.apikey, this.weather.key).subscribe(res => {
-            let weather = [];
-            for (let index = 0; index < 5; index++) {
+            // let weather: Weather[] = [];
+            // for (let index = 0; index < 5; index++) {
+            //   let key: string = this.weather.key;
+            //   let country: string = this.weather.country;
+            //   let temperature: number = res.DailyForecasts[index].Temperature.Minimum.Value;
+            //   let temperatureMood: string = res.DailyForecasts[index].Day.IconPhrase;
+            //   let date: Date = new Date(res.DailyForecasts[index].Date);
+            //   let day: string = this.getDay(date);
+            //   // Convert from fahrenheit to celsius
+            //   if (this.isCelsius)
+            //     temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
+            //   weather[index] = new Weather(key, country, temperature, temperatureMood, day);
+            // }
+            let weather = new Array(undefined, undefined, undefined, undefined, undefined);
+            weather = weather.map((value, index) => {
                 let key = this.weather.key;
                 let country = this.weather.country;
                 let temperature = res.DailyForecasts[index].Temperature.Minimum.Value;
                 let temperatureMood = res.DailyForecasts[index].Day.IconPhrase;
                 let date = new Date(res.DailyForecasts[index].Date);
                 let day = this.getDay(date);
-                // Conver from fahrenheit to celsius
+                // Convert from fahrenheit to celsius
                 if (this.isCelsius)
                     temperature = parseFloat(((temperature - 32) * 5 / 9).toFixed(1));
-                weather[index] = new _shared_models_Weather__WEBPACK_IMPORTED_MODULE_2__["Weather"](key, country, temperature, temperatureMood, day);
-            }
+                return new _shared_models_Weather__WEBPACK_IMPORTED_MODULE_2__["Weather"](key, country, temperature, temperatureMood, day);
+            });
             this.weatherFiveDays = weather;
         }, err => alert(err.error.Message));
     }
@@ -600,17 +625,17 @@ let HomeComponent = class HomeComponent {
             return true;
         return false;
     }
-    // Conver from celsius to fahrenheit && fahrenheit to celsius (by this.isCelsius' value )
+    // Convert from celsius to fahrenheit && fahrenheit to celsius (by this.isCelsius value )
     switch() {
         if (this.weather && this.weatherFiveDays) {
             let newTemperature;
             this.isCelsius = !this.isCelsius;
             newTemperature = parseFloat((this.isCelsius ? ((this.weather.temperature - 32) * 5 / 9).toFixed(1) : (this.weather.temperature * 9 / 5 + 32).toFixed(1)));
             this.weather.temperature = newTemperature;
-            for (let weather of this.weatherFiveDays) {
+            this.weatherFiveDays.forEach(weather => {
                 newTemperature = parseFloat((this.isCelsius ? ((weather.temperature - 32) * 5 / 9).toFixed(1) : (weather.temperature * 9 / 5 + 32).toFixed(1)));
                 weather.temperature = newTemperature;
-            }
+            });
         }
         sessionStorage.setItem("isCelsius", JSON.stringify(this.isCelsius));
     }
@@ -631,6 +656,47 @@ HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")).default]
     })
 ], HomeComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/navbar/navbar.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/navbar/navbar.component.css ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("button {\r\n    border-radius: 40%;\r\n    outline: inherit;\r\n    border: 0;\r\n}\r\n\r\n.background {\r\n    background: lightblue;\r\n    border-radius: 100%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixTQUFTO0FBQ2I7O0FBRUE7SUFDSSxxQkFBcUI7SUFDckIsbUJBQW1CO0FBQ3ZCIiwiZmlsZSI6InNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYnV0dG9uIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDQwJTtcclxuICAgIG91dGxpbmU6IGluaGVyaXQ7XHJcbiAgICBib3JkZXI6IDA7XHJcbn1cclxuXHJcbi5iYWNrZ3JvdW5kIHtcclxuICAgIGJhY2tncm91bmQ6IGxpZ2h0Ymx1ZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/navbar/navbar.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/navbar/navbar.component.ts ***!
+  \********************************************/
+/*! exports provided: NavbarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let NavbarComponent = class NavbarComponent {
+};
+NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-navbar',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")).default]
+    })
+], NavbarComponent);
 
 
 
