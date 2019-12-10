@@ -111,7 +111,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<nav class=\"background\">\n  <button routerLink=\"/home\" routerLinkActive=\"active\">Home</button> |\n  <button routerLink=\"/favorite\" routerLinkActive=\"active\">Favorite</button>\n</nav>";
+    __webpack_exports__["default"] = "<nav class=\"background\">\n  <button routerLink=\"/home\" routerLinkActive=\"active\">Home2</button> |\n  <button routerLink=\"/favorite\" routerLinkActive=\"active\">Favorite</button>\n</nav>";
     /***/
   },
 
