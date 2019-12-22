@@ -1,13 +1,12 @@
-import { Tutorial } from "src/app/shared/models/tutorials.model";
+import { ITutorial } from "src/app/shared/models/Itutorial.model";
 import * as fromTutorial from '../actions/tutorial.action';
-import { from } from 'rxjs';
 
-const initialState: Tutorial = {
-    name: 'Initial tutorial',
+const initialState: ITutorial = {
+    name: 'google',
     url: 'http://google.com'
 }
 
-export function reducer(state: Tutorial[] = [initialState], action: fromTutorial.TutorialActions): Tutorial[] {
+export function reducer(state: ITutorial[] = [initialState], action: fromTutorial.TutorialActions): ITutorial[] {
 
     switch (action.type) {
         case fromTutorial.ADD_TUTORIAL:

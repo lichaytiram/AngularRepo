@@ -1,1 +1,21 @@
-<p>create works!</p>
+<div>
+
+    <form #tutorialForm="ngForm" (ngSubmit)="addToStore()" novalidate>
+
+        <label>Enter a name</label>
+        <br><input type="text" placeholder="Enter a name" required [class.invalid]="name.invalid && name.touched"
+            name="name" #name="ngModel" [(ngModel)]="tutorial.name"><br>
+        <small class="invalidText" [class.display]="name.valid || name.untouched">Please enter a name</small>
+        <br>
+
+        <label>Enter an URL</label>
+        <br><input type="text" placeholder="Enter an URL" required [class.invalid]="url.invalid && url.touched"
+            name="url" #url="ngModel" [(ngModel)]="tutorial.url"><br>
+        <small class="invalidText" [class.display]="url.valid || url.untouched">Please enter an url</small>
+        <br>
+
+        <button type="submit" [disabled]="tutorialForm.form.invalid">Submit</button>
+
+    </form>
+
+</div>

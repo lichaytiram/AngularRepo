@@ -1,0 +1,11 @@
+.invalid {
+    border-color: red;
+}
+
+.display {
+    display: none;
+}
+
+.invalidText{
+    color: red;
+}

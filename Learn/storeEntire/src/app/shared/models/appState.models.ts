@@ -1,5 +1,5 @@
-import { Tutorial } from './tutorials.model';
+import { ITutorial } from './Itutorial.model';
 
 export interface appState {
-    tutorial: Tutorial[];
+    tutorial: ITutorial[];
 }

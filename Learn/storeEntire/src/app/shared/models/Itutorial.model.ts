@@ -1,4 +1,4 @@
-export interface Tutorial {
+export interface ITutorial {
     name: string,
     url: string
 }
