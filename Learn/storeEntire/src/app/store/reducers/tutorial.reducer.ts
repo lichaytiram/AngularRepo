@@ -9,14 +9,18 @@ const initialState: ITutorial = {
 export function reducer(state: ITutorial[] = [initialState], action: fromTutorial.TutorialActions): ITutorial[] {
 
     switch (action.type) {
+
         case fromTutorial.ADD_TUTORIAL:
             return [...state, action.payload];
+
         case fromTutorial.REMOVE_TUTORIAL:
             state.splice(action.payload, 1);
             return state;
+
         default: {
             return state;
         }
+
     }
 
 }

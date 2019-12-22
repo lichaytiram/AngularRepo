@@ -1,7 +1,7 @@
 import { PizzaState } from 'src/app/shared/models/pizzaState.model';
 import * as fromPizzas from '../actions/pizzas.action'
 
-export const initialState: PizzaState = {
+const initialState: PizzaState = {
     data: [],
     loaded: false,
     loading: false
@@ -30,11 +30,15 @@ export function reducer
         case fromPizzas.LOAD_PIZZAS_FAIL: {
             return {
                 ...state,
-                loaded: false, 
+                loaded: false,
                 loading: false
             }
         }
+
+        default: {
+            return state;
+        }
+
     }
 
-    return state;
 }
