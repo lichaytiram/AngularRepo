@@ -1,7 +1,7 @@
 import { ITutorial } from "src/app/shared/models/Itutorial.model";
 import * as fromTutorial from '../actions/tutorial.action';
 
-const initialState: ITutorial = {
+export const initialState: ITutorial = {
     name: 'google',
     url: 'http://google.com'
 }

@@ -20,12 +20,16 @@ import { CreateComponent } from './create/create.component';
     AppRoutingModule,
     FormsModule,
 
-    StoreModule.forRoot(reducers, {
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      }
-    })
+    // StoreModule.forRoot(reducers, {
+    //   runtimeChecks: {
+    //     strictStateImmutability: true,
+    //     strictActionImmutability: true
+    //   }
+    // })
+
+    StoreModule.forRoot(
+      { 'tutorial': reducers.tutorial }
+    )
 
   ],
   providers: [],
