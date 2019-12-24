@@ -1,12 +1,13 @@
 import { ITutorial } from "src/app/shared/models/Itutorial.model";
 import * as fromTutorial from '../actions/tutorial.action';
 
-export const initialState: ITutorial = {
-    name: 'google',
-    url: 'http://google.com'
-}
+export const initialState: ITutorial[] = [
+    {
+        name: 'google',
+        url: 'http://google.com'
+    }]
 
-export function reducer(state: ITutorial[] = [initialState], action: fromTutorial.TutorialActions): ITutorial[] {
+export function reducer(state: ITutorial[] = initialState, action: fromTutorial.TutorialActions): ITutorial[] {
 
     switch (action.type) {
 

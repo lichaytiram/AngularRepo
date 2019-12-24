@@ -24,13 +24,6 @@ import { CreateComponent } from './create/create.component';
       { 'tutorial': reducers.tutorial }
     )
 
-    // StoreModule.forRoot(reducers, {
-    //   runtimeChecks: {
-    //     strictStateImmutability: true,
-    //     strictActionImmutability: true
-    //   }
-    // })
-
   ],
   providers: [],
   bootstrap: [AppComponent]

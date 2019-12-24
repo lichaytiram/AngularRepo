@@ -16,12 +16,9 @@ import { reducers } from './store/reducers/index';
     AppRoutingModule,
     FormsModule,
 
-    StoreModule.forRoot(reducers, {
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      }
-    })
+    StoreModule.forRoot(
+      { 'pizzas': reducers.pizzas }
+    )
 
   ],
   providers: [],
