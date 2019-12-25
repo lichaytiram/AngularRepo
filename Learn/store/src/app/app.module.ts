@@ -6,10 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers/index';
+import { AddComponent } from './add/add.component';
+import { ReadComponent } from './read/read.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddComponent,
+    ReadComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
