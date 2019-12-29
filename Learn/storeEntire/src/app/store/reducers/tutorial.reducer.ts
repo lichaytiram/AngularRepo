@@ -1,5 +1,6 @@
 import { ITutorial } from "src/app/shared/models/Itutorial.model";
 import * as fromTutorial from '../actions/tutorial.action';
+import { createReducer, on } from '@ngrx/store';
 
 export const initialState: ITutorial[] = [
     {
@@ -7,21 +8,15 @@ export const initialState: ITutorial[] = [
         url: 'http://google.com'
     }]
 
-export function reducer(state: ITutorial[] = initialState, action: fromTutorial.TutorialActions): ITutorial[] {
-
-    switch (action.type) {
-
-        case fromTutorial.ADD_TUTORIAL:
-            return [...state, action.payload];
-
-        case fromTutorial.REMOVE_TUTORIAL:
-            state.splice(action.payload, 1);
-            return state;
-
-        default: {
-            return state;
+export const tutorialReducer = createReducer<ITutorial[]>(
+    initialState
+    , on(
+        fromTutorial.AddTutorial, (state, action) => [...state, action.addTutorial]
+    ), on(
+        fromTutorial.RemoveTutorial, (state, action) => {
+            const newState: ITutorial[] = state.concat();
+            newState.splice(action.numberId, 1);
+            return newState
         }
-
-    }
-
-}
+    )
+)

@@ -1,44 +1,37 @@
-import { PizzaState } from 'src/app/shared/models/pizzaState.model';
+import { IPizzaState } from 'src/app/shared/models/pizzaState.model';
 import * as fromPizzas from '../actions/pizzas.action'
+import { createReducer, on } from '@ngrx/store';
 
-const initialState: PizzaState = {
+export const initialState: IPizzaState = {
     data: [],
     loaded: false,
     loading: false
 }
 
-export function reducer
-    (state: PizzaState = initialState, action: fromPizzas.PizzasAction): PizzaState {
-
-    switch (action.type) {
-
-        case fromPizzas.LOAD_PIZZAS: {
+export const reducer = createReducer<IPizzaState>(
+    initialState, on(
+        fromPizzas.LoadPizzas, state => {
             return {
                 ...state,
                 loading: true
             }
         }
-
-        case fromPizzas.LOAD_PIZZAS_SUCCESS: {
+    ), on(
+        fromPizzas.LoadPizzasSuccess, state => {
             return {
                 ...state,
                 loaded: true,
                 loading: false
             }
         }
-
-        case fromPizzas.LOAD_PIZZAS_FAIL: {
+    ), on(
+        fromPizzas.LoadPizzasFail, state => {
             return {
                 ...state,
                 loaded: false,
                 loading: false
             }
         }
+    )
 
-        default: {
-            return state;
-        }
-
-    }
-
-}
+)

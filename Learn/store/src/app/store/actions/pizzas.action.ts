@@ -1,24 +1,6 @@
-import { Action } from '@ngrx/store';
-import { Pizza } from 'src/app/shared/models/Pizza.model';
+import { createAction, props } from '@ngrx/store';
+import { IPizza } from 'src/app/shared/models/Pizza.model';
 
-// load pizzas
-export const LOAD_PIZZAS = '[Products] Load Pizzas'
-export const LOAD_PIZZAS_FAIL = '[Products] Load Pizzas Fail'
-export const LOAD_PIZZAS_SUCCESS = '[Products] Load Pizzas Success'
-
-export class LoadPizzas implements Action {
-    readonly type = LOAD_PIZZAS;
-}
-
-export class LoadPizzasFail implements Action {
-    readonly type = LOAD_PIZZAS_FAIL;
-    constructor(public payload: any) { }
-}
-
-export class LoadPizzasSuccess implements Action {
-    readonly type = LOAD_PIZZAS_SUCCESS;
-    constructor(public payload: Pizza[]) { }
-}
-
-// action types 
-export type PizzasAction = LoadPizzas | LoadPizzasFail | LoadPizzasSuccess;
+export const LoadPizzas = createAction('[Products] Load Pizzas');
+export const LoadPizzasFail = createAction('[Products] Load Pizzas Fail', props<{ payload: IPizza[] }>());
+export const LoadPizzasSuccess = createAction('[Products] Load Pizzas Success', props<{ payload: IPizza[] }>());

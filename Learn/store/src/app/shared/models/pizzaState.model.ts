@@ -1,7 +1,7 @@
-import { Pizza } from './Pizza.model';
+import { IPizza } from './Pizza.model';
 
-export interface PizzaState {
-    data: Pizza[],
+export interface IPizzaState {
+    data: IPizza[],
     loaded: boolean,
     loading: boolean
 }

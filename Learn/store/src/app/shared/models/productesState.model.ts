@@ -1,5 +1,5 @@
-import { PizzaState } from './pizzaState.model';
+import { IPizzaState } from './pizzaState.model';
 
-export interface ProductesState {
-    pizzas: PizzaState;
+export interface IProductesState {
+    pizzas: IPizzaState;
 }

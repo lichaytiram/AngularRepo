@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { appState } from '../shared/models/appState.models';
+import { IAppState } from '../shared/models/appState.models';
 import { AddTutorial } from '../store/actions/tutorial.action';
 import { ITutorial } from '../shared/models/Itutorial.model';
 import { Tutorial } from '../shared/models/tutorial.model';
@@ -14,7 +14,7 @@ export class CreateComponent implements OnInit {
 
   public tutorial: ITutorial = new Tutorial(null, null);
 
-  constructor(private store: Store<appState>) { }
+  constructor(private store: Store<IAppState>) { }
 
   ngOnInit() { }
 
@@ -22,9 +22,7 @@ export class CreateComponent implements OnInit {
 
     let newInstance: ITutorial = { name: this.tutorial.name, url: this.tutorial.url }
 
-    let tutorial: AddTutorial = new AddTutorial(newInstance);
-    this.store.dispatch(tutorial);
-
+    this.store.dispatch(AddTutorial({ addTutorial: newInstance }));
   }
 
 }

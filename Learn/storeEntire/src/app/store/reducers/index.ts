@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { appState } from 'src/app/shared/models/appState.models';
-import { reducer } from './tutorial.reducer';
+import { IAppState } from 'src/app/shared/models/appState.models';
+import { tutorialReducer } from './tutorial.reducer';
 
-export const reducers: ActionReducerMap<appState> = {
-    tutorial: reducer
+export const reducers: ActionReducerMap<IAppState> = {
+    tutorial: tutorialReducer
 }

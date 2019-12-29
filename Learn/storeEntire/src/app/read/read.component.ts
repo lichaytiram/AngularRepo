@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ITutorial } from '../shared/models/Itutorial.model';
-import { Store } from '@ngrx/store';
-import { appState } from '../shared/models/appState.models';
+import { Store, select } from '@ngrx/store';
+import { IAppState } from '../shared/models/appState.models';
 import { RemoveTutorial } from '../store/actions/tutorial.action';
 
 @Component({
@@ -14,15 +14,15 @@ export class ReadComponent implements OnInit {
 
   public tutorials$: Observable<ITutorial[]>;
 
-  constructor(private store: Store<appState>) { }
+  constructor(private store: Store<IAppState>) { }
 
   ngOnInit() {
-    this.tutorials$ = this.store.select('tutorial');
+    this.tutorials$ = this.store.pipe(select('tutorial'));
   }
 
   public delete(index: number): void {
 
-    this.store.dispatch(new RemoveTutorial(index));
+    this.store.dispatch(RemoveTutorial({ numberId: index }));
 
   }
 

@@ -2,7 +2,13 @@
 
     <p>pizza to sale</p>
 
-    <h2>my pizza</h2>
-    <h2>{{pizzas$.loaded}}</h2>
+    <div *ngIf="pizzas$ | async as pizzas">
+
+        <h2>my pizza</h2>
+        <h2>{{pizzas.loading}}</h2>
+        <h2>{{pizzas.loaded}}</h2>
+        <h2>{{pizzas.data}}</h2>
+
+    </div>
 
 </div>

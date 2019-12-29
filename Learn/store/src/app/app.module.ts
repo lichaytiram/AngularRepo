@@ -22,9 +22,14 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     FormsModule,
 
-    StoreModule.forRoot(
-      { 'pizzas': reducers.pizzas }
-    )
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+      },
+    })
 
   ],
   providers: [],

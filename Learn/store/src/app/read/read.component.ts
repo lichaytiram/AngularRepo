@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { ProductesState } from '../shared/models/productesState.model';
+import { Store, select } from '@ngrx/store';
+import { IProductesState } from '../shared/models/productesState.model';
 import { Observable } from 'rxjs';
-import { PizzaState } from '../shared/models/pizzaState.model';
+import { IPizzaState } from '../shared/models/pizzaState.model';
 
 @Component({
   selector: 'app-read',
@@ -11,12 +11,12 @@ import { PizzaState } from '../shared/models/pizzaState.model';
 })
 export class ReadComponent implements OnInit {
 
-  public pizzas$: Observable<PizzaState>;
+  public pizzas$: Observable<IPizzaState>;
 
-  constructor(private store: Store<ProductesState>) { }
+  constructor(private store: Store<IProductesState>) { }
 
   ngOnInit() {
-    this.pizzas$ = this.store.select('pizzas');
+    this.pizzas$ = this.store.pipe(select('pizzas'))
   }
 
 }

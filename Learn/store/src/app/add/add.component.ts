@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IProductesState } from '../shared/models/productesState.model';
+import { IPizzaState } from '../shared/models/pizzaState.model';
+import * as fromPizzas from '../store/actions/pizzas.action'
 
 @Component({
   selector: 'app-add',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  constructor() { }
+  public pizzas$: IPizzaState;
 
-  ngOnInit() {
+  constructor(private store: Store<IProductesState>) { }
+
+  ngOnInit() { }
+
+  dispach() {
+    // let newPizas = Object.create(this.pizzas$)
+    // newPizas.loading = true;
+    this.store.dispatch(fromPizzas.LoadPizzas());
   }
 
 }

@@ -1,5 +1,5 @@
 import { ITutorial } from './Itutorial.model';
 
-export interface appState {
+export interface IAppState {
     tutorial: ITutorial[];
 }
