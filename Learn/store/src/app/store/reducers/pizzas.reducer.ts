@@ -3,7 +3,12 @@ import * as fromPizzas from '../actions/pizzas.action'
 import { createReducer, on } from '@ngrx/store';
 
 export const initialState: IPizzaState = {
-    data: [],
+    data: [
+        {
+            "id": 3,
+            "name": "non"
+        }
+    ],
     loaded: false,
     loading: false
 }
@@ -17,11 +22,13 @@ export const reducer = createReducer<IPizzaState>(
             }
         }
     ), on(
-        fromPizzas.LoadPizzasSuccess, state => {
+        fromPizzas.LoadPizzasSuccess, (state, action) => {
+            const data = action.pizza;
             return {
                 ...state,
                 loaded: true,
-                loading: false
+                loading: false,
+                data
             }
         }
     ), on(

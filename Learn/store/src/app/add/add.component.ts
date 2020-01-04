@@ -18,8 +18,6 @@ export class AddComponent implements OnInit {
   ngOnInit() { }
 
   dispach() {
-    // let newPizas = Object.create(this.pizzas$)
-    // newPizas.loading = true;
     this.store.dispatch(fromPizzas.LoadPizzas());
   }
 

@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, effects } from './store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers } from './store/reducers/index';
+import { NavbarComponent } from './navbar/navbar.component';
 import { AddComponent } from './add/add.component';
 import { ReadComponent } from './read/read.component';
-import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+
+    EffectsModule.forRoot(effects),
 
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
@@ -29,7 +35,7 @@ import { NavbarComponent } from './navbar/navbar.component';
         strictStateSerializability: true,
         strictActionSerializability: true,
       },
-    })
+    }),
 
   ],
   providers: [],
