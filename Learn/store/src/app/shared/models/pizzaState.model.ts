@@ -1,7 +1,7 @@
 import { IPizza } from './Pizza.model';
 
 export interface IPizzaState {
-    data: IPizza[],
+    entities: { [id: number]: IPizza }
     loaded: boolean,
     loading: boolean
 }

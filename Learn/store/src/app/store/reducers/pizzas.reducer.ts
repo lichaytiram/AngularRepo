@@ -1,14 +1,17 @@
 import { IPizzaState } from 'src/app/shared/models/pizzaState.model';
 import * as fromPizzas from '../actions/pizzas.action'
 import { createReducer, on } from '@ngrx/store';
+import { IPizza } from 'src/app/shared/models/Pizza.model';
 
 export const initialState: IPizzaState = {
-    data: [
+    entities: {
+        3:
         {
             "id": 3,
             "name": "non"
         }
-    ],
+    }
+    ,
     loaded: false,
     loading: false
 }
@@ -23,12 +26,21 @@ export const reducer = createReducer<IPizzaState>(
         }
     ), on(
         fromPizzas.LoadPizzasSuccess, (state, action) => {
-            const data = action.pizza;
+            const pizzas = action.pizza;
+
+            const entities: { [id: number]: IPizza } = pizzas.reduce(
+                (entities: { [id: number]: IPizza }, pizza: IPizza) => {
+                    return {
+                        ...entities,
+                        [pizza.id]: pizza
+                    }
+                }, state.entities)
+
             return {
                 ...state,
                 loaded: true,
                 loading: false,
-                data
+                entities
             }
         }
     ), on(
@@ -42,3 +54,7 @@ export const reducer = createReducer<IPizzaState>(
     )
 
 )
+
+export const getPizzasEntities = (state: IPizzaState) => state.entities;
+export const getPizzasLoading = (state: IPizzaState) => state.loading;
+export const getPizzasLoaded = (state: IPizzaState) => state.loaded;
