@@ -20,3 +20,7 @@ export const tutorialReducer = createReducer<ITutorial[]>(
         }
     )
 )
+
+export const getAllTutorials = (initialState: ITutorial[]) => initialState;
+;
+// export const getAllTutorials = (state: ITutorial[]) => state.map(() => console.log("hi"));

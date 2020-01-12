@@ -5,6 +5,8 @@ import { Store, select } from '@ngrx/store';
 import { IAppState } from '../shared/models/appState.models';
 import { RemoveTutorial } from '../store/actions/tutorial.action';
 
+import {getMyData} from '../store/reducers/index';
+
 @Component({
   selector: 'app-read',
   templateUrl: './read.component.html',
@@ -18,6 +20,11 @@ export class ReadComponent implements OnInit {
 
   ngOnInit() {
     this.tutorials$ = this.store.pipe(select('tutorial'));
+
+    this.store.pipe(select(getMyData)).subscribe(
+      res => console.log(res)
+    )
+
   }
 
   public delete(index: number): void {
