@@ -4,12 +4,10 @@
 
     <div *ngIf="pizzas$ | async as pizzas">
 
-        <h2>my pizza</h2>
-        <h2>loading: {{pizzas.loading}}</h2>
-        <h2>loaded: {{pizzas.loaded}}</h2>
+        <h2>my pizzas</h2>
         <div>
-            <h2>data:</h2>
-            <li *ngFor="let pizza of (pizzas$ | async).data">
+            <h2>entities :</h2>
+            <li *ngFor="let pizza of (pizzas$ | async)">
                 {{pizza.id}} |
                 {{pizza.name}}
             </li>

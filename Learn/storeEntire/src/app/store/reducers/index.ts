@@ -9,19 +9,7 @@ export const reducers: ActionReducerMap<IAppState> = {
     tutorial: tutorialReducer
 }
 
-export const getFeatureSelector = createFeatureSelector<IAppState>("tutorial");
+export const getFeatureSelector = createFeatureSelector<ITutorial[]>("tutorial");
 
-export const getTutorialState = createSelector(getFeatureSelector,
-    (state: IAppState) => state.tutorial
-);
-
-export const getTutorialState2 = createSelector(getTutorialState,
-    (tutorial: ITutorial) => tutorial.name
-);
-
-export const getMyData = createSelector(getTutorialState2, () => {
-
-    fromRuducer.getAllTutorials
-}
-)
-
+// tutorial
+export const getMyData = createSelector(getFeatureSelector, fromRuducer.getAllTutorials)

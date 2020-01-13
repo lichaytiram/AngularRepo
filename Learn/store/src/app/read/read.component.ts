@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { IProductesState } from '../shared/models/productesState.model';
 import { Observable } from 'rxjs';
-import { IPizzaState } from '../shared/models/pizzaState.model';
 import * as fromStore from '../store/reducers/index';
+import { IPizza } from '../shared/models/Pizza.model';
 
 @Component({
   selector: 'app-read',
@@ -12,16 +12,14 @@ import * as fromStore from '../store/reducers/index';
 })
 export class ReadComponent implements OnInit {
 
-  // public pizzas$: Observable<IPizzaState>;
+  public pizzas$: Observable<IPizza[]>;
 
   constructor(private store: Store<IProductesState>) { }
 
   ngOnInit() {
-    // this.pizzas$ = this.store.pipe(select(fromStore.selectFeaturePizzas))
-    this.store.pipe(select(fromStore.selectFeaturePizzas)).subscribe(
-      res => console.log(res)
-
-    )
+    this.pizzas$ = this.store.pipe(select(fromStore.getAllPizzas))
+    this.store.pipe(select(fromStore.getAllPizzas)).subscribe(
+      res => console.log(res))
   }
 
 }
