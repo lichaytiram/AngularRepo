@@ -2,10 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { RouterStateSerializer, StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
+import { reducer, CustomSerializer } from './storeRouter';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, effects } from './store';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,9 +31,13 @@ import { ReadComponent } from './read/read.component';
     FormsModule,
     HttpClientModule,
 
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal,
+    }),
+
     EffectsModule.forRoot(effects),
 
-    StoreModule.forRoot(reducers, {
+    StoreModule.forRoot(reducer, {
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
@@ -39,13 +46,16 @@ import { ReadComponent } from './read/read.component';
       },
     }),
 
+    StoreModule.forFeature('products', reducers),
+
+    // Only a tool for developers will delete on products
     StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production, // Restrict extension to log-only mode
+      maxAge: 25,
+      logOnly: environment.production,
     }),
 
   ],
-  providers: [],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
