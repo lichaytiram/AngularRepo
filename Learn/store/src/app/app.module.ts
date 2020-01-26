@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -17,6 +17,16 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddComponent } from './add/add.component';
 import { ReadComponent } from './read/read.component';
+
+const root: Routes = [
+  {
+    path: 'product', children: [
+      { path: 'add', component: AddComponent },
+      { path: ':pizzaId', component: ReadComponent },
+    ]
+  },
+  { path: '**', redirectTo: 'read', pathMatch: 'full' }
+]
 
 @NgModule({
   declarations: [
@@ -36,6 +46,7 @@ import { ReadComponent } from './read/read.component';
     }),
 
     EffectsModule.forRoot(effects),
+    RouterModule.forRoot(root),
 
     StoreModule.forRoot(reducer, {
       runtimeChecks: {

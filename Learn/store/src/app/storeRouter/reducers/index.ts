@@ -4,8 +4,8 @@ import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 
 export interface IRouterStateUrl {
     url: string,
-    queryParams: Params,
-    params: Params
+    params: Params,
+    queryParams: Params
 }
 
 export interface IState {
@@ -22,19 +22,17 @@ export class CustomSerializer implements RouterStateSerializer<IRouterStateUrl> 
 
     serialize(routerState: RouterStateSnapshot): IRouterStateUrl {
 
-        const { url } = routerState;
-        const { queryParams } = routerState.root;
-
-        // go up after cheking that work properly     
         let state: ActivatedRouteSnapshot = routerState.root;
 
         while (state.firstChild)
             state = state.firstChild;
 
+        const { url } = routerState;
         const { params } = state
+        const { queryParams } = routerState.root;
 
         console.log("inside CustomSerializer");
 
-        return { url, queryParams, params };
+        return { url, params, queryParams };
     }
 }
