@@ -19,7 +19,8 @@ export const initialState: IPizzaState = adapter.getInitialState({
         }
     },
     loaded: false,
-    loading: false
+    loading: false,
+    ids: [3]
 });
 
 export const reducer = createReducer<IPizzaState>(
@@ -32,13 +33,12 @@ export const reducer = createReducer<IPizzaState>(
         }
     ), on(
         fromPizzas.LoadPizzasSuccess, (state, action) => {
-            let entities = { ...adapter.addAll(action.pizza, state).entities, ...state.entities }
+            const pizzas: IPizza[] = action.pizzas;
             return {
-                ...state,
-                entities,
+                ...adapter.addAll(pizzas, state),
                 loaded: true,
                 loading: false
-            };
+            }
         }
     ), on(
         fromPizzas.LoadPizzasFail, state => {
@@ -50,12 +50,14 @@ export const reducer = createReducer<IPizzaState>(
         }
     ), on(
         fromPizzas.DeletePizza, (state: IPizzaState, action) => {
-            return adapter.removeOne(action.pizzaId, state);
+            const id: number = action.pizzaId;
+            return adapter.removeOne(id, state);
         }
     )
 )
-const { selectEntities } = adapter.getSelectors();
+const { selectEntities, selectAll } = adapter.getSelectors();
 
 export const getPizzasEntities = selectEntities;
+export const getAllPizzas = selectAll;
 export const getPizzasLoading = (state: IPizzaState) => state.loading;
 export const getPizzasLoaded = (state: IPizzaState) => state.loaded;
