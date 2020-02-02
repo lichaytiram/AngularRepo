@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
-import { IProductesState } from "../shared/models/productesState.model";
 import { Observable } from "rxjs";
+import { IProductesState } from '../store';
 import * as fromStore from "../store/selectors/pizzas.selectors";
 import { IPizza } from "../shared/models/Pizza.model";
 // import { Router } from '@angular/router';

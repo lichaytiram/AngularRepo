@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IProductesState } from '../shared/models/productesState.model';
-import { IPizzaState } from '../shared/models/pizzaState.model';
 import * as fromPizzas from '../store/actions/pizzas.action'
+import { IPizzaState } from '../store/reducers/pizzas.reducer';
+import { IProductesState } from '../store';
 
 @Component({
   selector: 'app-add',

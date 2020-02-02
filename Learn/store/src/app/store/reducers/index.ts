@@ -1,6 +1,9 @@
-import { reducer } from "./pizzas.reducer";
+import { reducer, IPizzaState } from "./pizzas.reducer";
 import { ActionReducerMap, createFeatureSelector } from "@ngrx/store";
-import { IProductesState } from "src/app/shared/models/productesState.model";
+
+export interface IProductesState {
+  pizzas: IPizzaState;
+}
 
 export const reducers: ActionReducerMap<IProductesState> = {
   pizzas: reducer
