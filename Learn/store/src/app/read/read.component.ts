@@ -4,8 +4,7 @@ import { Observable } from "rxjs";
 import { IProductesState } from '../store';
 import * as fromStore from "../store/selectors/pizzas.selectors";
 import { IPizza } from "../shared/models/Pizza.model";
-// import { Router } from '@angular/router';
-import { DeletePizza } from '../store/actions/pizzas.action'
+import { DeletePizza, LoadPizzas } from '../store/actions/pizzas.action'
 
 @Component({
   selector: "app-read",
@@ -19,16 +18,15 @@ export class ReadComponent implements OnInit {
 
   ngOnInit() {
     this.pizzas$ = this.store.pipe(select(fromStore.getAllPizzas));
-    this.store.pipe(select(fromStore.getAllPizzas)).subscribe(res => console.log(res));
   }
 
   delete(id: number): void {
     this.store.dispatch(DeletePizza({ pizzaId: id }));
   }
 
+  dispach() {
+    this.store.dispatch(LoadPizzas());
+  }
 
 
-  // inner(id: number) {
-  //   this.route.navigate([`/product/${id}`]);
-  // }
 }

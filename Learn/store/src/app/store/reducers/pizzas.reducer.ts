@@ -11,16 +11,8 @@ export interface IPizzaState extends EntityState<IPizza> {
 }
 
 export const initialState: IPizzaState = adapter.getInitialState({
-    entities: {
-        3:
-        {
-            "id": 3,
-            "name": "non"
-        }
-    },
     loaded: false,
-    loading: false,
-    ids: [3]
+    loading: false
 });
 
 export const reducer = createReducer<IPizzaState>(

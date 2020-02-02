@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as fromPizzas from '../store/actions/pizzas.action'
-import { IPizzaState } from '../store/reducers/pizzas.reducer';
+
 import { IProductesState } from '../store';
 
 @Component({
@@ -11,14 +11,19 @@ import { IProductesState } from '../store';
 })
 export class AddComponent implements OnInit {
 
-  public pizzas$: IPizzaState;
+  public pizzaName: string;
 
   constructor(private store: Store<IProductesState>) { }
 
   ngOnInit() { }
 
-  dispach() {
-    this.store.dispatch(fromPizzas.LoadPizzas());
+  public addPizza() {
+    console.log(this.pizzaName);
+
   }
+
+  // inner(id: number) {
+  //   this.route.navigate([`/product/${id}`]);
+  // }
 
 }

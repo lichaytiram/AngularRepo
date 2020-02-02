@@ -4,10 +4,6 @@
 
     <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
 
-        <!-- {{userForm.value | json}}
-        <hr>
-        {{userModel | json}} -->
-
         <div>
             <label>Name </label>
             <input type="text" required [class.red]="name.touched && name.invalid" name="name" #name="ngModel"
