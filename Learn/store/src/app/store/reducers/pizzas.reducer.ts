@@ -6,7 +6,6 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 export const adapter: EntityAdapter<IPizza> = createEntityAdapter<IPizza>();
 
 export interface IPizzaState extends EntityState<IPizza> {
-    entities: { [id: number]: IPizza }
     loaded: boolean,
     loading: boolean
 }
@@ -33,22 +32,13 @@ export const reducer = createReducer<IPizzaState>(
         }
     ), on(
         fromPizzas.LoadPizzasSuccess, (state, action) => {
-            const pizzas = action.pizza;
-
-            const entities: { [id: number]: IPizza } = pizzas.reduce(
-                (entities: { [id: number]: IPizza }, pizza: IPizza) => {
-                    return {
-                        ...entities,
-                        [pizza.id]: pizza
-                    }
-                }, state.entities)
-
+            let entities = { ...adapter.addAll(action.pizza, state).entities, ...state.entities }
             return {
                 ...state,
+                entities,
                 loaded: true,
-                loading: false,
-                entities
-            }
+                loading: false
+            };
         }
     ), on(
         fromPizzas.LoadPizzasFail, state => {
@@ -63,9 +53,9 @@ export const reducer = createReducer<IPizzaState>(
             return adapter.removeOne(action.pizzaId, state);
         }
     )
-
 )
+const { selectEntities } = adapter.getSelectors();
 
-export const getPizzasEntities = (state: IPizzaState) => state.entities;
+export const getPizzasEntities = selectEntities;
 export const getPizzasLoading = (state: IPizzaState) => state.loading;
 export const getPizzasLoaded = (state: IPizzaState) => state.loaded;
