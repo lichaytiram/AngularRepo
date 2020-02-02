@@ -22,6 +22,7 @@ const root: Routes = [
   {
     path: 'product', children: [
       { path: 'add', component: AddComponent },
+      { path: 'show', component: ReadComponent },
       { path: ':pizzaId', component: ReadComponent },
     ]
   },

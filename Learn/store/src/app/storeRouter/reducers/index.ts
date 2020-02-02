@@ -31,8 +31,6 @@ export class CustomSerializer implements RouterStateSerializer<IRouterStateUrl> 
         const { params } = state
         const { queryParams } = routerState.root;
 
-        console.log("inside CustomSerializer");
-
         return { url, params, queryParams };
     }
 }

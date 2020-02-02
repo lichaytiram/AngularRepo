@@ -8,8 +8,8 @@
         <div>
             <h2>entities :</h2>
             <li *ngFor="let pizza of (pizzas$ | async)">
-                {{pizza.id}} |
-                {{pizza.name}}
+                {{pizza.name}} |
+                <button (click)="delete(pizza.id)">delete me </button>
             </li>
         </div>
 
