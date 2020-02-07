@@ -41,9 +41,14 @@ export const reducer = createReducer<IPizzaState>(
             }
         }
     ), on(
-        fromPizzas.DeletePizza, (state: IPizzaState, action) => {
-            const id: number = action.pizzaId;
-            return adapter.removeOne(id, state);
+        fromPizzas.AddPizzaSuccess, (state: IPizzaState, action) => {
+            const pizza: IPizza = action.pizza;
+            return adapter.addOne(pizza, state);
+        }
+    ), on(
+        fromPizzas.DeletePizzaSuccess, (state: IPizzaState, action) => {
+            const pizzaId: number = action.pizzaId;
+            return adapter.removeOne(pizzaId, state);
         }
     )
 )

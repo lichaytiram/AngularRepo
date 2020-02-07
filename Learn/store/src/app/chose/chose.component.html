@@ -1,0 +1,8 @@
+<div>
+    <h3>Pizza chose is -</h3>
+    <div *ngIf="pizza$ | async as pizza">
+        <li>{{pizza.id}}</li>
+        <li>{{pizza.name}}</li>
+    </div>
+
+</div>

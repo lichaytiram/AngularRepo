@@ -1,15 +1,15 @@
 <div>
 
     <p>pizza to sale</p>
-    <button (click)="dispach()">Receive all pizzas</button>
+    <button (click)="getAllPizzas()">Receive all pizzas</button>
 
     <div *ngIf="pizzas$ | async as pizzas">
 
         <h2>my pizzas</h2>
         <div>
-            <h2>entities :</h2>
             <li *ngFor="let pizza of (pizzas$ | async)">
                 {{pizza.name}} |
+                <button (click)="chose(pizza.id)">Choose to buy</button>
                 <button (click)="delete(pizza.id)">delete me </button>
             </li>
         </div>

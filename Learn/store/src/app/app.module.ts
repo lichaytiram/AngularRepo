@@ -16,13 +16,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddComponent } from './add/add.component';
 import { ReadComponent } from './read/read.component';
+import { ChoseComponent } from './chose/chose.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddComponent,
     ReadComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChoseComponent
   ],
   imports: [
     BrowserModule,

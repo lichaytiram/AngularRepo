@@ -5,6 +5,7 @@
         <input type="text" required name="pizza" placeholder="Enter a name" #pizza="ngModel"
             [(ngModel)]="pizzaName"><br>
         <button [disabled]="pizza.invalid" style="margin: 1px" type="button" (click)="addPizza()">Submit</button>
-        <h5 *ngIf="pizza.touched && pizza.invalid">Use sure you don't want to create a new pizza?</h5>
+        <h5 *ngIf="pizza.touched && pizza.invalid">Use sure you <span style="color: red">don't</span> want to create a
+            new pizza?</h5>
     </form>
 </div>

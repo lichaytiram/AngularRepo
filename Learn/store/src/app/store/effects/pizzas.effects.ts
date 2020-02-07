@@ -12,15 +12,33 @@ import { PizzaService } from '../../shared/services/pizza.service';
 })
 export class PizzasEffects {
 
-  constructor(private actions$: Actions, private service: PizzaService) { }
+  constructor(private actions$: Actions, private pizzaService: PizzaService) { }
 
   public loadPizzas$ = createEffect(() => this.actions$.pipe(ofType(pizzasActions.LoadPizzas),
     switchMap(() => {
-      return this.service.getPizzas().pipe(
+      return this.pizzaService.getPizzas().pipe(
         map(pizzas => pizzasActions.LoadPizzasSuccess({ pizzas: pizzas })),
         catchError(error => of(pizzasActions.LoadPizzasFail(error)))
       )
     })
   ))
 
+  public addPizza = createEffect(() => this.actions$.pipe(ofType(pizzasActions.AddPizza),
+    switchMap(action => {
+      return this.pizzaService.addPizza(action.name).pipe(
+        map(pizza => pizzasActions.AddPizzaSuccess({ pizza: pizza })),
+        catchError(error => of(pizzasActions.AddPizzaFail(error)))
+      )
+    })
+  ))
+
+  public deletePizza = createEffect(() => this.actions$.pipe(ofType(pizzasActions.DeletePizza),
+    switchMap(action => {
+      return this.pizzaService.deletePizza(action.pizzaId).pipe(
+        map(() => pizzasActions.DeletePizzaSuccess({ pizzaId: action.pizzaId })),
+        catchError(error => of(pizzasActions.DeletePizzaFail(error)))
+      )
+    })
+  ))
+    
 }

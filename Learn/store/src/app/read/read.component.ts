@@ -5,6 +5,7 @@ import { IProductesState } from '../store';
 import * as fromStore from "../store/selectors/pizzas.selectors";
 import { IPizza } from "../shared/models/Pizza.model";
 import { DeletePizza, LoadPizzas } from '../store/actions/pizzas.action'
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-read",
@@ -14,19 +15,22 @@ import { DeletePizza, LoadPizzas } from '../store/actions/pizzas.action'
 export class ReadComponent implements OnInit {
   public pizzas$: Observable<IPizza[]>;
 
-  constructor(private store: Store<IProductesState>) { }
+  constructor(private store: Store<IProductesState>, private route:Router) { }
 
   ngOnInit() {
     this.pizzas$ = this.store.pipe(select(fromStore.getAllPizzas));
   }
 
-  delete(id: number): void {
-    this.store.dispatch(DeletePizza({ pizzaId: id }));
+  delete(pizzaId: number): void {
+    this.store.dispatch(DeletePizza({ pizzaId: pizzaId }));
   }
 
-  dispach() {
+  getAllPizzas(): void {
     this.store.dispatch(LoadPizzas());
   }
 
+  chose(pizzaId: number) {
+    this.route.navigate([`/product/${pizzaId}`]);
+  }
 
 }
