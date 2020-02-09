@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { IProductesState } from '../store';
-import { getSelectedPizza } from '../store/selectors/pizzas.selectors'
+import { IProductesState, LoadPizzas } from '../store';
+import { getSelectedPizza ,getAllPizzas} from '../store/selectors/pizzas.selectors'
 import { Observable } from 'rxjs';
 import { IPizza } from '../shared/models/Pizza.model';
 
@@ -10,22 +10,16 @@ import { IPizza } from '../shared/models/Pizza.model';
   templateUrl: './chose.component.html',
   styleUrls: ['./chose.component.css']
 })
-export class ChoseComponent implements OnInit, OnDestroy {
+export class ChoseComponent implements OnInit {
 
   public pizza$: Observable<IPizza>;
 
   constructor(private store: Store<IProductesState>) { }
 
   ngOnInit() {
-    if (sessionStorage.getItem("pizza") == null) {
-      this.pizza$ = this.store.pipe(select(getSelectedPizza))
-      sessionStorage.setItem("pizza", JSON.stringify(this.pizza$.pipe()));
-    }
-    else
-      this.pizza$ = JSON.parse(sessionStorage.getItem("pizza"));
+    // this.store.dispatch(LoadPizzas());
+    this.pizza$ = this.store.pipe(select(getSelectedPizza))
   }
 
-  ngOnDestroy() {
-    sessionStorage.setItem("key", "new");
-  }
+
 }

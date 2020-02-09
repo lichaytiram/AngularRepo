@@ -1,12 +1,8 @@
 {
   "pizzas": [
     {
-      "name": "egg",
-      "id": 2
-    },
-    {
       "name": "onion",
-      "id": 3
+      "id": 1
     }
   ]
 }

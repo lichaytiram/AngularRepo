@@ -3,19 +3,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddComponent } from './add/add.component';
 import { ReadComponent } from './read/read.component';
 import { ChoseComponent } from './chose/chose.component';
+import { guards } from './store/guard/index'
+import { PizzaService } from './shared/services/index';
 
 const routes: Routes = [
   {
     path: 'product', children: [
       { path: 'add', component: AddComponent },
       { path: 'show', component: ReadComponent },
-      { path: ':pizzaId', component: ChoseComponent },
+      { path: ':pizzaId', component: ChoseComponent, canActivate: guards },
     ]
   },
-  { path: '**', redirectTo: 'read', pathMatch: 'full' }
+  { path: '**', component: AddComponent },
+  { path: '', redirectTo: 'add', pathMatch: 'full' },
 ]
 
 @NgModule({
+  providers: [...guards, PizzaService],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
