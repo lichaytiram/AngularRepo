@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { IProductesState, LoadPizzas } from '../store';
-import { getSelectedPizza ,getAllPizzas} from '../store/selectors/pizzas.selectors'
+import { getSelectedPizza } from '../store/selectors/pizzas.selectors'
 import { Observable } from 'rxjs';
 import { IPizza } from '../shared/models/Pizza.model';
 
@@ -17,7 +17,6 @@ export class ChoseComponent implements OnInit {
   constructor(private store: Store<IProductesState>) { }
 
   ngOnInit() {
-    // this.store.dispatch(LoadPizzas());
     this.pizza$ = this.store.pipe(select(getSelectedPizza))
   }
 

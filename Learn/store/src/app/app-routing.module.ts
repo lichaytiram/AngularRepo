@@ -14,8 +14,8 @@ const routes: Routes = [
       { path: ':pizzaId', component: ChoseComponent, canActivate: guards },
     ]
   },
-  { path: '**', component: AddComponent },
-  { path: '', redirectTo: 'add', pathMatch: 'full' },
+  { path: '', redirectTo: 'product/show', pathMatch: 'full' },
+  { path: '**', redirectTo: 'product/show', pathMatch: 'full' },
 ]
 
 @NgModule({
