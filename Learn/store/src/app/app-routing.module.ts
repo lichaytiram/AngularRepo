@@ -19,7 +19,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  providers: [...guards, PizzaService],
+  // providers: [...guards, PizzaService],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
