@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddComponent } from './add/add.component';
 import { ReadComponent } from './read/read.component';
 import { ChoseComponent } from './chose/chose.component';
-import { guards } from './store/guard/index'
-import { PizzaService } from './shared/services/index';
+import { guards } from './store/guards/index'
+import { services } from './shared/services';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  // providers: [...guards, PizzaService],
+  providers: [...guards, ...services],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

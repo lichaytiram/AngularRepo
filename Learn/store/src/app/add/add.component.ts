@@ -3,11 +3,12 @@ import { Store } from '@ngrx/store';
 
 import { IProductesState } from '../store';
 import { AddPizza } from '../store/actions/pizzas.action'
+import { services } from '../shared/services';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  styleUrls: ['./add.component.css'],
 })
 export class AddComponent implements OnInit {
 

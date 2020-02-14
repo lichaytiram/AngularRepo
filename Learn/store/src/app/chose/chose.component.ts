@@ -20,5 +20,4 @@ export class ChoseComponent implements OnInit {
     this.pizza$ = this.store.pipe(select(getSelectedPizza))
   }
 
-
 }

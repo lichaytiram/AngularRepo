@@ -13,9 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ["./read.component.css"]
 })
 export class ReadComponent implements OnInit {
+
   public pizzas$: Observable<IPizza[]>;
 
-  constructor(private store: Store<IProductesState>, private route:Router) { }
+  constructor(private store: Store<IProductesState>, private route: Router) { }
 
   ngOnInit() {
     this.pizzas$ = this.store.pipe(select(fromStore.getAllPizzas));
