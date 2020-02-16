@@ -11,7 +11,7 @@ import * as fromStore from '../index';
 })
 export class PizzasGuard implements CanActivate {
 
-  constructor(private Store: Store<fromStore.IProductesState>) { }
+  constructor(private Store: Store<fromStore.IProductsState>) { }
 
   canActivate(): Observable<boolean> {
     return this.checkStore().pipe(

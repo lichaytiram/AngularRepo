@@ -7,7 +7,7 @@ import * as fromPizzas from "../reducers/pizzas.reducer";
 
 export const getPizzaState = createSelector(
   fromFeature.getProductsState,
-  (pizzaState: fromFeature.IProductesState) => pizzaState.pizzas
+  (pizzaState: fromFeature.IProductsState) => pizzaState.pizzas
 );
 
 export const getAllPizzas = createSelector(getPizzaState, fromPizzas.getAllPizzas);

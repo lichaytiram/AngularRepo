@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 
 import { IProductesState } from '../store';
 import { AddPizza } from '../store/actions/pizzas.action'
-import { services } from '../shared/services';
 
 @Component({
   selector: 'app-add',
@@ -21,4 +20,5 @@ export class AddComponent implements OnInit {
   public addPizza() {
     this.store.dispatch(AddPizza({ name: this.pizzaName }));
   }
+
 }

@@ -24,7 +24,7 @@ export const reducer = createReducer<IPizzaState>(
             }
         }
     ), on(
-        fromPizzas.LoadPizzasSuccess, (state, action) => {
+        fromPizzas.LoadPizzasSuccess, (state: IPizzaState, action) => {
             const pizzas: IPizza[] = action.pizzas;
             return {
                 ...adapter.addAll(pizzas, state),
@@ -52,6 +52,7 @@ export const reducer = createReducer<IPizzaState>(
         }
     )
 )
+
 const { selectEntities, selectAll } = adapter.getSelectors();
 
 export const getPizzasEntities = selectEntities;

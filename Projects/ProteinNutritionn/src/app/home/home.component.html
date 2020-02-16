@@ -1,0 +1,19 @@
+<div class="text-center">
+
+  <br>
+  <button class="btn-lg btn-danger col-10 " *ngIf="!login" (click)="isLogin()">Lets started</button>
+
+  <div class="center-block">
+
+    <div *ngIf="login">
+
+      <form (submit)="submit()">
+
+        <input class="col-2 text-center" type="number" name="egg" placeholder="Enter amount" [(ngModel)]="protein.eggs"><br>
+        <input class="btn-secondary" type="submit">
+
+      </form>
+
+    </div>
+  </div>
+</div>
