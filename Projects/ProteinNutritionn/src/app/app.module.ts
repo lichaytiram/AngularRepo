@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
     NavbarComponent,
     HomeComponent,
     FavoriteComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,
