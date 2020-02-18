@@ -25,6 +25,8 @@ export const proteinReducer = createReducer<IProteinState>(
 
     ), on(
         fromProtein.AddProteinSuccess, (state: IProteinState, action) => {
+            console.log("wow");
+            
             const { protein } = action;
             return adapter.addOne(protein, state);
         }

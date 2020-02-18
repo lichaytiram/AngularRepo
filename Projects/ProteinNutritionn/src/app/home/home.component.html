@@ -10,7 +10,9 @@
       <form (submit)="submit()">
 
         <input class="col-2 text-center" type="number" name="egg" placeholder="Enter amount" [(ngModel)]="protein.eggs"><br>
-        <input class="btn-secondary" type="submit">
+
+        <input class="btn-secondary" type="button" value="Show" (click)="show()">
+        <input class="btn-secondary" type="submit" value="Save">
 
       </form>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { IProductesState } from '../store';
+import { IProductsState } from '../store';
 import * as fromStore from "../store/selectors/pizzas.selectors";
 import { IPizza } from "../shared/models/Pizza.model";
 import { DeletePizza, LoadPizzas } from '../store/actions/pizzas.action'
@@ -16,7 +16,7 @@ export class ReadComponent implements OnInit {
 
   public pizzas$: Observable<IPizza[]>;
 
-  constructor(private store: Store<IProductesState>, private route: Router) { }
+  constructor(private store: Store<IProductsState>, private route: Router) { }
 
   ngOnInit() {
     this.pizzas$ = this.store.pipe(select(fromStore.getAllPizzas));

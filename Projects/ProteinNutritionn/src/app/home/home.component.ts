@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+
 import { IProtein } from '../shared/models/iProtein.model';
 import { Protein } from '../shared/models/protein.model';
+import { AddProteinSuccess } from '../store/actions/protein.action'
 
+import { Store } from '@ngrx/store';
+import { IProductsState } from '../store';
+
+
+import { switchMap, map, catchError } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,10 +17,9 @@ import { Protein } from '../shared/models/protein.model';
 export class HomeComponent implements OnInit {
 
   public login: boolean;
-  // public egg: number;
   public protein: IProtein;
 
-  constructor() { }
+  constructor(private store: Store<IProductsState>) { }
 
   ngOnInit() {
 
@@ -29,10 +35,17 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('login', "true");
   }
 
-  public submit() {
-    console.log(this.protein.eggs);
-    console.log(this.protein);
+  public submit(): void {
+    // this.store.dispatch(AddProteinSuccess({ protein: this.protein }))
 
+    // this.store.pipe(
+    //   map(() => AddProteinSuccess({ protein: this.protein })
+    //   ))
+
+  }
+
+  public show(): void {
+    console.log(this.protein);
   }
 
 }
