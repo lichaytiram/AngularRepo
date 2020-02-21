@@ -38,10 +38,10 @@ import { InfoComponent } from './info/info.component';
 
     StoreModule.forRoot(reducer, {
       runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true,
-        strictStateSerializability: true,
-        strictActionSerializability: true,
+        strictStateImmutability: false,
+        strictActionImmutability: false,
+        strictStateSerializability: false,
+        strictActionSerializability: false,
       },
     }),
 

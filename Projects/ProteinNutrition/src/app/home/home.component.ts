@@ -7,8 +7,6 @@ import { AddProteinSuccess } from '../store/actions/protein.action'
 import { Store } from '@ngrx/store';
 import { IProductsState } from '../store';
 
-
-import { switchMap, map, catchError } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -25,7 +23,7 @@ export class HomeComponent implements OnInit {
 
     if (!!localStorage.getItem("login")) {
       this.login = true;
-      this.protein = new Protein();
+      this.protein = new Protein(0);
     }
 
   }
@@ -36,12 +34,11 @@ export class HomeComponent implements OnInit {
   }
 
   public submit(): void {
-    this.store.dispatch(AddProteinSuccess({ protein: this.protein }))
 
-    // this.store.pipe(
-    //   map(() => AddProteinSuccess({ protein: this.protein })
-    //   ))
+    this.protein.id += 1
+    const protein: IProtein = { ...this.protein };
 
+    this.store.dispatch(AddProteinSuccess({ protein: protein }));
   }
 
   public show(): void {
