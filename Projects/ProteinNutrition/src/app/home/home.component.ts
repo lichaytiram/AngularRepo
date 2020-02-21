@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   public submit(): void {
-    // this.store.dispatch(AddProteinSuccess({ protein: this.protein }))
+    this.store.dispatch(AddProteinSuccess({ protein: this.protein }))
 
     // this.store.pipe(
     //   map(() => AddProteinSuccess({ protein: this.protein })
