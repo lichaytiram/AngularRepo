@@ -3,20 +3,67 @@
   <br>
   <button class="btn-lg btn-danger col-10 " *ngIf="!login" (click)="isLogin()">Lets started</button>
 
-  <div class="center-block">
+  <div *ngIf="login">
 
-    <div *ngIf="login">
+    <form (submit)="submit()">
 
-      <form (submit)="submit()">
+      <div id="egg" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Egg" name="egg" placeholder="Enter amount"
+          [(ngModel)]="protein.egg"><span name>size</span><br>
+      </div>
 
-        <input class="col-2 text-center" type="number" name="egg" placeholder="Enter amount" [(ngModel)]="protein.eggs"><br>
+      <div id="bread" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Bread" name="bread" placeholder="Enter amount"
+          [(ngModel)]="protein.bread"><span>slices</span><br>
+      </div>
 
+      <div id="tuna" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Tuna" name="tuna" placeholder="Enter amount"
+          [(ngModel)]="protein.tuna"><span>gram</span><br>
+      </div>
+
+      <div id="meat" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Meat" name="meat" placeholder="Enter amount"
+          [(ngModel)]="protein.meat"><span>gram</span><br>
+      </div>
+
+      <div id="cheese" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Cheese" name="cheese" placeholder="Enter amount"
+          [(ngModel)]="protein.cheese"><span>gram</span><br>
+      </div>
+
+      <div id="cottage" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Cottage" name="cottage" placeholder="Enter amount"
+          [(ngModel)]="protein.cottage"><span>gram</span><br>
+      </div>
+
+      <div id="quinoa" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Quinoa" name="quinoa" placeholder="Enter amount"
+          [(ngModel)]="protein.quinoa"><span>gram</span><br>
+      </div>
+
+      <div id="almonds" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Almonds" name="almonds" placeholder="Enter amount"
+          [(ngModel)]="protein.almonds"><span>gram</span><br>
+      </div>
+
+      <div id="powder" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Powder" name="powder" placeholder="Enter amount"
+          [(ngModel)]="protein.powder"><span>gram</span><br>
+      </div>
+
+      <div id="gainer" class="invisible">
+        <input class="col-auto-2 text-center" type="number" title="Gainer" name="gainer" placeholder="Enter amount"
+          [(ngModel)]="protein.gainer"><span>gram</span><br>
+      </div>
+
+      <div id="submit" class="invisible">
         <input class="btn-secondary" type="button" value="Show" (click)="show()">
         <input class="btn-secondary" type="submit" value="Save">
+      </div>
 
-      </form>
+    </form>
 
-    </div>
   </div>
 
 </div>
