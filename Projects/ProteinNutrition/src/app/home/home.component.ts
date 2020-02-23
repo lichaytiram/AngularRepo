@@ -58,27 +58,24 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public calculateProtein(protein: IProtein): void {
 
-    protein.egg *= 2;
-    protein.bread *= 2;
-    protein.tuna *= 2;
-    protein.meat *= 2;
-    protein.cheese *= 2;
-    protein.cottage *= 2;
-    protein.quinoa *= 2;
-    protein.almonds *= 2;
-    protein.powder *= 2;
-    protein.gainer *= 2;
+    protein.egg *= 7.393;
+    protein.bread /= 9.259259259259259;
+    protein.tuna /= 3.571428571428571;
+    protein.meat /= 3.225806451612903;
+    protein.cheese /= 10.52631578947368;
+    protein.cottage /= 9.090909090909091;
+    protein.quinoa /= 7.575757575757576;
+    protein.almonds *= 6.154;
+    protein.powder *= 0.9;
+    protein.gainer *= 22;
 
     let sum: number = 0;
-    console.log(Object.values(protein));
     Object.values(protein).forEach(value => value ? sum += value : sum += 0);
-    console.log("The sum is: " + sum);
+    alert("The sum is: " + sum);
 
   }
 
   private visibility(): void {
-
-
 
     let timeToShow = 100;
     const { id, ...protein } = this.protein;
