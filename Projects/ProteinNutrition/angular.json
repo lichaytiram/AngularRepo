@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ProteinNutritionn": {
+    "ProteinNutrition": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ProteinNutritionn",
+            "outputPath": "dist/ProteinNutrition",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ProteinNutritionn:build"
+            "browserTarget": "ProteinNutrition:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ProteinNutritionn:build:production"
+              "browserTarget": "ProteinNutrition:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ProteinNutritionn:build"
+            "browserTarget": "ProteinNutrition:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ProteinNutritionn:serve"
+            "devServerTarget": "ProteinNutrition:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ProteinNutritionn:serve:production"
+              "devServerTarget": "ProteinNutrition:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "ProteinNutritionn"
+  "defaultProject": "ProteinNutrition"
 }
