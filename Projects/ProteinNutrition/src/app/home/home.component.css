@@ -1,3 +1,7 @@
 span {
     position: absolute;
 }
+
+.border:focus {
+    outline: none;
+  }

@@ -8,58 +8,60 @@
     <form (submit)="submit()">
 
       <div id="egg" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Egg" name="egg" placeholder="Enter amount"
-          [(ngModel)]="protein.egg"><span name>size</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1" type="number" title="Egg" name="egg"
+          placeholder="Enter amount" [(ngModel)]="protein.egg"><span name>size</span><br>
       </div>
 
       <div id="bread" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Bread" name="bread" placeholder="Enter amount"
-          [(ngModel)]="protein.bread"><span>slices , 30g pre slice</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1 m-1" type="number" title="Bread"
+          name="bread" placeholder="Enter amount" [(ngModel)]="protein.bread"><span>slices , 30g pre slice</span><br>
       </div>
 
       <div id="tuna" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Tuna" name="tuna" placeholder="Enter amount"
-          [(ngModel)]="protein.tuna"><span>gram</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1" type="number" title="Tuna"
+          name="tuna" placeholder="Enter amount" [(ngModel)]="protein.tuna"><span>gram</span><br>
       </div>
 
       <div id="meat" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Meat" name="meat" placeholder="Enter amount"
-          [(ngModel)]="protein.meat"><span>gram</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1 m-1" type="number" title="Meat"
+          name="meat" placeholder="Enter amount" [(ngModel)]="protein.meat"><span>gram</span><br>
       </div>
 
       <div id="cheese" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Cheese" name="cheese" placeholder="Enter amount"
-          [(ngModel)]="protein.cheese"><span>gram</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1" type="number" title="Cheese"
+          name="cheese" placeholder="Enter amount" [(ngModel)]="protein.cheese"><span>gram</span><br>
       </div>
 
       <div id="cottage" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Cottage" name="cottage" placeholder="Enter amount"
-          [(ngModel)]="protein.cottage"><span>gram</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1 m-1" type="number" title="Cottage"
+          name="cottage" placeholder="Enter amount" [(ngModel)]="protein.cottage"><span>gram</span><br>
       </div>
 
       <div id="quinoa" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Quinoa" name="quinoa" placeholder="Enter amount"
-          [(ngModel)]="protein.quinoa"><span>gram</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1" type="number" title="Quinoa"
+          name="quinoa" placeholder="Enter amount" [(ngModel)]="protein.quinoa"><span>gram</span><br>
       </div>
 
       <div id="almonds" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Almonds" name="almonds" placeholder="Enter amount"
-          [(ngModel)]="protein.almonds"><span>handful</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1 m-1" type="number" title="Almonds"
+          name="almonds" placeholder="Enter amount" [(ngModel)]="protein.almonds"><span>handful</span><br>
       </div>
 
       <div id="powder" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Powder" name="powder" placeholder="Enter amount"
-          [(ngModel)]="protein.powder"><span>gram , 100g : 90g protein</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1" type="number" title="Powder"
+          name="powder" placeholder="Enter amount" [(ngModel)]="protein.powder"><span>gram , 100g : 90g
+          protein</span><br>
       </div>
 
       <div id="gainer" class="invisible">
-        <input class="col-auto-2 text-center" type="number" title="Gainer" name="gainer" placeholder="Enter amount"
-          [(ngModel)]="protein.gainer"><span>portion , 150g : 22g protein</span><br>
+        <input class="col-auto-2 text-center rounded-pill border border-danger p-1 m-1" type="number" title="Gainer"
+          name="gainer" placeholder="Enter amount" [(ngModel)]="protein.gainer"><span>portion , 150g : 22g
+          protein</span><br>
       </div>
 
-      <div id="submit" class="invisible">
-        <input class="btn-secondary" type="button" value="Show" (click)="show()">
-        <input class="btn-secondary" type="submit" value="Save">
+      <div id="submit" class="invisible ">
+        <input class="btn-secondary rounded-pill border m-1" type="button" value="Show" (click)="show()">
+        <input class="btn-secondary rounded-pill border m-1 far" type="submit" value="&#xf0c7; Save">
       </div>
 
     </form>
