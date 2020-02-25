@@ -5,3 +5,7 @@ span {
 .border:focus {
     outline: none;
   }
+
+  .input :hover{
+      background-color: turquoise;
+  }
