@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     let sum: number = 0;
     Object.values(protein).forEach(value => value ? sum += value : sum += 0);
-    alert("The sum is: " + sum);
+    alert(`You eat ${sum} protein approximately`);
 
   }
 

@@ -1,6 +1,6 @@
-span {
-    position: absolute;
+label {
     color: oldlace;
+    width: 70px;
 }
 
 input:focus {
@@ -12,4 +12,14 @@ input:focus {
 input:hover {
     background-color: inherit;
     color: white;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+::placeholder {
+    text-align: right;
+    color: lightcoral;
 }

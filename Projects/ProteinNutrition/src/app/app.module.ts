@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { InfoComponent } from './info/info.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InfoComponent } from './info/info.component';
     HomeComponent,
     FavoriteComponent,
     InfoComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
