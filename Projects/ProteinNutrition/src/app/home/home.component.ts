@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
-    this.clearInterval.forEach(id => clearInterval(id))
+    this.clearInterval.forEach(id => clearInterval(id));
 
   }
 

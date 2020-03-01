@@ -1,11 +1,15 @@
 span {
     position: absolute;
+    color: oldlace;
 }
 
-.border:focus {
-    outline: none;
+input:focus {
+    outline-style: inherit;
+    box-shadow: 0 0 0 1px rgb(145, 140, 145);
+    background-color: rgba(250, 241, 232, 0.788);
 }
 
-.input :hover {
-    background-color: turquoise;
+input:hover {
+    background-color: inherit;
+    color: white;
 }
