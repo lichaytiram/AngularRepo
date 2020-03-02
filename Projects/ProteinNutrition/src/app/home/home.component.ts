@@ -16,6 +16,7 @@ import { IEgg } from '../shared/models/iEgg.model';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
+  public acccept: boolean;
   public login: boolean;
   public protein: IProtein;
   private clearInterval = [];
@@ -28,8 +29,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log(this.protein);
 
 
-    if (!!localStorage.getItem("login")) {
-      this.login = true;
+    if (!!localStorage.getItem("acccept")) {
+      this.acccept = true;
       this.visibility();
     }
 
@@ -41,10 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
-  public isLogin(): void {
-    this.login = true;
+  public isAcccept(): void {
+    this.acccept = true;
     this.visibility();
-    localStorage.setItem('login', "true");
+    localStorage.setItem('acccept', "true");
   }
 
   public submit(): void {
@@ -73,14 +74,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     }
 
-    protein.bread /= 9.259259259259259;
+    protein.bread *= 3.24;
     protein.tuna /= 3.571428571428571;
     protein.meat /= 3.225806451612903;
     protein.cheese /= 10.52631578947368;
     protein.cottage /= 9.090909090909091;
     protein.quinoa /= 7.575757575757576;
     protein.almonds *= 6.154;
-    protein.powder *= 0.9;
+    protein.powder *= 25;
     protein.gainer *= 22;
 
     Object.values(protein).forEach(value => value ? sum += value : sum += 0);
