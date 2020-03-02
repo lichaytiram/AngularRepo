@@ -3,6 +3,23 @@ label {
     width: 70px;
 }
 
+small{
+
+    position: relative;
+    left: 30px;
+}
+
+select {
+    outline-style: inherit;
+    box-shadow: 0 0 0 1px rgb(145, 140, 145);
+    position: fixed;
+}
+
+select:focus {
+    color: white;
+    background-color: rgb(34, 34, 32);
+}
+
 input:focus {
     outline-style: inherit;
     box-shadow: 0 0 0 1px rgb(145, 140, 145);

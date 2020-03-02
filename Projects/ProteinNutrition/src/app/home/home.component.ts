@@ -6,6 +6,8 @@ import { AddProteinSuccess } from '../store/actions/protein.action'
 
 import { Store } from '@ngrx/store';
 import { IProductsState } from '../store';
+import { Egg } from '../shared/models/egg.model';
+import { IEgg } from '../shared/models/iEgg.model';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.protein = new Protein(0);
+    this.protein = new Protein(0, new Egg());
+    console.log(this.protein);
+
 
     if (!!localStorage.getItem("login")) {
       this.login = true;
@@ -52,13 +56,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public show(): void {
-    const { id, ...protein } = this.protein;
-    this.calculateProtein(protein);
+
+    const { id, egg, ...protein } = this.protein;
+    this.calculateProtein(protein, egg);
   }
 
-  public calculateProtein(protein: IProtein): void {
+  public calculateProtein(protein: IProtein, egg: IEgg): void {
 
-    protein.egg *= 7.393;
+    let sum: number = 0;
+
+    if (egg.amount && egg.sizeEgg) {
+
+      if (egg.sizeEgg === 'S')
+        sum += egg.amount * 6.029;
+      else egg.sizeEgg === 'M' ? sum += egg.amount * 7.285 : sum += egg.amount * 8.541;
+
+    }
+
     protein.bread /= 9.259259259259259;
     protein.tuna /= 3.571428571428571;
     protein.meat /= 3.225806451612903;
@@ -69,7 +83,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     protein.powder *= 0.9;
     protein.gainer *= 22;
 
-    let sum: number = 0;
     Object.values(protein).forEach(value => value ? sum += value : sum += 0);
     alert(`You eat ${sum} protein approximately`);
 
@@ -81,7 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const { id, ...protein } = this.protein;
     Object.keys(protein).forEach(key => {
       this.clearInterval.push(setTimeout(() => this.visibilityOn(key), timeToShow));
-      timeToShow += 300;
+      timeToShow += 250;
     });
 
     this.clearInterval.push(setTimeout(() => this.visibilityOn("submit"), timeToShow));

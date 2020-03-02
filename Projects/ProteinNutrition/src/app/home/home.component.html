@@ -8,9 +8,24 @@
     <form (submit)="submit()">
 
       <div id="egg" class="invisible">
+
+        <div>
+          <small class="text-danger p-2 m-1"
+            [class.d-none]="egg.untouched || !egg.value || egg.value && eggSize.dirty">You must
+            choose a size <i class="fas fa-arrow-circle-right"></i></small>
+        </div>
+
         <label class="p-1">Egg</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Egg" name="egg"
-          placeholder="eggs" [(ngModel)]="protein.egg">
+        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Egg" #egg="ngModel"
+          name="egg" placeholder="eggs" [(ngModel)]="protein.egg.amount">
+
+        <select class="rounded-pill border border-danger p-1 m-1" [(ngModel)]="protein.egg.sizeEgg" #eggSize="ngModel"
+          name="eggSize">
+          <option [value]="size" disabled>size</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+        </select>
       </div>
 
       <div id="bread" class="invisible">

@@ -1,6 +1,8 @@
+import { IEgg } from './iEgg.model';
+
 export interface IProtein {
     id?: number;
-    egg?: number;
+    egg?: IEgg;
     bread?: number;
     tuna?: number;
     meat?: number;

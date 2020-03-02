@@ -1,9 +1,10 @@
 import { IProtein } from './iProtein.model';
+import { IEgg } from './iEgg.model';
 
 export class Protein implements IProtein {
     constructor(
         public id?: number,
-        public egg?: number,
+        public egg?: IEgg,
         public bread?: number,
         public tuna?: number,
         public meat?: number,
