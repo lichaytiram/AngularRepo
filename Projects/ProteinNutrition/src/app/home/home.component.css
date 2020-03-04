@@ -3,16 +3,19 @@ label {
     width: 70px;
 }
 
-small{
-
-    position: relative;
+small {
+    /* position: relative; */
     left: 30px;
+}
+
+h1, h2 {
+    color: white;
 }
 
 select {
     outline-style: inherit;
     box-shadow: 0 0 0 1px rgb(145, 140, 145);
-    position: fixed;
+    /* position: fixed; */
 }
 
 select:focus {
@@ -37,6 +40,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 ::placeholder {
-    text-align: right;
+    text-align: center;
     color: lightcoral;
+}
+
+.space {
+    width: 60px;
 }

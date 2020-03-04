@@ -1,94 +1,139 @@
-<div class="text-center">
+<div>
+
+  <div>
+    <h1 class="text-center">muscle is your life?</h1>
+    <h2 class="text-center">Let's start to calculate your protein </h2>
+  </div>
 
   <br>
-  <button class="btn-lg btn-danger col-10" *ngIf="!acccept" (click)="isAcccept()">Lets start</button>
+  <div class="text-center">
+    <button class="btn-lg btn-danger col-10" *ngIf="!acccept" (click)="isAcccept()">Lets started</button>
+  </div>
 
   <div *ngIf="acccept">
 
     <form (submit)="submit()">
 
-      <div id="egg" class="invisible">
+      <div class="container">
 
-        <div>
-          <small class="text-danger p-2 m-1"
-            [class.d-none]="egg.untouched || !egg.value || egg.value && eggSize.dirty">You must
-            choose a size <i class="fas fa-arrow-circle-right"></i></small>
+        <div id="egg" class="invisible">
+
+          <div class="row justify-content-center">
+            <small class="text-danger p-2 m-1"
+              [class.d-none]="egg.untouched || !egg.value || egg.value && eggSize.dirty">You must
+              choose a size <i class="fas fa-arrow-circle-right"></i></small>
+          </div>
+
+          <div class="row justify-content-center">
+
+            <label class="p-1 col-2 col-sm-2 col-md-1">Egg</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Egg" #egg="ngModel" name="egg" placeholder="eggs" [(ngModel)]="protein.egg.amount">
+
+            <select class="rounded-pill border border-danger p-1 m-1 space" [(ngModel)]="protein.egg.sizeEgg"
+              #eggSize="ngModel" name="eggSize">
+              <option [value]="size" disabled>size</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+            </select>
+
+          </div>
+
         </div>
 
-        <label class="p-1">Egg</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Egg" #egg="ngModel"
-          name="egg" placeholder="eggs" [(ngModel)]="protein.egg.amount">
+        <div id="bread" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Bread</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Bread" name="bread" placeholder="slices" [(ngModel)]="protein.bread">
+            <div class="space"></div>
+          </div>
+        </div>
 
-        <select class="rounded-pill border border-danger p-1 m-1" [(ngModel)]="protein.egg.sizeEgg" #eggSize="ngModel"
-          name="eggSize">
-          <option [value]="size" disabled>size</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-        </select>
-      </div>
+        <div id="tuna" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Tuna</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Tuna" name="tuna" placeholder="grams" [(ngModel)]="protein.tuna">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="bread" class="invisible">
-        <label class="p-1">Bread</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Bread" name="bread"
-          placeholder="slices" [(ngModel)]="protein.bread">
-      </div>
+        <div id="meat" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Meat</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Meat" name="meat" placeholder="grams" [(ngModel)]="protein.meat">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="tuna" class="invisible">
-        <label class="p-1">Tuna</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Tuna" name="tuna"
-          placeholder="grams" [(ngModel)]="protein.tuna">
-      </div>
+        <div id="cheese" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Cheese</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Cheese" name="cheese" placeholder="grams" [(ngModel)]="protein.cheese">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="meat" class="invisible">
-        <label class="p-1">Meat</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Meat" name="meat"
-          placeholder="grams" [(ngModel)]="protein.meat">
-      </div>
+        <div id="cottage" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Cottage</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Cottage" name="cottage" placeholder="grams" [(ngModel)]="protein.cottage">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="cheese" class="invisible">
-        <label class="p-1">Cheese</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Cheese" name="cheese"
-          placeholder="grams" [(ngModel)]="protein.cheese">
-      </div>
+        <div id="quinoa" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Quinoa</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Quinoa" name="quinoa" placeholder="grams" [(ngModel)]="protein.quinoa">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="cottage" class="invisible">
-        <label class="p-1">Cottage</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Cottage"
-          name="cottage" placeholder="grams" [(ngModel)]="protein.cottage">
-      </div>
+        <div id="almonds" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Almonds</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Almonds" name="almonds" placeholder="grams" [(ngModel)]="protein.almonds">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="quinoa" class="invisible">
-        <label class="p-1">Quinoa</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Quinoa" name="quinoa"
-          placeholder="grams" [(ngModel)]="protein.quinoa">
-      </div>
+        <div id="powder" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Powder</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Powder" name="powder" placeholder="portions" [(ngModel)]="protein.powder">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="almonds" class="invisible">
-        <label class="p-1">Almonds</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Almonds"
-          name="almonds" placeholder="grams" [(ngModel)]="protein.almonds">
-      </div>
+        <div id="gainer" class="invisible">
+          <div class="row justify-content-center">
+            <label class="p-1 col-2 col-sm-2 col-md-1">Gainer</label>
+            <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
+              title="Gainer" name="gainer" placeholder="portions" [(ngModel)]="protein.gainer">
+            <div class="space"></div>
+          </div>
+        </div>
 
-      <div id="powder" class="invisible">
-        <label class="p-1">Powder</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Powder" name="powder"
-          placeholder="portions" [(ngModel)]="protein.powder">
-      </div>
+        <div id="submit" class="invisible">
+          <div class="row justify-content-center">
+            <div class="col-1"></div>
+            <input class="btn-secondary rounded-pill border far col-3 col-xl-1 col-lg-2 col-md-2 col-sm-2" type="button"
+              value="&#xf06e; Show" (click)="show()">
 
-      <div id="gainer" class="invisible">
-        <label class="p-1">Gainer</label>
-        <input class="text-center rounded-pill border border-danger p-1 m-1" type="number" title="Gainer" name="gainer"
-          placeholder="portions" [(ngModel)]="protein.gainer">
-      </div>
+            <input class="btn-secondary rounded-pill border far col-3 col-xl-1 col-lg-2 col-md-2 col-sm-2" type="submit"
+              value="&#xf0c7; Save">
 
-      <div id="submit" class="invisible">
-
-        <input class="btn-secondary rounded-pill border col-3 col-xl-1 col-lg-2 col-md-2 col-sm-2 far" type="button"
-          value="&#xf06e; Show" (click)="show()">
-
-        <input class="btn-secondary rounded-pill border col-3 col-xl-1 col-lg-2 col-md-2 col-sm-2 far" type="submit"
-          value="&#xf0c7; Save">
+          </div>
+        </div>
 
       </div>
 

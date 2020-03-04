@@ -2,10 +2,6 @@ h2, h4, p, strong, small {
     color: oldlace;
 }
 
-div {
-    min-width: 250px;
-}
-
 .backgroundImage {
     opacity: 0.6;
     position: fixed;

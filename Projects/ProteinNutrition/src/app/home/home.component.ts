@@ -26,8 +26,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.protein = new Protein(0, new Egg());
-    console.log(this.protein);
-
 
     if (!!localStorage.getItem("acccept")) {
       this.acccept = true;
