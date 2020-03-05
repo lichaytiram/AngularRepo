@@ -3,5 +3,6 @@
     position: relative;
     padding: 0;
     z-index: -2;
-    height: 185px;
+    max-height: 210px;
+    min-height: 170px;
 }
