@@ -23,6 +23,19 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/account/account.component.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/account/account.component.html ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>account works!</p>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html":
 /*!**************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
@@ -32,7 +45,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n    <app-navbar></app-navbar>\r\n    <router-outlet></router-outlet>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n    <app-navbar></app-navbar>\r\n</div>");
 
 /***/ }),
 
@@ -58,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"text-center\">\r\n\r\n  <br>\r\n  <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!login\" (click)=\"isLogin()\">Lets started</button>\r\n\r\n  <div *ngIf=\"login\">\r\n\r\n    <form (submit)=\"submit()\">\r\n\r\n      <div id=\"egg\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Egg\" name=\"egg\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.egg\"><span class=\"p-1\"> size</span><br>\r\n      </div>\r\n\r\n      <div id=\"bread\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Bread\" name=\"bread\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.bread\"><span class=\"p-1\"> slices , 30g pre slice</span><br>\r\n      </div>\r\n\r\n      <div id=\"tuna\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Tuna\" name=\"tuna\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.tuna\"><span class=\"p-1\"> gram</span><br>\r\n      </div>\r\n\r\n      <div id=\"meat\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Meat\" name=\"meat\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.meat\"><span class=\"p-1\"> gram</span><br>\r\n      </div>\r\n\r\n      <div id=\"cheese\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Cheese\" name=\"cheese\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.cheese\"><span class=\"p-1\"> gram</span><br>\r\n      </div>\r\n\r\n      <div id=\"cottage\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Cottage\" name=\"cottage\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.cottage\"><span class=\"p-1\"> gram</span><br>\r\n      </div>\r\n\r\n      <div id=\"quinoa\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Quinoa\" name=\"quinoa\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.quinoa\"><span class=\"p-1\"> gram</span><br>\r\n      </div>\r\n\r\n      <div id=\"almonds\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Almonds\" name=\"almonds\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.almonds\"><span class=\"p-1\"> handful</span><br>\r\n      </div>\r\n\r\n      <div id=\"powder\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Powder\" name=\"powder\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.powder\"><span class=\"p-1\"> gram , 100g : 90g\r\n          protein</span><br>\r\n      </div>\r\n\r\n      <div id=\"gainer\" class=\"invisible\">\r\n        <input class=\"text-center rounded-pill border border-danger p-1\" type=\"number\" title=\"Gainer\" name=\"gainer\"\r\n          placeholder=\"Enter amount\" [(ngModel)]=\"protein.gainer\"><span class=\"p-1\"> portion , 150g : 22g\r\n          protein</span><br>\r\n      </div>\r\n\r\n      <div id=\"submit\" class=\"invisible\">\r\n\r\n        <input class=\"btn-secondary rounded-pill border col-3 col-xl-1 col-lg-1 col-md-1 col-sm-2 far\" type=\"button\"\r\n          value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n        <input class=\"btn-secondary rounded-pill border col-3 col-xl-1 col-lg-1 col-md-1 col-sm-2 far\" type=\"submit\"\r\n          value=\"&#xf0c7; Save\">\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </div>\r\n\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n  <div>\r\n    <h1 class=\"text-center\">muscle is your life?</h1>\r\n    <h2 class=\"text-center\">Let's start to calculate your protein </h2>\r\n  </div>\r\n\r\n  <br>\r\n  <div class=\"text-center\">\r\n    <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!acccept\" (click)=\"isAcccept()\">Lets started</button>\r\n  </div>\r\n\r\n  <div *ngIf=\"acccept\">\r\n\r\n    <form (submit)=\"submit()\">\r\n\r\n      <div class=\"container\">\r\n\r\n        <div id=\"egg\" class=\"invisible\">\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <small class=\"text-danger p-2 m-1\"\r\n              [class.d-none]=\"egg.untouched || !egg.value || egg.value && eggSize.dirty\">You must\r\n              choose a size <i class=\"fas fa-arrow-circle-right\"></i></small>\r\n          </div>\r\n\r\n          <div class=\"row justify-content-center\">\r\n\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Egg</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Egg\" #egg=\"ngModel\" name=\"egg\" placeholder=\"eggs\" [(ngModel)]=\"protein.egg.amount\">\r\n\r\n            <select class=\"rounded-pill border border-danger p-1 m-1 space\" [(ngModel)]=\"protein.egg.sizeEgg\"\r\n              #eggSize=\"ngModel\" name=\"eggSize\">\r\n              <option [value]=\"size\" disabled>size</option>\r\n              <option value=\"S\">S</option>\r\n              <option value=\"M\">M</option>\r\n              <option value=\"L\">L</option>\r\n            </select>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"bread\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Bread</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Bread\" name=\"bread\" placeholder=\"slices\" [(ngModel)]=\"protein.bread\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"tuna\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Tuna</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Tuna\" name=\"tuna\" placeholder=\"grams\" [(ngModel)]=\"protein.tuna\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"meat\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Meat</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Meat\" name=\"meat\" placeholder=\"grams\" [(ngModel)]=\"protein.meat\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cheese\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Cheese</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cheese\" name=\"cheese\" placeholder=\"grams\" [(ngModel)]=\"protein.cheese\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cottage\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Cottage</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cottage\" name=\"cottage\" placeholder=\"grams\" [(ngModel)]=\"protein.cottage\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"quinoa\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Quinoa</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Quinoa\" name=\"quinoa\" placeholder=\"grams\" [(ngModel)]=\"protein.quinoa\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"almonds\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Almonds</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Almonds\" name=\"almonds\" placeholder=\"grams\" [(ngModel)]=\"protein.almonds\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"powder\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Powder</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Powder\" name=\"powder\" placeholder=\"portions\" [(ngModel)]=\"protein.powder\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"gainer\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 col-2 col-sm-2 col-md-1\">Gainer</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Gainer\" name=\"gainer\" placeholder=\"portions\" [(ngModel)]=\"protein.gainer\">\r\n            <div class=\"space\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"submit\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-1\"></div>\r\n            <input class=\"btn-secondary rounded-pill border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              type=\"button\" value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n            <input class=\"btn-secondary rounded-pill border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              [disabled]=\"!login\" type=\"submit\" value=\"&#xf0c7; Save\">\r\n\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </div>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -71,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"m-auto w-75\">\r\n\r\n    <img src=\"/assets/photos/body_building.jpg\" class=\"backgroundImage\">\r\n\r\n    <h2 class=\"text-center\">Protein for healthy muscle and bone</h2>\r\n\r\n    <strong>proteins in the diet contribute significantly to the production of energy for the body.</strong>\r\n\r\n    <p>Dietary proteins provide amino acids as building blocks for growth, repair and maintenance of proteins in the\r\n        body. The body does not have a mechanism for storing amino acids or protein, unlike carbohydrates which can be\r\n        stored as glycogen and fats that can be stored as triacylglycerides.</p>\r\n\r\n    <p>When we have sufficient protein and an adequate supply of energy in our diet, the excess amino acids that are not\r\n        used for growth or repair are either converted to glucose in the liver or are used to provide energy. Without\r\n        enough supply of dietary energy from carbohydrates and fats, the body preferentially uses amino acids for energy\r\n        production at the expense of growth, maintenance and repair. This means that it is particularly important as we\r\n        get older to provide enough energy in the diet from carbohydrates and fats so that dietary protein can be used\r\n        for repair and maintenance.</p>\r\n\r\n    <p>Dietary protein is a key nutrient for muscle and bone health. Adequate dietary protein during childhood and\r\n        adolescent years is essential in order to accumulate an adequate bone and muscle mass during growth. For muscles\r\n        to grow, they need both protein and exercise, and the same is true also for bone. Dietary protein can also help\r\n        slow down the rate of bone and muscle loss that occurs as we get older. Low and high protein diets can affect\r\n        bone metabolism in different ways.</p>\r\n\r\n    <p>Skeletal muscle represents a pool of protein that can be called upon as a source of energy when food is scarce or\r\n        when the body is stressed such as after injury. A lack of protein in the diet will lead to poor muscle strength\r\n        which can increase the risk of falling, especially in the elderly and contributes to poor recovery in patients\r\n        who have had fractures. Low protein diets are also associated with decreased intestinal calcium absorption and\r\n        an increase in the levels of the key bone regulatory hormone parathyroid hormone.</p>\r\n\r\n    <p>High protein diets can increase calcium absorption and lead to an increased excretion of calcium in urine. High\r\n        protein diets are also linked to increased production of an important bone growth factor - insulin-like growth\r\n        factor 1. High protein diets are associated with an increased bone mineral content, a decrease in the risk of\r\n        fractures, and improved fracture repair and recovery after injury.</p>\r\n\r\n    <p>Muscle contains about 30% protein by weight. You might be surprised to learn that bone contains a higher\r\n        percentage of protein than muscle weight for weight. This is because, in muscle, the proteins are mainly found\r\n        inside the muscle cells, which contain a lot of water, while in bone, much of the protein is found outside of\r\n        cells in densely packed fibres that contain little water.</p>\r\n\r\n    <h4 class=\"text-center\">Summary - all people must to eat foot with protein.</h4>\r\n\r\n    <small>&copy; University of Liverpool/The University of Sheffield/Newcastle University</small>\r\n\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<img src=\"/assets/photos/body_building.jpg\" class=\"backgroundImage\">\r\n\r\n<div class=\"container\">\r\n\r\n    <h2 class=\"text-center\">Protein for healthy muscle and bone</h2>\r\n\r\n    <strong>proteins in the diet contribute significantly to the production of energy for the body.</strong>\r\n\r\n    <p>Dietary proteins provide amino acids as building blocks for growth, repair and maintenance of proteins in the\r\n        body. The body does not have a mechanism for storing amino acids or protein, unlike carbohydrates which can be\r\n        stored as glycogen and fats that can be stored as triacylglycerides.</p>\r\n\r\n    <p>When we have sufficient protein and an adequate supply of energy in our diet, the excess amino acids that are not\r\n        used for growth or repair are either converted to glucose in the liver or are used to provide energy. Without\r\n        enough supply of dietary energy from carbohydrates and fats, the body preferentially uses amino acids for energy\r\n        production at the expense of growth, maintenance and repair. This means that it is particularly important as we\r\n        get older to provide enough energy in the diet from carbohydrates and fats so that dietary protein can be used\r\n        for repair and maintenance.</p>\r\n\r\n    <p>Dietary protein is a key nutrient for muscle and bone health. Adequate dietary protein during childhood and\r\n        adolescent years is essential in order to accumulate an adequate bone and muscle mass during growth. For muscles\r\n        to grow, they need both protein and exercise, and the same is true also for bone. Dietary protein can also help\r\n        slow down the rate of bone and muscle loss that occurs as we get older. Low and high protein diets can affect\r\n        bone metabolism in different ways.</p>\r\n\r\n    <p>Skeletal muscle represents a pool of protein that can be called upon as a source of energy when food is scarce or\r\n        when the body is stressed such as after injury. A lack of protein in the diet will lead to poor muscle strength\r\n        which can increase the risk of falling, especially in the elderly and contributes to poor recovery in patients\r\n        who have had fractures. Low protein diets are also associated with decreased intestinal calcium absorption and\r\n        an increase in the levels of the key bone regulatory hormone parathyroid hormone.</p>\r\n\r\n    <p>High protein diets can increase calcium absorption and lead to an increased excretion of calcium in urine. High\r\n        protein diets are also linked to increased production of an important bone growth factor - insulin-like growth\r\n        factor 1. High protein diets are associated with an increased bone mineral content, a decrease in the risk of\r\n        fractures, and improved fracture repair and recovery after injury.</p>\r\n\r\n    <p>Muscle contains about 30% protein by weight. You might be surprised to learn that bone contains a higher\r\n        percentage of protein than muscle weight for weight. This is because, in muscle, the proteins are mainly found\r\n        inside the muscle cells, which contain a lot of water, while in bone, much of the protein is found outside of\r\n        cells in densely packed fibres that contain little water.</p>\r\n\r\n    <h4 class=\"text-center\">Summary - all people must to eat foot with protein.</h4>\r\n\r\n    <small>&copy; University of Liverpool/The University of Sheffield/Newcastle University</small>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -84,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand\">\r\n\r\n    <button routerLink=\"product/home\" routerLinkActive=\"is-active\" class=\"btn btn-outline-light col-3\"><span\r\n            class=\"fas fa-home\"> </span> Home</button>\r\n\r\n    <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\" class=\"btn btn-outline-light col-3\"><span\r\n            class=\"far fa-thumbs-up\"></span> Favorite</button>\r\n\r\n    <button routerLink=\"product/info\" routerLinkActive=\"is-active\" class=\"btn btn-outline-light col-2\"><span\r\n            class=\"fas fa-question-circle\"></span> Info</button>\r\n\r\n    <button routerLink=\"product/back\" routerLinkActive=\"is-active\"\r\n        class=\"btn btn-outline-light col-auto offset-1 offset-sm-2  offset-md-3 offset-lg-3 offset-xl-3\">\r\n        <span class=\"fas fa-undo\"></span> Back</button>\r\n\r\n</nav>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n        <div class=\"fixed-top\">\r\n\r\n                <nav class=\"navbar navbar-expand\">\r\n\r\n                        <button routerLink=\"product/home\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col bg-secondary\"><span class=\"fas fa-home\">\r\n                                </span>\r\n                                Home</button>\r\n\r\n                        <button routerLink=\"product/account\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col bg-dark\"><span class=\"fas fa-user-circle\">\r\n                                </span>\r\n                                Account</button>\r\n\r\n                        <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col backgroundColor\"><span class=\"far fa-thumbs-up\"></span>\r\n                                Favorite</button>\r\n\r\n                        <button routerLink=\"product/info\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col backgroundColor\"><span\r\n                                        class=\"fas fa-question-circle\"></span>\r\n                                Info</button>\r\n\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-on\"></span> Hebrew</button> -->\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-off\"></span> English</button> -->\r\n\r\n                </nav>\r\n\r\n\r\n                <header>\r\n                        <div class=\"row\">\r\n                                <img src=\"/assets/photos/bodybuilding_weightlifting.jpg\" class=\"backgroundImage col-6\">\r\n                                <img src=\"/assets/photos/sport_girl_fitness.jpg\" class=\"backgroundImage col-6\">\r\n                        </div>\r\n                </header>\r\n        </div>\r\n\r\n        <router-outlet></router-outlet>\r\n\r\n        <footer class=\"m-1\">\r\n                <small>&copy; Lichay Tiram</small>\r\n        </footer>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -317,6 +330,50 @@ function __importDefault(mod) {
 
 /***/ }),
 
+/***/ "./src/app/account/account.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/account/account.component.css ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("div{\r\n    color: tomato;\r\n    background-color: thistle;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9hY2NvdW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2IseUJBQXlCO0FBQzdCIiwiZmlsZSI6InNyYy9hcHAvYWNjb3VudC9hY2NvdW50LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJkaXZ7XHJcbiAgICBjb2xvcjogdG9tYXRvO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdGhpc3RsZTtcclxufSJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/account/account.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/account/account.component.ts ***!
+  \**********************************************/
+/*! exports provided: AccountComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountComponent", function() { return AccountComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let AccountComponent = class AccountComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+AccountComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-account',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./account.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/account/account.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./account.component.css */ "./src/app/account/account.component.css")).default]
+    })
+], AccountComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -333,6 +390,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./favorite/favorite.component */ "./src/app/favorite/favorite.component.ts");
 /* harmony import */ var _info_info_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./info/info.component */ "./src/app/info/info.component.ts");
+/* harmony import */ var _account_account_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./account/account.component */ "./src/app/account/account.component.ts");
+
 
 
 
@@ -344,6 +403,7 @@ const routes = [
         path: 'product', children: [
             { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
             { path: 'favorite', component: _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_4__["FavoriteComponent"] },
+            { path: 'account', component: _account_account_component__WEBPACK_IMPORTED_MODULE_6__["AccountComponent"] },
             { path: 'info', component: _info_info_component__WEBPACK_IMPORTED_MODULE_5__["InfoComponent"] }
         ]
     },
@@ -433,6 +493,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./favorite/favorite.component */ "./src/app/favorite/favorite.component.ts");
 /* harmony import */ var _info_info_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./info/info.component */ "./src/app/info/info.component.ts");
+/* harmony import */ var _account_account_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./account/account.component */ "./src/app/account/account.component.ts");
+
 
 
 
@@ -460,6 +522,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _home_home_component__WEBPACK_IMPORTED_MODULE_14__["HomeComponent"],
             _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_15__["FavoriteComponent"],
             _info_info_component__WEBPACK_IMPORTED_MODULE_16__["InfoComponent"],
+            _account_account_component__WEBPACK_IMPORTED_MODULE_17__["AccountComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -546,7 +609,7 @@ FavoriteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("span {\r\n    position: absolute;\r\n    color: oldlace;\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n\r\ninput:hover {\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsY0FBYztBQUNsQjs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0Qix3Q0FBd0M7SUFDeEMsNENBQTRDO0FBQ2hEOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInNwYW4ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgY29sb3I6IG9sZGxhY2U7XHJcbn1cclxuXHJcbmlucHV0OmZvY3VzIHtcclxuICAgIG91dGxpbmUtc3R5bGU6IGluaGVyaXQ7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAxcHggcmdiKDE0NSwgMTQwLCAxNDUpO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTAsIDI0MSwgMjMyLCAwLjc4OCk7XHJcbn1cclxuXHJcbmlucHV0OmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("label {\r\n    color: oldlace;\r\n    width: 70px;\r\n}\r\n\r\nsmall {\r\n    left: 30px;\r\n}\r\n\r\nh1, h2 {\r\n    color: white;\r\n}\r\n\r\nselect {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n}\r\n\r\nselect:focus {\r\n    color: white;\r\n    background-color: rgb(34, 34, 32);\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n\r\ninput:hover {\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\ninput::-webkit-outer-spin-button, input::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n::-webkit-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-moz-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-ms-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n.space {\r\n    width: 60px;\r\n}\r\n\r\n.button {\r\n    right: 3%;\r\n    max-width: 160px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0lBQ2QsV0FBVztBQUNmOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0Qix3Q0FBd0M7QUFDNUM7O0FBRUE7SUFDSSxZQUFZO0lBQ1osaUNBQWlDO0FBQ3JDOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLHdDQUF3QztJQUN4Qyw0Q0FBNEM7QUFDaEQ7O0FBRUE7SUFDSSx5QkFBeUI7SUFDekIsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLHdCQUF3QjtJQUN4QixTQUFTO0FBQ2I7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCOztBQUhBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFIQTtJQUNJLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckI7O0FBSEE7SUFDSSxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksU0FBUztJQUNULGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibGFiZWwge1xyXG4gICAgY29sb3I6IG9sZGxhY2U7XHJcbiAgICB3aWR0aDogNzBweDtcclxufVxyXG5cclxuc21hbGwge1xyXG4gICAgbGVmdDogMzBweDtcclxufVxyXG5cclxuaDEsIGgyIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuc2VsZWN0IHtcclxuICAgIG91dGxpbmUtc3R5bGU6IGluaGVyaXQ7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAxcHggcmdiKDE0NSwgMTQwLCAxNDUpO1xyXG59XHJcblxyXG5zZWxlY3Q6Zm9jdXMge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDM0LCAzNCwgMzIpO1xyXG59XHJcblxyXG5pbnB1dDpmb2N1cyB7XHJcbiAgICBvdXRsaW5lLXN0eWxlOiBpbmhlcml0O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgMXB4IHJnYigxNDUsIDE0MCwgMTQ1KTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjUwLCAyNDEsIDIzMiwgMC43ODgpO1xyXG59XHJcblxyXG5pbnB1dDpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbiwgaW5wdXQ6Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24ge1xyXG4gICAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG46OnBsYWNlaG9sZGVyIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiBsaWdodGNvcmFsO1xyXG59XHJcblxyXG4uc3BhY2Uge1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbn1cclxuXHJcbi5idXR0b24ge1xyXG4gICAgcmlnaHQ6IDMlO1xyXG4gICAgbWF4LXdpZHRoOiAxNjBweDtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -565,6 +628,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/models/protein.model */ "./src/app/shared/models/protein.model.ts");
 /* harmony import */ var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/protein.action */ "./src/app/store/actions/protein.action.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm2015/store.js");
+/* harmony import */ var _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shared/models/egg.model */ "./src/app/shared/models/egg.model.ts");
+
 
 
 
@@ -576,19 +641,19 @@ let HomeComponent = class HomeComponent {
         this.clearInterval = [];
     }
     ngOnInit() {
-        this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_2__["Protein"](0);
-        if (!!localStorage.getItem("login")) {
-            this.login = true;
+        this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_2__["Protein"](0, new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_5__["Egg"]());
+        if (!!localStorage.getItem("acccept")) {
+            this.acccept = true;
             this.visibility();
         }
     }
     ngOnDestroy() {
         this.clearInterval.forEach(id => clearInterval(id));
     }
-    isLogin() {
-        this.login = true;
+    isAcccept() {
+        this.acccept = true;
         this.visibility();
-        localStorage.setItem('login', "true");
+        localStorage.setItem('acccept', "true");
     }
     submit() {
         this.protein.id += 1;
@@ -596,30 +661,35 @@ let HomeComponent = class HomeComponent {
         this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["AddProteinSuccess"])({ protein: protein }));
     }
     show() {
-        const _a = this.protein, { id } = _a, protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](_a, ["id"]);
-        this.calculateProtein(protein);
+        const _a = this.protein, { id, egg } = _a, protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](_a, ["id", "egg"]);
+        this.calculateProtein(protein, egg);
     }
-    calculateProtein(protein) {
-        protein.egg *= 7.393;
-        protein.bread /= 9.259259259259259;
+    calculateProtein(protein, egg) {
+        let sum = 0;
+        if (egg.amount && egg.sizeEgg) {
+            if (egg.sizeEgg === 'S')
+                sum += egg.amount * 6.029;
+            else
+                egg.sizeEgg === 'M' ? sum += egg.amount * 7.285 : sum += egg.amount * 8.541;
+        }
+        protein.bread *= 3.24;
         protein.tuna /= 3.571428571428571;
         protein.meat /= 3.225806451612903;
         protein.cheese /= 10.52631578947368;
         protein.cottage /= 9.090909090909091;
         protein.quinoa /= 7.575757575757576;
         protein.almonds *= 6.154;
-        protein.powder *= 0.9;
+        protein.powder *= 25;
         protein.gainer *= 22;
-        let sum = 0;
         Object.values(protein).forEach(value => value ? sum += value : sum += 0);
-        alert("The sum is: " + sum);
+        alert(`You eat ${sum} protein approximately`);
     }
     visibility() {
         let timeToShow = 100;
         const _a = this.protein, { id } = _a, protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](_a, ["id"]);
         Object.keys(protein).forEach(key => {
             this.clearInterval.push(setTimeout(() => this.visibilityOn(key), timeToShow));
-            timeToShow += 300;
+            timeToShow += 250;
         });
         this.clearInterval.push(setTimeout(() => this.visibilityOn("submit"), timeToShow));
     }
@@ -651,7 +721,7 @@ HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("h2, h4, p, strong, small {\r\n    color: oldlace;\r\n}\r\n\r\ndiv {\r\n    min-width: 250px;\r\n}\r\n\r\n.backgroundImage {\r\n    opacity: 0.6;\r\n    position: fixed;\r\n    z-index: -1;\r\n    width: 100%;\r\n    height: 100%;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5mby9pbmZvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGVBQWU7SUFDZixXQUFXO0lBQ1gsV0FBVztJQUNYLFlBQVk7SUFDWixNQUFNO0lBQ04sT0FBTztBQUNYIiwiZmlsZSI6InNyYy9hcHAvaW5mby9pbmZvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMiwgaDQsIHAsIHN0cm9uZywgc21hbGwge1xyXG4gICAgY29sb3I6IG9sZGxhY2U7XHJcbn1cclxuXHJcbmRpdiB7XHJcbiAgICBtaW4td2lkdGg6IDI1MHB4O1xyXG59XHJcblxyXG4uYmFja2dyb3VuZEltYWdlIHtcclxuICAgIG9wYWNpdHk6IDAuNjtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHotaW5kZXg6IC0xO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("h2, h4, p, strong, small {\r\n    color: oldlace;\r\n}\r\n\r\n.backgroundImage {\r\n    opacity: 0.6;\r\n    position: fixed;\r\n    z-index: -1;\r\n    width: 100%;\r\n    height: 67%;\r\n    top: 34%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5mby9pbmZvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGVBQWU7SUFDZixXQUFXO0lBQ1gsV0FBVztJQUNYLFdBQVc7SUFDWCxRQUFRO0FBQ1oiLCJmaWxlIjoic3JjL2FwcC9pbmZvL2luZm8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImgyLCBoNCwgcCwgc3Ryb25nLCBzbWFsbCB7XHJcbiAgICBjb2xvcjogb2xkbGFjZTtcclxufVxyXG5cclxuLmJhY2tncm91bmRJbWFnZSB7XHJcbiAgICBvcGFjaXR5OiAwLjY7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB6LWluZGV4OiAtMTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiA2NyU7XHJcbiAgICB0b3A6IDM0JTtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -695,7 +765,7 @@ InfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".backgroundImage {\r\n    opacity: 0.9;\r\n    position: relative;\r\n    padding: 0;\r\n    z-index: -2;\r\n    height: 185px;\r\n}\r\n\r\n.backgroundColor {\r\n    background-color: gray;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsV0FBVztJQUNYLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxzQkFBc0I7QUFDMUIiLCJmaWxlIjoic3JjL2FwcC9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFja2dyb3VuZEltYWdlIHtcclxuICAgIG9wYWNpdHk6IDAuOTtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHBhZGRpbmc6IDA7XHJcbiAgICB6LWluZGV4OiAtMjtcclxuICAgIGhlaWdodDogMTg1cHg7XHJcbn1cclxuXHJcbi5iYWNrZ3JvdW5kQ29sb3Ige1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogZ3JheTtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -726,6 +796,28 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], NavbarComponent);
 
+
+
+/***/ }),
+
+/***/ "./src/app/shared/models/egg.model.ts":
+/*!********************************************!*\
+  !*** ./src/app/shared/models/egg.model.ts ***!
+  \********************************************/
+/*! exports provided: Egg */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Egg", function() { return Egg; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Egg {
+    constructor(amount, sizeEgg) {
+        this.amount = amount;
+        this.sizeEgg = sizeEgg;
+    }
+}
 
 
 /***/ }),

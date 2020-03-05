@@ -4,7 +4,6 @@ label {
 }
 
 small {
-    /* position: relative; */
     left: 30px;
 }
 
@@ -15,7 +14,6 @@ h1, h2 {
 select {
     outline-style: inherit;
     box-shadow: 0 0 0 1px rgb(145, 140, 145);
-    /* position: fixed; */
 }
 
 select:focus {
@@ -46,4 +44,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 .space {
     width: 60px;
+}
+
+.button {
+    right: 3%;
+    max-width: 160px;
 }

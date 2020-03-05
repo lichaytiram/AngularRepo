@@ -126,11 +126,11 @@
         <div id="submit" class="invisible">
           <div class="row justify-content-center">
             <div class="col-1"></div>
-            <input class="btn-secondary rounded-pill border far col-3 col-xl-1 col-lg-2 col-md-2 col-sm-2" type="button"
-              value="&#xf06e; Show" (click)="show()">
+            <input class="btn-secondary rounded-pill border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button"
+              type="button" value="&#xf06e; Show" (click)="show()">
 
-            <input class="btn-secondary rounded-pill border far col-3 col-xl-1 col-lg-2 col-md-2 col-sm-2" type="submit"
-              value="&#xf0c7; Save">
+            <input class="btn-secondary rounded-pill border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button"
+              [disabled]="!login" type="submit" value="&#xf0c7; Save">
 
           </div>
         </div>

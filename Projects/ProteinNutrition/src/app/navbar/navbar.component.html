@@ -1,32 +1,46 @@
 <div>
 
-        <nav class="navbar navbar-expand">
+        <div class="fixed-top">
 
-                <button routerLink="product/home" routerLinkActive="is-active"
-                        class="btn btn-outline-light col col-sm-2"><span class="fas fa-home"> </span> Home</button>
+                <nav class="navbar navbar-expand">
 
-                <button routerLink="product/account" routerLinkActive="is-active"
-                        class="btn btn-outline-light col col-sm-2"><span class="fas fa-user-circle"> </span>
-                        Account</button>
+                        <button routerLink="product/home" routerLinkActive="is-active"
+                                class="btn btn-outline-light col bg-secondary"><span class="fas fa-home">
+                                </span>
+                                Home</button>
 
-                <button routerLink="product/favorite" routerLinkActive="is-active"
-                        class="btn btn-outline-light col col-sm-2"><span class="far fa-thumbs-up"></span>
-                        Favorite</button>
+                        <button routerLink="product/account" routerLinkActive="is-active"
+                                class="btn btn-outline-light col bg-dark"><span class="fas fa-user-circle">
+                                </span>
+                                Account</button>
 
-                <button routerLink="product/info" routerLinkActive="is-active"
-                        class="btn btn-outline-light col col-sm-2"><span class="fas fa-question-circle"></span>
-                        Info</button>
+                        <button routerLink="product/favorite" routerLinkActive="is-active"
+                                class="btn btn-outline-light col backgroundColor"><span class="far fa-thumbs-up"></span>
+                                Favorite</button>
 
-                <!-- <button class="btn btn-outline-light col-2"><span class="fas fa-toggle-on"></span> Hebrew</button> -->
-                <!-- <button class="btn btn-outline-light col-2"><span class="fas fa-toggle-off"></span> English</button> -->
+                        <button routerLink="product/info" routerLinkActive="is-active"
+                                class="btn btn-outline-light col backgroundColor"><span
+                                        class="fas fa-question-circle"></span>
+                                Info</button>
 
-        </nav>
+                        <!-- <button class="btn btn-outline-light col-2"><span class="fas fa-toggle-on"></span> Hebrew</button> -->
+                        <!-- <button class="btn btn-outline-light col-2"><span class="fas fa-toggle-off"></span> English</button> -->
 
-        <header>
-                <div class="row">
-                        <img src="/assets/photos/bodybuilding_weightlifting.jpg" class="backgroundImage col-6">
-                        <img src="/assets/photos/sport_girl_fitness.jpg" class="backgroundImage col-6">
-                </div>
-        </header>
+                </nav>
+
+
+                <header>
+                        <div class="row">
+                                <img src="/assets/photos/bodybuilding_weightlifting.jpg" class="backgroundImage col-6">
+                                <img src="/assets/photos/sport_girl_fitness.jpg" class="backgroundImage col-6">
+                        </div>
+                </header>
+        </div>
+
+        <router-outlet></router-outlet>
+
+        <footer class="m-1">
+                <small>&copy; Lichay Tiram</small>
+        </footer>
 
 </div>

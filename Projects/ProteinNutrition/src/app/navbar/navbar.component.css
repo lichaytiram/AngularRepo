@@ -2,12 +2,10 @@
     opacity: 0.9;
     position: relative;
     padding: 0;
-    z-index: -1;
-    max-height: 200px;
+    z-index: -2;
+    height: 185px;
 }
 
-body {
-    position: absolute;
-    top: 50px;
-    bottom: 5%;
+.backgroundColor {
+    background-color: gray;
 }
