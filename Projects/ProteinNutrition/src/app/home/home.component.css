@@ -12,7 +12,7 @@ h1, h2 {
 }
 
 select {
-    outline-style: inherit;
+    outline-style: none;
     box-shadow: 0 0 0 1px rgb(145, 140, 145);
 }
 
