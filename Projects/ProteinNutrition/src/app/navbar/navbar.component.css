@@ -12,4 +12,7 @@
     .smartphone {
         max-height: 15px;
     }
+    .smallSreen {
+        content: url("/assets/photos/sport_girl_fitness_small_screen.jpg");
+    }
 }

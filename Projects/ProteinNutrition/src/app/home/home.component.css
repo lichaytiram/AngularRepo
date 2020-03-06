@@ -12,8 +12,8 @@ h1, h2 {
 }
 
 select {
-    outline:0;
-    /* -webkit-appearance: initial; */
+    border-radius: 17px;
+    outline: 0;
     box-shadow: 0 0 0 1px rgb(145, 140, 145);
 }
 
