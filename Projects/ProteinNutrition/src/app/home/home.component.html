@@ -26,7 +26,7 @@
 
           <div class="row justify-content-center">
 
-            <label class="p-1 col-2 col-sm-2 col-md-1">Egg</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Egg</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Egg" #egg="ngModel" name="egg" placeholder="amount" [(ngModel)]="protein.egg.amount">
 
@@ -44,7 +44,7 @@
 
         <div id="bread" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Bread</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Bread</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Bread" name="bread" placeholder="slices" [(ngModel)]="protein.bread">
             <div class="space p-1 m-1"></div>
@@ -53,7 +53,7 @@
 
         <div id="tuna" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Tuna</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Tuna</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Tuna" name="tuna" placeholder="grams" [(ngModel)]="protein.tuna">
             <div class="space p-1 m-1"></div>
@@ -62,7 +62,7 @@
 
         <div id="meat" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Meat</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Meat</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Meat" name="meat" placeholder="grams" [(ngModel)]="protein.meat">
             <div class="space p-1 m-1"></div>
@@ -71,7 +71,7 @@
 
         <div id="cheese" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Cheese</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Cheese</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Cheese" name="cheese" placeholder="grams" [(ngModel)]="protein.cheese">
             <div class="space p-1 m-1"></div>
@@ -80,7 +80,7 @@
 
         <div id="cottage" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Cottage</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Cottage</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Cottage" name="cottage" placeholder="grams" [(ngModel)]="protein.cottage">
             <div class="space p-1 m-1"></div>
@@ -89,7 +89,7 @@
 
         <div id="quinoa" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Quinoa</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Quinoa</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Quinoa" name="quinoa" placeholder="grams" [(ngModel)]="protein.quinoa">
             <div class="space p-1 m-1"></div>
@@ -98,7 +98,7 @@
 
         <div id="almonds" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Almonds</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Almonds</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Almonds" name="almonds" placeholder="grams" [(ngModel)]="protein.almonds">
             <div class="space p-1 m-1"></div>
@@ -107,7 +107,7 @@
 
         <div id="powder" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Powder</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Powder</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Powder" name="powder" placeholder="portions" [(ngModel)]="protein.powder">
             <div class="space p-1 m-1"></div>
@@ -116,7 +116,7 @@
 
         <div id="gainer" class="invisible">
           <div class="row justify-content-center">
-            <label class="p-1 col-2 col-sm-2 col-md-1">Gainer</label>
+            <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Gainer</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
               title="Gainer" name="gainer" placeholder="portions" [(ngModel)]="protein.gainer">
             <div class="space p-1 m-1"></div>
@@ -131,7 +131,6 @@
 
             <input class="btn-secondary rounded-pill border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button"
               [disabled]="!login" type="submit" value="&#xf0c7; Save">
-
           </div>
         </div>
 
