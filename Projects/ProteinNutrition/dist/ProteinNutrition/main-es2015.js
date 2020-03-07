@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>favorite works!</p>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"text-center\">\r\n\r\n<div *ngIf=\"!login\">\r\n    \r\n    <p>You must login to see your favorite list.</p>\r\n    <p>You can click <button (click)=\"loginPage()\">here</button> to move login page</p>\r\n\r\n</div>\r\n\r\n<div *ngIf=\"login\">\r\n    Welcome\r\n</div>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -88,6 +88,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/login/login.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/login/login.component.html ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"\">\n\n    <div class=\"card m-auto\">\n\n        <div class=\"row\">\n            <div class=\"col-8\">\n\n                <div class=\"card-body\">\n                    <h5 class=\"card-title \">Lets login to your user</h5>\n                    <form (ngSubmit)=\"userLogin()\" #userForm=\"ngForm\">\n                        <p>Enter an username</p>\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">Must to enter\n                            only three letters at least</small>\n                        <input type=\"text\" name=\"username\" #username=\"ngModel\" [(ngModel)]=\"login.username\" required\n                            pattern=\"^[a-zA-Z]{3,}$\" class=\"\">\n\n                        <p>Enter a password</p>\n                        <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\n                            <small>Must to enter eight letters at least.</small><br>\n                            <small>(one upper case one lower case and a number)</small>\n                        </div>\n                        <input type=\"password\" name=\"password\" #password=\"ngModel\" [(ngModel)]=\"login.password\" required\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\" class=\"\">\n\n                        <p>Enter again a password to confirm</p>\n                        <div class=\"text-danger\"\n                            [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\n                            <small>Your passwords isn't match!</small><br>\n                            <small>Please try again.</small>\n                        </div>\n                        <input type=\"password\" name=\"confirmPassword\" #confirmPassword=\"ngModel\"\n                            [(ngModel)]=\"login.confirmPassword\" required\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\" class=\"\">\n\n                        <br>\n                        <hr>\n                        <div class=\"text-center\">\n                            <input type=\"submit\" value=\"Login\"\n                                [class.invalid]=\"userForm.form.invalid && username.touched && confirmPassword.touched && password.touched || confirmPassword.value!==password.value && confirmPassword.touched\"\n                                [disabled]=\"userForm.form.invalid \" class=\"btn btn-outline-primary rounded-pill\">\n                                <button (click)=\"register()\">Create</button>\n                        </div>\n\n                    </form>\n                </div>\n            </div>\n\n            <div class=\"col-4\">\n                <img src=\"/assets/photos/man_body_torso_muscles.jpg\" class=\"image\">\n            </div>\n        </div>\n\n    </div>\n\n</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html":
 /*!************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html ***!
@@ -97,7 +110,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n        <div class=\"fixed-top\">\r\n\r\n                <nav class=\"navbar \">\r\n\r\n                        <button routerLink=\"product/home\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary \"><span class=\"fas fa-home\">\r\n                                </span>\r\n                                Home</button>\r\n\r\n                        <button routerLink=\"product/account\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light \"><span\r\n                                        class=\"fas fa-user-circle\">\r\n                                </span>\r\n                                Account</button>\r\n\r\n                        <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary \"><span\r\n                                        class=\"far fa-thumbs-up\"></span>\r\n                                Favorite</button>\r\n\r\n                        <button routerLink=\"product/info\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light \"><span\r\n                                        class=\"fas fa-question-circle\"></span>\r\n                                Info</button>\r\n\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-on\"></span> Hebrew</button> -->\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-off\"></span> English</button> -->\r\n\r\n                </nav>\r\n\r\n                <header>\r\n                        <div class=\"row\">\r\n                                <img src=\"/assets/photos/bodybuilding_weightlifting.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone\">\r\n                                <img src=\"/assets/photos/sport_girl_fitness.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone smallSreen\">\r\n                        </div>\r\n                </header>\r\n\r\n        </div>\r\n\r\n        <router-outlet></router-outlet>\r\n\r\n        <footer class=\"m-1 text-light bg-dark text-center\">\r\n                <small>&copy; Created by - Lichay Tiram -</small>\r\n        </footer>\r\n\r\n\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n        <div class=\"fixed-top\">\r\n\r\n                <nav class=\"navbar \">\r\n\r\n                        <button routerLink=\"product/home\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary \"><span class=\"fas fa-home\">\r\n                                </span>\r\n                                Home</button>\r\n\r\n                        <button routerLink=\"product/{{account}}\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light \"><span\r\n                                        class=\"fas fa-user-circle\">\r\n                                </span>\r\n                                Account</button>\r\n\r\n                        <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary \"><span\r\n                                        class=\"far fa-thumbs-up\"></span>\r\n                                Favorite</button>\r\n\r\n                        <button routerLink=\"product/info\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light \"><span\r\n                                        class=\"fas fa-question-circle\"></span>\r\n                                Info</button>\r\n\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-on\"></span> Hebrew</button> -->\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-off\"></span> English</button> -->\r\n\r\n                </nav>\r\n\r\n                <header>\r\n                        <div class=\"row\">\r\n                                <img src=\"/assets/photos/bodybuilding_weightlifting.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone\">\r\n                                <img src=\"/assets/photos/sport_girl_fitness.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone smallSreen\">\r\n                        </div>\r\n                </header>\r\n\r\n        </div>\r\n\r\n        <router-outlet></router-outlet>\r\n\r\n        <footer class=\"m-1 text-light bg-dark text-center\">\r\n                <small>&copy; Created by - Lichay Tiram -</small>\r\n        </footer>\r\n\r\n\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>register works!</p>\n");
 
 /***/ }),
 
@@ -391,6 +417,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./favorite/favorite.component */ "./src/app/favorite/favorite.component.ts");
 /* harmony import */ var _info_info_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./info/info.component */ "./src/app/info/info.component.ts");
 /* harmony import */ var _account_account_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./account/account.component */ "./src/app/account/account.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+
+
 
 
 
@@ -403,7 +433,9 @@ const routes = [
         path: 'product', children: [
             { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
             { path: 'favorite', component: _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_4__["FavoriteComponent"] },
+            { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
             { path: 'account', component: _account_account_component__WEBPACK_IMPORTED_MODULE_6__["AccountComponent"] },
+            { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"] },
             { path: 'info', component: _info_info_component__WEBPACK_IMPORTED_MODULE_5__["InfoComponent"] }
         ]
     },
@@ -494,6 +526,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./favorite/favorite.component */ "./src/app/favorite/favorite.component.ts");
 /* harmony import */ var _info_info_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./info/info.component */ "./src/app/info/info.component.ts");
 /* harmony import */ var _account_account_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./account/account.component */ "./src/app/account/account.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+
+
 
 
 
@@ -523,6 +559,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_15__["FavoriteComponent"],
             _info_info_component__WEBPACK_IMPORTED_MODULE_16__["InfoComponent"],
             _account_account_component__WEBPACK_IMPORTED_MODULE_17__["AccountComponent"],
+            _login_login_component__WEBPACK_IMPORTED_MODULE_18__["LoginComponent"],
+            _register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -565,7 +603,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Zhdm9yaXRlL2Zhdm9yaXRlLmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("div {\r\n    color: crimson;\r\n}\r\n\r\nbutton {\r\n    border: 0;\r\n    padding: 0;\r\n    outline: 0;\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxTQUFTO0lBQ1QsVUFBVTtJQUNWLFVBQVU7SUFDVix5QkFBeUI7SUFDekIsWUFBWTtBQUNoQiIsImZpbGUiOiJzcmMvYXBwL2Zhdm9yaXRlL2Zhdm9yaXRlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJkaXYge1xyXG4gICAgY29sb3I6IGNyaW1zb247XHJcbn1cclxuXHJcbmJ1dHRvbiB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn0iXX0= */");
 
 /***/ }),
 
@@ -581,13 +619,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavoriteComponent", function() { return FavoriteComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 let FavoriteComponent = class FavoriteComponent {
-    constructor() { }
+    constructor(router) {
+        this.router = router;
+    }
     ngOnInit() {
+        let isLogin = !!sessionStorage.getItem("key");
+        this.login = isLogin ? true : false;
+    }
+    loginPage() {
+        this.router.navigate(['/product/login']);
     }
 };
+FavoriteComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
 FavoriteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-favorite',
@@ -721,7 +771,7 @@ HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("h2, h4, p, strong, small {\r\n    color: oldlace;\r\n}\r\n\r\n.backgroundImage {\r\n    opacity: 0.6;\r\n    position: fixed;\r\n    z-index: -1;\r\n    width: 100%;\r\n    height: 67%;\r\n    top: 260px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5mby9pbmZvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGVBQWU7SUFDZixXQUFXO0lBQ1gsV0FBVztJQUNYLFdBQVc7SUFDWCxVQUFVO0FBQ2QiLCJmaWxlIjoic3JjL2FwcC9pbmZvL2luZm8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImgyLCBoNCwgcCwgc3Ryb25nLCBzbWFsbCB7XHJcbiAgICBjb2xvcjogb2xkbGFjZTtcclxufVxyXG5cclxuLmJhY2tncm91bmRJbWFnZSB7XHJcbiAgICBvcGFjaXR5OiAwLjY7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB6LWluZGV4OiAtMTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiA2NyU7XHJcbiAgICB0b3A6IDI2MHB4O1xyXG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("h2, h4, p, strong, small {\r\n    color: oldlace;\r\n}\r\n\r\n.backgroundImage {\r\n    opacity: 0.6;\r\n    position: fixed;\r\n    z-index: -1;\r\n    width: 100%;\r\n    height: 67%;\r\n    top: 260px;\r\n}\r\n\r\n@media (max-width: 420px) {\r\n    .backgroundImage {\r\n        top: 180px;\r\n        height: 75%;\r\n    }\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .backgroundImage {\r\n        top: 134px;\r\n        height: 67%;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5mby9pbmZvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGVBQWU7SUFDZixXQUFXO0lBQ1gsV0FBVztJQUNYLFdBQVc7SUFDWCxVQUFVO0FBQ2Q7O0FBRUE7SUFDSTtRQUNJLFVBQVU7UUFDVixXQUFXO0lBQ2Y7QUFDSjs7QUFFQTtJQUNJO1FBQ0ksVUFBVTtRQUNWLFdBQVc7SUFDZjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvaW5mby9pbmZvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMiwgaDQsIHAsIHN0cm9uZywgc21hbGwge1xyXG4gICAgY29sb3I6IG9sZGxhY2U7XHJcbn1cclxuXHJcbi5iYWNrZ3JvdW5kSW1hZ2Uge1xyXG4gICAgb3BhY2l0eTogMC42O1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgei1pbmRleDogLTE7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogNjclO1xyXG4gICAgdG9wOiAyNjBweDtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDQyMHB4KSB7XHJcbiAgICAuYmFja2dyb3VuZEltYWdlIHtcclxuICAgICAgICB0b3A6IDE4MHB4O1xyXG4gICAgICAgIGhlaWdodDogNzUlO1xyXG4gICAgfVxyXG59XHJcblxyXG5AbWVkaWEgKG1heC1oZWlnaHQ6IDQyMHB4KSB7XHJcbiAgICAuYmFja2dyb3VuZEltYWdlIHtcclxuICAgICAgICB0b3A6IDEzNHB4O1xyXG4gICAgICAgIGhlaWdodDogNjclO1xyXG4gICAgfVxyXG59Il19 */");
 
 /***/ }),
 
@@ -756,6 +806,66 @@ InfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/login/login.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/login/login.component.css ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".card {\r\n    max-width: 30rem;\r\n}\r\n\r\n.image {\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\nhr {\r\n    background-color: paleturquoise;\r\n}\r\n\r\n.invalid {\r\n    background-color: pink;\r\n    color: black;\r\n    border-color: red;\r\n    box-shadow: 0 0 0 3px rgb(240, 135, 135);\r\n\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxZQUFZO0lBQ1osVUFBVTtJQUNWLFNBQVM7QUFDYjs7QUFFQTtJQUNJLCtCQUErQjtBQUNuQzs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0QixZQUFZO0lBQ1osaUJBQWlCO0lBQ2pCLHdDQUF3Qzs7QUFFNUMiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG4gICAgbWF4LXdpZHRoOiAzMHJlbTtcclxufVxyXG5cclxuLmltYWdlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIG1hcmdpbjogMDtcclxufVxyXG5cclxuaHIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcGFsZXR1cnF1b2lzZTtcclxufVxyXG5cclxuLmludmFsaWQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcGluaztcclxuICAgIGNvbG9yOiBibGFjaztcclxuICAgIGJvcmRlci1jb2xvcjogcmVkO1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgM3B4IHJnYigyNDAsIDEzNSwgMTM1KTtcclxuXHJcbn1cclxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/login/login.component.ts ***!
+  \******************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _shared_models_login_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/models/login.model */ "./src/app/shared/models/login.model.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+let LoginComponent = class LoginComponent {
+    constructor(route) {
+        this.route = route;
+    }
+    ngOnInit() {
+        this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_2__["Login"](undefined, undefined, undefined);
+    }
+    userLogin() {
+        console.log("allow");
+    }
+    register() {
+        this.route.navigate(['/product/register']);
+    }
+};
+LoginComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+];
+LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-login',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/login/login.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")).default]
+    })
+], LoginComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/navbar/navbar.component.css":
 /*!*********************************************!*\
   !*** ./src/app/navbar/navbar.component.css ***!
@@ -765,7 +875,7 @@ InfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".backgroundImage {\r\n    opacity: 0.9;\r\n    position: relative;\r\n    padding: 0;\r\n    z-index: -2;\r\n    left: 15px;\r\n    max-height: 210px;\r\n    min-height: 165px;\r\n}\r\n\r\n@media (max-width: 420px) {\r\n    .smartphone {\r\n        max-height: 15px;\r\n    }\r\n    .smallSreen {\r\n        content: url(\"/assets/photos/sport_girl_fitness_small_screen.jpg\");\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsV0FBVztJQUNYLFVBQVU7SUFDVixpQkFBaUI7SUFDakIsaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0k7UUFDSSxnQkFBZ0I7SUFDcEI7SUFDQTtRQUNJLGtFQUFrRTtJQUN0RTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tncm91bmRJbWFnZSB7XHJcbiAgICBvcGFjaXR5OiAwLjk7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgei1pbmRleDogLTI7XHJcbiAgICBsZWZ0OiAxNXB4O1xyXG4gICAgbWF4LWhlaWdodDogMjEwcHg7XHJcbiAgICBtaW4taGVpZ2h0OiAxNjVweDtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDQyMHB4KSB7XHJcbiAgICAuc21hcnRwaG9uZSB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogMTVweDtcclxuICAgIH1cclxuICAgIC5zbWFsbFNyZWVuIHtcclxuICAgICAgICBjb250ZW50OiB1cmwoXCIvYXNzZXRzL3Bob3Rvcy9zcG9ydF9naXJsX2ZpdG5lc3Nfc21hbGxfc2NyZWVuLmpwZ1wiKTtcclxuICAgIH1cclxufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".backgroundImage {\r\n    opacity: 0.9;\r\n    position: relative;\r\n    padding: 0;\r\n    z-index: -2;\r\n    left: 15px;\r\n    max-height: 210px;\r\n    min-height: 165px;\r\n}\r\n\r\n@media (max-width: 420px) {\r\n    .smartphone {\r\n        max-height: 90px;\r\n        min-height: 50px;\r\n    }\r\n    .smallSreen {\r\n        content: url(\"/assets/photos/sport_girl_fitness_small_screen.jpg\");\r\n    }\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .smartphone {\r\n        max-height: 80px;\r\n        min-height: 50px;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsV0FBVztJQUNYLFVBQVU7SUFDVixpQkFBaUI7SUFDakIsaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0k7UUFDSSxnQkFBZ0I7UUFDaEIsZ0JBQWdCO0lBQ3BCO0lBQ0E7UUFDSSxrRUFBa0U7SUFDdEU7QUFDSjs7QUFFQTtJQUNJO1FBQ0ksZ0JBQWdCO1FBQ2hCLGdCQUFnQjtJQUNwQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tncm91bmRJbWFnZSB7XHJcbiAgICBvcGFjaXR5OiAwLjk7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgei1pbmRleDogLTI7XHJcbiAgICBsZWZ0OiAxNXB4O1xyXG4gICAgbWF4LWhlaWdodDogMjEwcHg7XHJcbiAgICBtaW4taGVpZ2h0OiAxNjVweDtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDQyMHB4KSB7XHJcbiAgICAuc21hcnRwaG9uZSB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogOTBweDtcclxuICAgICAgICBtaW4taGVpZ2h0OiA1MHB4O1xyXG4gICAgfVxyXG4gICAgLnNtYWxsU3JlZW4ge1xyXG4gICAgICAgIGNvbnRlbnQ6IHVybChcIi9hc3NldHMvcGhvdG9zL3Nwb3J0X2dpcmxfZml0bmVzc19zbWFsbF9zY3JlZW4uanBnXCIpO1xyXG4gICAgfVxyXG59XHJcblxyXG5AbWVkaWEgKG1heC1oZWlnaHQ6IDQyMHB4KSB7XHJcbiAgICAuc21hcnRwaG9uZSB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogODBweDtcclxuICAgICAgICBtaW4taGVpZ2h0OiA1MHB4O1xyXG4gICAgfVxyXG59Il19 */");
 
 /***/ }),
 
@@ -784,8 +894,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let NavbarComponent = class NavbarComponent {
-    constructor() { }
-    ngOnInit() {
+    constructor() {
+        const login = !!sessionStorage.getItem('key');
+        this.account = login ? "account" : "login";
     }
 };
 NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -795,6 +906,50 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")).default]
     })
 ], NavbarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/register/register.component.css ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JlZ2lzdGVyL3JlZ2lzdGVyLmNvbXBvbmVudC5jc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/register/register.component.ts ***!
+  \************************************************/
+/*! exports provided: RegisterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let RegisterComponent = class RegisterComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-register',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./register.component.css */ "./src/app/register/register.component.css")).default]
+    })
+], RegisterComponent);
 
 
 
@@ -816,6 +971,29 @@ class Egg {
     constructor(amount, sizeEgg) {
         this.amount = amount;
         this.sizeEgg = sizeEgg;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/shared/models/login.model.ts":
+/*!**********************************************!*\
+  !*** ./src/app/shared/models/login.model.ts ***!
+  \**********************************************/
+/*! exports provided: Login */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Login {
+    constructor(username, password, confirmPassword) {
+        this.username = username;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
     }
 }
 
