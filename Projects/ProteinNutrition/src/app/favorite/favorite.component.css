@@ -1,0 +1,10 @@
+div {
+    color: crimson;
+}
+
+button {
+    border: 0;
+    outline: 0;
+    background-color: inherit;
+    color: white;
+}

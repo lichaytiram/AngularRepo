@@ -1,1 +1,14 @@
-<p>favorite works!</p>
+<div class="text-center">
+
+<div *ngIf="!login">
+    
+    <p>You must login to see your favorite list.</p>
+    <p>You can click <button (click)="loginPage()">here</button> to move login page</p>
+
+</div>
+
+<div *ngIf="login">
+    Welcome
+</div>
+
+</div>

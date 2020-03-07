@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorite',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor() { }
+  public login: boolean;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
+    let isLogin: boolean = !!sessionStorage.getItem("key");
+    this.login = isLogin ? true : false;
+
+  }
+
+  public loginPage() {
+    this.router.navigate(['/product/login']);
   }
 
 }

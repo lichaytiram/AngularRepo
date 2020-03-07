@@ -1,0 +1,22 @@
+.card {
+    max-width: 30rem;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+hr {
+    background-color: paleturquoise;
+}
+
+.invalid {
+    background-color: pink;
+    color: black;
+    border-color: red;
+    box-shadow: 0 0 0 3px rgb(240, 135, 135);
+
+}
