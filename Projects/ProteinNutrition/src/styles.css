@@ -4,3 +4,15 @@ body {
     background-color: #1D1C1C;
     padding-top: 280px;
 }
+
+@media (max-width: 420px) {
+    body {
+        padding-top: 185px;
+    }
+}
+
+@media (max-height: 420px) {
+    body {
+        padding-top: 135px;
+    }
+}

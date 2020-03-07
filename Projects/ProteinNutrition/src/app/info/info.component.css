@@ -10,3 +10,17 @@ h2, h4, p, strong, small {
     height: 67%;
     top: 260px;
 }
+
+@media (max-width: 420px) {
+    .backgroundImage {
+        top: 180px;
+        height: 75%;
+    }
+}
+
+@media (max-height: 420px) {
+    .backgroundImage {
+        top: 134px;
+        height: 67%;
+    }
+}

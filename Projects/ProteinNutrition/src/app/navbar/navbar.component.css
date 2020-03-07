@@ -10,9 +10,17 @@
 
 @media (max-width: 420px) {
     .smartphone {
-        max-height: 15px;
+        max-height: 90px;
+        min-height: 50px;
     }
     .smallSreen {
         content: url("/assets/photos/sport_girl_fitness_small_screen.jpg");
+    }
+}
+
+@media (max-height: 420px) {
+    .smartphone {
+        max-height: 80px;
+        min-height: 50px;
     }
 }
