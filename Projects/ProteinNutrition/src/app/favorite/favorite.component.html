@@ -1,14 +1,14 @@
 <div class="text-center">
 
-<div *ngIf="!login">
-    
-    <p>You must login to see your favorite list.</p>
-    <p>You can click <button (click)="loginPage()">here</button> to move login page</p>
+    <div *ngIf="!login">
 
-</div>
+        <p>You must login to see your favorite list.</p>
+        <p>You can click <button (click)="loginPage()">here</button> to move login page</p>
 
-<div *ngIf="login">
-    Welcome
-</div>
+    </div>
+
+    <div *ngIf="login">
+        Welcome
+    </div>
 
 </div>
