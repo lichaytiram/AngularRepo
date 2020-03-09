@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private route: Router) { }
 
   ngOnInit() {
-    this.login = new Login(undefined, undefined, undefined);
+    this.login = new Login(undefined, undefined);
   }
 
   public userLogin(): void {
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  public register() {
+  public register(): void {
     this.route.navigate(['/product/register']);
   }
 

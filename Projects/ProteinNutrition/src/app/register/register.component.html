@@ -1,1 +1,106 @@
-<p>register works!</p>
+<div class="">
+
+    <div class="card m-auto">
+
+        <div class="row">
+            <div class="col-8">
+
+                <div class="card-body">
+
+                    <h5 class="card-title ">Lets create an user</h5>
+                    <form (ngSubmit)="createUser()" #userForm="ngForm">
+
+                        <div>
+                            <p class="m-0">Enter an username</p>
+                            <small class="text-danger" [class.d-none]="username.untouched || username.valid">
+                                Must to enter only three letters at least</small>
+
+                            <input type="text" title="Enter an username" name="username" #username="ngModel"
+                                [(ngModel)]="register.username" required pattern="^[a-zA-Z]{3,}$"
+                                [class.border-danger]="username.invalid && username.touched"
+                                class="rounded-pill border border-primary">
+                        </div>
+
+                        <div>
+                            <p class="m-0">Enter a password</p>
+
+                            <div class="text-danger" [class.d-none]="password.untouched || password.valid">
+                                <small>Must to enter eight letters at least.</small><br>
+                                <small>(one upper case one lower case and a number)</small>
+                            </div>
+
+                            <input type="password" title="Enter a password" name="password" #password="ngModel"
+                                [(ngModel)]="register.password" required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                                [class.border-danger]="password.invalid && password.touched"
+                                class="rounded-pill border border-primary">
+                        </div>
+
+                        <div>
+                            <p class="m-0">Enter again a password to confirm</p>
+
+                            <div class="text-danger"
+                                [class.d-none]="confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value">
+                                <small>Your passwords isn't match!</small><br>
+                                <small>Please try again.</small>
+                            </div>
+
+                            <input type="password" title="Enter again a password to confirm" name="confirmPassword"
+                                #confirmPassword="ngModel" [(ngModel)]="register.confirmPassword" required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" [disabled]="password.invalid"
+                                [class.border-danger]="confirmPassword.touched && confirmPassword.value!==password.value"
+                                class="rounded-pill border border-primary">
+                        </div>
+
+                        <div>
+                            <p class="m-0">Enter your weight</p>
+                            <small class="text-danger" [class.d-none]="weight.untouched || weight.valid">Your weight
+                                must be greater than 0</small>
+
+                            <input type="number" title="Enter your weight" name="weight" #weight="ngModel"
+                                [(ngModel)]="register.weight" required pattern="^[1-9]\d*$"
+                                [class.border-danger]="weight.invalid && weight.touched"
+                                class="rounded-pill border border-primary">
+                        </div>
+
+                        <div>
+                            <p class="m-0">What is your gender</p>
+
+                            <div>
+                                <i class="fas fa-male m-1"></i>
+                                <input type="radio" name="male" value="Male" [(ngModel)]="register.gender">
+                                <i class="fas fa-female m-1"></i>
+                                <input type="radio" name="female" value="Female" [(ngModel)]="register.gender">
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <small>By clicking Sign Up, you agree to our Terms: </small>
+                            <input type="checkbox" name="accept" #accept="ngModel" ngModel required class="">
+
+                        </div>
+
+                        <div>
+                            <hr>
+                            <div class="text-center">
+                                <input type="submit" value="Sign up"
+                                    [class.invalid]="userForm.form.invalid && username.touched && confirmPassword.touched && password.touched && weight.touched && accept.touched || (confirmPassword.value!==password.value && confirmPassword.touched)"
+                                    [disabled]="userForm.form.invalid"
+                                    class="btn btn-outline-primary rounded-pill m-1 w-50">
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <img src="/assets/photos/man_body_torso_muscles.jpg" class="image">
+            </div>
+        </div>
+
+    </div>
+
+</div>

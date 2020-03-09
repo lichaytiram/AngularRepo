@@ -1,0 +1,16 @@
+1)  
+
+Add this lane in package.json
+
+    "start": "node server.js",
+
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+
+2)
+
+Replace name to you project name in file server.js
+
+3)
+
+Paste server.js in main files of your project.

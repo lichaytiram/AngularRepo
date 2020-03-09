@@ -16,11 +16,7 @@ export class LoginComponent {
 
   public validateTopic(value: string): void {
 
-    if (value === "default")
-      this.topicHasError = true;
-
-    else
-      this.topicHasError = false;
+    this.topicHasError = value === "default" ? true : false;
 
   }
 

@@ -6,39 +6,44 @@
             <div class="col-8">
 
                 <div class="card-body">
+
                     <h5 class="card-title ">Lets login to your user</h5>
                     <form (ngSubmit)="userLogin()" #userForm="ngForm">
-                        <p>Enter an username</p>
-                        <small class="text-danger" [class.d-none]="username.untouched || username.valid">Must to enter
-                            only three letters at least</small>
-                        <input type="text" name="username" #username="ngModel" [(ngModel)]="login.username" required
-                            pattern="^[a-zA-Z]{3,}$" class="">
 
-                        <p>Enter a password</p>
-                        <div class="text-danger" [class.d-none]="password.untouched || password.valid">
-                            <small>Must to enter eight letters at least.</small><br>
-                            <small>(one upper case one lower case and a number)</small>
+                        <div>
+                            <p class="m-0">Enter an username</p>
+                            <small class="text-danger" [class.d-none]="username.untouched || username.valid">
+                                Must to enter only three letters at least</small>
+                            <input type="text" title="Enter an username" name="username" #username="ngModel" [(ngModel)]="login.username" required
+                                pattern="^[a-zA-Z]{3,}$" [class.border-danger]="username.invalid && username.touched"
+                                class="rounded-pill border border-primary">
                         </div>
-                        <input type="password" name="password" #password="ngModel" [(ngModel)]="login.password" required
-                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" class="">
 
-                        <p>Enter again a password to confirm</p>
-                        <div class="text-danger"
-                            [class.d-none]="confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value">
-                            <small>Your passwords isn't match!</small><br>
-                            <small>Please try again.</small>
+                        <div>
+                            <p class="m-0">Enter a password</p>
+
+                            <div class="text-danger" [class.d-none]="password.untouched || password.valid">
+                                <small>Must to enter eight letters at least.</small><br>
+                                <small>(one upper case one lower case and a number)</small>
+                            </div>
+
+                            <input type="password" title="Enter a password" name="password" #password="ngModel" [(ngModel)]="login.password"
+                                required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                                [class.border-danger]="password.invalid && password.touched"
+                                class="rounded-pill border border-primary">
                         </div>
-                        <input type="password" name="confirmPassword" #confirmPassword="ngModel"
-                            [(ngModel)]="login.confirmPassword" required
-                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" class="">
 
-                        <br>
-                        <hr>
-                        <div class="text-center">
-                            <input type="submit" value="Login"
-                                [class.invalid]="userForm.form.invalid && username.touched && confirmPassword.touched && password.touched || confirmPassword.value!==password.value && confirmPassword.touched"
-                                [disabled]="userForm.form.invalid " class="btn btn-outline-primary rounded-pill">
-                                <button (click)="register()">Create</button>
+                        <div>
+
+                            <hr>
+                            <div class="text-center">
+                                <input type="submit" value="Login"
+                                    [class.invalid]="userForm.form.invalid && username.touched && password.touched"
+                                    [disabled]="userForm.form.invalid" class="btn btn-outline-primary rounded-pill m-1">
+                                <input type="button" (click)="register()" value="Create"
+                                    class="btn btn-outline-primary rounded-pill m-1">
+                            </div>
+
                         </div>
 
                     </form>

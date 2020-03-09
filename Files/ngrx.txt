@@ -1,3 +1,3 @@
-Install NGRX
+Install Ngrx
 
 npm i @ngrx/store @ngrx/router-store @ngrx/effects @ngrx/entity @ngrx/store-devtools
