@@ -68,9 +68,9 @@
 
                             <div>
                                 <i class="fas fa-male m-1"></i>
-                                <input type="radio" name="male" value="Male" [(ngModel)]="register.gender">
+                                <input type="radio" name="male" value="Male" required [(ngModel)]="register.gender">
                                 <i class="fas fa-female m-1"></i>
-                                <input type="radio" name="female" value="Female" [(ngModel)]="register.gender">
+                                <input type="radio" name="female" value="Female" required [(ngModel)]="register.gender">
                             </div>
 
                         </div>
@@ -78,16 +78,15 @@
                         <div>
                             <small>By clicking Sign Up, you agree to our Terms: </small>
                             <input type="checkbox" name="accept" #accept="ngModel" ngModel required class="">
-
                         </div>
 
                         <div>
                             <hr>
                             <div class="text-center">
-                                <input type="submit" value="Sign up"
-                                    [class.invalid]="userForm.form.invalid && username.touched && confirmPassword.touched && password.touched && weight.touched && accept.touched || (confirmPassword.value!==password.value && confirmPassword.touched)"
+                                <input type="submit" value="Sign Up &#xf234;"
+                                    [class.invalid]="userForm.form.invalid && username.touched && confirmPassword.touched && password.touched && weight.touched && accept.touched && (male.touched || female.touched ) || (confirmPassword.value!==password.value && confirmPassword.touched)"
                                     [disabled]="userForm.form.invalid"
-                                    class="btn btn-outline-primary rounded-pill m-1 w-50">
+                                    class="btn btn-outline-primary rounded-pill fas m-1 w-75">
                             </div>
 
                         </div>
@@ -97,8 +96,11 @@
             </div>
 
             <div class="col-4">
-                <img src="/assets/photos/man_body_torso_muscles.jpg" class="image">
+                <img src="/assets/photos/bodybuilder_register.jpg" class="image">
+                <hr>
+                <p>Dreams come true sometimes</p>
             </div>
+
         </div>
 
     </div>
