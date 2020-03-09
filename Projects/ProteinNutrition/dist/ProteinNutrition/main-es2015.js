@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"text-center\">\r\n\r\n<div *ngIf=\"!login\">\r\n    \r\n    <p>You must login to see your favorite list.</p>\r\n    <p>You can click <button (click)=\"loginPage()\">here</button> to move login page</p>\r\n\r\n</div>\r\n\r\n<div *ngIf=\"login\">\r\n    Welcome\r\n</div>\r\n\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"text-center\">\r\n\r\n    <div *ngIf=\"!login\">\r\n\r\n        <p>You must login to see your favorite list.</p>\r\n        <p>You can click <button (click)=\"loginPage()\">here</button> to move login page</p>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"login\">\r\n        Welcome\r\n    </div>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"\">\n\n    <div class=\"card m-auto\">\n\n        <div class=\"row\">\n            <div class=\"col-8\">\n\n                <div class=\"card-body\">\n                    <h5 class=\"card-title \">Lets login to your user</h5>\n                    <form (ngSubmit)=\"userLogin()\" #userForm=\"ngForm\">\n                        <p>Enter an username</p>\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">Must to enter\n                            only three letters at least</small>\n                        <input type=\"text\" name=\"username\" #username=\"ngModel\" [(ngModel)]=\"login.username\" required\n                            pattern=\"^[a-zA-Z]{3,}$\" class=\"\">\n\n                        <p>Enter a password</p>\n                        <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\n                            <small>Must to enter eight letters at least.</small><br>\n                            <small>(one upper case one lower case and a number)</small>\n                        </div>\n                        <input type=\"password\" name=\"password\" #password=\"ngModel\" [(ngModel)]=\"login.password\" required\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\" class=\"\">\n\n                        <p>Enter again a password to confirm</p>\n                        <div class=\"text-danger\"\n                            [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\n                            <small>Your passwords isn't match!</small><br>\n                            <small>Please try again.</small>\n                        </div>\n                        <input type=\"password\" name=\"confirmPassword\" #confirmPassword=\"ngModel\"\n                            [(ngModel)]=\"login.confirmPassword\" required\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\" class=\"\">\n\n                        <br>\n                        <hr>\n                        <div class=\"text-center\">\n                            <input type=\"submit\" value=\"Login\"\n                                [class.invalid]=\"userForm.form.invalid && username.touched && confirmPassword.touched && password.touched || confirmPassword.value!==password.value && confirmPassword.touched\"\n                                [disabled]=\"userForm.form.invalid \" class=\"btn btn-outline-primary rounded-pill\">\n                                <button (click)=\"register()\">Create</button>\n                        </div>\n\n                    </form>\n                </div>\n            </div>\n\n            <div class=\"col-4\">\n                <img src=\"/assets/photos/man_body_torso_muscles.jpg\" class=\"image\">\n            </div>\n        </div>\n\n    </div>\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"\">\n\n    <div class=\"card m-auto\">\n\n        <div class=\"row\">\n            <div class=\"col-8\">\n\n                <div class=\"card-body\">\n\n                    <h5 class=\"card-title \">Lets login to your user</h5>\n                    <form (ngSubmit)=\"userLogin()\" #userForm=\"ngForm\">\n\n                        <div>\n                            <p class=\"m-0\">Enter an username</p>\n                            <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\n                                Must to enter only three letters at least</small>\n                            <input type=\"text\" title=\"Enter an username\" name=\"username\" #username=\"ngModel\" [(ngModel)]=\"login.username\" required\n                                pattern=\"^[a-zA-Z]{3,}$\" [class.border-danger]=\"username.invalid && username.touched\"\n                                class=\"rounded-pill border border-primary\">\n                        </div>\n\n                        <div>\n                            <p class=\"m-0\">Enter a password</p>\n\n                            <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\n                                <small>Must to enter eight letters at least.</small><br>\n                                <small>(one upper case one lower case and a number)</small>\n                            </div>\n\n                            <input type=\"password\" title=\"Enter a password\" name=\"password\" #password=\"ngModel\" [(ngModel)]=\"login.password\"\n                                required pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\n                                [class.border-danger]=\"password.invalid && password.touched\"\n                                class=\"rounded-pill border border-primary\">\n                        </div>\n\n                        <div>\n\n                            <hr>\n                            <div class=\"text-center\">\n                                <input type=\"submit\" value=\"Login\"\n                                    [class.invalid]=\"userForm.form.invalid && username.touched && password.touched\"\n                                    [disabled]=\"userForm.form.invalid\" class=\"btn btn-outline-primary rounded-pill m-1\">\n                                <input type=\"button\" (click)=\"register()\" value=\"Create\"\n                                    class=\"btn btn-outline-primary rounded-pill m-1\">\n                            </div>\n\n                        </div>\n\n                    </form>\n                </div>\n            </div>\n\n            <div class=\"col-4\">\n                <img src=\"/assets/photos/man_body_torso_muscles.jpg\" class=\"image\">\n            </div>\n        </div>\n\n    </div>\n\n</div>");
 
 /***/ }),
 
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>register works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"\">\n\n    <div class=\"card m-auto\">\n\n        <div class=\"row\">\n            <div class=\"col-8\">\n\n                <div class=\"card-body\">\n\n                    <h5 class=\"card-title \">Lets create an user</h5>\n                    <form (ngSubmit)=\"createUser()\" #userForm=\"ngForm\">\n\n                        <div>\n                            <p class=\"m-0\">Enter an username</p>\n                            <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\n                                Must to enter only three letters at least</small>\n\n                            <input type=\"text\" title=\"Enter an username\" name=\"username\" #username=\"ngModel\"\n                                [(ngModel)]=\"register.username\" required pattern=\"^[a-zA-Z]{3,}$\"\n                                [class.border-danger]=\"username.invalid && username.touched\"\n                                class=\"rounded-pill border border-primary\">\n                        </div>\n\n                        <div>\n                            <p class=\"m-0\">Enter a password</p>\n\n                            <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\n                                <small>Must to enter eight letters at least.</small><br>\n                                <small>(one upper case one lower case and a number)</small>\n                            </div>\n\n                            <input type=\"password\" title=\"Enter a password\" name=\"password\" #password=\"ngModel\"\n                                [(ngModel)]=\"register.password\" required\n                                pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\n                                [class.border-danger]=\"password.invalid && password.touched\"\n                                class=\"rounded-pill border border-primary\">\n                        </div>\n\n                        <div>\n                            <p class=\"m-0\">Enter again a password to confirm</p>\n\n                            <div class=\"text-danger\"\n                                [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\n                                <small>Your passwords isn't match!</small><br>\n                                <small>Please try again.</small>\n                            </div>\n\n                            <input type=\"password\" title=\"Enter again a password to confirm\" name=\"confirmPassword\"\n                                #confirmPassword=\"ngModel\" [(ngModel)]=\"register.confirmPassword\" required\n                                pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\" [disabled]=\"password.invalid\"\n                                [class.border-danger]=\"confirmPassword.touched && confirmPassword.value!==password.value\"\n                                class=\"rounded-pill border border-primary\">\n                        </div>\n\n                        <div>\n                            <p class=\"m-0\">Enter your weight</p>\n                            <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\n                                must be greater than 0</small>\n\n                            <input type=\"number\" title=\"Enter your weight\" name=\"weight\" #weight=\"ngModel\"\n                                [(ngModel)]=\"register.weight\" required pattern=\"^[1-9]\\d*$\"\n                                [class.border-danger]=\"weight.invalid && weight.touched\"\n                                class=\"rounded-pill border border-primary\">\n                        </div>\n\n                        <div>\n                            <p class=\"m-0\">What is your gender</p>\n\n                            <div>\n                                <i class=\"fas fa-male m-1\"></i>\n                                <input type=\"radio\" name=\"male\" value=\"Male\" [(ngModel)]=\"register.gender\">\n                                <i class=\"fas fa-female m-1\"></i>\n                                <input type=\"radio\" name=\"female\" value=\"Female\" [(ngModel)]=\"register.gender\">\n                            </div>\n\n                        </div>\n\n                        <div>\n                            <small>By clicking Sign Up, you agree to our Terms: </small>\n                            <input type=\"checkbox\" name=\"accept\" #accept=\"ngModel\" ngModel required class=\"\">\n\n                        </div>\n\n                        <div>\n                            <hr>\n                            <div class=\"text-center\">\n                                <input type=\"submit\" value=\"Sign up\"\n                                    [class.invalid]=\"userForm.form.invalid && username.touched && confirmPassword.touched && password.touched && weight.touched && accept.touched || (confirmPassword.value!==password.value && confirmPassword.touched)\"\n                                    [disabled]=\"userForm.form.invalid\"\n                                    class=\"btn btn-outline-primary rounded-pill m-1 w-50\">\n                            </div>\n\n                        </div>\n\n                    </form>\n                </div>\n            </div>\n\n            <div class=\"col-4\">\n                <img src=\"/assets/photos/man_body_torso_muscles.jpg\" class=\"image\">\n            </div>\n        </div>\n\n    </div>\n\n</div>");
 
 /***/ }),
 
@@ -815,7 +815,7 @@ InfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".card {\r\n    max-width: 30rem;\r\n}\r\n\r\n.image {\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\nhr {\r\n    background-color: paleturquoise;\r\n}\r\n\r\n.invalid {\r\n    background-color: pink;\r\n    color: black;\r\n    border-color: red;\r\n    box-shadow: 0 0 0 3px rgb(240, 135, 135);\r\n\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxZQUFZO0lBQ1osVUFBVTtJQUNWLFNBQVM7QUFDYjs7QUFFQTtJQUNJLCtCQUErQjtBQUNuQzs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0QixZQUFZO0lBQ1osaUJBQWlCO0lBQ2pCLHdDQUF3Qzs7QUFFNUMiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG4gICAgbWF4LXdpZHRoOiAzMHJlbTtcclxufVxyXG5cclxuLmltYWdlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIG1hcmdpbjogMDtcclxufVxyXG5cclxuaHIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcGFsZXR1cnF1b2lzZTtcclxufVxyXG5cclxuLmludmFsaWQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcGluaztcclxuICAgIGNvbG9yOiBibGFjaztcclxuICAgIGJvcmRlci1jb2xvcjogcmVkO1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgM3B4IHJnYigyNDAsIDEzNSwgMTM1KTtcclxuXHJcbn1cclxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".card {\r\n    max-width: 30rem;\r\n    background-color: rgb(175, 171, 169);\r\n}\r\n\r\n.image {\r\n    width: 100%;\r\n    height: 100%;\r\n    max-height: 300px;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\nhr {\r\n    background-color: paleturquoise;\r\n}\r\n\r\n.invalid {\r\n    background-color: pink;\r\n    color: black;\r\n    border-color: red;\r\n    box-shadow: 0 0 0 3px rgb(240, 135, 135);\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtJQUNoQixvQ0FBb0M7QUFDeEM7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsWUFBWTtJQUNaLGlCQUFpQjtJQUNqQixVQUFVO0lBQ1YsU0FBUztBQUNiOztBQUVBO0lBQ0ksK0JBQStCO0FBQ25DOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLFlBQVk7SUFDWixpQkFBaUI7SUFDakIsd0NBQXdDO0FBQzVDOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLHdDQUF3QztJQUN4Qyw0Q0FBNEM7QUFDaEQiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG4gICAgbWF4LXdpZHRoOiAzMHJlbTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigxNzUsIDE3MSwgMTY5KTtcclxufVxyXG5cclxuLmltYWdlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgbWF4LWhlaWdodDogMzAwcHg7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG5ociB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBwYWxldHVycXVvaXNlO1xyXG59XHJcblxyXG4uaW52YWxpZCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBwaW5rO1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgYm9yZGVyLWNvbG9yOiByZWQ7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAzcHggcmdiKDI0MCwgMTM1LCAxMzUpO1xyXG59XHJcblxyXG5pbnB1dDpmb2N1cyB7XHJcbiAgICBvdXRsaW5lLXN0eWxlOiBpbmhlcml0O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgMXB4IHJnYigxNDUsIDE0MCwgMTQ1KTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjUwLCAyNDEsIDIzMiwgMC43ODgpO1xyXG59Il19 */");
 
 /***/ }),
 
@@ -842,7 +842,7 @@ let LoginComponent = class LoginComponent {
         this.route = route;
     }
     ngOnInit() {
-        this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_2__["Login"](undefined, undefined, undefined);
+        this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_2__["Login"](undefined, undefined);
     }
     userLogin() {
         console.log("allow");
@@ -920,7 +920,7 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JlZ2lzdGVyL3JlZ2lzdGVyLmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".card {\r\n    max-width: 30rem;\r\n    background-color: rgb(175, 171, 169);\r\n}\r\n\r\n.image {\r\n    width: 100%;\r\n    height: 100%;\r\n    max-height: 300px;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\nhr {\r\n    background-color: paleturquoise;\r\n}\r\n\r\n.invalid {\r\n    background-color: pink;\r\n    color: black;\r\n    border-color: red;\r\n    box-shadow: 0 0 0 3px rgb(240, 135, 135);\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXIvcmVnaXN0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtJQUNoQixvQ0FBb0M7QUFDeEM7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsWUFBWTtJQUNaLGlCQUFpQjtJQUNqQixVQUFVO0lBQ1YsU0FBUztBQUNiOztBQUVBO0lBQ0ksK0JBQStCO0FBQ25DOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLFlBQVk7SUFDWixpQkFBaUI7SUFDakIsd0NBQXdDO0FBQzVDOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLHdDQUF3QztJQUN4Qyw0Q0FBNEM7QUFDaEQiLCJmaWxlIjoic3JjL2FwcC9yZWdpc3Rlci9yZWdpc3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG4gICAgbWF4LXdpZHRoOiAzMHJlbTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigxNzUsIDE3MSwgMTY5KTtcclxufVxyXG5cclxuLmltYWdlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgbWF4LWhlaWdodDogMzAwcHg7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG5ociB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBwYWxldHVycXVvaXNlO1xyXG59XHJcblxyXG4uaW52YWxpZCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBwaW5rO1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgYm9yZGVyLWNvbG9yOiByZWQ7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAzcHggcmdiKDI0MCwgMTM1LCAxMzUpO1xyXG59XHJcblxyXG5pbnB1dDpmb2N1cyB7XHJcbiAgICBvdXRsaW5lLXN0eWxlOiBpbmhlcml0O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgMXB4IHJnYigxNDUsIDE0MCwgMTQ1KTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjUwLCAyNDEsIDIzMiwgMC43ODgpO1xyXG59Il19 */");
 
 /***/ }),
 
@@ -936,11 +936,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _shared_models_register_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/models/register.model */ "./src/app/shared/models/register.model.ts");
+
 
 
 let RegisterComponent = class RegisterComponent {
-    constructor() { }
+    constructor() {
+        this.html = '<span class="btn btn-danger waves-light">Your HTML here</span>';
+    }
     ngOnInit() {
+        this.register = new _shared_models_register_model__WEBPACK_IMPORTED_MODULE_2__["Register"](undefined, undefined, undefined, undefined, undefined);
+    }
+    createUser() {
+        console.log(this.register);
     }
 };
 RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -990,10 +998,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class Login {
-    constructor(username, password, confirmPassword) {
+    constructor(username, password) {
         this.username = username;
         this.password = password;
-        this.confirmPassword = confirmPassword;
     }
 }
 
@@ -1025,6 +1032,31 @@ class Protein {
         this.almonds = almonds;
         this.powder = powder;
         this.gainer = gainer;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/shared/models/register.model.ts":
+/*!*************************************************!*\
+  !*** ./src/app/shared/models/register.model.ts ***!
+  \*************************************************/
+/*! exports provided: Register */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Register", function() { return Register; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Register {
+    constructor(username, password, confirmPassword, gender, weight) {
+        this.username = username;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.gender = gender;
+        this.weight = weight;
     }
 }
 
