@@ -76,8 +76,13 @@
                         </div>
 
                         <div>
-                            <small>By clicking Sign Up, you agree to our Terms: </small>
+                            <small>By clicking Sign Up, you agree to our <input type="button" value="Terms"
+                                    class="terms" (click)="showTerms()"> : </small>
                             <input type="checkbox" name="accept" #accept="ngModel" ngModel required class="">
+
+                            <div *ngIf="terms">
+                                <p>By clicking Sign Up, you agree to our Data Policy and Cookies Policy</p>
+                            </div>
                         </div>
 
                         <div>

@@ -10,6 +10,7 @@ import { Register } from '../shared/models/register.model';
 export class RegisterComponent implements OnInit {
 
   public register: IRegister;
+  public terms: boolean;
 
   constructor() { }
 
@@ -17,9 +18,12 @@ export class RegisterComponent implements OnInit {
     this.register = new Register(undefined, undefined, undefined, undefined, undefined);
   }
 
-  public createUser() {
+  public createUser(): void {
     console.log(this.register);
   }
 
-  html = '<span class="btn btn-danger waves-light">Your HTML here</span>';
+  public showTerms(): void {
+    this.terms = !this.terms;
+  }
+
 }
