@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.clearInterval.push(setTimeout(() => {
       this.visibilityOn("popup")
-    }, 0))
+    }, 5000))
 
   }
 
@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.router.navigate(['product/register']);
   }
 
-  public loginPage() {
+  public loginPage(): void {
     this.router.navigate(['/product/login']);
   }
 
