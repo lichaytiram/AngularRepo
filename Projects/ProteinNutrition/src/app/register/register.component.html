@@ -1,4 +1,4 @@
-<div class="">
+<div>
 
     <div class="card m-auto">
 
@@ -64,21 +64,40 @@
                         </div>
 
                         <div>
-                            <p class="m-0">What is your gender</p>
+                            <p class="m-0">What is your gender ?</p>
 
-                            <div>
-                                <i class="fas fa-male m-1"></i>
-                                <input type="radio" name="male" value="Male" required [(ngModel)]="register.gender">
-                                <i class="fas fa-female m-1"></i>
-                                <input type="radio" name="female" value="Female" required [(ngModel)]="register.gender">
+                            <div class="text-center">
+                                <label>
+                                    <input type="radio" name="male" #male="ngModel" value="Male" required
+                                        [(ngModel)]="register.gender">
+                                    <span class="rounded-pill text-center m-1 radioMale"><i
+                                            class="fas fa-male m-1"></i></span>
+                                </label>
+
+                                <label>
+                                    <input type="radio" name="female" #female="ngModel" value="Female" required
+                                        [(ngModel)]="register.gender">
+                                    <span class="rounded-pill text-center m-1 radioFemale"><i
+                                            class="fas fa-female m-1"></i></span>
+                                </label>
                             </div>
 
                         </div>
 
                         <div>
-                            <small>By clicking Sign Up, you agree to our <input type="button" value="Terms"
-                                    class="terms" (click)="showTerms()"> : </small>
-                            <input type="checkbox" name="accept" #accept="ngModel" ngModel required class="">
+                            <div>
+                                <small>By clicking Sign Up, you agree to our
+                                    <input type="button" value="Terms" class="terms" (click)="showTerms()">
+                                </small>
+
+                                <label>
+                                    <input type="checkbox" name="accept" #accept="ngModel" ngModel required>
+                                    <span class="m-1">
+                                        <i *ngIf="accept.valid" class="fas fa-check-circle fa-lg checkbox"></i>
+                                        <i *ngIf="accept.invalid" class="fas fa-circle fa-lg checkbox"></i>
+                                    </span>
+                                </label>
+                            </div>
 
                             <div *ngIf="terms">
                                 <p>By clicking Sign Up, you agree to our Data Policy and Cookies Policy</p>
@@ -89,8 +108,8 @@
                             <hr>
                             <div class="text-center">
                                 <input type="submit" value="Sign Up &#xf234;"
-                                    [class.invalid]="userForm.form.invalid && username.touched && confirmPassword.touched && password.touched && weight.touched && accept.touched && (male.touched || female.touched ) || (confirmPassword.value!==password.value && confirmPassword.touched)"
-                                    [disabled]="userForm.form.invalid"
+                                    [class.invalid]="(username.touched && password.touched && confirmPassword.touched && weight.touched && accept.dirty && (male.dirty || female.dirty)) && (confirmPassword.value!==password.value || userForm.form.invalid)"
+                                    [disabled]="userForm.form.invalid || confirmPassword.value!==password.value && confirmPassword.touched"
                                     class="btn btn-outline-primary rounded-pill fas m-1 w-75">
                             </div>
 

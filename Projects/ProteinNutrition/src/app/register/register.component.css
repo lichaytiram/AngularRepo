@@ -34,5 +34,33 @@ input:focus {
     border: 0;
     outline: inherit;
     background-color: inherit;
-    color: blue;
+    color: rgb(56, 60, 253);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.radioMale, .radioFemale {
+    background-color: gray;
+    display: inline-block;
+    width: 70px;
+}
+
+input[type="radio"]:checked+.radioMale {
+    background-color: rgb(117, 194, 245);
+    color: rgb(56, 60, 253);
+}
+
+input[type="radio"]:checked+.radioFemale {
+    background-color: rgb(252, 218, 242);
+    color: rgb(252, 89, 184);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox {
+    color: rgb(97, 40, 253);
 }
