@@ -51,3 +51,48 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     right: 3%;
     max-width: 160px;
 }
+
+.cancel {
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: red;
+    text-shadow: red;
+    background-color: rgb(59, 63, 57);
+}
+
+.navigate {
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: rgb(179, 5, 5);
+    background-color: inherit;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.card {
+    position: fixed;
+    width: 50%;
+    height: 40%;
+    z-index: 1;
+    margin: -5% auto;
+    left: 0;
+    right: 0;
+    background-color: pink;
+    color: seashell;
+}
+
+.cardImage {
+    opacity: 0.9;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+}
+
+@media (max-height: 420px) {
+    .card {
+        margin: -13% auto;
+    }
+}

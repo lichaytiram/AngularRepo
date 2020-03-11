@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { IProductsState } from '../store';
 import { Egg } from '../shared/models/egg.model';
 import { IEgg } from '../shared/models/iEgg.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public protein: IProtein;
   private clearInterval = [];
 
-  constructor(private store: Store<IProductsState>) { }
+  constructor(private store: Store<IProductsState>, private router: Router) { }
 
   ngOnInit() {
 
@@ -32,12 +33,27 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.visibility();
     }
 
+    if (!this.login)
+      this.popup();
+
   }
 
   ngOnDestroy() {
 
     this.clearInterval.forEach(id => clearInterval(id));
 
+  }
+
+  public popup(): void {
+
+    this.clearInterval.push(setTimeout(() => {
+      this.visibilityOn("popup")
+    }, 0))
+
+  }
+
+  public cancelPopup(): void {
+    document.getElementById("popup").className = "visibility: invisible";
   }
 
   public isAcccept(): void {
@@ -102,6 +118,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private visibilityOn(name: string): void {
     document.getElementById(name).className = "visibility: visible";
+  }
+
+  public register(): void {
+    this.router.navigate(['product/register']);
+  }
+
+  public loginPage() {
+    this.router.navigate(['/product/login']);
   }
 
 }
