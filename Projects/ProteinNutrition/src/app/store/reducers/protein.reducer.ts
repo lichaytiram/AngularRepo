@@ -1,12 +1,12 @@
 import { IProtein } from 'src/app/shared/models/iProtein.model';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import * as fromProtein from '../actions/protein.action';
 
 export const adapter: EntityAdapter<IProtein> = createEntityAdapter<IProtein>();
 
 export interface IProteinState extends EntityState<IProtein> {
-    loaded: boolean
+    loaded: boolean;
 }
 
 export const initialState: IProteinState = adapter.getInitialState({

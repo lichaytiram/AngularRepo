@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStateSerializer, StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 import { reducer, CustomSerializer } from './storeRouter';
 
-import { reducers } from './store';
+import { reducers, effects } from './store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
@@ -42,6 +43,8 @@ import { RegisterComponent } from './register/register.component';
       routerState: RouterState.Minimal,
     }),
 
+    EffectsModule.forRoot(effects),
+
     StoreModule.forRoot(reducer, {
       runtimeChecks: {
         strictStateImmutability: false,
@@ -60,7 +63,7 @@ import { RegisterComponent } from './register/register.component';
     }),
 
   ],
-  providers: [{provide:RouterStateSerializer,useClass:CustomSerializer}],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

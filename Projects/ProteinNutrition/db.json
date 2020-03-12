@@ -1,19 +1,12 @@
 {
-  "posts": [
+  "users": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "username": "lichaytiram",
+      "password": "Qq123123",
+      "confirmPassword": "Qq123123",
+      "gender": "Male",
+      "weight": 60,
+      "id": 1
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
