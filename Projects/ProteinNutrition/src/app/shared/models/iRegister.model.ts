@@ -3,5 +3,6 @@ export interface IRegister {
     password: string,
     confirmPassword: string,
     gender: string,
-    weight: string
+    weight: string,
+    id?:string;
 }

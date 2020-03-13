@@ -6,6 +6,7 @@ export class Register implements IRegister {
         public password: string,
         public confirmPassword: string,
         public gender: string,
-        public weight: string
+        public weight: string,
+        public id?: string
     ) { }
 }
