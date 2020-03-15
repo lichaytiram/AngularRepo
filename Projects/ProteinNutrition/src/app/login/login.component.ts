@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ILogin } from '../shared/models/iLogin.model';
 import { Login } from '../shared/models/login.model';
 import { Router } from '@angular/router';
+import { UserService } from '../shared/services/user.service';
+import { Store } from '@ngrx/store';
+import { IProductsState } from '../store';
+import { loginUser } from '../store/actions/user.action';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +16,18 @@ export class LoginComponent implements OnInit {
 
   public login: ILogin;
 
-  constructor(private route: Router) { }
+  constructor(private store: Store<IProductsState>, private route: Router, private service: UserService) { }
 
   ngOnInit() {
     this.login = new Login(undefined, undefined);
   }
 
   public userLogin(): void {
-    console.log("allow");
+    // this.service.login(this.login).subscribe(
+    //   res => console.log(res)
+    // )
+
+    this.store.dispatch(loginUser({ login: this.login }));
 
   }
 

@@ -20,12 +20,26 @@ export class UserEffects {
     switchMap(action => {
       return this.userService.createUser(action.register).pipe(
         map((user: any) => {
-          this.router.navigate(['product/login'])
+          this.router.navigate(['product/login']);
           let register: IRegister = action.register;
           register.id = user.name;
-          return userActions.createUserSuccess({ register: action.register })
+          return userActions.createUserSuccess({ register: action.register });
         }),
         catchError(error => of(userActions.createUserFail(error)))
+      )
+    })
+  ))
+
+  public loginUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loginUser),
+    switchMap(action => {
+      return this.userService.login(action.login).pipe(
+        map((loginUser) => {
+          console.log(loginUser);
+          
+          this.router.navigate(['product/account']);
+          return userActions.loginUserSuccess({ register: loginUser });
+        }),
+        catchError(error => of(userActions.loginUserFail(error)))
       )
     })
   ))

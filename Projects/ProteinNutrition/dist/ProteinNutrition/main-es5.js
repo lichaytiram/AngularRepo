@@ -1657,14 +1657,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../shared/services/user.service */
+    "./src/app/shared/services/user.service.ts");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/fesm2015/store.js");
+    /* harmony import */
+
+
+    var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../store/actions/user.action */
+    "./src/app/store/actions/user.action.ts");
 
     var LoginComponent =
     /*#__PURE__*/
     function () {
-      function LoginComponent(route) {
+      function LoginComponent(store, route, service) {
         _classCallCheck(this, LoginComponent);
 
+        this.store = store;
         this.route = route;
+        this.service = service;
       }
 
       _createClass(LoginComponent, [{
@@ -1675,7 +1695,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "userLogin",
         value: function userLogin() {
-          console.log("allow");
+          // this.service.login(this.login).subscribe(
+          //   res => console.log(res)
+          // )
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"])({
+            login: this.login
+          }));
         }
       }, {
         key: "register",
@@ -1689,7 +1714,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     LoginComponent.ctorParameters = function () {
       return [{
+        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"]
+      }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]
       }];
     };
 
@@ -2128,11 +2157,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
             return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json());
           }));
-        }
+        } // Firebase database request, don't have any straight way (api)
+
       }, {
         key: "login",
-        value: function login(userId) {
-          var url = this.URL + userId.name + this.endURL;
+        value: function login(_login) {
+          var url = this.URL + this.endURL;
+          return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
+            var register = null;
+            Object.entries(result).map(function (value) {
+              if (value[1].username === _login.username && value[1].password === _login.password) {
+                value[1].id = value[0];
+                register = value[1];
+              }
+            }); // server side don't throw an error.
+
+            if (register == null) throw '';
+            return register;
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json());
+          }));
+        }
+      }, {
+        key: "getUser",
+        value: function getUser(userId) {
+          var url = "".concat(this.URL, "/").concat(userId).concat(this.endURL);
           return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
             return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json());
           }));
@@ -2160,7 +2209,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/index.ts ***!
     \****************************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loginUser, loginUserFail, loginUserSuccess */
 
   /***/
   function srcAppStoreActionsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -2256,6 +2305,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "createUserSuccess", function () {
       return _user_action__WEBPACK_IMPORTED_MODULE_2__["createUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUserSuccess"];
     });
     /***/
 
@@ -2359,7 +2426,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/user.action.ts ***!
     \**********************************************/
 
-  /*! exports provided: createUser, createUserFail, createUserSuccess */
+  /*! exports provided: createUser, createUserFail, createUserSuccess, loginUser, loginUserFail, loginUserSuccess */
 
   /***/
   function srcAppStoreActionsUserActionTs(module, __webpack_exports__, __webpack_require__) {
@@ -2384,6 +2451,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "createUserSuccess", function () {
       return createUserSuccess;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUser", function () {
+      return loginUser;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUserFail", function () {
+      return loginUserFail;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
+      return loginUserSuccess;
+    });
     /* harmony import */
 
 
@@ -2400,6 +2485,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var createUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var createUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var createUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var loginUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var loginUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var loginUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     /***/
   },
 
@@ -2530,6 +2618,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }));
       });
+      this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
+        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this3.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (loginUser) {
+            console.log(loginUser);
+
+            _this3.router.navigate(['product/account']);
+
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserSuccess"]({
+              register: loginUser
+            });
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserFail"](error));
+          }));
+        }));
+      });
     };
 
     UserEffects.ctorParameters = function () {
@@ -2554,7 +2657,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/index.ts ***!
     \********************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, reducers, getProductsState, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loginUser, loginUserFail, loginUserSuccess, reducers, getProductsState, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -2644,6 +2747,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "createUserSuccess", function () {
       return _actions__WEBPACK_IMPORTED_MODULE_1__["createUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUserSuccess"];
     });
     /* harmony import */
 
@@ -2941,6 +3062,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var userReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["createUserSuccess"], function (state, action) {
       var register = action.register;
       return adapter.addOne(register, state);
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserSuccess"], function (state, action) {
+      console.log("You are login well :-)");
+      var register = action.register;
+      return adapter.addOne(register, state);
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserFail"], function (state, action) {
+      console.log("This is fail!!!!!!");
+      return state;
     }));
     /***/
   },

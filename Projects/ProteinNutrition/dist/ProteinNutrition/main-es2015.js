@@ -853,26 +853,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _shared_models_login_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/models/login.model */ "./src/app/shared/models/login.model.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/services/user.service */ "./src/app/shared/services/user.service.ts");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm2015/store.js");
+/* harmony import */ var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/actions/user.action */ "./src/app/store/actions/user.action.ts");
+
+
+
 
 
 
 
 let LoginComponent = class LoginComponent {
-    constructor(route) {
+    constructor(store, route, service) {
+        this.store = store;
         this.route = route;
+        this.service = service;
     }
     ngOnInit() {
         this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_2__["Login"](undefined, undefined);
     }
     userLogin() {
-        console.log("allow");
+        // this.service.login(this.login).subscribe(
+        //   res => console.log(res)
+        // )
+        this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"])({ login: this.login }));
     }
     register() {
         this.route.navigate(['/product/register']);
     }
 };
 LoginComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"] }
 ];
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1130,8 +1143,26 @@ let UserService = class UserService {
         return this.http.get(url)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(error => rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json())));
     }
-    login(userId) {
-        const url = this.URL + userId.name + this.endURL;
+    // Firebase database request, don't have any straight way (api)
+    login(login) {
+        const url = this.URL + this.endURL;
+        return this.http.get(url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(result => {
+            let register = null;
+            Object.entries(result).map(value => {
+                if (value[1].username === login.username && value[1].password === login.password) {
+                    value[1].id = value[0];
+                    register = value[1];
+                }
+            });
+            // server side don't throw an error.
+            if (register == null)
+                throw ('');
+            return register;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(error => rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json())));
+    }
+    getUser(userId) {
+        const url = `${this.URL}/${userId}${this.endURL}`;
         return this.http.get(url)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(error => rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json())));
     }
@@ -1153,7 +1184,7 @@ UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!****************************************!*\
   !*** ./src/app/store/actions/index.ts ***!
   \****************************************/
-/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess */
+/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loginUser, loginUserFail, loginUserSuccess */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1184,6 +1215,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createUserFail", function() { return _user_action__WEBPACK_IMPORTED_MODULE_2__["createUserFail"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createUserSuccess", function() { return _user_action__WEBPACK_IMPORTED_MODULE_2__["createUserSuccess"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loginUser", function() { return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUser"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loginUserFail", function() { return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUserFail"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function() { return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUserSuccess"]; });
 
 
 
@@ -1231,7 +1268,7 @@ const DeleteProteinSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["cr
 /*!**********************************************!*\
   !*** ./src/app/store/actions/user.action.ts ***!
   \**********************************************/
-/*! exports provided: createUser, createUserFail, createUserSuccess */
+/*! exports provided: createUser, createUserFail, createUserSuccess, loginUser, loginUserFail, loginUserSuccess */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1239,6 +1276,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUser", function() { return createUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUserFail", function() { return createUserFail; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUserSuccess", function() { return createUserSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginUser", function() { return loginUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginUserFail", function() { return loginUserFail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function() { return loginUserSuccess; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm2015/store.js");
 
@@ -1246,6 +1286,9 @@ __webpack_require__.r(__webpack_exports__);
 const createUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
 const createUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
 const createUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+const loginUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+const loginUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+const loginUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
 
 
 /***/ }),
@@ -1308,6 +1351,13 @@ let UserEffects = class UserEffects {
                 return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserSuccess"]({ register: action.register });
             }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserFail"](error))));
         })));
+        this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(() => this.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(action => {
+            return this.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((loginUser) => {
+                console.log(loginUser);
+                this.router.navigate(['product/account']);
+                return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserSuccess"]({ register: loginUser });
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserFail"](error))));
+        })));
     }
 };
 UserEffects.ctorParameters = () => [
@@ -1329,7 +1379,7 @@ UserEffects = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!********************************!*\
   !*** ./src/app/store/index.ts ***!
   \********************************/
-/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, reducers, getProductsState, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loginUser, loginUserFail, loginUserSuccess, reducers, getProductsState, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1359,6 +1409,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createUserFail", function() { return _actions__WEBPACK_IMPORTED_MODULE_1__["createUserFail"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createUserSuccess", function() { return _actions__WEBPACK_IMPORTED_MODULE_1__["createUserSuccess"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loginUser", function() { return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUser"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loginUserFail", function() { return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUserFail"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function() { return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUserSuccess"]; });
 
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers */ "./src/app/store/reducers/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reducers", function() { return _reducers__WEBPACK_IMPORTED_MODULE_2__["reducers"]; });
@@ -1488,6 +1544,13 @@ const initialState = adapter.getInitialState({
 const userReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["createUserSuccess"], (state, action) => {
     const { register } = action;
     return adapter.addOne(register, state);
+}), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserSuccess"], (state, action) => {
+    console.log("You are login well :-)");
+    const { register } = action;
+    return adapter.addOne(register, state);
+}), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserFail"], (state, action) => {
+    console.log("This is fail!!!!!!");
+    return state;
 }));
 
 

@@ -21,5 +21,18 @@ export const userReducer = createReducer<IRegisterState>(
             return adapter.addOne(register, state);
         }
     )
+    , on(
+        fromUser.loginUserSuccess, (state: IRegisterState, action) => {
+            console.log("You are login well :-)");
+            const { register } = action;
+            return adapter.addOne(register, state);
+        }
+    )
+    , on(
+        fromUser.loginUserFail, (state: IRegisterState, action) => {
+            console.log("This is fail!!!!!!");
+            return state;
+        }
+    )
 
 )

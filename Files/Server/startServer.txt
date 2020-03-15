@@ -15,6 +15,6 @@ Replace name to you project name in file server.js
 
 Paste server.js in main files of your project.
 
-add this if dont init
+add this if don't init
 git init
 heroku git:remote -a protein-lichay
