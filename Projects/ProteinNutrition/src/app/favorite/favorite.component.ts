@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class FavoriteComponent implements OnInit {
 
-
   public login: boolean;
 
   constructor(private router: Router) { }
@@ -17,7 +16,6 @@ export class FavoriteComponent implements OnInit {
 
     let isLogin: boolean = !!sessionStorage.getItem("login");
     this.login = isLogin ? true : false;
-
 
   }
 

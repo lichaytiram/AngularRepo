@@ -10,8 +10,9 @@ export class InfoComponent implements OnInit, OnDestroy {
   private audio = new Audio();
 
   ngOnInit() {
-    this.audio.src = "../../../assets/audio/music.mp3";
+    this.audio.src = "assets/audio/music.mp3";
     this.audio.play();
+    this.audio.volume = 0.05;
   }
 
   ngOnDestroy() {

@@ -16,8 +16,20 @@ export const initialState: IRegisterState = adapter.getInitialState({
 export const userReducer = createReducer<IRegisterState>(
     initialState
     , on(
+        fromUser.loadUserSuccess, (state: IRegisterState, action) => {
+            const { user } = action;
+            return adapter.addOne(user, state);
+        }
+    )
+    , on(
+        fromUser.loadUserFail, (state: IRegisterState, action) => {
+            console.log("This is fail!!!!!!");
+            return state;
+        }
+    )
+    , on(
         fromUser.createUserSuccess, (state: IRegisterState, action) => {
-            const { register } = action
+            const { register } = action;
             return adapter.addOne(register, state);
         }
     )
@@ -39,3 +51,5 @@ export const userReducer = createReducer<IRegisterState>(
     )
 
 )
+
+export const getUserLoaded = (state: IRegisterState) => state.loaded;

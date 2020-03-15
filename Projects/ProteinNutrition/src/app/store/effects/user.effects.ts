@@ -16,6 +16,18 @@ export class UserEffects {
 
   constructor(private actions$: Actions, private userService: UserService, private router: Router) { }
 
+  public loadUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loadUser),
+    switchMap(action => {
+      return this.userService.getUser(action.userId).pipe(
+        map((user: IRegister) => {
+          user.id = action.userId;
+          return userActions.loadUserSuccess({ user: user })
+        }),
+        catchError(error => of(userActions.loadUserFail(error)))
+      )
+    })
+  ))
+
   public createUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.createUser),
     switchMap(action => {
       return this.userService.createUser(action.register).pipe(

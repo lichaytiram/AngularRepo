@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.clearInterval.push(setTimeout(() => {
       this.visibilityOn("popup")
-    }, 5000))
+    }, 8000))
 
   }
 
