@@ -33,9 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.visibility();
     }
 
-    if (!this.login)
-      this.popup();
-
+    !!sessionStorage.getItem("login") ? this.login = true : this.popup();
   }
 
   ngOnDestroy() {

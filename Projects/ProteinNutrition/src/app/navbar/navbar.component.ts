@@ -7,11 +7,10 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
-  public account: string;
+  constructor() { }
 
-  constructor() {
-    const login: boolean = !!sessionStorage.getItem('key');
-    this.account = login ? "account" : "login";
+  public login(): string {
+    return !!sessionStorage.getItem('login') ? "account" : "login";
   }
 
 }

@@ -34,8 +34,6 @@ export class UserEffects {
     switchMap(action => {
       return this.userService.login(action.login).pipe(
         map((loginUser) => {
-          console.log(loginUser);
-          
           this.router.navigate(['product/account']);
           return userActions.loginUserSuccess({ register: loginUser });
         }),

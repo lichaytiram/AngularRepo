@@ -23,12 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   public userLogin(): void {
-    // this.service.login(this.login).subscribe(
-    //   res => console.log(res)
-    // )
-
     this.store.dispatch(loginUser({ login: this.login }));
-
   }
 
   public register(): void {

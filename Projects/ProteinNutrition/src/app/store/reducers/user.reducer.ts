@@ -23,9 +23,12 @@ export const userReducer = createReducer<IRegisterState>(
     )
     , on(
         fromUser.loginUserSuccess, (state: IRegisterState, action) => {
-            console.log("You are login well :-)");
             const { register } = action;
-            return adapter.addOne(register, state);
+            sessionStorage.setItem("login", register.id);
+            return {
+                ...adapter.addOne(register, state),
+                loaded: true
+            };
         }
     )
     , on(

@@ -8,19 +8,23 @@ import { Router } from '@angular/router';
 })
 export class FavoriteComponent implements OnInit {
 
+
   public login: boolean;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
 
-    let isLogin: boolean = !!sessionStorage.getItem("key");
+    let isLogin: boolean = !!sessionStorage.getItem("login");
     this.login = isLogin ? true : false;
+
 
   }
 
   public loginPage() {
     this.router.navigate(['/product/login']);
   }
+
+
 
 }
