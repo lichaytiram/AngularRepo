@@ -18,7 +18,10 @@ export const userReducer = createReducer<IRegisterState>(
     , on(
         fromUser.loadUserSuccess, (state: IRegisterState, action) => {
             const { user } = action;
-            return adapter.addOne(user, state);
+            return {
+                ...adapter.addOne(user, state),
+                loaded: true
+            };
         }
     )
     , on(

@@ -6,6 +6,7 @@ import { catchError, map, switchMap, tap, take } from 'rxjs/operators';
 import { ILogin } from '../models/iLogin.model';
 import { Register } from '../models/register.model';
 import { throwError } from 'rxjs';
+import { IId } from '../models/iId.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public createUser(user: IRegister): Observable<IRegister> {
+  public createUser(user: IRegister): Observable<IId> {
     const url = this.URL + this.endURL;
-    return this.http.post<IRegister>(url, user)
+    return this.http.post<IId>(url, user)
       .pipe(catchError(error => Observable.throw(error.json())))
   }
 

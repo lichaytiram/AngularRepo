@@ -3,7 +3,6 @@ import { IEgg } from './iEgg.model';
 
 export class Protein implements IProtein {
     constructor(
-        public id?: number,
         public egg?: IEgg,
         public bread?: number,
         public tuna?: number,
@@ -13,6 +12,7 @@ export class Protein implements IProtein {
         public quinoa?: number,
         public almonds?: number,
         public powder?: number,
-        public gainer?: number
+        public gainer?: number,
+        public id?: string
     ) { }
 }

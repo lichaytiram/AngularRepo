@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { IProtein } from '../shared/models/iProtein.model';
 import { Protein } from '../shared/models/protein.model';
-import { AddProteinSuccess } from '../store/actions/protein.action'
-
-import { Store } from '@ngrx/store';
-import { IProductsState } from '../store';
 import { Egg } from '../shared/models/egg.model';
 import { IEgg } from '../shared/models/iEgg.model';
-import { Router } from '@angular/router';
+
+import { Store } from '@ngrx/store';
+import { AddProtein } from '../store/actions/protein.action'
+import { IProductsState } from '../store';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public acccept: boolean;
   public login: boolean;
+  private userId: string;
   public protein: IProtein;
   private clearInterval = [];
 
@@ -26,14 +27,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.protein = new Protein(0, new Egg());
+    this.protein = new Protein(new Egg());
 
     if (!!localStorage.getItem("acccept")) {
       this.acccept = true;
       this.visibility();
     }
 
-    !!sessionStorage.getItem("login") ? this.login = true : this.popup();
+    const id: string = sessionStorage.getItem("login");
+
+    id ? (this.login = true, this.userId = id) : this.popup();
+
   }
 
   ngOnDestroy() {
@@ -55,6 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public isAcccept(): void {
+
     this.acccept = true;
     this.visibility();
     localStorage.setItem('acccept', "true");
@@ -62,10 +67,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public submit(): void {
 
-    this.protein.id += 1
+    let userId: string = this.userId;
     const protein: IProtein = { ...this.protein };
 
-    this.store.dispatch(AddProteinSuccess({ protein: protein }));
+    this.store.dispatch(AddProtein({ userId, protein: protein }));
   }
 
   public show(): void {

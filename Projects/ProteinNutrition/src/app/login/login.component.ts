@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ILogin } from '../shared/models/iLogin.model';
 import { Login } from '../shared/models/login.model';
-import { Router } from '@angular/router';
-import { UserService } from '../shared/services/user.service';
+
 import { Store } from '@ngrx/store';
 import { IProductsState } from '../store';
 import { loginUser } from '../store/actions/user.action';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   public login: ILogin;
 
-  constructor(private store: Store<IProductsState>, private route: Router, private service: UserService) { }
+  constructor(private store: Store<IProductsState>, private route: Router) { }
 
   ngOnInit() {
     this.login = new Login(undefined, undefined);

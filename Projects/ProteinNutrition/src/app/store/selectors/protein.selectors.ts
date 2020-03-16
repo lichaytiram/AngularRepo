@@ -1,9 +1,10 @@
 import { createSelector } from '@ngrx/store';
 
+import { IProtein } from 'src/app/shared/models/iProtein.model';
+
 import * as fromFeature from '../reducers';
 import * as fromProtein from '../reducers/protein.reducer';
 import { getRouterState } from 'src/app/storeRouter';
-import { IProtein } from 'src/app/shared/models/iProtein.model';
 
 export const getProteinState = createSelector(
     fromFeature.getProductsState,

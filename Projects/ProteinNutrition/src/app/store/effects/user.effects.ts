@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
@@ -6,7 +7,7 @@ import { of } from 'rxjs';
 
 import { UserService } from 'src/app/shared/services/user.service';
 import * as userActions from '../actions/user.action';
-import { Router } from '@angular/router';
+import { IId } from 'src/app/shared/models/iId.model';
 import { IRegister } from 'src/app/shared/models/iRegister.model';
 
 @Injectable({
@@ -31,10 +32,11 @@ export class UserEffects {
   public createUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.createUser),
     switchMap(action => {
       return this.userService.createUser(action.register).pipe(
-        map((user: any) => {
+        map((userId: IId) => {
           this.router.navigate(['product/login']);
-          let register: IRegister = action.register;
-          register.id = user.name;
+          const register: IRegister = action.register;
+          register.id = userId.name;
+
           return userActions.createUserSuccess({ register: action.register });
         }),
         catchError(error => of(userActions.createUserFail(error)))
