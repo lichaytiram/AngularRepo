@@ -5,15 +5,14 @@ import { CanActivate } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 import * as fromStore from '../index';
-import { tap, switchMap, catchError } from 'rxjs/operators';
-import { UserService } from 'src/app/shared/services/user.service';
+import { tap, switchMap, catchError, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersGuard implements CanActivate {
 
-  constructor(private store: Store<IProductsState>, private userService: UserService) { }
+  constructor(private store: Store<IProductsState>) { }
 
   canActivate(): Observable<boolean> {
     return this.checkStore().pipe(
@@ -28,7 +27,8 @@ export class UsersGuard implements CanActivate {
         const id: string = sessionStorage.getItem('login');
         if (!loaded && id)
           this.store.dispatch(fromStore.loadUser({ userId: id }))
-      })
+      }),
+      take(1)
     )
   }
 

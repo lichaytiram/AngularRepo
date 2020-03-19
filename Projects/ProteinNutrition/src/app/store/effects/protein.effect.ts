@@ -16,6 +16,15 @@ export class ProteinEffect {
 
   constructor(private actions$: Actions, private proteinService: ProteinService) { }
 
+  public loadProteins$ = createEffect(() => this.actions$.pipe(ofType(proteinActions.LoadProteins),
+    switchMap(action => {
+      return this.proteinService.getProteins(action.userId).pipe(
+        map(proteins => proteinActions.LoadProteinsSuccess({ proteins: proteins })),
+        catchError(error => of(proteinActions.LoadProteinsFail(error)))
+      )
+    })
+  ))
+
   public createProtein$ = createEffect(() => this.actions$.pipe(ofType(proteinActions.AddProtein),
     switchMap(action => {
       return this.proteinService.createProtein(action.userId, action.protein).pipe(

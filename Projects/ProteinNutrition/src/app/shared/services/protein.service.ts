@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IProtein } from '../models/iProtein.model';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { IId } from '../models/iId.model';
 
 @Injectable({
@@ -19,6 +19,25 @@ export class ProteinService {
     const url = `${this.URL}/${userId}${this.endURL}`;
     return this.http.post<IId>(url, protein).pipe(
       catchError(error => Observable.throw(error.json())))
+  }
+
+  // Firebase database request, don't have any straight way (api)
+  public getProteins(userId: string): Observable<IProtein[]> {
+    const url = `${this.URL}/${userId}${this.endURL}`;
+    return this.http.get<Observable<IProtein[]>>(url)
+      .pipe(
+        map(
+          result => {
+            let proteins: IProtein[] = [];
+
+            Object.entries(result).map(value => {
+              value[1].id = value[0];
+              proteins.push(value[1]);
+            })
+
+            return proteins;
+          }),
+        catchError(error => Observable.throw(error.json())))
   }
 
 }

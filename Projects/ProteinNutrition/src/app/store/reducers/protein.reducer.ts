@@ -16,9 +16,10 @@ export const initialState: IProteinState = adapter.getInitialState({
 export const proteinReducer = createReducer<IProteinState>(
     initialState
     , on(
-        fromProtein.LoadProteins, state => {
+        fromProtein.LoadProteinsSuccess, (state: IProteinState, action) => {
+            const { proteins } = action;
             return {
-                ...state,
+                ...adapter.addAll(proteins, state),
                 loaded: true
             }
         }

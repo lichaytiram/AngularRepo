@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { UserService } from 'src/app/shared/services/user.service';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { switchMap, map, catchError, concatMap } from 'rxjs/operators';
 import * as userActions from '../actions/user.action';
+import * as proteinActions from '../actions/protein.action';
+
+import { UserService } from 'src/app/shared/services/user.service';
+import { ProteinService } from 'src/app/shared/services/protein.service';
+
 import { IId } from 'src/app/shared/models/iId.model';
 import { IRegister } from 'src/app/shared/models/iRegister.model';
 
@@ -15,7 +18,7 @@ import { IRegister } from 'src/app/shared/models/iRegister.model';
 })
 export class UserEffects {
 
-  constructor(private actions$: Actions, private userService: UserService, private router: Router) { }
+  constructor(private actions$: Actions, private userService: UserService, private proteinService: ProteinService, private router: Router) { }
 
   public loadUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loadUser),
     switchMap(action => {
@@ -45,13 +48,18 @@ export class UserEffects {
   ))
 
   public loginUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loginUser),
-    switchMap(action => {
+    concatMap(action => {
+      let userId: string;
       return this.userService.login(action.login).pipe(
         map((loginUser) => {
+          userId = loginUser.id;
           this.router.navigate(['product/account']);
+          proteinActions.LoadProteins({ userId: userId });
           return userActions.loginUserSuccess({ register: loginUser });
         }),
-        catchError(error => of(userActions.loginUserFail(error)))
+        catchError(error => of(userActions.loginUserFail(error))),
+        // map(() => proteinActions.LoadProteins({ userId: userId })),
+        // catchError(error => of(proteinActions.LoadProteinsFail(error)))
       )
     })
   ))

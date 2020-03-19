@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     const id: string = sessionStorage.getItem("login");
-
     id ? (this.login = true, this.userId = id) : this.popup();
 
   }
