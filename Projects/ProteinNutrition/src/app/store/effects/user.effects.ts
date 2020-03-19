@@ -48,18 +48,15 @@ export class UserEffects {
   ))
 
   public loginUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loginUser),
-    concatMap(action => {
+    switchMap(action => {
       let userId: string;
       return this.userService.login(action.login).pipe(
-        map((loginUser) => {
+        switchMap((loginUser) => {
           userId = loginUser.id;
           this.router.navigate(['product/account']);
-          proteinActions.LoadProteins({ userId: userId });
-          return userActions.loginUserSuccess({ register: loginUser });
+          return [userActions.loginUserSuccess({ register: loginUser }), proteinActions.LoadProteins({ userId: userId })];
         }),
-        catchError(error => of(userActions.loginUserFail(error))),
-        // map(() => proteinActions.LoadProteins({ userId: userId })),
-        // catchError(error => of(proteinActions.LoadProteinsFail(error)))
+        catchError(error => of(userActions.loginUserFail(error)))
       )
     })
   ))

@@ -171,7 +171,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n        <div class=\"fixed-top\">\r\n\r\n                <nav class=\"navbar\">\r\n\r\n                        <button routerLink=\"product/home\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span class=\"fas fa-home\">\r\n                                </span>\r\n                                Home</button>\r\n\r\n                        <button routerLink=\"product/{{login()}}\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-user-circle\">\r\n                                </span>\r\n                                Account</button>\r\n\r\n                        <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span\r\n                                        class=\"far fa-thumbs-up\"></span>\r\n                                Favorite</button>\r\n\r\n                        <button routerLink=\"product/info\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-question-circle\"></span>\r\n                                Info</button>\r\n\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-on\"></span> Hebrew</button> -->\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-off\"></span> English</button> -->\r\n\r\n                </nav>\r\n\r\n                <header>\r\n                        <div class=\"row\">\r\n                                <img src=\"/assets/photos/bodybuilding_weightlifting.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone\">\r\n                                <img src=\"/assets/photos/sport_girl_fitness.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone smallSreen\">\r\n                        </div>\r\n                </header>\r\n\r\n        </div>\r\n\r\n        <router-outlet></router-outlet>\r\n\r\n        <footer class=\"m-1 text-light bg-dark text-center\">\r\n                <small>&copy; Created by - Lichay Tiram -</small>\r\n        </footer>\r\n\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n        <div class=\"fixed-top\">\r\n\r\n                <nav class=\"navbar\">\r\n\r\n                        <button routerLink=\"product/home\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span class=\"fas fa-home\">\r\n                                </span>\r\n                                Home</button>\r\n\r\n                        <button routerLink=\"product/{{login()}}\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-user-circle\">\r\n                                </span>\r\n                                Account</button>\r\n\r\n                        <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span\r\n                                        class=\"far fa-thumbs-up\"></span>\r\n                                Favorite</button>\r\n\r\n                        <button routerLink=\"product/info\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-question-circle\"></span>\r\n                                Info</button>\r\n\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-on\"></span> Hebrew</button> -->\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-off\"></span> English</button> -->\r\n\r\n                </nav>\r\n\r\n                <header>\r\n                        <div class=\"row\">\r\n                                <img src=\"/assets/photos/bodybuilding_weightlifting.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone\">\r\n                                <img src=\"/assets/photos/sport_girl_fitness.jpg\"\r\n                                        class=\"backgroundImage col-6 smartphone smallSreen\">\r\n                        </div>\r\n                </header>\r\n\r\n        </div>\r\n\r\n        <router-outlet></router-outlet>\r\n\r\n        <footer class=\"m-1 text-light bg-dark text-center\">\r\n                <small>&copy; Created by - Lichay Tiram -</small>\r\n        </footer>\r\n\r\n</div>";
     /***/
   },
 
@@ -1588,13 +1588,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _shared_services_protein_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../shared/services/protein.service */
+    "./src/app/shared/services/protein.service.ts");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/fesm2015/store.js");
 
     var InfoComponent =
     /*#__PURE__*/
     function () {
-      function InfoComponent() {
+      function InfoComponent(store, service) {
         _classCallCheck(this, InfoComponent);
 
+        this.store = store;
+        this.service = service;
         this.audio = new Audio();
       }
 
@@ -1603,7 +1617,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           this.audio.src = "assets/audio/music.mp3";
           this.audio.play();
-          this.audio.volume = 0.05;
+          this.audio.volume = 0.05; // this.store.dispatch(LoadProteins({ userId: "-M2QtQTCbwrEehtulTaB" }));
         }
       }, {
         key: "ngOnDestroy",
@@ -1614,6 +1628,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return InfoComponent;
     }();
+
+    InfoComponent.ctorParameters = function () {
+      return [{
+        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
+      }, {
+        type: _shared_services_protein_service__WEBPACK_IMPORTED_MODULE_2__["ProteinService"]
+      }];
+    };
 
     InfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-info',
@@ -1702,6 +1724,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../store/actions/user.action */
     "./src/app/store/actions/user.action.ts");
+    /* harmony import */
+
+
+    var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../store/actions/protein.action */
+    "./src/app/store/actions/protein.action.ts");
 
     var LoginComponent =
     /*#__PURE__*/
@@ -1723,6 +1751,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function userLogin() {
           this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_5__["loginUser"])({
             login: this.login
+          }));
+          var id = sessionStorage.getItem("login");
+          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"])({
+            userId: id
           }));
         }
       }, {
@@ -2180,6 +2212,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.http.post(url, protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(error.json());
           }));
+        } // Firebase database request, don't have any straight way (api)
+
+      }, {
+        key: "getProteins",
+        value: function getProteins(userId) {
+          var url = "".concat(this.URL, "/").concat(userId).concat(this.endURL);
+          return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
+            var proteins = [];
+            Object.entries(result).map(function (value) {
+              value[1].id = value[0];
+              proteins.push(value[1]);
+            });
+            return proteins;
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(error.json());
+          }));
         }
       }]);
 
@@ -2543,7 +2591,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/fesm2015/store.js");
 
-    var LoadProteins = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Load Proteins');
+    var LoadProteins = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Load Proteins', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var LoadProteinsFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Load Proteins Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var LoadProteinsSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Load Proteins Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var AddProtein = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Add Protein', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
@@ -2758,6 +2806,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       this.actions$ = actions$;
       this.proteinService = proteinService;
+      this.loadProteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
+        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this3.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
+            return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteinsSuccess"]({
+              proteins: proteins
+            });
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteinsFail"](error));
+          }));
+        }));
+      });
       this.createProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
         return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
           return _this3.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
@@ -2827,79 +2886,97 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ngrx_effects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @ngrx/effects */
-    "./node_modules/@ngrx/effects/fesm2015/effects.js");
-    /* harmony import */
-
-
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! rxjs/operators */
-    "./node_modules/rxjs/_esm2015/operators/index.js");
-    /* harmony import */
-
-
-    var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! rxjs */
     "./node_modules/rxjs/_esm2015/index.js");
     /* harmony import */
 
 
-    var src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _ngrx_effects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ngrx/effects */
+    "./node_modules/@ngrx/effects/fesm2015/effects.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _actions_user_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../actions/user.action */
+    "./src/app/store/actions/user.action.ts");
+    /* harmony import */
+
+
+    var _actions_protein_action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../actions/protein.action */
+    "./src/app/store/actions/protein.action.ts");
+    /* harmony import */
+
+
+    var src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! src/app/shared/services/user.service */
     "./src/app/shared/services/user.service.ts");
     /* harmony import */
 
 
-    var _actions_user_action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ../actions/user.action */
-    "./src/app/store/actions/user.action.ts");
+    var src_app_shared_services_protein_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! src/app/shared/services/protein.service */
+    "./src/app/shared/services/protein.service.ts");
 
-    var UserEffects = function UserEffects(actions$, userService, router) {
+    var UserEffects = function UserEffects(actions$, userService, proteinService, router) {
       var _this4 = this;
 
       _classCallCheck(this, UserEffects);
 
       this.actions$ = actions$;
       this.userService = userService;
+      this.proteinService = proteinService;
       this.router = router;
-      this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_7__["loadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (action) {
-          return _this4.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (user) {
+      this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this4.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.userId;
-            return _actions_user_action__WEBPACK_IMPORTED_MODULE_7__["loadUserSuccess"]({
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loadUserSuccess"]({
               user: user
             });
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_7__["loadUserFail"](error));
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loadUserFail"](error));
           }));
         }));
       });
-      this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_7__["createUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (action) {
-          return _this4.userService.createUser(action.register).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (userId) {
+      this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this4.userService.createUser(action.register).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
             _this4.router.navigate(['product/login']);
 
             var register = action.register;
             register.id = userId.name;
-            return _actions_user_action__WEBPACK_IMPORTED_MODULE_7__["createUserSuccess"]({
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserSuccess"]({
               register: action.register
             });
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_7__["createUserFail"](error));
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserFail"](error));
           }));
         }));
       });
-      this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_7__["loginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (action) {
-          return _this4.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (loginUser) {
+      this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          var userId;
+          return _this4.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (loginUser) {
+            userId = loginUser.id;
+
             _this4.router.navigate(['product/account']);
 
-            return _actions_user_action__WEBPACK_IMPORTED_MODULE_7__["loginUserSuccess"]({
+            return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserSuccess"]({
               register: loginUser
-            });
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_7__["loginUserFail"](error));
+            }), _actions_protein_action__WEBPACK_IMPORTED_MODULE_7__["LoadProteins"]({
+              userId: userId
+            })];
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserFail"](error));
           }));
         }));
       });
@@ -2907,9 +2984,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     UserEffects.ctorParameters = function () {
       return [{
-        type: _ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["Actions"]
+        type: _ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["Actions"]
       }, {
-        type: src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"]
+        type: src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_8__["UserService"]
+      }, {
+        type: src_app_shared_services_protein_service__WEBPACK_IMPORTED_MODULE_9__["ProteinService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }];
@@ -3012,21 +3091,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! rxjs/operators */
     "./node_modules/rxjs/_esm2015/operators/index.js");
-    /* harmony import */
-
-
-    var src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! src/app/shared/services/user.service */
-    "./src/app/shared/services/user.service.ts");
 
     var UsersGuard =
     /*#__PURE__*/
     function () {
-      function UsersGuard(store, userService) {
+      function UsersGuard(store) {
         _classCallCheck(this, UsersGuard);
 
         this.store = store;
-        this.userService = userService;
       }
 
       _createClass(UsersGuard, [{
@@ -3048,7 +3120,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (!loaded && id) _this5.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["loadUser"]({
               userId: id
             }));
-          }));
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
         }
       }]);
 
@@ -3058,8 +3130,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     UsersGuard.ctorParameters = function () {
       return [{
         type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]
-      }, {
-        type: src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"]
       }];
     };
 
@@ -3421,8 +3491,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var initialState = adapter.getInitialState({
       loaded: false
     });
-    var proteinReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["LoadProteins"], function (state) {
-      return Object.assign({}, state, {
+    var proteinReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["LoadProteinsSuccess"], function (state, action) {
+      var proteins = action.proteins;
+      return Object.assign({}, adapter.addAll(proteins, state), {
         loaded: true
       });
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["AddProteinSuccess"], function (state, action) {

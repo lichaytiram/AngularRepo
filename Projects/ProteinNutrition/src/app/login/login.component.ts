@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
 
   public userLogin(): void {
     this.store.dispatch(loginUser({ login: this.login }));
-    // this.store.dispatch(LoadProteins({ userId: "id" }));
+    const id: string = sessionStorage.getItem("login");
+    this.store.dispatch(LoadProteins({ userId: id }));
   }
 
   public register(): void {
