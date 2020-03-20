@@ -7,7 +7,6 @@ import { Login } from '../shared/models/login.model';
 import { Store } from '@ngrx/store';
 import { IProductsState } from '../store';
 import { loginUser } from '../store/actions/user.action';
-import { LoadProteins } from '../store/actions/protein.action';
 
 @Component({
   selector: 'app-login',
@@ -25,9 +24,8 @@ export class LoginComponent implements OnInit {
   }
 
   public userLogin(): void {
-    this.store.dispatch(loginUser({ login: this.login }));
-    const id: string = sessionStorage.getItem("login");
-    this.store.dispatch(LoadProteins({ userId: id }));
+    const login: ILogin = this.login;
+    this.store.dispatch(loginUser({ login }));
   }
 
   public register(): void {

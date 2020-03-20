@@ -1600,15 +1600,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/fesm2015/store.js");
+    /* harmony import */
+
+
+    var _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../shared/services/user.service */
+    "./src/app/shared/services/user.service.ts");
 
     var InfoComponent =
     /*#__PURE__*/
     function () {
-      function InfoComponent(store, service) {
+      function InfoComponent(store, proteinService, userService) {
         _classCallCheck(this, InfoComponent);
 
         this.store = store;
-        this.service = service;
+        this.proteinService = proteinService;
+        this.userService = userService;
         this.audio = new Audio();
       }
 
@@ -1617,7 +1624,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           this.audio.src = "assets/audio/music.mp3";
           this.audio.play();
-          this.audio.volume = 0.05; // this.store.dispatch(LoadProteins({ userId: "-M2QtQTCbwrEehtulTaB" }));
+          this.audio.volume = 0.05;
         }
       }, {
         key: "ngOnDestroy",
@@ -1634,6 +1641,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
       }, {
         type: _shared_services_protein_service__WEBPACK_IMPORTED_MODULE_2__["ProteinService"]
+      }, {
+        type: _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]
       }];
     };
 
@@ -1724,12 +1733,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../store/actions/user.action */
     "./src/app/store/actions/user.action.ts");
-    /* harmony import */
-
-
-    var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ../store/actions/protein.action */
-    "./src/app/store/actions/protein.action.ts");
 
     var LoginComponent =
     /*#__PURE__*/
@@ -1749,12 +1752,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "userLogin",
         value: function userLogin() {
+          var login = this.login;
           this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_5__["loginUser"])({
-            login: this.login
-          }));
-          var id = sessionStorage.getItem("login");
-          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"])({
-            userId: id
+            login: login
           }));
         }
       }, {
@@ -2229,6 +2229,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(error.json());
           }));
         }
+      }, {
+        key: "deleteProtein",
+        value: function deleteProtein(userId, proteinId) {
+          var url = "".concat(this.URL, "/").concat(userId, "/").concat(proteinId).concat(this.endURL);
+          return this.http.delete(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(error.json());
+          }));
+        }
       }]);
 
       return ProteinService;
@@ -2334,7 +2342,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               if (value[1].username === _login.username && value[1].password === _login.password) {
                 value[1].id = value[0];
                 register = value[1];
+                return true;
               }
+
+              ;
             }); // server side don't throw an error.
 
             if (register == null) throw '';
@@ -2348,6 +2359,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function getUser(userId) {
           var url = "".concat(this.URL, "/").concat(userId).concat(this.endURL);
           return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json());
+          }));
+        }
+      }, {
+        key: "deleteUser",
+        value: function deleteUser(userId) {
+          var url = "".concat(this.URL, "/").concat(userId).concat(this.endURL);
+          return this.http.delete(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json());
+          }));
+        }
+      }, {
+        key: "updateUser",
+        value: function updateUser(user) {
+          var id = user.id,
+              userToUpdate = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](user, ["id"]);
+          var url = "".concat(this.URL, "/").concat(id).concat(this.endURL);
+          return this.http.put(url, userToUpdate).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
             return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json());
           }));
         }
@@ -2374,7 +2403,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/index.ts ***!
     \****************************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess, deleteUser, deleteUserFail, deleteUserSuccess, updateUser, updateUserFail, updateUserSuccess */
 
   /***/
   function srcAppStoreActionsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -2507,6 +2536,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
       return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUserSuccess"];
     });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["deleteUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["deleteUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["deleteUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["updateUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["updateUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["updateUserSuccess"];
+    });
     /***/
 
   },
@@ -2609,7 +2674,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/user.action.ts ***!
     \**********************************************/
 
-  /*! exports provided: createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess */
+  /*! exports provided: createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess, deleteUser, deleteUserFail, deleteUserSuccess, updateUser, updateUserFail, updateUserSuccess */
 
   /***/
   function srcAppStoreActionsUserActionTs(module, __webpack_exports__, __webpack_require__) {
@@ -2670,6 +2735,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
       return loginUserSuccess;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUser", function () {
+      return deleteUser;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUserFail", function () {
+      return deleteUserFail;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUserSuccess", function () {
+      return deleteUserSuccess;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUser", function () {
+      return updateUser;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUserFail", function () {
+      return updateUserFail;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUserSuccess", function () {
+      return updateUserSuccess;
+    });
     /* harmony import */
 
 
@@ -2692,6 +2793,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var loginUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var loginUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var loginUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var deleteUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Delete User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var deleteUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Delete User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var deleteUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Delete User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var updateUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Update User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var updateUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Update User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var updateUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Update User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     /***/
   },
 
@@ -2830,6 +2937,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }));
       });
+      this.deleteProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
+        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this3.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+            return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProteinSuccess"]({
+              proteinId: action.proteinId
+            });
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProteinFail"](error));
+          }));
+        }));
+      });
     };
 
     ProteinEffect.ctorParameters = function () {
@@ -2964,9 +3082,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
       this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
         return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          var userId;
           return _this4.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (loginUser) {
-            userId = loginUser.id;
+            var userId = loginUser.id;
 
             _this4.router.navigate(['product/account']);
 
@@ -2977,6 +3094,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             })];
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserFail"](error));
+          }));
+        }));
+      });
+      this.updateUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["updateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this4.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+            user.id = action.user.id;
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["updateUserSuccess"]({
+              user: user
+            });
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["updateUserFail"](error));
           }));
         }));
       });
@@ -3031,8 +3160,117 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _users_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./users.guard */
     "./src/app/store/guards/users.guard.ts");
+    /* harmony import */
 
-    var guards = [_users_guard__WEBPACK_IMPORTED_MODULE_1__["UsersGuard"]];
+
+    var _proteins_guard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./proteins.guard */
+    "./src/app/store/guards/proteins.guard.ts");
+
+    var guards = [_users_guard__WEBPACK_IMPORTED_MODULE_1__["UsersGuard"], _proteins_guard__WEBPACK_IMPORTED_MODULE_2__["ProteinsGuard"]];
+    /***/
+  },
+
+  /***/
+  "./src/app/store/guards/proteins.guard.ts":
+  /*!************************************************!*\
+    !*** ./src/app/store/guards/proteins.guard.ts ***!
+    \************************************************/
+
+  /*! exports provided: ProteinsGuard */
+
+  /***/
+  function srcAppStoreGuardsProteinsGuardTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProteinsGuard", function () {
+      return ProteinsGuard;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/fesm2015/store.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../index */
+    "./src/app/store/index.ts");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+
+    var ProteinsGuard =
+    /*#__PURE__*/
+    function () {
+      function ProteinsGuard(store) {
+        _classCallCheck(this, ProteinsGuard);
+
+        this.store = store;
+      }
+
+      _createClass(ProteinsGuard, [{
+        key: "canActivate",
+        value: function canActivate() {
+          return this.checkStore().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function () {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(true);
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function () {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(false);
+          }));
+        }
+      }, {
+        key: "checkStore",
+        value: function checkStore() {
+          var _this5 = this;
+
+          return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getProteinLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
+            var userId = sessionStorage.getItem('login');
+            if (!loaded && userId) _this5.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
+              userId: userId
+            }));
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
+        }
+      }]);
+
+      return ProteinsGuard;
+    }();
+
+    ProteinsGuard.ctorParameters = function () {
+      return [{
+        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]
+      }];
+    };
+
+    ProteinsGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], ProteinsGuard);
     /***/
   },
 
@@ -3113,12 +3351,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this5 = this;
+          var _this6 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getuserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
-            var id = sessionStorage.getItem('login');
-            if (!loaded && id) _this5.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["loadUser"]({
-              userId: id
+            var userId = sessionStorage.getItem('login');
+            if (!loaded && userId) _this6.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["loadUser"]({
+              userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
         }
@@ -3145,7 +3383,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/index.ts ***!
     \********************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess, reducers, getProductsState, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getuserLoaded */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess, deleteUser, deleteUserFail, deleteUserSuccess, updateUser, updateUserFail, updateUserSuccess, reducers, getProductsState, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getuserLoaded */
 
   /***/
   function srcAppStoreIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -3271,6 +3509,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
       return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["deleteUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["deleteUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "deleteUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["deleteUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["updateUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["updateUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "updateUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["updateUserSuccess"];
     });
     /* harmony import */
 
@@ -3589,9 +3863,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Object.assign({}, adapter.addOne(user, state), {
         loaded: true
       });
-    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loadUserFail"], function (state, action) {
-      console.log("This is fail!!!!!!");
-      return state;
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["createUserSuccess"], function (state, action) {
       var register = action.register;
       return adapter.addOne(register, state);
@@ -3601,9 +3872,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Object.assign({}, adapter.addOne(register, state), {
         loaded: true
       });
-    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserFail"], function (state, action) {
-      console.log("This is fail!!!!!!");
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["deleteUserSuccess"], function (state) {
+      sessionStorage.removeItem("login");
       return state;
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["updateUserSuccess"], function (state, action) {
+      var user = action.user;
+      var userToChange = {
+        id: user.id,
+        changes: user
+      };
+      return adapter.updateOne(userToChange, state);
     }));
 
     var getUserLoaded = function getUserLoaded(state) {

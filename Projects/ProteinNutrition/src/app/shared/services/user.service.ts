@@ -21,13 +21,13 @@ export class UserService {
   public createUser(user: IRegister): Observable<IId> {
     const url = this.URL + this.endURL;
     return this.http.post<IId>(url, user)
-      .pipe(catchError(error => Observable.throw(error.json())))
+      .pipe(catchError(error => Observable.throw(error.json())));
   }
 
   public getAllUsers(): Observable<IRegister[]> {
     const url = this.URL + this.endURL;
     return this.http.get<IRegister[]>(url)
-      .pipe(catchError(error => Observable.throw(error.json())))
+      .pipe(catchError(error => Observable.throw(error.json())));
   }
 
   // Firebase database request, don't have any straight way (api)
@@ -44,20 +44,34 @@ export class UserService {
               if (value[1].username === login.username && value[1].password === login.password) {
                 value[1].id = value[0];
                 register = value[1];
-              }
-            })
+                return true;
+              };
+            });
             // server side don't throw an error.
             if (register == null)
               throw ('');
             return register;
           }),
-        catchError(error => Observable.throw(error.json())))
+        catchError(error => Observable.throw(error.json())));
   }
 
   public getUser(userId: string): Observable<IRegister> {
     const url = `${this.URL}/${userId}${this.endURL}`;
     return this.http.get<IRegister>(url)
-      .pipe(catchError(error => Observable.throw(error.json())))
+      .pipe(catchError(error => Observable.throw(error.json())));
+  }
+
+  public deleteUser(userId: string): Observable<any> {
+    const url = `${this.URL}/${userId}${this.endURL}`;
+    return this.http.delete(url).pipe(
+      catchError(error => Observable.throw(error.json())));
+  }
+
+  public updateUser(user: IRegister): Observable<IRegister> {
+    const { id, ...userToUpdate } = user;
+    const url = `${this.URL}/${id}${this.endURL}`;
+    return this.http.put<IRegister>(url, userToUpdate).pipe(
+      catchError(error => Observable.throw(error.json())));
   }
 
 }

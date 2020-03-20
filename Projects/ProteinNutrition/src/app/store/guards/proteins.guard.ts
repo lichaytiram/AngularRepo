@@ -10,7 +10,7 @@ import { tap, switchMap, catchError, take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersGuard implements CanActivate {
+export class ProteinsGuard implements CanActivate {
 
   constructor(private store: Store<IProductsState>) { }
 
@@ -22,12 +22,12 @@ export class UsersGuard implements CanActivate {
   }
 
   private checkStore(): Observable<boolean> {
-    return this.store.pipe(select(fromStore.getuserLoaded)).pipe(
+    return this.store.pipe(select(fromStore.getProteinLoaded)).pipe(
       tap(loaded => {
         const userId: string = sessionStorage.getItem('login');
 
         if (!loaded && userId)
-          this.store.dispatch(fromStore.loadUser({ userId }))
+          this.store.dispatch(fromStore.LoadProteins({ userId }))
       }),
       take(1)
     )

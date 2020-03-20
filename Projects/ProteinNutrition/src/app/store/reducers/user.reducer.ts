@@ -25,12 +25,6 @@ export const userReducer = createReducer<IRegisterState>(
         }
     )
     , on(
-        fromUser.loadUserFail, (state: IRegisterState, action) => {
-            console.log("This is fail!!!!!!");
-            return state;
-        }
-    )
-    , on(
         fromUser.createUserSuccess, (state: IRegisterState, action) => {
             const { register } = action;
             return adapter.addOne(register, state);
@@ -47,9 +41,16 @@ export const userReducer = createReducer<IRegisterState>(
         }
     )
     , on(
-        fromUser.loginUserFail, (state: IRegisterState, action) => {
-            console.log("This is fail!!!!!!");
+        fromUser.deleteUserSuccess, (state: IRegisterState) => {
+            sessionStorage.removeItem("login");
             return state;
+        }
+    )
+    , on(
+        fromUser.updateUserSuccess, (state: IRegisterState, action) => {
+            const { user } = action;
+            const userToChange = { id: user.id, changes: user };
+            return adapter.updateOne(userToChange, state);
         }
     )
 

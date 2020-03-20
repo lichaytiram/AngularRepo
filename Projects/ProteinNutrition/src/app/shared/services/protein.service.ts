@@ -18,7 +18,7 @@ export class ProteinService {
   public createProtein(userId: string, protein: IProtein): Observable<IId> {
     const url = `${this.URL}/${userId}${this.endURL}`;
     return this.http.post<IId>(url, protein).pipe(
-      catchError(error => Observable.throw(error.json())))
+      catchError(error => Observable.throw(error.json())));
   }
 
   // Firebase database request, don't have any straight way (api)
@@ -37,7 +37,13 @@ export class ProteinService {
 
             return proteins;
           }),
-        catchError(error => Observable.throw(error.json())))
+        catchError(error => Observable.throw(error.json())));
+  }
+
+  public deleteProtein(userId: string, proteinId: string): Observable<any> {
+    const url = `${this.URL}/${userId}/${proteinId}${this.endURL}`;
+    return this.http.delete(url).pipe(
+      catchError(error => Observable.throw(error.json())));
   }
 
 }

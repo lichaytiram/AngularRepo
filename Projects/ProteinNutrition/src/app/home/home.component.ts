@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     let userId: string = this.userId;
     const protein: IProtein = { ...this.protein };
 
-    this.store.dispatch(AddProtein({ userId, protein: protein }));
+    this.store.dispatch(AddProtein({ userId, protein }));
   }
 
   public show(): void {
