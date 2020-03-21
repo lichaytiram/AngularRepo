@@ -8,21 +8,20 @@ import * as userActions from '../actions/user.action';
 import * as proteinActions from '../actions/protein.action';
 
 import { UserService } from 'src/app/shared/services/user.service';
-import { ProteinService } from 'src/app/shared/services/protein.service';
 
 import { IId } from 'src/app/shared/models/iId.model';
-import { IRegister } from 'src/app/shared/models/iRegister.model';
+import { IUser } from 'src/app/shared/models/iUser.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserEffects {
 
-  constructor(private actions$: Actions, private userService: UserService, private proteinService: ProteinService, private router: Router) { }
+  constructor(private actions$: Actions, private userService: UserService, private router: Router) { }
 
   public loadUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loadUser),
     switchMap(action => this.userService.getUser(action.userId).pipe(
-      map((user: IRegister) => {
+      map((user: IUser) => {
         user.id = action.userId;
         return userActions.loadUserSuccess({ user: user })
       }),
@@ -31,13 +30,13 @@ export class UserEffects {
   ));
 
   public createUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.createUser),
-    switchMap(action => this.userService.createUser(action.register).pipe(
+    switchMap(action => this.userService.createUser(action.user).pipe(
       map((userId: IId) => {
         this.router.navigate(['product/login']);
-        const register: IRegister = action.register;
-        register.id = userId.name;
+        const { user } = action;
+        user.id = userId.name;
 
-        return userActions.createUserSuccess({ register: action.register });
+        return userActions.createUserSuccess({ user });
       }),
       catchError(error => of(userActions.createUserFail(error)))
     ))
@@ -45,10 +44,10 @@ export class UserEffects {
 
   public loginUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loginUser),
     switchMap(action => this.userService.login(action.login).pipe(
-      switchMap((loginUser: IRegister) => {
-        const userId = loginUser.id;
+      switchMap((user: IUser) => {
+        const userId = user.id;
         this.router.navigate(['product/account']);
-        return [userActions.loginUserSuccess({ register: loginUser }), proteinActions.LoadProteins({ userId })];
+        return [userActions.loginUserSuccess({ user }), proteinActions.LoadProteins({ userId })];
       }),
       catchError(error => of(userActions.loginUserFail(error)))
     ))
@@ -56,7 +55,7 @@ export class UserEffects {
 
   public updateUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.updateUser),
     switchMap(action => this.userService.updateUser(action.user).pipe(
-      map((user: IRegister) => {
+      map((user: IUser) => {
         user.id = action.user.id;
         return userActions.updateUserSuccess({ user });
       }),

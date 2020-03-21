@@ -1,6 +1,6 @@
-import { IRegister } from './iRegister.model';
+import { IUser } from './iUser.model';
 
-export class Register implements IRegister {
+export class User implements IUser {
     constructor(
         public username: string,
         public password: string,

@@ -191,7 +191,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n    <div class=\"card m-auto\">\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-8\">\r\n\r\n                <div class=\"card-body\">\r\n\r\n                    <h5 class=\"card-title \">Lets create an user</h5>\r\n                    <form (ngSubmit)=\"createUser()\" #userForm=\"ngForm\">\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter an username</p>\r\n                            <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                                Must to enter only three letters at least</small>\r\n\r\n                            <input type=\"text\" title=\"Enter an username\" name=\"username\" #username=\"ngModel\"\r\n                                [(ngModel)]=\"register.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                                [class.border-danger]=\"username.invalid && username.touched\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter a password</p>\r\n\r\n                            <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\r\n                                <small>Must to enter eight letters at least.</small><br>\r\n                                <small>(one upper case one lower case and a number)</small>\r\n                            </div>\r\n\r\n                            <input type=\"password\" title=\"Enter a password\" name=\"password\" #password=\"ngModel\"\r\n                                [(ngModel)]=\"register.password\" required\r\n                                pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                                [class.border-danger]=\"password.invalid && password.touched\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter again a password to confirm</p>\r\n\r\n                            <div class=\"text-danger\"\r\n                                [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\r\n                                <small>Your passwords isn't match!</small><br>\r\n                                <small>Please try again.</small>\r\n                            </div>\r\n\r\n                            <input type=\"password\" title=\"Enter again a password to confirm\" name=\"confirmPassword\"\r\n                                #confirmPassword=\"ngModel\" [(ngModel)]=\"register.confirmPassword\" required\r\n                                pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\" [disabled]=\"password.invalid\"\r\n                                [class.border-danger]=\"confirmPassword.touched && confirmPassword.value!==password.value\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter your weight</p>\r\n                            <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\r\n                                must be greater than 0</small>\r\n\r\n                            <input type=\"number\" title=\"Enter your weight\" name=\"weight\" #weight=\"ngModel\"\r\n                                [(ngModel)]=\"register.weight\" required pattern=\"^[1-9]\\d*$\"\r\n                                [class.border-danger]=\"weight.invalid && weight.touched\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">What is your gender ?</p>\r\n\r\n                            <div class=\"text-center\">\r\n                                <label>\r\n                                    <input type=\"radio\" name=\"male\" #male=\"ngModel\" value=\"Male\" required\r\n                                        [(ngModel)]=\"register.gender\">\r\n                                    <span class=\"rounded-pill text-center m-1 radioMale\"><i\r\n                                            class=\"fas fa-male m-1\"></i></span>\r\n                                </label>\r\n\r\n                                <label>\r\n                                    <input type=\"radio\" name=\"female\" #female=\"ngModel\" value=\"Female\" required\r\n                                        [(ngModel)]=\"register.gender\">\r\n                                    <span class=\"rounded-pill text-center m-1 radioFemale\"><i\r\n                                            class=\"fas fa-female m-1\"></i></span>\r\n                                </label>\r\n                            </div>\r\n\r\n                        </div>\r\n\r\n                        <div>\r\n                            <div>\r\n                                <small>By clicking Sign Up, you agree to our\r\n                                    <input type=\"button\" value=\"Terms\" class=\"terms\" (click)=\"showTerms()\">\r\n                                </small>\r\n\r\n                                <label>\r\n                                    <input type=\"checkbox\" name=\"accept\" #accept=\"ngModel\" ngModel required>\r\n                                    <span class=\"m-1\">\r\n                                        <i *ngIf=\"accept.valid\" class=\"fas fa-check-circle fa-lg checkbox\"></i>\r\n                                        <i *ngIf=\"accept.invalid\" class=\"fas fa-circle fa-lg checkbox\"></i>\r\n                                    </span>\r\n                                </label>\r\n                            </div>\r\n\r\n                            <div *ngIf=\"terms\">\r\n                                <p>By clicking Sign Up, you agree to our Data Policy and Cookies Policy</p>\r\n                            </div>\r\n                        </div>\r\n\r\n                        <div>\r\n                            <hr>\r\n                            <div class=\"text-center\">\r\n                                <input type=\"submit\" value=\"Sign Up &#xf234;\"\r\n                                    [class.invalid]=\"(username.touched && password.touched && confirmPassword.touched && weight.touched && accept.dirty && (male.dirty || female.dirty)) && (confirmPassword.value!==password.value || userForm.form.invalid)\"\r\n                                    [disabled]=\"userForm.form.invalid || confirmPassword.value!==password.value && confirmPassword.touched\"\r\n                                    class=\"btn btn-outline-primary rounded-pill fas m-1 w-75\">\r\n                            </div>\r\n\r\n                        </div>\r\n\r\n                    </form>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-4\">\r\n                <img src=\"/assets/photos/bodybuilder_register.jpg\" class=\"image\">\r\n                <hr>\r\n                <p>Dreams come true sometimes</p>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n    <div class=\"card m-auto\">\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-8\">\r\n\r\n                <div class=\"card-body\">\r\n\r\n                    <h5 class=\"card-title \">Lets create an user</h5>\r\n                    <form (ngSubmit)=\"createUser()\" #userForm=\"ngForm\">\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter an username</p>\r\n                            <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                                Must to enter only three letters at least</small>\r\n\r\n                            <input type=\"text\" title=\"Enter an username\" name=\"username\" #username=\"ngModel\"\r\n                                [(ngModel)]=\"user.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                                [class.border-danger]=\"username.invalid && username.touched\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter a password</p>\r\n\r\n                            <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\r\n                                <small>Must to enter eight letters at least.</small><br>\r\n                                <small>(one upper case one lower case and a number)</small>\r\n                            </div>\r\n\r\n                            <input type=\"password\" title=\"Enter a password\" name=\"password\" #password=\"ngModel\"\r\n                                [(ngModel)]=\"user.password\" required\r\n                                pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                                [class.border-danger]=\"password.invalid && password.touched\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter again a password to confirm</p>\r\n\r\n                            <div class=\"text-danger\"\r\n                                [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\r\n                                <small>Your passwords isn't match!</small><br>\r\n                                <small>Please try again.</small>\r\n                            </div>\r\n\r\n                            <input type=\"password\" title=\"Enter again a password to confirm\" name=\"confirmPassword\"\r\n                                #confirmPassword=\"ngModel\" [(ngModel)]=\"user.confirmPassword\" required\r\n                                pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\" [disabled]=\"password.invalid\"\r\n                                [class.border-danger]=\"confirmPassword.touched && confirmPassword.value!==password.value\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">Enter your weight</p>\r\n                            <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\r\n                                must be greater than 0</small>\r\n\r\n                            <input type=\"number\" title=\"Enter your weight\" name=\"weight\" #weight=\"ngModel\"\r\n                                [(ngModel)]=\"user.weight\" required pattern=\"^[1-9]\\d*$\"\r\n                                [class.border-danger]=\"weight.invalid && weight.touched\"\r\n                                class=\"rounded-pill border border-primary\">\r\n                        </div>\r\n\r\n                        <div>\r\n                            <p class=\"m-0\">What is your gender ?</p>\r\n\r\n                            <div class=\"text-center\">\r\n                                <label>\r\n                                    <input type=\"radio\" name=\"male\" #male=\"ngModel\" value=\"Male\" required\r\n                                        [(ngModel)]=\"user.gender\">\r\n                                    <span class=\"rounded-pill text-center m-1 radioMale\"><i\r\n                                            class=\"fas fa-male m-1\"></i></span>\r\n                                </label>\r\n\r\n                                <label>\r\n                                    <input type=\"radio\" name=\"female\" #female=\"ngModel\" value=\"Female\" required\r\n                                        [(ngModel)]=\"user.gender\">\r\n                                    <span class=\"rounded-pill text-center m-1 radioFemale\"><i\r\n                                            class=\"fas fa-female m-1\"></i></span>\r\n                                </label>\r\n                            </div>\r\n\r\n                        </div>\r\n\r\n                        <div>\r\n                            <div>\r\n                                <small>By clicking Sign Up, you agree to our\r\n                                    <input type=\"button\" value=\"Terms\" class=\"terms\" (click)=\"showTerms()\">\r\n                                </small>\r\n\r\n                                <label>\r\n                                    <input type=\"checkbox\" name=\"accept\" #accept=\"ngModel\" ngModel required>\r\n                                    <span class=\"m-1\">\r\n                                        <i *ngIf=\"accept.valid\" class=\"fas fa-check-circle fa-lg checkbox\"></i>\r\n                                        <i *ngIf=\"accept.invalid\" class=\"fas fa-circle fa-lg checkbox\"></i>\r\n                                    </span>\r\n                                </label>\r\n                            </div>\r\n\r\n                            <div *ngIf=\"terms\">\r\n                                <p>By clicking Sign Up, you agree to our Data Policy and Cookies Policy</p>\r\n                            </div>\r\n                        </div>\r\n\r\n                        <div>\r\n                            <hr>\r\n                            <div class=\"text-center\">\r\n                                <input type=\"submit\" value=\"Sign Up &#xf234;\"\r\n                                    [class.invalid]=\"(username.touched && password.touched && confirmPassword.touched && weight.touched && accept.dirty && (male.dirty || female.dirty)) && (confirmPassword.value!==password.value || userForm.form.invalid)\"\r\n                                    [disabled]=\"userForm.form.invalid || confirmPassword.value!==password.value && confirmPassword.touched\"\r\n                                    class=\"btn btn-outline-primary rounded-pill fas m-1 w-75\">\r\n                            </div>\r\n\r\n                        </div>\r\n\r\n                    </form>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-4\">\r\n                <img src=\"/assets/photos/bodybuilder_register.jpg\" class=\"image\">\r\n                <hr>\r\n                <p>Dreams come true sometimes</p>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -804,12 +804,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/fesm2015/store.js");
 
     var AccountComponent =
     /*#__PURE__*/
     function () {
-      function AccountComponent() {
+      function AccountComponent(store, router) {
         _classCallCheck(this, AccountComponent);
+
+        this.store = store;
+        this.router = router;
+        var isLogin = !!sessionStorage.getItem("login");
+        if (!isLogin) this.router.navigate(["product/login"]);
       }
 
       _createClass(AccountComponent, [{
@@ -819,6 +836,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return AccountComponent;
     }();
+
+    AccountComponent.ctorParameters = function () {
+      return [{
+        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
+    };
 
     AccountComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-account',
@@ -1622,14 +1647,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(InfoComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.audio.src = "assets/audio/music.mp3";
-          this.audio.play();
-          this.audio.volume = 0.05;
+          this.play();
         }
       }, {
         key: "ngOnDestroy",
         value: function ngOnDestroy() {
           this.audio.pause();
+        }
+      }, {
+        key: "play",
+        value: function play() {
+          this.audio.src = "assets/audio/music.mp3";
+          this.audio.play();
+          this.audio.volume = 0.05;
         }
       }]);
 
@@ -1922,9 +1952,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _shared_models_register_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../shared/models/register.model */
-    "./src/app/shared/models/register.model.ts");
+    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../shared/models/user.model */
+    "./src/app/shared/models/user.model.ts");
     /* harmony import */
 
 
@@ -1950,13 +1980,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(RegisterComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.register = new _shared_models_register_model__WEBPACK_IMPORTED_MODULE_2__["Register"](undefined, undefined, undefined, undefined, undefined);
+          this.user = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_2__["User"](undefined, undefined, undefined, undefined, undefined);
         }
       }, {
         key: "createUser",
         value: function createUser() {
+          var user = this.user;
           this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["createUser"])({
-            register: this.register
+            user: user
           }));
         }
       }, {
@@ -2105,23 +2136,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./src/app/shared/models/register.model.ts":
-  /*!*************************************************!*\
-    !*** ./src/app/shared/models/register.model.ts ***!
-    \*************************************************/
+  "./src/app/shared/models/user.model.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/shared/models/user.model.ts ***!
+    \*********************************************/
 
-  /*! exports provided: Register */
+  /*! exports provided: User */
 
   /***/
-  function srcAppSharedModelsRegisterModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppSharedModelsUserModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Register", function () {
-      return Register;
+    __webpack_require__.d(__webpack_exports__, "User", function () {
+      return User;
     });
     /* harmony import */
 
@@ -2130,8 +2161,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var Register = function Register(username, password, confirmPassword, gender, weight, id) {
-      _classCallCheck(this, Register);
+    var User = function User(username, password, confirmPassword, gender, weight, id) {
+      _classCallCheck(this, User);
 
       this.username = username;
       this.password = password;
@@ -2338,7 +2369,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var url = this.URL + this.endURL;
           return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
             var register = null;
-            Object.entries(result).map(function (value) {
+            Object.entries(result).some(function (value) {
               if (value[1].username === _login.username && value[1].password === _login.password) {
                 value[1].id = value[0];
                 register = value[1];
@@ -2346,9 +2377,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
 
               ;
-            }); // server side don't throw an error.
-
-            if (register == null) throw '';
+            });
             return register;
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
             return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error.json());
@@ -3037,21 +3066,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! src/app/shared/services/user.service */
     "./src/app/shared/services/user.service.ts");
-    /* harmony import */
 
-
-    var src_app_shared_services_protein_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! src/app/shared/services/protein.service */
-    "./src/app/shared/services/protein.service.ts");
-
-    var UserEffects = function UserEffects(actions$, userService, proteinService, router) {
+    var UserEffects = function UserEffects(actions$, userService, router) {
       var _this4 = this;
 
       _classCallCheck(this, UserEffects);
 
       this.actions$ = actions$;
       this.userService = userService;
-      this.proteinService = proteinService;
       this.router = router;
       this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
         return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
@@ -3067,13 +3089,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
       this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
         return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this4.userService.createUser(action.register).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
+          return _this4.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
             _this4.router.navigate(['product/login']);
 
-            var register = action.register;
-            register.id = userId.name;
+            var user = action.user;
+            user.id = userId.name;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserSuccess"]({
-              register: action.register
+              user: user
             });
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserFail"](error));
@@ -3082,13 +3104,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
       this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
         return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this4.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (loginUser) {
-            var userId = loginUser.id;
+          return _this4.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
+            var userId = user.id;
 
             _this4.router.navigate(['product/account']);
 
             return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserSuccess"]({
-              register: loginUser
+              user: user
             }), _actions_protein_action__WEBPACK_IMPORTED_MODULE_7__["LoadProteins"]({
               userId: userId
             })];
@@ -3116,8 +3138,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["Actions"]
       }, {
         type: src_app_shared_services_user_service__WEBPACK_IMPORTED_MODULE_8__["UserService"]
-      }, {
-        type: src_app_shared_services_protein_service__WEBPACK_IMPORTED_MODULE_9__["ProteinService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }];
@@ -3863,13 +3883,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Object.assign({}, adapter.addOne(user, state), {
         loaded: true
       });
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserFail"], function (state) {
+      alert("Your username and password don't match!\nPlease try again.");
+      return state;
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["createUserSuccess"], function (state, action) {
-      var register = action.register;
-      return adapter.addOne(register, state);
+      var user = action.user;
+      return adapter.addOne(user, state);
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserSuccess"], function (state, action) {
-      var register = action.register;
-      sessionStorage.setItem("login", register.id);
-      return Object.assign({}, adapter.addOne(register, state), {
+      var user = action.user;
+      sessionStorage.setItem("login", user.id);
+      return Object.assign({}, adapter.addOne(user, state), {
         loaded: true
       });
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["deleteUserSuccess"], function (state) {

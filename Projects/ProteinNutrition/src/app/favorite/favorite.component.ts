@@ -19,7 +19,7 @@ export class FavoriteComponent implements OnInit {
 
   }
 
-  public loginPage() {
+  public loginPage(): void {
     this.router.navigate(['/product/login']);
   }
 

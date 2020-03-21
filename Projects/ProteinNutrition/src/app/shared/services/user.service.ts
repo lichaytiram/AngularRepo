@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IRegister } from '../models/iRegister.model';
+import { IUser } from '../models/iUser.model';
 import { catchError, map, switchMap, tap, take } from 'rxjs/operators';
 import { ILogin } from '../models/iLogin.model';
-import { Register } from '../models/register.model';
+import { User } from '../models/user.model';
 import { throwError } from 'rxjs';
 import { IId } from '../models/iId.model';
 
@@ -18,28 +18,28 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public createUser(user: IRegister): Observable<IId> {
+  public createUser(user: IUser): Observable<IId> {
     const url = this.URL + this.endURL;
     return this.http.post<IId>(url, user)
       .pipe(catchError(error => Observable.throw(error.json())));
   }
 
-  public getAllUsers(): Observable<IRegister[]> {
+  public getAllUsers(): Observable<IUser[]> {
     const url = this.URL + this.endURL;
-    return this.http.get<IRegister[]>(url)
+    return this.http.get<IUser[]>(url)
       .pipe(catchError(error => Observable.throw(error.json())));
   }
 
   // Firebase database request, don't have any straight way (api)
-  public login(login: ILogin): Observable<IRegister> {
+  public login(login: ILogin): Observable<IUser> {
     const url = this.URL + this.endURL;
-    return this.http.get<Observable<IRegister>>(url)
+    return this.http.get<Observable<IUser>>(url)
       .pipe(
         map(
           result => {
-            let register: IRegister = null;
+            let register: IUser = null;
 
-            Object.entries(result).map(value => {
+            Object.entries(result).some(value => {
 
               if (value[1].username === login.username && value[1].password === login.password) {
                 value[1].id = value[0];
@@ -47,17 +47,15 @@ export class UserService {
                 return true;
               };
             });
-            // server side don't throw an error.
-            if (register == null)
-              throw ('');
+
             return register;
           }),
         catchError(error => Observable.throw(error.json())));
   }
 
-  public getUser(userId: string): Observable<IRegister> {
+  public getUser(userId: string): Observable<IUser> {
     const url = `${this.URL}/${userId}${this.endURL}`;
-    return this.http.get<IRegister>(url)
+    return this.http.get<IUser>(url)
       .pipe(catchError(error => Observable.throw(error.json())));
   }
 
@@ -67,10 +65,10 @@ export class UserService {
       catchError(error => Observable.throw(error.json())));
   }
 
-  public updateUser(user: IRegister): Observable<IRegister> {
+  public updateUser(user: IUser): Observable<IUser> {
     const { id, ...userToUpdate } = user;
     const url = `${this.URL}/${id}${this.endURL}`;
-    return this.http.put<IRegister>(url, userToUpdate).pipe(
+    return this.http.put<IUser>(url, userToUpdate).pipe(
       catchError(error => Observable.throw(error.json())));
   }
 

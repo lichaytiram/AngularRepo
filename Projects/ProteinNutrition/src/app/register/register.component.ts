@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IRegister } from '../shared/models/iRegister.model';
-import { Register } from '../shared/models/register.model';
+import { IUser } from '../shared/models/iUser.model';
+import { User } from '../shared/models/user.model';
 import { createUser, createUserSuccess } from '../store/actions/user.action';
 import { IProductsState } from '../store';
 import { Store } from '@ngrx/store';
@@ -12,17 +12,20 @@ import { Store } from '@ngrx/store';
 })
 export class RegisterComponent implements OnInit {
 
-  public register: IRegister;
+  public user: IUser;
   public terms: boolean;
 
   constructor(private store: Store<IProductsState>) { }
 
   ngOnInit() {
-    this.register = new Register(undefined, undefined, undefined, undefined, undefined);
+    this.user = new User(undefined, undefined, undefined, undefined, undefined);
   }
 
   public createUser(): void {
-    this.store.dispatch(createUser({ register: this.register }));
+
+    const user = this.user;
+    this.store.dispatch(createUser({ user }));
+
   }
 
   public showTerms(): void {

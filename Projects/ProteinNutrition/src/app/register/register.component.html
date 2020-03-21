@@ -16,7 +16,7 @@
                                 Must to enter only three letters at least</small>
 
                             <input type="text" title="Enter an username" name="username" #username="ngModel"
-                                [(ngModel)]="register.username" required pattern="^[a-zA-Z]{3,}$"
+                                [(ngModel)]="user.username" required pattern="^[a-zA-Z]{3,}$"
                                 [class.border-danger]="username.invalid && username.touched"
                                 class="rounded-pill border border-primary">
                         </div>
@@ -30,7 +30,7 @@
                             </div>
 
                             <input type="password" title="Enter a password" name="password" #password="ngModel"
-                                [(ngModel)]="register.password" required
+                                [(ngModel)]="user.password" required
                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
                                 [class.border-danger]="password.invalid && password.touched"
                                 class="rounded-pill border border-primary">
@@ -46,7 +46,7 @@
                             </div>
 
                             <input type="password" title="Enter again a password to confirm" name="confirmPassword"
-                                #confirmPassword="ngModel" [(ngModel)]="register.confirmPassword" required
+                                #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" required
                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" [disabled]="password.invalid"
                                 [class.border-danger]="confirmPassword.touched && confirmPassword.value!==password.value"
                                 class="rounded-pill border border-primary">
@@ -58,7 +58,7 @@
                                 must be greater than 0</small>
 
                             <input type="number" title="Enter your weight" name="weight" #weight="ngModel"
-                                [(ngModel)]="register.weight" required pattern="^[1-9]\d*$"
+                                [(ngModel)]="user.weight" required pattern="^[1-9]\d*$"
                                 [class.border-danger]="weight.invalid && weight.touched"
                                 class="rounded-pill border border-primary">
                         </div>
@@ -69,14 +69,14 @@
                             <div class="text-center">
                                 <label>
                                     <input type="radio" name="male" #male="ngModel" value="Male" required
-                                        [(ngModel)]="register.gender">
+                                        [(ngModel)]="user.gender">
                                     <span class="rounded-pill text-center m-1 radioMale"><i
                                             class="fas fa-male m-1"></i></span>
                                 </label>
 
                                 <label>
                                     <input type="radio" name="female" #female="ngModel" value="Female" required
-                                        [(ngModel)]="register.gender">
+                                        [(ngModel)]="user.gender">
                                     <span class="rounded-pill text-center m-1 radioFemale"><i
                                             class="fas fa-female m-1"></i></span>
                                 </label>
