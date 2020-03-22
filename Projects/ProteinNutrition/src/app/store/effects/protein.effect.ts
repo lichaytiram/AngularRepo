@@ -42,4 +42,12 @@ export class ProteinEffect {
     ))
   ));
 
+  public deleteAllproteins$ = createEffect(() => this.actions$.pipe(ofType(proteinActions.DeleteAllProteins),
+    switchMap(action => this.proteinService.deleteAllProteins(action.userId).pipe(
+      map(() => proteinActions.DeleteAllProteinsSuccess()),
+      catchError(error => of(proteinActions.DeleteAllProteinsFail(error)))
+
+    ))
+  ));
+
 }

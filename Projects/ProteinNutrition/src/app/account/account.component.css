@@ -1,0 +1,16 @@
+p, label, span, h5 {
+    color: rgb(190, 231, 238);
+}
+
+button, input {
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: initial;
+}
+
+.space {
+    width: 700px;
+    border: 30px;
+}

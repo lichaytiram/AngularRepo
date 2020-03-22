@@ -46,4 +46,10 @@ export class ProteinService {
       catchError(error => Observable.throw(error.json())));
   }
 
+  public deleteAllProteins(userId: string): Observable<any> {
+    const url = `${this.URL}/${userId}${this.endURL}`;
+    return this.http.delete(url).pipe(
+      catchError(error => Observable.throw(error.json())));
+  }
+
 }

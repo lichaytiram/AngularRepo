@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from '../shared/models/iUser.model';
 import { User } from '../shared/models/user.model';
-import { createUser, createUserSuccess } from '../store/actions/user.action';
+import { CreateUser, CreateUserSuccess } from '../store/actions/user.action';
 import { IProductsState } from '../store';
 import { Store } from '@ngrx/store';
 
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   public createUser(): void {
 
     const user = this.user;
-    this.store.dispatch(createUser({ user }));
+    this.store.dispatch(CreateUser({ user }));
 
   }
 

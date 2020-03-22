@@ -51,7 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<p>account works!</p>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n    <div *ngIf=\"user$ | async as user\">\r\n\r\n        <button (click)=\"logout(user.id)\" class=\"text-primary\"><i class=\"fas fa-sign-out-alt\"></i> Log Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div class=\"row\">\r\n\r\n            <div *ngIf=\"user$ | async as user\">\r\n\r\n                <h5>You user</h5>\r\n\r\n                <p>username: <span>{{user.username}}</span></p>\r\n                <p>password: <span>{{user.password}}</span></p>\r\n                <p>confirmPassword: <span>{{user.confirmPassword}}</span></p>\r\n                <p>gender: <span>{{user.gender}}</span></p>\r\n                <p>weight: <span>{{user.weight}}</span></p>\r\n                <p>id: <span>{{user.id}}</span></p>\r\n\r\n                <input type=\"button\" value=\"&#xf4ff; Edit account\" class=\"fas text-primary\">\r\n\r\n                <form>\r\n\r\n\r\n\r\n                </form>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -769,7 +769,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FjY291bnQvYWNjb3VudC5jb21wb25lbnQuY3NzIn0= */";
+    __webpack_exports__["default"] = "p, label, span, h5 {\r\n    color: rgb(190, 231, 238);\r\n}\r\n\r\nbutton, input {\r\n    outline: 0;\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r\n    background-color: initial;\r\n}\r\n\r\n.space {\r\n    width: 700px;\r\n    border: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9hY2NvdW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsVUFBVTtJQUNWLFNBQVM7SUFDVCxTQUFTO0lBQ1QseUJBQXlCO0FBQzdCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9hY2NvdW50L2FjY291bnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInAsIGxhYmVsLCBzcGFuLCBoNSB7XHJcbiAgICBjb2xvcjogcmdiKDE5MCwgMjMxLCAyMzgpO1xyXG59XHJcblxyXG5idXR0b24sIGlucHV0IHtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogaW5pdGlhbDtcclxufVxyXG5cclxuLnNwYWNlIHtcclxuICAgIHdpZHRoOiA3MDBweDtcclxuICAgIGJvcmRlcjogMzBweDtcclxufSJdfQ== */";
     /***/
   },
 
@@ -816,6 +816,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/fesm2015/store.js");
+    /* harmony import */
+
+
+    var _store_actions_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../store/actions/index */
+    "./src/app/store/actions/index.ts");
+    /* harmony import */
+
+
+    var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../store/selectors/user.selectors */
+    "./src/app/store/selectors/user.selectors.ts");
 
     var AccountComponent =
     /*#__PURE__*/
@@ -831,7 +843,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(AccountComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__["getUser"]));
+        }
+      }, {
+        key: "logout",
+        value: function logout(userId) {
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UserLogout"])());
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["ProteinLogout"])());
+          this.router.navigate(["product/home"]);
+        }
+      }, {
+        key: "deleteAccount",
+        value: function deleteAccount(userId) {
+          var isConfirm = confirm("You are try to delete your account!\nYou are sure?");
+
+          if (isConfirm) {
+            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteUser"])({
+              userId: userId
+            }));
+            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteAllProteins"])({
+              userId: userId
+            }));
+          }
+        }
       }]);
 
       return AccountComponent;
@@ -1613,34 +1648,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _shared_services_protein_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../shared/services/protein.service */
-    "./src/app/shared/services/protein.service.ts");
-    /* harmony import */
-
-
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @ngrx/store */
-    "./node_modules/@ngrx/store/fesm2015/store.js");
-    /* harmony import */
-
-
-    var _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../shared/services/user.service */
-    "./src/app/shared/services/user.service.ts");
 
     var InfoComponent =
     /*#__PURE__*/
     function () {
-      function InfoComponent(store, proteinService, userService) {
+      function InfoComponent() {
         _classCallCheck(this, InfoComponent);
 
-        this.store = store;
-        this.proteinService = proteinService;
-        this.userService = userService;
         this.audio = new Audio();
       }
 
@@ -1665,16 +1679,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return InfoComponent;
     }();
-
-    InfoComponent.ctorParameters = function () {
-      return [{
-        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
-      }, {
-        type: _shared_services_protein_service__WEBPACK_IMPORTED_MODULE_2__["ProteinService"]
-      }, {
-        type: _shared_services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]
-      }];
-    };
 
     InfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-info',
@@ -1783,7 +1787,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "userLogin",
         value: function userLogin() {
           var login = this.login;
-          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_5__["loginUser"])({
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_5__["LoginUser"])({
             login: login
           }));
         }
@@ -1986,7 +1990,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "createUser",
         value: function createUser() {
           var user = this.user;
-          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["createUser"])({
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["CreateUser"])({
             user: user
           }));
         }
@@ -2268,6 +2272,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(error.json());
           }));
         }
+      }, {
+        key: "deleteAllProteins",
+        value: function deleteAllProteins(userId) {
+          var url = "".concat(this.URL, "/").concat(userId).concat(this.endURL);
+          return this.http.delete(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(error.json());
+          }));
+        }
       }]);
 
       return ProteinService;
@@ -2432,7 +2444,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/index.ts ***!
     \****************************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess, deleteUser, deleteUserFail, deleteUserSuccess, updateUser, updateUserFail, updateUserSuccess */
+  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserLogout, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout */
 
   /***/
   function srcAppStoreActionsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -2505,6 +2517,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "DeleteProteinSuccess", function () {
       return _protein_action__WEBPACK_IMPORTED_MODULE_1__["DeleteProteinSuccess"];
     });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteins", function () {
+      return _protein_action__WEBPACK_IMPORTED_MODULE_1__["DeleteAllProteins"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsFail", function () {
+      return _protein_action__WEBPACK_IMPORTED_MODULE_1__["DeleteAllProteinsFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsSuccess", function () {
+      return _protein_action__WEBPACK_IMPORTED_MODULE_1__["DeleteAllProteinsSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProteinLogout", function () {
+      return _protein_action__WEBPACK_IMPORTED_MODULE_1__["ProteinLogout"];
+    });
     /* harmony import */
 
 
@@ -2514,92 +2550,98 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUser", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["createUser"];
+    __webpack_require__.d(__webpack_exports__, "CreateUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["CreateUser"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUserFail", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["createUserFail"];
+    __webpack_require__.d(__webpack_exports__, "CreateUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["CreateUserFail"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUserSuccess", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["createUserSuccess"];
+    __webpack_require__.d(__webpack_exports__, "CreateUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["CreateUserSuccess"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loadUser", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loadUser"];
+    __webpack_require__.d(__webpack_exports__, "LoadUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["LoadUser"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loadUserFail", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loadUserFail"];
+    __webpack_require__.d(__webpack_exports__, "LoadUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["LoadUserFail"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loadUserSuccess", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loadUserSuccess"];
+    __webpack_require__.d(__webpack_exports__, "LoadUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["LoadUserSuccess"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loginUser", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUser"];
+    __webpack_require__.d(__webpack_exports__, "LoginUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["LoginUser"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loginUserFail", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUserFail"];
+    __webpack_require__.d(__webpack_exports__, "LoginUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["LoginUserFail"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["loginUserSuccess"];
+    __webpack_require__.d(__webpack_exports__, "LoginUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["LoginUserSuccess"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "deleteUser", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["deleteUser"];
+    __webpack_require__.d(__webpack_exports__, "DeleteUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["DeleteUser"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "deleteUserFail", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["deleteUserFail"];
+    __webpack_require__.d(__webpack_exports__, "DeleteUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["DeleteUserFail"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "deleteUserSuccess", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["deleteUserSuccess"];
+    __webpack_require__.d(__webpack_exports__, "DeleteUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["DeleteUserSuccess"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "updateUser", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["updateUser"];
+    __webpack_require__.d(__webpack_exports__, "UpdateUser", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["UpdateUser"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "updateUserFail", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["updateUserFail"];
+    __webpack_require__.d(__webpack_exports__, "UpdateUserFail", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["UpdateUserFail"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "updateUserSuccess", function () {
-      return _user_action__WEBPACK_IMPORTED_MODULE_2__["updateUserSuccess"];
+    __webpack_require__.d(__webpack_exports__, "UpdateUserSuccess", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["UpdateUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["UserLogout"];
     });
     /***/
 
@@ -2611,7 +2653,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/protein.action.ts ***!
     \*************************************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout */
 
   /***/
   function srcAppStoreActionsProteinActionTs(module, __webpack_exports__, __webpack_require__) {
@@ -2672,6 +2714,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "DeleteProteinSuccess", function () {
       return DeleteProteinSuccess;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteins", function () {
+      return DeleteAllProteins;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsFail", function () {
+      return DeleteAllProteinsFail;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsSuccess", function () {
+      return DeleteAllProteinsSuccess;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProteinLogout", function () {
+      return ProteinLogout;
+    });
     /* harmony import */
 
 
@@ -2694,6 +2760,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var DeleteProtein = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete Protein', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var DeleteProteinFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete Protein Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var DeleteProteinSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete Protein Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var DeleteAllProteins = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete All Proteins', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var DeleteAllProteinsFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete All Proteins Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var DeleteAllProteinsSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete All Proteins Success');
+    var ProteinLogout = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Protein Logout');
     /***/
   },
 
@@ -2703,7 +2773,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/user.action.ts ***!
     \**********************************************/
 
-  /*! exports provided: createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess, deleteUser, deleteUserFail, deleteUserSuccess, updateUser, updateUserFail, updateUserSuccess */
+  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserLogout */
 
   /***/
   function srcAppStoreActionsUserActionTs(module, __webpack_exports__, __webpack_require__) {
@@ -2713,92 +2783,98 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUser", function () {
-      return createUser;
+    __webpack_require__.d(__webpack_exports__, "CreateUser", function () {
+      return CreateUser;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUserFail", function () {
-      return createUserFail;
+    __webpack_require__.d(__webpack_exports__, "CreateUserFail", function () {
+      return CreateUserFail;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUserSuccess", function () {
-      return createUserSuccess;
+    __webpack_require__.d(__webpack_exports__, "CreateUserSuccess", function () {
+      return CreateUserSuccess;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loadUser", function () {
-      return loadUser;
+    __webpack_require__.d(__webpack_exports__, "LoadUser", function () {
+      return LoadUser;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loadUserFail", function () {
-      return loadUserFail;
+    __webpack_require__.d(__webpack_exports__, "LoadUserFail", function () {
+      return LoadUserFail;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loadUserSuccess", function () {
-      return loadUserSuccess;
+    __webpack_require__.d(__webpack_exports__, "LoadUserSuccess", function () {
+      return LoadUserSuccess;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loginUser", function () {
-      return loginUser;
+    __webpack_require__.d(__webpack_exports__, "LoginUser", function () {
+      return LoginUser;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loginUserFail", function () {
-      return loginUserFail;
+    __webpack_require__.d(__webpack_exports__, "LoginUserFail", function () {
+      return LoginUserFail;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
-      return loginUserSuccess;
+    __webpack_require__.d(__webpack_exports__, "LoginUserSuccess", function () {
+      return LoginUserSuccess;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "deleteUser", function () {
-      return deleteUser;
+    __webpack_require__.d(__webpack_exports__, "DeleteUser", function () {
+      return DeleteUser;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "deleteUserFail", function () {
-      return deleteUserFail;
+    __webpack_require__.d(__webpack_exports__, "DeleteUserFail", function () {
+      return DeleteUserFail;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "deleteUserSuccess", function () {
-      return deleteUserSuccess;
+    __webpack_require__.d(__webpack_exports__, "DeleteUserSuccess", function () {
+      return DeleteUserSuccess;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "updateUser", function () {
-      return updateUser;
+    __webpack_require__.d(__webpack_exports__, "UpdateUser", function () {
+      return UpdateUser;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "updateUserFail", function () {
-      return updateUserFail;
+    __webpack_require__.d(__webpack_exports__, "UpdateUserFail", function () {
+      return UpdateUserFail;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "updateUserSuccess", function () {
-      return updateUserSuccess;
+    __webpack_require__.d(__webpack_exports__, "UpdateUserSuccess", function () {
+      return UpdateUserSuccess;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
+      return UserLogout;
     });
     /* harmony import */
 
@@ -2813,21 +2889,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/fesm2015/store.js");
 
-    var createUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var createUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var createUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Create User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var loadUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Load User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var loadUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Load User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var loadUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Load User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var loginUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var loginUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var loginUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Login User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var deleteUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Delete User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var deleteUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Delete User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var deleteUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Delete User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var updateUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Update User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var updateUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Update User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
-    var updateUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[products] Update User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var CreateUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Create User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var CreateUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Create User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var CreateUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Create User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var LoadUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Load User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var LoadUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Load User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var LoadUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Load User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var LoginUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Login User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var LoginUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Login User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var LoginUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Login User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var DeleteUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var DeleteUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var DeleteUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Delete User Success');
+    var UpdateUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Update User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var UpdateUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Update User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var UpdateUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Update User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var UserLogout = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] User Logout');
     /***/
   },
 
@@ -2977,6 +3054,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }));
       });
+      this.deleteAllproteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
+        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this3.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+            return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsSuccess"]();
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsFail"](error));
+          }));
+        }));
+      });
     };
 
     ProteinEffect.ctorParameters = function () {
@@ -3076,58 +3162,69 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       this.userService = userService;
       this.router = router;
       this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
           return _this4.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.userId;
-            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loadUserSuccess"]({
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUserSuccess"]({
               user: user
             });
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loadUserFail"](error));
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUserFail"](error));
           }));
         }));
       });
       this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
           return _this4.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
             _this4.router.navigate(['product/login']);
 
             var user = action.user;
             user.id = userId.name;
-            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserSuccess"]({
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUserSuccess"]({
               user: user
             });
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["createUserFail"](error));
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUserFail"](error));
           }));
         }));
       });
       this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
           return _this4.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
             var userId = user.id;
 
             _this4.router.navigate(['product/account']);
 
-            return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserSuccess"]({
+            return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUserSuccess"]({
               user: user
             }), _actions_protein_action__WEBPACK_IMPORTED_MODULE_7__["LoadProteins"]({
               userId: userId
             })];
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["loginUserFail"](error));
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUserFail"](error));
           }));
         }));
       });
       this.updateUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["updateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
           return _this4.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.user.id;
-            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["updateUserSuccess"]({
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUserSuccess"]({
               user: user
             });
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["updateUserFail"](error));
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUserFail"](error));
+          }));
+        }));
+      });
+      this.deleteUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
+        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this4.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
+            _this4.router.navigate(["product/home"]);
+
+            return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUserSuccess"]();
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_7__["DeleteProteinFail"](error));
           }));
         }));
       });
@@ -3373,9 +3470,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function checkStore() {
           var _this6 = this;
 
-          return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getuserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
+          return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getUserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this6.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["loadUser"]({
+            if (!loaded && userId) _this6.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -3403,7 +3500,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/index.ts ***!
     \********************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, createUser, createUserFail, createUserSuccess, loadUser, loadUserFail, loadUserSuccess, loginUser, loginUserFail, loginUserSuccess, deleteUser, deleteUserFail, deleteUserSuccess, updateUser, updateUserFail, updateUserSuccess, reducers, getProductsState, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getuserLoaded */
+  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserLogout, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, reducers, getProductsState, getUserState, getUser, getUserLoaded, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -3422,6 +3519,102 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./actions */
     "./src/app/store/actions/index.ts");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CreateUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["CreateUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CreateUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["CreateUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CreateUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["CreateUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LoadUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["LoadUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LoadUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["LoadUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LoadUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["LoadUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LoginUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["LoginUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LoginUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["LoginUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LoginUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["LoginUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["DeleteUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["DeleteUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DeleteUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["DeleteUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UpdateUser", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["UpdateUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UpdateUserFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["UpdateUserFail"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UpdateUserSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["UpdateUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["UserLogout"];
+    });
     /* harmony reexport (safe) */
 
 
@@ -3479,92 +3672,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUser", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["createUser"];
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteins", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["DeleteAllProteins"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUserFail", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["createUserFail"];
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsFail", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["DeleteAllProteinsFail"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "createUserSuccess", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["createUserSuccess"];
+    __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsSuccess", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["DeleteAllProteinsSuccess"];
     });
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "loadUser", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["loadUser"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "loadUserFail", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["loadUserFail"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "loadUserSuccess", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["loadUserSuccess"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "loginUser", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUser"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "loginUserFail", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUserFail"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "loginUserSuccess", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["loginUserSuccess"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "deleteUser", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["deleteUser"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "deleteUserFail", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["deleteUserFail"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "deleteUserSuccess", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["deleteUserSuccess"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "updateUser", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["updateUser"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "updateUserFail", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["updateUserFail"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "updateUserSuccess", function () {
-      return _actions__WEBPACK_IMPORTED_MODULE_1__["updateUserSuccess"];
+    __webpack_require__.d(__webpack_exports__, "ProteinLogout", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["ProteinLogout"];
     });
     /* harmony import */
 
@@ -3590,6 +3717,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ./selectors */
     "./src/app/store/selectors/index.ts");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUserState", function () {
+      return _selectors__WEBPACK_IMPORTED_MODULE_3__["getUserState"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUser", function () {
+      return _selectors__WEBPACK_IMPORTED_MODULE_3__["getUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUserLoaded", function () {
+      return _selectors__WEBPACK_IMPORTED_MODULE_3__["getUserLoaded"];
+    });
     /* harmony reexport (safe) */
 
 
@@ -3619,18 +3764,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "getSelectedProtein", function () {
       return _selectors__WEBPACK_IMPORTED_MODULE_3__["getSelectedProtein"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "getUserState", function () {
-      return _selectors__WEBPACK_IMPORTED_MODULE_3__["getUserState"];
-    });
-    /* harmony reexport (safe) */
-
-
-    __webpack_require__.d(__webpack_exports__, "getuserLoaded", function () {
-      return _selectors__WEBPACK_IMPORTED_MODULE_3__["getuserLoaded"];
     });
     /* harmony import */
 
@@ -3790,12 +3923,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Object.assign({}, adapter.addAll(proteins, state), {
         loaded: true
       });
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["ProteinLogout"], function () {
+      return initialState;
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["AddProteinSuccess"], function (state, action) {
       var protein = action.protein;
       return adapter.addOne(protein, state);
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["DeleteProteinSuccess"], function (state, action) {
       var proteinId = action.proteinId;
       return adapter.removeOne(proteinId, state);
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["DeleteAllProteinsSuccess"], function () {
+      return initialState;
     }));
 
     var _adapter$getSelectors = adapter.getSelectors(),
@@ -3818,19 +3955,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/reducers/user.reducer.ts ***!
     \************************************************/
 
-  /*! exports provided: adapter, initialState, userReducer, getUserLoaded */
+  /*! exports provided: initialState, userReducer, getUserLoaded, getUser */
 
   /***/
   function srcAppStoreReducersUserReducerTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "adapter", function () {
-      return adapter;
-    });
     /* harmony export (binding) */
 
 
@@ -3849,6 +3980,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "getUserLoaded", function () {
       return getUserLoaded;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUser", function () {
+      return getUser;
+    });
     /* harmony import */
 
 
@@ -3858,57 +3995,58 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ngrx_entity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @ngrx/entity */
-    "./node_modules/@ngrx/entity/fesm2015/entity.js");
-    /* harmony import */
-
-
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/fesm2015/store.js");
     /* harmony import */
 
 
-    var _actions_user_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _actions_user_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../actions/user.action */
     "./src/app/store/actions/user.action.ts");
 
-    var adapter = Object(_ngrx_entity__WEBPACK_IMPORTED_MODULE_1__["createEntityAdapter"])();
-    var initialState = adapter.getInitialState({
+    var initialState = {
+      user: null,
       loaded: false
-    });
-    var userReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loadUserSuccess"], function (state, action) {
+    };
+    var userReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["LoadUserSuccess"], function (state, action) {
       var user = action.user;
-      return Object.assign({}, adapter.addOne(user, state), {
-        loaded: true
+      return Object.assign({}, state, {
+        loaded: true,
+        user: user
       });
-    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserFail"], function (state) {
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["LoginUserFail"], function (state) {
       alert("Your username and password don't match!\nPlease try again.");
       return state;
-    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["createUserSuccess"], function (state, action) {
-      var user = action.user;
-      return adapter.addOne(user, state);
-    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["loginUserSuccess"], function (state, action) {
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserLogout"], function () {
+      sessionStorage.removeItem("login");
+      return initialState;
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["CreateUserSuccess"], function (state) {
+      alert("Your user has been created success!");
+      return state;
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["LoginUserSuccess"], function (state, action) {
       var user = action.user;
       sessionStorage.setItem("login", user.id);
-      return Object.assign({}, adapter.addOne(user, state), {
-        loaded: true
+      return Object.assign({}, state, {
+        loaded: true,
+        user: user
       });
-    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["deleteUserSuccess"], function (state) {
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["DeleteUserSuccess"], function () {
       sessionStorage.removeItem("login");
-      return state;
-    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["updateUserSuccess"], function (state, action) {
+      return initialState;
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UpdateUserSuccess"], function (state, action) {
       var user = action.user;
-      var userToChange = {
-        id: user.id,
-        changes: user
-      };
-      return adapter.updateOne(userToChange, state);
+      return Object.assign({}, state, {
+        user: user
+      });
     }));
 
     var getUserLoaded = function getUserLoaded(state) {
       return state.loaded;
+    };
+
+    var getUser = function getUser(state) {
+      return state.user;
     };
     /***/
 
@@ -3920,7 +4058,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/selectors/index.ts ***!
     \******************************************/
 
-  /*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getuserLoaded */
+  /*! exports provided: getUserState, getUser, getUserLoaded, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreSelectorsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -3984,8 +4122,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony reexport (safe) */
 
 
-    __webpack_require__.d(__webpack_exports__, "getuserLoaded", function () {
-      return _user_selectors__WEBPACK_IMPORTED_MODULE_2__["getuserLoaded"];
+    __webpack_require__.d(__webpack_exports__, "getUser", function () {
+      return _user_selectors__WEBPACK_IMPORTED_MODULE_2__["getUser"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUserLoaded", function () {
+      return _user_selectors__WEBPACK_IMPORTED_MODULE_2__["getUserLoaded"];
     });
     /***/
 
@@ -4083,7 +4227,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/selectors/user.selectors.ts ***!
     \***************************************************/
 
-  /*! exports provided: getUserState, getuserLoaded */
+  /*! exports provided: getUserState, getUser, getUserLoaded */
 
   /***/
   function srcAppStoreSelectorsUserSelectorsTs(module, __webpack_exports__, __webpack_require__) {
@@ -4099,8 +4243,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "getuserLoaded", function () {
-      return getuserLoaded;
+    __webpack_require__.d(__webpack_exports__, "getUser", function () {
+      return getUser;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUserLoaded", function () {
+      return getUserLoaded;
     });
     /* harmony import */
 
@@ -4130,7 +4280,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var getUserState = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["getProductsState"], function (userState) {
       return userState.user;
     });
-    var getuserLoaded = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUserLoaded"]);
+    var getUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUser"]);
+    var getUserLoaded = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUserLoaded"]);
     /***/
   },
 

@@ -1,60 +1,69 @@
 import { IUser } from 'src/app/shared/models/iUser.model';
-import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import * as fromUser from '../actions/user.action';
 
-export const adapter: EntityAdapter<IUser> = createEntityAdapter<IUser>();
-
-export interface IRegisterState extends EntityState<IUser> {
+export interface IRegisterState {
+    user: IUser;
     loaded: boolean;
 }
 
-export const initialState: IRegisterState = adapter.getInitialState({
+export const initialState: IRegisterState = {
+    user: null,
     loaded: false
-})
+}
 
 export const userReducer = createReducer<IRegisterState>(
     initialState
     , on(
-        fromUser.loadUserSuccess, (state: IRegisterState, action) => {
+        fromUser.LoadUserSuccess, (state: IRegisterState, action) => {
             const { user } = action;
             return {
-                ...adapter.addOne(user, state),
-                loaded: true
+                ...state,
+                loaded: true,
+                user
             };
         }
     ), on(
-        fromUser.loginUserFail, (state: IRegisterState) => {
+        fromUser.LoginUserFail, (state: IRegisterState) => {
             alert("Your username and password don't match!\nPlease try again.");
             return state;
         }
     ), on(
-        fromUser.createUserSuccess, (state: IRegisterState, action) => {
-            const { user } = action;
-            return adapter.addOne(user, state);
-        }
-    ), on(
-        fromUser.loginUserSuccess, (state: IRegisterState, action) => {
-            const { user } = action;
-            sessionStorage.setItem("login", user.id);
-            return {
-                ...adapter.addOne(user, state),
-                loaded: true
-            };
-        }
-    ), on(
-        fromUser.deleteUserSuccess, (state: IRegisterState) => {
+        fromUser.UserLogout, () => {
             sessionStorage.removeItem("login");
+            return initialState;
+        }
+    ), on(
+        fromUser.CreateUserSuccess, (state: IRegisterState) => {
+            alert("Your user has been created success!");
             return state;
         }
     ), on(
-        fromUser.updateUserSuccess, (state: IRegisterState, action) => {
+        fromUser.LoginUserSuccess, (state: IRegisterState, action) => {
             const { user } = action;
-            const userToChange = { id: user.id, changes: user };
-            return adapter.updateOne(userToChange, state);
+            sessionStorage.setItem("login", user.id);
+            return {
+                ...state,
+                loaded: true,
+                user
+            };
+        }
+    ), on(
+        fromUser.DeleteUserSuccess, () => {
+            sessionStorage.removeItem("login");
+            return initialState;
+        }
+    ), on(
+        fromUser.UpdateUserSuccess, (state: IRegisterState, action) => {
+            const { user } = action;
+            return {
+                ...state,
+                user
+            };
         }
     )
 
 )
 
 export const getUserLoaded = (state: IRegisterState) => state.loaded;
+export const getUser = (state: IRegisterState) => state.user;

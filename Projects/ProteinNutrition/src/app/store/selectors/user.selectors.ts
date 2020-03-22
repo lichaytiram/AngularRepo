@@ -8,4 +8,5 @@ export const getUserState = createSelector(
     (userState: fromFeature.IProductsState) => userState.user
 )
 
-export const getuserLoaded = createSelector(getUserState, fromUser.getUserLoaded);
+export const getUser = createSelector(getUserState, fromUser.getUser);
+export const getUserLoaded = createSelector(getUserState, fromUser.getUserLoaded);

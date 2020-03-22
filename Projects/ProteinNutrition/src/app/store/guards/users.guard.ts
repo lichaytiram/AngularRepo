@@ -22,12 +22,12 @@ export class UsersGuard implements CanActivate {
   }
 
   private checkStore(): Observable<boolean> {
-    return this.store.pipe(select(fromStore.getuserLoaded)).pipe(
+    return this.store.pipe(select(fromStore.getUserLoaded)).pipe(
       tap(loaded => {
         const userId: string = sessionStorage.getItem('login');
 
         if (!loaded && userId)
-          this.store.dispatch(fromStore.loadUser({ userId }))
+          this.store.dispatch(fromStore.LoadUser({ userId }))
       }),
       take(1)
     )

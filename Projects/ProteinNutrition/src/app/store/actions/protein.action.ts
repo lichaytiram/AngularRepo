@@ -10,3 +10,7 @@ export const AddProteinSuccess = createAction('[Products] Add Protein Success', 
 export const DeleteProtein = createAction('[Products] Delete Protein', props<{ userId: string, proteinId: string }>());
 export const DeleteProteinFail = createAction('[Products] Delete Protein Fail', props<{ error: Error }>());
 export const DeleteProteinSuccess = createAction('[Products] Delete Protein Success', props<{ proteinId: string }>());
+export const DeleteAllProteins = createAction('[Products] Delete All Proteins', props<{ userId: string }>());
+export const DeleteAllProteinsFail = createAction('[Products] Delete All Proteins Fail', props<{ error: Error }>());
+export const DeleteAllProteinsSuccess = createAction('[Products] Delete All Proteins Success');
+export const ProteinLogout = createAction('[Products] Protein Logout');

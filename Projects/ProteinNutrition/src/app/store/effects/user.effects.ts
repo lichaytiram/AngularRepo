@@ -19,47 +19,57 @@ export class UserEffects {
 
   constructor(private actions$: Actions, private userService: UserService, private router: Router) { }
 
-  public loadUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loadUser),
+  public loadUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.LoadUser),
     switchMap(action => this.userService.getUser(action.userId).pipe(
       map((user: IUser) => {
         user.id = action.userId;
-        return userActions.loadUserSuccess({ user: user })
+        return userActions.LoadUserSuccess({ user: user })
       }),
-      catchError(error => of(userActions.loadUserFail(error)))
+      catchError(error => of(userActions.LoadUserFail(error)))
     ))
   ));
 
-  public createUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.createUser),
+  public createUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.CreateUser),
     switchMap(action => this.userService.createUser(action.user).pipe(
       map((userId: IId) => {
         this.router.navigate(['product/login']);
         const { user } = action;
         user.id = userId.name;
 
-        return userActions.createUserSuccess({ user });
+        return userActions.CreateUserSuccess({ user });
       }),
-      catchError(error => of(userActions.createUserFail(error)))
+      catchError(error => of(userActions.CreateUserFail(error)))
     ))
   ));
 
-  public loginUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.loginUser),
+  public loginUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.LoginUser),
     switchMap(action => this.userService.login(action.login).pipe(
       switchMap((user: IUser) => {
         const userId = user.id;
         this.router.navigate(['product/account']);
-        return [userActions.loginUserSuccess({ user }), proteinActions.LoadProteins({ userId })];
+        return [userActions.LoginUserSuccess({ user }), proteinActions.LoadProteins({ userId })];
       }),
-      catchError(error => of(userActions.loginUserFail(error)))
+      catchError(error => of(userActions.LoginUserFail(error)))
     ))
   ));
 
-  public updateUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.updateUser),
+  public updateUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.UpdateUser),
     switchMap(action => this.userService.updateUser(action.user).pipe(
       map((user: IUser) => {
         user.id = action.user.id;
-        return userActions.updateUserSuccess({ user });
+        return userActions.UpdateUserSuccess({ user });
       }),
-      catchError(error => of(userActions.updateUserFail(error)))
+      catchError(error => of(userActions.UpdateUserFail(error)))
+    ))
+  ));
+
+  public deleteUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.DeleteUser),
+    switchMap(action => this.userService.deleteUser(action.userId).pipe(
+      map(() => {
+        this.router.navigate(["product/home"]);
+        return userActions.DeleteUserSuccess();
+      }),
+      catchError(error => of(proteinActions.DeleteProteinFail(error)))
     ))
   ));
 

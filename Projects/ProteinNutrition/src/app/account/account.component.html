@@ -1,1 +1,41 @@
-<p>account works!</p>
+<div>
+
+    <div *ngIf="user$ | async as user">
+
+        <button (click)="logout(user.id)" class="text-primary"><i class="fas fa-sign-out-alt"></i> Log Out</button><br>
+        <button (click)="deleteAccount(user.id)" class="text-danger"><i class="fas fa-minus-circle"></i> Delete
+            Account</button>
+
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div *ngIf="user$ | async as user">
+
+                <h5>You user</h5>
+
+                <p>username: <span>{{user.username}}</span></p>
+                <p>password: <span>{{user.password}}</span></p>
+                <p>confirmPassword: <span>{{user.confirmPassword}}</span></p>
+                <p>gender: <span>{{user.gender}}</span></p>
+                <p>weight: <span>{{user.weight}}</span></p>
+                <p>id: <span>{{user.id}}</span></p>
+
+                <input type="button" value="&#xf4ff; Edit account" class="fas text-primary">
+
+                <form>
+
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

@@ -25,6 +25,10 @@ export const proteinReducer = createReducer<IProteinState>(
         }
 
     ), on(
+        fromProtein.ProteinLogout, () => {
+            return initialState;
+        }
+    ), on(
         fromProtein.AddProteinSuccess, (state: IProteinState, action) => {
             const { protein } = action;
             return adapter.addOne(protein, state);
@@ -34,6 +38,10 @@ export const proteinReducer = createReducer<IProteinState>(
         fromProtein.DeleteProteinSuccess, (state: IProteinState, action) => {
             const { proteinId } = action;
             return adapter.removeOne(proteinId, state);
+        }
+    ), on(
+        fromProtein.DeleteAllProteinsSuccess, () => {
+            return initialState;
         }
     )
 
