@@ -51,7 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n    <div *ngIf=\"user$ | async as user\">\r\n\r\n        <button (click)=\"logout(user.id)\" class=\"text-primary\"><i class=\"fas fa-sign-out-alt\"></i> Log Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div class=\"row\">\r\n\r\n            <div *ngIf=\"user$ | async as user\">\r\n\r\n                <h5>You user</h5>\r\n\r\n                <p>username: <span>{{user.username}}</span></p>\r\n                <p>password: <span>{{user.password}}</span></p>\r\n                <p>confirmPassword: <span>{{user.confirmPassword}}</span></p>\r\n                <p>gender: <span>{{user.gender}}</span></p>\r\n                <p>weight: <span>{{user.weight}}</span></p>\r\n                <p>id: <span>{{user.id}}</span></p>\r\n\r\n                <input type=\"button\" value=\"&#xf4ff; Edit account\" class=\"fas text-primary\">\r\n\r\n                <form>\r\n\r\n\r\n\r\n                </form>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n    <div *ngIf=\"user$ | async as user\">\r\n\r\n        <button (click)=\"logout()\" class=\"text-primary m-1\"><i class=\"fas fa-sign-out-alt\"></i> Log\r\n            Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger m-1\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div *ngIf=\"user$ | async as user\">\r\n\r\n            <h5 class=\"text-center\">You user</h5>\r\n\r\n            <form>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">username: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.username}}</span>\r\n                    <input *ngIf=\"edit && !username\" type=\"button\" value=\"&#xf4ff; Edit username\"\r\n                        (click)=\"usernameToggle('username')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div *ngIf=\"edit && username\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                            Must to enter only three letters at least</small>\r\n\r\n                        <input type=\"text\" title=\"Enter an username\" name=\"username\" #username=\"ngModel\"\r\n                            [(ngModel)]=\"user.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                            [class.border-danger]=\"username.invalid && username.touched\"\r\n                            class=\"rounded-pill border border-primary text-center\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"allToggleOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" class=\"far text-primary\">\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">password: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.password}}</span>\r\n                    <input *ngIf=\"edit\" type=\"button\" value=\"&#xf4ff; Edit password\"\r\n                        (click)=\"usernameToggle('password')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">confirm: </label>\r\n                    <span *ngIf=\"!edit\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.confirmPassword}}</span>\r\n                    <span *ngIf=\"edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\"></span>\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">gender: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.gender}}</span>\r\n                    <input *ngIf=\"edit\" type=\"button\" value=\"&#xf4ff; Edit gender\" (click)=\"usernameToggle('gender')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">weight: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.weight}}</span>\r\n                    <input *ngIf=\"edit\" type=\"button\" value=\"&#xf4ff; Edit weight\" (click)=\"usernameToggle('weight')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n                </div>\r\n\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\">\r\n            <input type=\"button\" value=\"&#xf4ff; Edit account\" (click)=\"editToggleOn()\" class=\"fas text-primary\"><br>\r\n            <input type=\"button\" value=\"&#xf410; Cancel edit\" [class.d-none]=\"!edit\" (click)=\"editToggleOff()\" class=\"far text-danger\">\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -769,7 +769,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "p, label, span, h5 {\r\n    color: rgb(190, 231, 238);\r\n}\r\n\r\nbutton, input {\r\n    outline: 0;\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r\n    background-color: initial;\r\n}\r\n\r\n.space {\r\n    width: 700px;\r\n    border: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9hY2NvdW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsVUFBVTtJQUNWLFNBQVM7SUFDVCxTQUFTO0lBQ1QseUJBQXlCO0FBQzdCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9hY2NvdW50L2FjY291bnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInAsIGxhYmVsLCBzcGFuLCBoNSB7XHJcbiAgICBjb2xvcjogcmdiKDE5MCwgMjMxLCAyMzgpO1xyXG59XHJcblxyXG5idXR0b24sIGlucHV0IHtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogaW5pdGlhbDtcclxufVxyXG5cclxuLnNwYWNlIHtcclxuICAgIHdpZHRoOiA3MDBweDtcclxuICAgIGJvcmRlcjogMzBweDtcclxufSJdfQ== */";
+    __webpack_exports__["default"] = "p, label, span, h5 {\r\n    color: rgb(190, 231, 238);\r\n}\r\n\r\nbutton, input {\r\n    outline: 0;\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r\n    background-color: initial;\r\n}\r\n\r\n/* don't use yet */\r\n\r\n.space {\r\n    width: 100%;\r\n}\r\n\r\n.fas{\r\n    text-align: start;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9hY2NvdW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsVUFBVTtJQUNWLFNBQVM7SUFDVCxTQUFTO0lBQ1QseUJBQXlCO0FBQzdCOztBQUVBLGtCQUFrQjs7QUFDbEI7SUFDSSxXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxpQkFBaUI7QUFDckIiLCJmaWxlIjoic3JjL2FwcC9hY2NvdW50L2FjY291bnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInAsIGxhYmVsLCBzcGFuLCBoNSB7XHJcbiAgICBjb2xvcjogcmdiKDE5MCwgMjMxLCAyMzgpO1xyXG59XHJcblxyXG5idXR0b24sIGlucHV0IHtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogaW5pdGlhbDtcclxufVxyXG5cclxuLyogZG9uJ3QgdXNlIHlldCAqL1xyXG4uc3BhY2Uge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5mYXN7XHJcbiAgICB0ZXh0LWFsaWduOiBzdGFydDtcclxufSJdfQ== */";
     /***/
   },
 
@@ -848,7 +848,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "logout",
-        value: function logout(userId) {
+        value: function logout() {
           this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UserLogout"])());
           this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["ProteinLogout"])());
           this.router.navigate(["product/home"]);
@@ -866,6 +866,62 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               userId: userId
             }));
           }
+        }
+      }, {
+        key: "editToggleOn",
+        value: function editToggleOn() {
+          this.edit = true;
+        }
+      }, {
+        key: "editToggleOff",
+        value: function editToggleOff() {
+          this.edit = false;
+          this.allToggleOff();
+        }
+      }, {
+        key: "usernameToggle",
+        value: function usernameToggle(toggleName) {
+          console.log(toggleName);
+          this.allToggleOff();
+
+          switch (toggleName) {
+            case "username":
+              this.username = true;
+              break;
+
+            case "password":
+              this.password = true;
+              break;
+
+            case "gender":
+              this.gender = true;
+              break;
+
+            case "weight":
+              this.weight = true;
+              break;
+
+            default:
+              alert("Something was wrong!\nPlease try again.");
+          }
+        }
+      }, {
+        key: "allToggleOff",
+        value: function allToggleOff() {
+          this.username = false;
+          this.password = false;
+          this.gender = false;
+          this.weight = false;
+        }
+      }, {
+        key: "updateUser",
+        value: function updateUser(userToupdate, update, newValue) {
+          var id = userToupdate.id,
+              user = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](userToupdate, ["id"]);
+          console.log(user);
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UpdateUser"])({
+            user: user
+          }));
         }
       }]);
 

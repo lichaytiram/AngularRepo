@@ -10,7 +10,11 @@ button, input {
     background-color: initial;
 }
 
+/* don't use yet */
 .space {
-    width: 700px;
-    border: 30px;
+    width: 100%;
+}
+
+.fas{
+    text-align: start;
 }
