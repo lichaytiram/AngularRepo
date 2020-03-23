@@ -8,6 +8,7 @@ import { UserLogout, ProteinLogout, DeleteUser, DeleteAllProteins, UpdateUser } 
 import { getUser } from '../store/selectors/user.selectors';
 
 import { IUser } from '../shared/models/iUser.model';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-account',
@@ -17,14 +18,14 @@ import { IUser } from '../shared/models/iUser.model';
 export class AccountComponent implements OnInit {
 
   public user$: Observable<IUser>;
-  public edit: boolean;
-  public user: IUser;
-
+  public newUser: IUser;
+  
   // toggles to show
-  public username: boolean;
-  public password: boolean;
-  public gender: boolean;
-  public weight: boolean;
+  public editToggle: boolean;
+  public usernameToggle: boolean;
+  public passwordToggle: boolean;
+  public genderToggle: boolean;
+  public weightToggle: boolean;
 
   constructor(private store: Store<IProductsState>, private router: Router) {
 
@@ -59,32 +60,32 @@ export class AccountComponent implements OnInit {
   }
 
   public editToggleOn(): void {
-    this.edit = true;
+    this.editToggle = true;
   }
 
   public editToggleOff(): void {
-    this.edit = false;
+    this.editToggle = false;
     this.allToggleOff();
   }
 
-  public usernameToggle(toggleName: string) {
+  public nameToggle(toggleName: string): void {
 
-    console.log(toggleName);
+    this.newUser = new User(undefined, undefined, undefined, undefined, undefined);
 
     this.allToggleOff();
 
     switch (toggleName) {
       case "username":
-        this.username = true;
+        this.usernameToggle = true;
         break;
       case "password":
-        this.password = true;
+        this.passwordToggle = true;
         break;
       case "gender":
-        this.gender = true;
+        this.genderToggle = true;
         break;
       case "weight":
-        this.weight = true;
+        this.weightToggle = true;
         break;
       default:
         alert("Something was wrong!\nPlease try again.");
@@ -93,15 +94,36 @@ export class AccountComponent implements OnInit {
   }
 
   public allToggleOff(): void {
-    this.username = false;
-    this.password = false;
-    this.gender = false;
-    this.weight = false;
+    this.usernameToggle = false;
+    this.passwordToggle = false;
+    this.genderToggle = false;
+    this.weightToggle = false;
   }
 
-  private updateUser(userToupdate: IUser, update: string, newValue: string): void {
-    let { id, ...user } = userToupdate;
-    console.log(user);
+  public updateUser(oldUser: IUser, indexToUpdate: string): void {
+
+    let user: IUser = { ...oldUser };
+    const userValue = { ...this.newUser }
+
+    // Update the user with new value
+    switch (indexToUpdate) {
+      case "username":
+        user.username = userValue.username;
+        break;
+      case "password":
+        user.password = userValue.password;
+        user.confirmPassword = userValue.confirmPassword;
+        break;
+      case "gender":
+        user.gender = userValue.gender;
+        break;
+      case "weight":
+        user.weight = userValue.weight;
+        break;
+      default:
+        alert("Something was wrong!\nPlease try again.");
+    }
+
     this.store.dispatch(UpdateUser({ user }));
   }
 

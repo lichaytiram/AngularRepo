@@ -51,7 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n    <div *ngIf=\"user$ | async as user\">\r\n\r\n        <button (click)=\"logout()\" class=\"text-primary m-1\"><i class=\"fas fa-sign-out-alt\"></i> Log\r\n            Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger m-1\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div *ngIf=\"user$ | async as user\">\r\n\r\n            <h5 class=\"text-center\">You user</h5>\r\n\r\n            <form>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">username: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.username}}</span>\r\n                    <input *ngIf=\"edit && !username\" type=\"button\" value=\"&#xf4ff; Edit username\"\r\n                        (click)=\"usernameToggle('username')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div *ngIf=\"edit && username\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                            Must to enter only three letters at least</small>\r\n\r\n                        <input type=\"text\" title=\"Enter an username\" name=\"username\" #username=\"ngModel\"\r\n                            [(ngModel)]=\"user.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                            [class.border-danger]=\"username.invalid && username.touched\"\r\n                            class=\"rounded-pill border border-primary text-center\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"allToggleOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" class=\"far text-primary\">\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">password: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.password}}</span>\r\n                    <input *ngIf=\"edit\" type=\"button\" value=\"&#xf4ff; Edit password\"\r\n                        (click)=\"usernameToggle('password')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">confirm: </label>\r\n                    <span *ngIf=\"!edit\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.confirmPassword}}</span>\r\n                    <span *ngIf=\"edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\"></span>\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">gender: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.gender}}</span>\r\n                    <input *ngIf=\"edit\" type=\"button\" value=\"&#xf4ff; Edit gender\" (click)=\"usernameToggle('gender')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">weight: </label>\r\n                    <span *ngIf=\"!edit\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.weight}}</span>\r\n                    <input *ngIf=\"edit\" type=\"button\" value=\"&#xf4ff; Edit weight\" (click)=\"usernameToggle('weight')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n                </div>\r\n\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\">\r\n            <input type=\"button\" value=\"&#xf4ff; Edit account\" (click)=\"editToggleOn()\" class=\"fas text-primary\"><br>\r\n            <input type=\"button\" value=\"&#xf410; Cancel edit\" [class.d-none]=\"!edit\" (click)=\"editToggleOff()\" class=\"far text-danger\">\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n    <div *ngIf=\"user$ | async as user\">\r\n\r\n        <button (click)=\"logout()\" class=\"text-primary m-1\"><i class=\"fas fa-sign-out-alt\"></i> Log\r\n            Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger m-1\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div *ngIf=\"user$ | async as user\">\r\n\r\n            <h5 class=\"text-center\">Your user</h5>\r\n\r\n            <form #itemForm=\"ngForm\">\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">username: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.username}}</span>\r\n                    <input *ngIf=\"editToggle && !usernameToggle\" type=\"button\" value=\"&#xf4ff; Edit username\"\r\n                        (click)=\"nameToggle('username')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div *ngIf=\"editToggle && usernameToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                            Must to enter only three letters at least</small>\r\n\r\n                        <input type=\"text\" title=\"Enter an username\" name=\"username\" #username=\"ngModel\"\r\n                            [(ngModel)]=\"newUser.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                            [class.border-danger]=\"username.invalid && username.touched\"\r\n                            class=\"rounded-pill border border-primary text-center\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"allToggleOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" (click)=\"updateUser(user,'username')\"\r\n                                class=\"far text-primary\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">password: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.password}}</span>\r\n                    <input *ngIf=\"editToggle && !passwordToggle\" type=\"button\" value=\"&#xf4ff; Edit password\"\r\n                        (click)=\"nameToggle('password')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div *ngIf=\"editToggle && passwordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\r\n                            <small>Must to enter eight letters at least.</small><br>\r\n                            <small>(one upper case one lower case and a number)</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter a password\" name=\"password\" #password=\"ngModel\"\r\n                            [(ngModel)]=\"newUser.password\" required\r\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [class.border-danger]=\"password.invalid && password.touched\"\r\n                            class=\"rounded-pill border border-primary\">\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\" *ngIf=\"editToggle && passwordToggle\">\r\n                    \r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">confirm: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.confirmPassword}}</span>\r\n                    <span *ngIf=\"editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\"></span>\r\n\r\n                    <div class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\"\r\n                            [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\r\n                            <small>Your passwords isn't match!</small><br>\r\n                            <small>Please try again.</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter again a password to confirm\" name=\"confirmPassword\"\r\n                            #confirmPassword=\"ngModel\" [(ngModel)]=\"newUser.confirmPassword\" required\r\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [class.border-danger]=\"confirmPassword.touched \" class=\"rounded-pill border border-primary\">\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">gender: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.gender}}</span>\r\n                    <input *ngIf=\"editToggle && !genderToggle\" type=\"button\" value=\"&#xf4ff; Edit gender\"\r\n                        (click)=\"nameToggle('gender')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div *ngIf=\"editToggle && genderToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"male\" #male=\"ngModel\" value=\"Male\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioMale\"><i class=\"fas fa-male m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"female\" #female=\"ngModel\" value=\"Female\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioFemale\"><i\r\n                                    class=\"fas fa-female m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"allToggleOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" (click)=\"updateUser(user,'gender')\"\r\n                                class=\"far text-primary\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">weight: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.weight}}</span>\r\n                    <input *ngIf=\"editToggle && !weightToggle\" type=\"button\" value=\"&#xf4ff; Edit weight\"\r\n                        (click)=\"nameToggle('weight')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div *ngIf=\"editToggle && weightToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\r\n                            must be greater than 0</small>\r\n\r\n                        <input type=\"number\" title=\"Enter your weight\" name=\"weight\" #weight=\"ngModel\"\r\n                            [(ngModel)]=\"newUser.weight\" required pattern=\"^[1-9]\\d*$\"\r\n                            [class.border-danger]=\"weight.invalid && weight.touched\"\r\n                            class=\"rounded-pill border border-primary\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"allToggleOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" (click)=\"updateUser(user,'weight')\"\r\n                                class=\"far text-primary\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\">\r\n            <input type=\"button\" value=\"&#xf4ff; Edit account\" (click)=\"editToggleOn()\" class=\"fas text-primary\"><br>\r\n            <input type=\"button\" value=\"&#xf410; Cancel edit\" [class.d-none]=\"!editToggle\" (click)=\"editToggleOff()\"\r\n                class=\"far text-danger\">\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -769,7 +769,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "p, label, span, h5 {\r\n    color: rgb(190, 231, 238);\r\n}\r\n\r\nbutton, input {\r\n    outline: 0;\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r\n    background-color: initial;\r\n}\r\n\r\n/* don't use yet */\r\n\r\n.space {\r\n    width: 100%;\r\n}\r\n\r\n.fas{\r\n    text-align: start;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9hY2NvdW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsVUFBVTtJQUNWLFNBQVM7SUFDVCxTQUFTO0lBQ1QseUJBQXlCO0FBQzdCOztBQUVBLGtCQUFrQjs7QUFDbEI7SUFDSSxXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxpQkFBaUI7QUFDckIiLCJmaWxlIjoic3JjL2FwcC9hY2NvdW50L2FjY291bnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInAsIGxhYmVsLCBzcGFuLCBoNSB7XHJcbiAgICBjb2xvcjogcmdiKDE5MCwgMjMxLCAyMzgpO1xyXG59XHJcblxyXG5idXR0b24sIGlucHV0IHtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogaW5pdGlhbDtcclxufVxyXG5cclxuLyogZG9uJ3QgdXNlIHlldCAqL1xyXG4uc3BhY2Uge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5mYXN7XHJcbiAgICB0ZXh0LWFsaWduOiBzdGFydDtcclxufSJdfQ== */";
+    __webpack_exports__["default"] = "p, label, span, h5 {\r\n    color: rgb(190, 231, 238);\r\n}\r\n\r\nbutton, input {\r\n    outline: 0;\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r\n    background-color: initial;\r\n}\r\n\r\n.space {\r\n    width: 100%;\r\n}\r\n\r\n.fas {\r\n    text-align: start;\r\n}\r\n\r\ninput[type=\"radio\"] {\r\n    display: none;\r\n}\r\n\r\n.radioMale, .radioFemale {\r\n    background-color: gray;\r\n    display: inline-block;\r\n    width: 70px;\r\n}\r\n\r\ninput[type=\"radio\"]:checked+.radioMale {\r\n    background-color: rgb(117, 194, 245);\r\n    color: rgb(56, 60, 253);\r\n}\r\n\r\ninput[type=\"radio\"]:checked+.radioFemale {\r\n    background-color: rgb(252, 218, 242);\r\n    color: rgb(252, 89, 184);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9hY2NvdW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsVUFBVTtJQUNWLFNBQVM7SUFDVCxTQUFTO0lBQ1QseUJBQXlCO0FBQzdCOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksYUFBYTtBQUNqQjs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0QixxQkFBcUI7SUFDckIsV0FBVztBQUNmOztBQUVBO0lBQ0ksb0NBQW9DO0lBQ3BDLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLG9DQUFvQztJQUNwQyx3QkFBd0I7QUFDNUIiLCJmaWxlIjoic3JjL2FwcC9hY2NvdW50L2FjY291bnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInAsIGxhYmVsLCBzcGFuLCBoNSB7XHJcbiAgICBjb2xvcjogcmdiKDE5MCwgMjMxLCAyMzgpO1xyXG59XHJcblxyXG5idXR0b24sIGlucHV0IHtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogaW5pdGlhbDtcclxufVxyXG5cclxuLnNwYWNlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4uZmFzIHtcclxuICAgIHRleHQtYWxpZ246IHN0YXJ0O1xyXG59XHJcblxyXG5pbnB1dFt0eXBlPVwicmFkaW9cIl0ge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG5cclxuLnJhZGlvTWFsZSwgLnJhZGlvRmVtYWxlIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGdyYXk7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICB3aWR0aDogNzBweDtcclxufVxyXG5cclxuaW5wdXRbdHlwZT1cInJhZGlvXCJdOmNoZWNrZWQrLnJhZGlvTWFsZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMTE3LCAxOTQsIDI0NSk7XHJcbiAgICBjb2xvcjogcmdiKDU2LCA2MCwgMjUzKTtcclxufVxyXG5cclxuaW5wdXRbdHlwZT1cInJhZGlvXCJdOmNoZWNrZWQrLnJhZGlvRmVtYWxlIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigyNTIsIDIxOCwgMjQyKTtcclxuICAgIGNvbG9yOiByZ2IoMjUyLCA4OSwgMTg0KTtcclxufSJdfQ== */";
     /***/
   },
 
@@ -828,6 +828,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../store/selectors/user.selectors */
     "./src/app/store/selectors/user.selectors.ts");
+    /* harmony import */
+
+
+    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/models/user.model */
+    "./src/app/shared/models/user.model.ts");
 
     var AccountComponent =
     /*#__PURE__*/
@@ -870,35 +876,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "editToggleOn",
         value: function editToggleOn() {
-          this.edit = true;
+          this.editToggle = true;
         }
       }, {
         key: "editToggleOff",
         value: function editToggleOff() {
-          this.edit = false;
+          this.editToggle = false;
           this.allToggleOff();
         }
       }, {
-        key: "usernameToggle",
-        value: function usernameToggle(toggleName) {
-          console.log(toggleName);
+        key: "nameToggle",
+        value: function nameToggle(toggleName) {
+          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__["User"](undefined, undefined, undefined, undefined, undefined);
           this.allToggleOff();
 
           switch (toggleName) {
             case "username":
-              this.username = true;
+              this.usernameToggle = true;
               break;
 
             case "password":
-              this.password = true;
+              this.passwordToggle = true;
               break;
 
             case "gender":
-              this.gender = true;
+              this.genderToggle = true;
               break;
 
             case "weight":
-              this.weight = true;
+              this.weightToggle = true;
               break;
 
             default:
@@ -908,17 +914,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "allToggleOff",
         value: function allToggleOff() {
-          this.username = false;
-          this.password = false;
-          this.gender = false;
-          this.weight = false;
+          this.usernameToggle = false;
+          this.passwordToggle = false;
+          this.genderToggle = false;
+          this.weightToggle = false;
         }
       }, {
         key: "updateUser",
-        value: function updateUser(userToupdate, update, newValue) {
-          var id = userToupdate.id,
-              user = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](userToupdate, ["id"]);
-          console.log(user);
+        value: function updateUser(oldUser, indexToUpdate) {
+          var user = Object.assign({}, oldUser);
+          var userValue = Object.assign({}, this.newUser); // Update the user with new value
+
+          switch (indexToUpdate) {
+            case "username":
+              user.username = userValue.username;
+              break;
+
+            case "password":
+              user.password = userValue.password;
+              user.confirmPassword = userValue.confirmPassword;
+              break;
+
+            case "gender":
+              user.gender = userValue.gender;
+              break;
+
+            case "weight":
+              user.weight = userValue.weight;
+              break;
+
+            default:
+              alert("Something was wrong!\nPlease try again.");
+          }
+
           this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UpdateUser"])({
             user: user
           }));
