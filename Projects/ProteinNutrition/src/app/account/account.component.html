@@ -1,6 +1,6 @@
-<div>
+<div *ngIf="user$ | async as user">
 
-    <div *ngIf="user$ | async as user">
+    <div>
 
         <button (click)="logout()" class="text-primary m-1"><i class="fas fa-sign-out-alt"></i> Log
             Out</button><br>
@@ -11,153 +11,161 @@
 
     <div class="container">
 
-        <div *ngIf="user$ | async as user">
+        <div>
 
             <h5 class="text-center">Your user</h5>
 
             <form #itemForm="ngForm">
 
-                <div class="row justify-content-center">
+                <div>
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">username: </label>
-                    <span *ngIf="!editToggle"
-                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.username}}</span>
-                    <input *ngIf="editToggle && !usernameToggle" type="button" value="&#xf4ff; Edit username"
-                        (click)="nameToggle('username')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
+                    <div class="row justify-content-center">
 
-                    <div *ngIf="editToggle && usernameToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+                        <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">username: </label>
+                        <span *ngIf="!editToggle"
+                            class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.username}}</span>
+                        <input *ngIf="editToggle && !usernameToggle" type="button" value="&#xf4ff; Edit username"
+                            (click)="nameToggle('username')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
 
-                        <small class="text-danger" [class.d-none]="username.untouched || username.valid">
-                            Must to enter only three letters at least</small>
+                        <div *ngIf="editToggle && usernameToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
 
-                        <input type="text" title="Enter an username" name="username" #username="ngModel"
-                            [(ngModel)]="newUser.username" required pattern="^[a-zA-Z]{3,}$"
-                            [class.border-danger]="username.invalid && username.touched"
-                            class="rounded-pill border border-primary text-center">
+                            <small class="text-danger" [class.d-none]="username.untouched || username.valid">
+                                Must to enter only three letters at least</small>
 
-                        <div class="row justify-content-around p-1">
+                            <input type="text" title="Enter an username" name="username" #username="ngModel"
+                                [(ngModel)]="newUser.username" required pattern="^[a-zA-Z]{3,}$"
+                                [class.border-danger]="username.invalid && username.touched"
+                                class="rounded-pill border border-primary text-center">
 
-                            <input type="button" value="&#xf410; Cancel" (click)="allToggleOff()"
-                                class="far text-danger">
-                            <input type="button" value="&#xf0c7; Save" (click)="updateUser(user,'username')"
-                                class="far text-primary">
+                            <div class="row justify-content-around p-1">
+
+                                <input type="button" value="&#xf410; Cancel" (click)="allToggleOff()"
+                                    class="far text-danger">
+                                <input type="button" value="&#xf0c7; Save" (click)="updateUser(user,'username')"
+                                    class="far text-primary">
+
+                            </div>
+
+                        </div>
+
+                        <span>{{username}}</span>
+
+                    </div>
+
+                    <div class="row justify-content-center">
+
+                        <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">password: </label>
+                        <span *ngIf="!editToggle"
+                            class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.password}}</span>
+                        <input *ngIf="editToggle && !passwordToggle" type="button" value="&#xf4ff; Edit password"
+                            (click)="nameToggle('password')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
+
+                        <div *ngIf="editToggle && passwordToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+
+                            <div class="text-danger" [class.d-none]="password.untouched || password.valid">
+                                <small>Must to enter eight letters at least.</small><br>
+                                <small>(one upper case one lower case and a number)</small>
+                            </div>
+
+                            <input type="password" title="Enter a password" name="password" #password="ngModel"
+                                [(ngModel)]="newUser.password" required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                                [class.border-danger]="password.invalid && password.touched"
+                                class="rounded-pill border border-primary">
 
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="row justify-content-center" *ngIf="editToggle && passwordToggle">
 
-                <div class="row justify-content-center">
+                        <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">confirm: </label>
+                        <span *ngIf="!editToggle"
+                            class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.confirmPassword}}</span>
+                        <span *ngIf="editToggle && !passwordToggle"
+                            class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0"></span>
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">password: </label>
-                    <span *ngIf="!editToggle"
-                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.password}}</span>
-                    <input *ngIf="editToggle && !passwordToggle" type="button" value="&#xf4ff; Edit password"
-                        (click)="nameToggle('password')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
+                        <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
 
-                    <div *ngIf="editToggle && passwordToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+                            <div class="text-danger"
+                                [class.d-none]="confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value">
+                                <small>Your passwords isn't match!</small><br>
+                                <small>Please try again.</small>
+                            </div>
 
-                        <div class="text-danger" [class.d-none]="password.untouched || password.valid">
-                            <small>Must to enter eight letters at least.</small><br>
-                            <small>(one upper case one lower case and a number)</small>
-                        </div>
-
-                        <input type="password" title="Enter a password" name="password" #password="ngModel"
-                            [(ngModel)]="newUser.password" required
-                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                            [class.border-danger]="password.invalid && password.touched"
-                            class="rounded-pill border border-primary">
-
-                    </div>
-
-                </div>
-
-                <div class="row justify-content-center" *ngIf="editToggle && passwordToggle">
-                    
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">confirm: </label>
-                    <span *ngIf="!editToggle"
-                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.confirmPassword}}</span>
-                    <span *ngIf="editToggle && !passwordToggle"
-                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0"></span>
-
-                    <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
-
-                        <div class="text-danger"
-                            [class.d-none]="confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value">
-                            <small>Your passwords isn't match!</small><br>
-                            <small>Please try again.</small>
-                        </div>
-
-                        <input type="password" title="Enter again a password to confirm" name="confirmPassword"
-                            #confirmPassword="ngModel" [(ngModel)]="newUser.confirmPassword" required
-                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                            [class.border-danger]="confirmPassword.touched " class="rounded-pill border border-primary">
-
-                    </div>
-
-                </div>
-
-                <div class="row justify-content-center">
-
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">gender: </label>
-                    <span *ngIf="!editToggle"
-                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.gender}}</span>
-                    <input *ngIf="editToggle && !genderToggle" type="button" value="&#xf4ff; Edit gender"
-                        (click)="nameToggle('gender')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
-
-                    <div *ngIf="editToggle && genderToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
-
-                        <label>
-                            <input type="radio" name="male" #male="ngModel" value="Male" required
-                                [(ngModel)]="newUser.gender">
-                            <span class="rounded-pill text-center m-1 radioMale"><i class="fas fa-male m-1"></i></span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="female" #female="ngModel" value="Female" required
-                                [(ngModel)]="newUser.gender">
-                            <span class="rounded-pill text-center m-1 radioFemale"><i
-                                    class="fas fa-female m-1"></i></span>
-                        </label>
-
-                        <div class="row justify-content-around p-1">
-
-                            <input type="button" value="&#xf410; Cancel" (click)="allToggleOff()"
-                                class="far text-danger">
-                            <input type="button" value="&#xf0c7; Save" (click)="updateUser(user,'gender')"
-                                class="far text-primary">
+                            <input type="password" title="Enter again a password to confirm" name="confirmPassword"
+                                #confirmPassword="ngModel" [(ngModel)]="newUser.confirmPassword" required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                                [class.border-danger]="confirmPassword.touched "
+                                class="rounded-pill border border-primary">
 
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="row justify-content-center">
 
-                <div class="row justify-content-center">
+                        <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">gender: </label>
+                        <span *ngIf="!editToggle"
+                            class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.gender}}</span>
+                        <input *ngIf="editToggle && !genderToggle" type="button" value="&#xf4ff; Edit gender"
+                            (click)="nameToggle('gender')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">weight: </label>
-                    <span *ngIf="!editToggle"
-                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.weight}}</span>
-                    <input *ngIf="editToggle && !weightToggle" type="button" value="&#xf4ff; Edit weight"
-                        (click)="nameToggle('weight')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
+                        <div *ngIf="editToggle && genderToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
 
-                    <div *ngIf="editToggle && weightToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+                            <label>
+                                <input type="radio" name="male" #male="ngModel" value="Male" required
+                                    [(ngModel)]="newUser.gender">
+                                <span class="rounded-pill text-center m-1 radioMale"><i
+                                        class="fas fa-male m-1"></i></span>
+                            </label>
 
-                        <small class="text-danger" [class.d-none]="weight.untouched || weight.valid">Your weight
-                            must be greater than 0</small>
+                            <label>
+                                <input type="radio" name="female" #female="ngModel" value="Female" required
+                                    [(ngModel)]="newUser.gender">
+                                <span class="rounded-pill text-center m-1 radioFemale"><i
+                                        class="fas fa-female m-1"></i></span>
+                            </label>
 
-                        <input type="number" title="Enter your weight" name="weight" #weight="ngModel"
-                            [(ngModel)]="newUser.weight" required pattern="^[1-9]\d*$"
-                            [class.border-danger]="weight.invalid && weight.touched"
-                            class="rounded-pill border border-primary">
+                            <div class="row justify-content-around p-1">
 
-                        <div class="row justify-content-around p-1">
+                                <input type="button" value="&#xf410; Cancel" (click)="allToggleOff()"
+                                    class="far text-danger">
+                                <input type="button" value="&#xf0c7; Save" (click)="updateUser(user,'gender')"
+                                    class="far text-primary">
 
-                            <input type="button" value="&#xf410; Cancel" (click)="allToggleOff()"
-                                class="far text-danger">
-                            <input type="button" value="&#xf0c7; Save" (click)="updateUser(user,'weight')"
-                                class="far text-primary">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row justify-content-center">
+
+                        <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">weight: </label>
+                        <span *ngIf="!editToggle"
+                            class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.weight}}</span>
+                        <input *ngIf="editToggle && !weightToggle" type="button" value="&#xf4ff; Edit weight"
+                            (click)="nameToggle('weight')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
+
+                        <div *ngIf="editToggle && weightToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+
+                            <small class="text-danger" [class.d-none]="weight.untouched || weight.valid">Your weight
+                                must be greater than 0</small>
+
+                            <input type="number" title="Enter your weight" name="weight" #weight="ngModel"
+                                [(ngModel)]="newUser.weight" required pattern="^[1-9]\d*$"
+                                [class.border-danger]="weight.invalid && weight.touched"
+                                class="rounded-pill border border-primary">
+
+                            <div class="row justify-content-around p-1">
+
+                                <input type="button" value="&#xf410; Cancel" (click)="allToggleOff()"
+                                    class="far text-danger">
+                                <input type="button" value="&#xf0c7; Save" (click)="updateUser(user,'weight')"
+                                    class="far text-primary">
+
+                            </div>
 
                         </div>
 

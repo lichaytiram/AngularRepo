@@ -19,7 +19,7 @@ export class AccountComponent implements OnInit {
 
   public user$: Observable<IUser>;
   public newUser: IUser;
-  
+
   // toggles to show
   public editToggle: boolean;
   public usernameToggle: boolean;
@@ -38,6 +38,9 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
 
     this.user$ = this.store.pipe(select(getUser));
+
+    // Delete later ---------------------------------------------------------------
+    this.newUser = new User(undefined, undefined, undefined, undefined, undefined);
 
   }
 
