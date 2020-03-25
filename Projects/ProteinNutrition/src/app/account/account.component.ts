@@ -28,6 +28,9 @@ export class AccountComponent implements OnInit {
   public genderToggle: boolean;
   public weightToggle: boolean;
 
+  // click button for show password instead ******.
+  public showPasswordToggle: boolean;
+
   constructor(private store: Store<IProductsState>, private router: Router) {
 
     let isLogin: boolean = !!sessionStorage.getItem("login");
@@ -54,6 +57,7 @@ export class AccountComponent implements OnInit {
   public deleteAccount(userId: string): void {
     const isConfirm = confirm("You are try to delete your account!\nYou are sure?");
 
+    // Should be one function , FireBase (data base) don't save proteins id as a foreign key.
     if (isConfirm) {
       this.store.dispatch(DeleteUser({ userId }));
       this.store.dispatch(DeleteAllProteins({ userId }));
@@ -69,6 +73,10 @@ export class AccountComponent implements OnInit {
     userForm.reset();
     this.editToggle = false;
     this.allTogglesOff();
+  }
+
+  public showPasswordSwitch() {
+    this.showPasswordToggle = !this.showPasswordToggle;
   }
 
   public nameToggle(toggleName: string): void {

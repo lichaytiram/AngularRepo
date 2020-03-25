@@ -52,8 +52,20 @@
                 <div class="row justify-content-center">
 
                     <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">password: </label>
-                    <span *ngIf="!editToggle"
-                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.password}}</span>
+
+                    <div *ngIf="!editToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+
+                        <span *ngIf="!showPasswordToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+                            <span>******** </span>
+                            <button (click)="showPasswordSwitch()"><i class="fas fa-eye eye"></i></button>
+                        </span>
+                        <span *ngIf="showPasswordToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
+                            <span>{{user.password}} </span>
+                            <button (click)="showPasswordSwitch()"><i class="fas fa-eye-slash eye"></i></button>
+                        </span>
+
+                    </div>
+
                     <input *ngIf="editToggle && !passwordToggle" type="button" value="&#xf4ff; Edit password"
                         (click)="nameToggle('password')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
 
@@ -61,7 +73,7 @@
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
 
                         <div class="text-danger" [class.d-none]="password.untouched || password.valid">
-                            <small>Must to enter eight letters at least.</small><br>
+                            <small>Must to enter eight letters at least.</small>
                             <small>(one upper case one lower case and a number)</small>
                         </div>
 
@@ -88,7 +100,7 @@
 
                         <div class="text-danger"
                             [class.d-none]="confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value">
-                            <small>Your passwords isn't match!</small><br>
+                            <small>Your passwords isn't match!</small>
                             <small>Please try again.</small>
                         </div>
 
@@ -167,7 +179,7 @@
                         <input type="number" title="Enter your weight" placeholder="Enter a weight" name="weight"
                             #weight="ngModel" [(ngModel)]="newUser.weight" required pattern="^[1-9]\d*$"
                             [class.border-danger]="weight.invalid && weight.touched"
-                            class="rounded-pill border border-primary text-center">
+                            class="rounded-pill border border-primary text-center inputValue">
 
                         <div class="row justify-content-around p-1">
 
@@ -187,7 +199,8 @@
         </div>
 
         <div class="text-center">
-            <input type="button" value="&#xf4ff; Edit account" (click)="editToggleOn()" class="fas text-primary"><br>
+            <input type="button" value="&#xf4ff; Edit account" [class.d-none]="editToggle" (click)="editToggleOn()"
+                class="fas text-primary">
             <input type="button" value="&#xf410; Cancel edit" [class.d-none]="!editToggle"
                 (click)="editToggleOff(userForm)" class="far text-danger">
         </div>

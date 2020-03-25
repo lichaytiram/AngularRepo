@@ -25,7 +25,7 @@
                             <p class="m-0">Enter a password</p>
 
                             <div class="text-danger" [class.d-none]="password.untouched || password.valid">
-                                <small>Must to enter eight letters at least.</small><br>
+                                <small>Must to enter eight letters at least.</small>
                                 <small>(one upper case one lower case and a number)</small>
                             </div>
 
@@ -41,7 +41,7 @@
 
                             <div class="text-danger"
                                 [class.d-none]="confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value">
-                                <small>Your passwords isn't match!</small><br>
+                                <small>Your passwords isn't match!</small>
                                 <small>Please try again.</small>
                             </div>
 

@@ -23,14 +23,14 @@ input[type="radio"] {
 }
 
 .radioMale, .radioFemale {
-    background-color: gray;
+    background-color: rgb(61, 55, 61);
     display: inline-block;
     width: 70px;
 }
 
 .radioMale:hover, .radioFemale:hover {
-    background-color: rgb(61, 55, 61);
-    color: darkgrey;
+    background-color: gray;
+    color: rgb(39, 29, 29);
 }
 
 input[type="radio"]:checked+.radioMale {
@@ -51,4 +51,12 @@ input[type="radio"]:checked+.radioFemale {
 
 input:hover {
     color: white;
+}
+
+small {
+    display: block;
+}
+
+.eye {
+    color: rgb(122, 130, 241);
 }
