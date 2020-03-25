@@ -9,6 +9,7 @@ import { getUser } from '../store/selectors/user.selectors';
 
 import { IUser } from '../shared/models/iUser.model';
 import { User } from '../shared/models/user.model';
+import { NgForm, NgModel, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-account',
@@ -38,8 +39,6 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
 
     this.user$ = this.store.pipe(select(getUser));
-
-    // Delete later ---------------------------------------------------------------
     this.newUser = new User(undefined, undefined, undefined, undefined, undefined);
 
   }
@@ -66,16 +65,17 @@ export class AccountComponent implements OnInit {
     this.editToggle = true;
   }
 
-  public editToggleOff(): void {
+  public editToggleOff(userForm: NgForm): void {
+    userForm.reset();
     this.editToggle = false;
-    this.allToggleOff();
+    this.allTogglesOff();
   }
 
   public nameToggle(toggleName: string): void {
 
     this.newUser = new User(undefined, undefined, undefined, undefined, undefined);
 
-    this.allToggleOff();
+    this.allTogglesOff();
 
     switch (toggleName) {
       case "username":
@@ -96,7 +96,18 @@ export class AccountComponent implements OnInit {
 
   }
 
-  public allToggleOff(): void {
+  public cancelTogglesOff(firstInput?: any, secondInput?: NgModel) {
+
+    if (firstInput)
+      firstInput.reset();
+
+    if (secondInput)
+      secondInput.reset();
+
+    this.allTogglesOff();
+  }
+
+  public allTogglesOff(): void {
     this.usernameToggle = false;
     this.passwordToggle = false;
     this.genderToggle = false;
