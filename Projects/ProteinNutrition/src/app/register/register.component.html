@@ -55,7 +55,7 @@
                         <div>
                             <p class="m-0">Enter your weight</p>
                             <small class="text-danger" [class.d-none]="weight.untouched || weight.valid">Your weight
-                                must be greater than 0</small>
+                                must be greater than 0 .</small>
 
                             <input type="number" title="Enter your weight" name="weight" #weight="ngModel"
                                 [(ngModel)]="user.weight" required pattern="^[1-9]\d*$"
