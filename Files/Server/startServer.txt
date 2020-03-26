@@ -2,7 +2,11 @@
 
 Add this lane in package.json
 
+To part 1
+
     "start": "node server.js",
+
+ To part 2
 
     "express": "^4.17.1",
     "path": "^0.12.7",
