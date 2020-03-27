@@ -22,13 +22,26 @@ a {
 }
 
 .candles {
-    height: 55px;
+    height: 100%;
+    width: 100%;
+    max-height: 70px;
+    max-width: 200px;
 }
 
-.bigger:hover{
+.bigger:hover {
     font-size: x-large;
 }
 
-.backgroundColor {
-    background-color: rgb(34, 28, 28);
+.containerCandle {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: xx-small;
 }
