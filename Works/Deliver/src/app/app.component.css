@@ -46,8 +46,8 @@ a {
 }
 
 .centered {
-    position: relative;
-    top: 20%;
+    position: absolute;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: xx-small;
@@ -57,13 +57,13 @@ a {
     background-color: inherit;
 }
 
-.containerInnerCard {
-    width: 250px;
-    background-color: lavenderblush;
-}
-
 .containerOuterCard {
     width: 350px;
     height: 80px;
     background-color: rgb(248, 229, 190);
+}
+
+.containerInnerCard {
+    width: 250px;
+    background-color: lavenderblush;
 }
