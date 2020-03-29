@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
-import { UserLogout, ProteinLogout, DeleteUser, DeleteAllProteins, UpdateUser } from '../store/actions/index';
-import { getUser } from '../store/selectors/user.selectors';
+import { UserLogout, ProteinLogout, DeleteUser, DeleteAllProteins, UpdateUser, UserUpdated } from '../store/actions/index';
+import { getUser, getUserUpdated } from '../store/selectors/user.selectors';
 
 import { IUser } from '../shared/models/iUser.model';
 import { User } from '../shared/models/user.model';
-import { NgForm, NgModel, Form } from '@angular/forms';
+import { NgModel } from '@angular/forms';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account',
@@ -28,6 +29,8 @@ export class AccountComponent implements OnInit {
   public genderToggle: boolean;
   public weightToggle: boolean;
 
+  public updateToggle: boolean;
+
   // click button for show password instead ******.
   public showPasswordToggle: boolean;
 
@@ -42,6 +45,11 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
 
     this.user$ = this.store.pipe(select(getUser));
+    this.store.pipe(select(getUserUpdated)).subscribe(
+      res => this.updateToggle = res,
+      catchError(error => of(console.log(error))
+      )
+    );
     this.newUser = new User(undefined, undefined, undefined, undefined, undefined);
 
   }
@@ -69,10 +77,18 @@ export class AccountComponent implements OnInit {
     this.editToggle = true;
   }
 
-  public editToggleOff(userForm: NgForm): void {
-    userForm.reset();
+  public editToggleOff(): void {
     this.editToggle = false;
     this.allTogglesOff();
+  }
+
+  // check if one of Toggles is on
+  public allowToEdit(): boolean {
+
+    if (this.editToggle && this.usernameToggle || this.passwordToggle || this.genderToggle || this.weightToggle)
+      return true;
+    return false;
+
   }
 
   public showPasswordSwitch() {
@@ -122,13 +138,13 @@ export class AccountComponent implements OnInit {
     this.weightToggle = false;
   }
 
-  public updateUser(oldUser: IUser, indexToUpdate: string): void {
+  public updateUser(oldUser: IUser, valueToUpdate: string): void {
 
     let user: IUser = { ...oldUser };
     const userValue = { ...this.newUser }
 
     // Update the user with new value
-    switch (indexToUpdate) {
+    switch (valueToUpdate) {
       case "username":
         user.username = userValue.username;
         break;
@@ -144,9 +160,16 @@ export class AccountComponent implements OnInit {
         break;
       default:
         alert("Something was wrong!\nPlease try again.");
+
     }
 
     this.store.dispatch(UpdateUser({ user }));
+
+    setTimeout(() => {
+      this.store.dispatch(UserUpdated());
+      // this.
+    }, 3000);
+
   }
 
 }

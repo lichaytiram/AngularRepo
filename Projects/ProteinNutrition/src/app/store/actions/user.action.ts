@@ -17,4 +17,5 @@ export const DeleteUserSuccess = createAction('[Products] Delete User Success');
 export const UpdateUser = createAction('[Products] Update User', props<{ user: IUser }>());
 export const UpdateUserFail = createAction('[Products] Update User Fail', props<{ error: Error }>());
 export const UpdateUserSuccess = createAction('[Products] Update User Success', props<{ user: IUser }>());
+export const UserUpdated = createAction('[Products] User Updated');
 export const UserLogout = createAction('[Products] User Logout');

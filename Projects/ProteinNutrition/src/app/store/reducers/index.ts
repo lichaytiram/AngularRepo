@@ -3,13 +3,13 @@ import { IProteinState, proteinReducer } from './protein.reducer';
 import { IRegisterState, userReducer } from './user.reducer';
 
 export interface IProductsState {
-    protein: IProteinState,
-    user: IRegisterState
+    user: IRegisterState,
+    protein: IProteinState
 };
 
 export const reducers: ActionReducerMap<IProductsState> = {
-    protein: proteinReducer,
-    user: userReducer
+    user: userReducer,
+    protein: proteinReducer
 };
 
 export const getProductsState = createFeatureSelector<IProductsState>("products");

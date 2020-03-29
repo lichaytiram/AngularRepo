@@ -51,7 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"user$ | async as user\">\r\n\r\n    <div>\r\n\r\n        <button (click)=\"logout()\" class=\"text-primary m-1\"><i class=\"fas fa-sign-out-alt\"></i> Log\r\n            Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger m-1\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div>\r\n\r\n            <h5 class=\"text-center\">Your user</h5>\r\n\r\n            <form #userForm=\"ngForm\">\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">username: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.username}}</span>\r\n                    <input *ngIf=\"editToggle && !usernameToggle\" type=\"button\" value=\"&#xf4ff; Edit username\"\r\n                        (click)=\"nameToggle('username')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !usernameToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                            Must to enter only three letters at least</small>\r\n\r\n                        <input type=\"text\" title=\"Enter an username\" placeholder=\"Enter an username\" name=\"username\"\r\n                            #username=\"ngModel\" [(ngModel)]=\"newUser.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                            [class.border-danger]=\"username.invalid && username.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(username)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" [disabled]=\"username.invalid\"\r\n                                (click)=\"updateUser(user,'username')\" class=\"btn far text-primary\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">password: </label>\r\n\r\n                    <div *ngIf=\"!editToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <span *ngIf=\"!showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>******** </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye eye\"></i></button>\r\n                        </span>\r\n                        <span *ngIf=\"showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>{{user.password}} </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye-slash eye\"></i></button>\r\n                        </span>\r\n\r\n                    </div>\r\n\r\n                    <input *ngIf=\"editToggle && !passwordToggle\" type=\"button\" value=\"&#xf4ff; Edit password\"\r\n                        (click)=\"nameToggle('password')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\r\n                            <small>Must to enter eight letters at least.</small>\r\n                            <small>(one upper case one lower case and a number)</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter a password\" placeholder=\"Enter a password\" name=\"password\"\r\n                            #password=\"ngModel\" [(ngModel)]=\"newUser.password\" required\r\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [class.border-danger]=\"password.invalid && password.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\" [class.d-none]=\"!editToggle || editToggle && !passwordToggle\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">confirm: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.confirmPassword}}</span>\r\n                    <span *ngIf=\"editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\"></span>\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\"\r\n                            [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\r\n                            <small>Your passwords isn't match!</small>\r\n                            <small>Please try again.</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter again a password to confirm\" placeholder=\"Enter a password\"\r\n                            name=\"confirmPassword\" #confirmPassword=\"ngModel\" [(ngModel)]=\"newUser.confirmPassword\"\r\n                            required pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [disabled]=\"password.invalid\"\r\n                            [class.border-danger]=\"(confirmPassword.touched && confirmPassword.value!==password.value)\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\"\r\n                                (click)=\"cancelTogglesOff(password,confirmPassword)\" class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\"\r\n                                [disabled]=\"confirmPassword.value!==password.value || password.invalid\"\r\n                                (click)=\"updateUser(user,'password')\" class=\"btn far text-primary\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">gender: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.gender}}</span>\r\n                    <input *ngIf=\"editToggle && !genderToggle\" type=\"button\" value=\"&#xf4ff; Edit gender\"\r\n                        (click)=\"nameToggle('gender')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !genderToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"male\" #male=\"ngModel\" value=\"Male\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioMale\"><i class=\"fas fa-male m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"female\" #female=\"ngModel\" value=\"Female\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioFemale\"><i\r\n                                    class=\"fas fa-female m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" [disabled]=\"male.invalid && female.invalid\"\r\n                                (click)=\"updateUser(user,'gender')\" class=\"btn far text-primary\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">weight: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.weight}}</span>\r\n                    <input *ngIf=\"editToggle && !weightToggle\" type=\"button\" value=\"&#xf4ff; Edit weight\"\r\n                        (click)=\"nameToggle('weight')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !weightToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\r\n                            must be greater than zero .</small>\r\n\r\n                        <input type=\"number\" title=\"Enter your weight\" placeholder=\"Enter a weight\" name=\"weight\"\r\n                            #weight=\"ngModel\" [(ngModel)]=\"newUser.weight\" required pattern=\"^[1-9]\\d*$\"\r\n                            [class.border-danger]=\"weight.invalid && weight.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(weight)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" [disabled]=\"weight.invalid\"\r\n                                (click)=\"updateUser(user,'weight')\" class=\"btn far text-primary\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\">\r\n            <input type=\"button\" value=\"&#xf4ff; Edit account\" [class.d-none]=\"editToggle\" (click)=\"editToggleOn()\"\r\n                class=\"fas text-primary\">\r\n            <input type=\"button\" value=\"&#xf410; Cancel edit\" [class.d-none]=\"!editToggle\"\r\n                (click)=\"editToggleOff(userForm)\" class=\"far text-danger\">\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"user$ | async as user\">\r\n\r\n    <div>\r\n\r\n        <button (click)=\"logout()\" class=\"text-primary m-1\"><i class=\"fas fa-sign-out-alt\"></i> Log\r\n            Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger m-1\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div>\r\n\r\n            <h5 class=\"text-center\">Your user</h5>\r\n\r\n            <form #userForm=\"ngForm\">\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">username: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.username}}</span>\r\n                    <input *ngIf=\"editToggle && !usernameToggle\" type=\"button\"\r\n                        [disabled]=\"allowToEdit() && !usernameToggle\" value=\"&#xf4ff; Edit username\"\r\n                        (click)=\"nameToggle('username')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !usernameToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                            Must to enter only three letters at least</small>\r\n\r\n                        <input type=\"text\" title=\"Enter an username\" placeholder=\"Enter an username\" name=\"username\"\r\n                            #username=\"ngModel\" [(ngModel)]=\"newUser.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                            [class.border-danger]=\"username.invalid && username.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(username)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" [disabled]=\"username.invalid\"\r\n                                (click)=\"updateUser(user,'username')\" class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && usernameToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">password: </label>\r\n\r\n                    <div *ngIf=\"!editToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <span *ngIf=\"!showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>******** </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye eye\"></i></button>\r\n                        </span>\r\n                        <span *ngIf=\"showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>{{user.password}} </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye-slash eye\"></i></button>\r\n                        </span>\r\n\r\n                    </div>\r\n\r\n                    <input *ngIf=\"editToggle && !passwordToggle\" type=\"button\"\r\n                        [disabled]=\"allowToEdit() && !passwordToggle\" value=\"&#xf4ff; Edit password\"\r\n                        (click)=\"nameToggle('password')\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\r\n                            <small>Must to enter eight letters at least.</small>\r\n                            <small>(one upper case one lower case and a number)</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter a password\" placeholder=\"Enter a password\" name=\"password\"\r\n                            #password=\"ngModel\" [(ngModel)]=\"newUser.password\" required\r\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [class.border-danger]=\"password.invalid && password.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\" [class.d-none]=\"!editToggle || editToggle && !passwordToggle\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">confirm: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.confirmPassword}}</span>\r\n                    <span *ngIf=\"editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\"></span>\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\"\r\n                            [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\r\n                            <small>Your passwords isn't match!</small>\r\n                            <small>Please try again.</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter again a password to confirm\" placeholder=\"Enter a password\"\r\n                            name=\"confirmPassword\" #confirmPassword=\"ngModel\" [(ngModel)]=\"newUser.confirmPassword\"\r\n                            required pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [disabled]=\"password.invalid\"\r\n                            [class.border-danger]=\"(confirmPassword.touched && confirmPassword.value!==password.value)\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\"\r\n                                (click)=\"cancelTogglesOff(password,confirmPassword)\" class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\"\r\n                                [disabled]=\"confirmPassword.value!==password.value || password.invalid\"\r\n                                (click)=\"updateUser(user,'password')\" class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && passwordToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">gender: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.gender}}</span>\r\n                    <input *ngIf=\"editToggle && !genderToggle\" type=\"button\" [disabled]=\"allowToEdit() && !genderToggle\"\r\n                        value=\"&#xf4ff; Edit gender\" (click)=\"nameToggle('gender')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !genderToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"male\" #male=\"ngModel\" value=\"Male\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioMale\"><i class=\"fas fa-male m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"female\" #female=\"ngModel\" value=\"Female\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioFemale\"><i\r\n                                    class=\"fas fa-female m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" [disabled]=\"male.invalid && female.invalid\"\r\n                                (click)=\"updateUser(user,'gender')\" class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && genderToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">weight: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.weight}}</span>\r\n                    <input *ngIf=\"editToggle && !weightToggle\" type=\"button\" [disabled]=\"allowToEdit() && !weightToggle\"\r\n                        value=\"&#xf4ff; Edit weight\" (click)=\"nameToggle('weight')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !weightToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\r\n                            must be greater than zero .</small>\r\n\r\n                        <input type=\"number\" title=\"Enter your weight\" placeholder=\"Enter a weight\" name=\"weight\"\r\n                            #weight=\"ngModel\" [(ngModel)]=\"newUser.weight\" required pattern=\"^[1-9]\\d*$\"\r\n                            [class.border-danger]=\"weight.invalid && weight.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(weight)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" [disabled]=\"weight.invalid\"\r\n                                (click)=\"updateUser(user,'weight')\" class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && weightToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\">\r\n            <input type=\"button\" value=\"&#xf4ff; Edit account\" [class.d-none]=\"editToggle\" (click)=\"editToggleOn()\"\r\n                class=\"fas text-primary\">\r\n            <input type=\"button\" value=\"&#xf410; Cancel edit\"\r\n                [class.d-none]=\"!editToggle || editToggle && allowToEdit()\" (click)=\"editToggleOff()\"\r\n                class=\"far text-danger\">\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -813,27 +813,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/fesm2015/store.js");
     /* harmony import */
 
 
-    var _store_actions_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _store_actions_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../store/actions/index */
     "./src/app/store/actions/index.ts");
     /* harmony import */
 
 
-    var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../store/selectors/user.selectors */
     "./src/app/store/selectors/user.selectors.ts");
     /* harmony import */
 
 
-    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ../shared/models/user.model */
     "./src/app/shared/models/user.model.ts");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
 
     var AccountComponent =
     /*#__PURE__*/
@@ -850,14 +862,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AccountComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__["getUser"]));
-          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__["User"](undefined, undefined, undefined, undefined, undefined);
+          var _this = this;
+
+          this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_6__["getUser"]));
+          this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_6__["getUserUpdated"])).subscribe(function (res) {
+            return _this.updateToggle = res;
+          }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(console.log(error));
+          }));
+          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_7__["User"](undefined, undefined, undefined, undefined, undefined);
         }
       }, {
         key: "logout",
         value: function logout() {
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UserLogout"])());
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["ProteinLogout"])());
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_5__["UserLogout"])());
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_5__["ProteinLogout"])());
           this.router.navigate(["product/home"]);
         }
       }, {
@@ -866,10 +885,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var isConfirm = confirm("You are try to delete your account!\nYou are sure?"); // Should be one function , FireBase (data base) don't save proteins id as a foreign key.
 
           if (isConfirm) {
-            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteUser"])({
+            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_5__["DeleteUser"])({
               userId: userId
             }));
-            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteAllProteins"])({
+            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_5__["DeleteAllProteins"])({
               userId: userId
             }));
           }
@@ -881,10 +900,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "editToggleOff",
-        value: function editToggleOff(userForm) {
-          userForm.reset();
+        value: function editToggleOff() {
           this.editToggle = false;
           this.allTogglesOff();
+        } // check if one of Toggles is on
+
+      }, {
+        key: "allowToEdit",
+        value: function allowToEdit() {
+          if (this.editToggle && this.usernameToggle || this.passwordToggle || this.genderToggle || this.weightToggle) return true;
+          return false;
         }
       }, {
         key: "showPasswordSwitch",
@@ -894,7 +919,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "nameToggle",
         value: function nameToggle(toggleName) {
-          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__["User"](undefined, undefined, undefined, undefined, undefined);
+          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_7__["User"](undefined, undefined, undefined, undefined, undefined);
           this.allTogglesOff();
 
           switch (toggleName) {
@@ -935,11 +960,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "updateUser",
-        value: function updateUser(oldUser, indexToUpdate) {
+        value: function updateUser(oldUser, valueToUpdate) {
+          var _this2 = this;
+
           var user = Object.assign({}, oldUser);
           var userValue = Object.assign({}, this.newUser); // Update the user with new value
 
-          switch (indexToUpdate) {
+          switch (valueToUpdate) {
             case "username":
               user.username = userValue.username;
               break;
@@ -961,9 +988,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               alert("Something was wrong!\nPlease try again.");
           }
 
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UpdateUser"])({
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_5__["UpdateUser"])({
             user: user
           }));
+          setTimeout(function () {
+            _this2.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_5__["UserUpdated"])()); // this.
+
+          }, 3000);
         }
       }]);
 
@@ -972,7 +1003,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     AccountComponent.ctorParameters = function () {
       return [{
-        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
+        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_4__["Store"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }];
@@ -1575,10 +1606,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "popup",
         value: function popup() {
-          var _this = this;
+          var _this3 = this;
 
           this.clearInterval.push(setTimeout(function () {
-            _this.visibilityOn("popup");
+            _this3.visibilityOn("popup");
           }, 8000));
         }
       }, {
@@ -1638,21 +1669,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "visibility",
         value: function visibility() {
-          var _this2 = this;
+          var _this4 = this;
 
           var timeToShow = 100;
           var _a = this.protein,
               id = _a.id,
               protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](_a, ["id"]);
           Object.keys(protein).forEach(function (key) {
-            _this2.clearInterval.push(setTimeout(function () {
-              return _this2.visibilityOn(key);
+            _this4.clearInterval.push(setTimeout(function () {
+              return _this4.visibilityOn(key);
             }, timeToShow));
 
             timeToShow += 250;
           });
           this.clearInterval.push(setTimeout(function () {
-            return _this2.visibilityOn("submit");
+            return _this4.visibilityOn("submit");
           }, timeToShow));
         }
       }, {
@@ -2542,7 +2573,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/index.ts ***!
     \****************************************/
 
-  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserLogout, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout */
+  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout */
 
   /***/
   function srcAppStoreActionsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -2738,6 +2769,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony reexport (safe) */
 
 
+    __webpack_require__.d(__webpack_exports__, "UserUpdated", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["UserUpdated"];
+    });
+    /* harmony reexport (safe) */
+
+
     __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
       return _user_action__WEBPACK_IMPORTED_MODULE_2__["UserLogout"];
     });
@@ -2871,7 +2908,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/user.action.ts ***!
     \**********************************************/
 
-  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserLogout */
+  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout */
 
   /***/
   function srcAppStoreActionsUserActionTs(module, __webpack_exports__, __webpack_require__) {
@@ -2971,6 +3008,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony export (binding) */
 
 
+    __webpack_require__.d(__webpack_exports__, "UserUpdated", function () {
+      return UserUpdated;
+    });
+    /* harmony export (binding) */
+
+
     __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
       return UserLogout;
     });
@@ -3002,6 +3045,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var UpdateUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Update User', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var UpdateUserFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Update User Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var UpdateUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Update User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
+    var UserUpdated = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] User Updated');
     var UserLogout = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] User Logout');
     /***/
   },
@@ -3111,15 +3155,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/store/actions/protein.action.ts");
 
     var ProteinEffect = function ProteinEffect(actions$, proteinService) {
-      var _this3 = this;
+      var _this5 = this;
 
       _classCallCheck(this, ProteinEffect);
 
       this.actions$ = actions$;
       this.proteinService = proteinService;
       this.loadProteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this3.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
+        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this5.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteinsSuccess"]({
               proteins: proteins
             });
@@ -3129,8 +3173,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this3.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
+        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this5.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
             var protein = action.protein;
             protein.id = userId.name;
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProteinSuccess"]({
@@ -3142,8 +3186,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this3.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this5.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProteinSuccess"]({
               proteinId: action.proteinId
             });
@@ -3153,8 +3197,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteAllproteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this3.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this3.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this5.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsFail"](error));
@@ -3252,7 +3296,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/shared/services/user.service.ts");
 
     var UserEffects = function UserEffects(actions$, userService, router) {
-      var _this4 = this;
+      var _this6 = this;
 
       _classCallCheck(this, UserEffects);
 
@@ -3260,8 +3304,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       this.userService = userService;
       this.router = router;
       this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this4.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this6.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.userId;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUserSuccess"]({
               user: user
@@ -3272,9 +3316,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this4.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
-            _this4.router.navigate(['product/login']);
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this6.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
+            _this6.router.navigate(['product/login']);
 
             var user = action.user;
             user.id = userId.name;
@@ -3287,11 +3331,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this4.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this6.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
             var userId = user.id;
 
-            _this4.router.navigate(['product/account']);
+            _this6.router.navigate(['product/account']);
 
             return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUserSuccess"]({
               user: user
@@ -3304,8 +3348,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.updateUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this4.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this6.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.user.id;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUserSuccess"]({
               user: user
@@ -3316,9 +3360,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this4.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this4.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
-            _this4.router.navigate(["product/home"]);
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this6.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
+            _this6.router.navigate(["product/home"]);
 
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUserSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
@@ -3463,11 +3507,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this5 = this;
+          var _this7 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getProteinLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this5.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
+            if (!loaded && userId) _this7.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -3566,11 +3610,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this6 = this;
+          var _this8 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getUserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this6.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
+            if (!loaded && userId) _this8.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -3598,7 +3642,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/index.ts ***!
     \********************************/
 
-  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserLogout, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, reducers, getProductsState, getUserState, getUser, getUserLoaded, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, reducers, getProductsState, getUserState, getUser, getUserLoaded, getUserUpdated, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -3706,6 +3750,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "UpdateUserSuccess", function () {
       return _actions__WEBPACK_IMPORTED_MODULE_1__["UpdateUserSuccess"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserUpdated", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["UserUpdated"];
     });
     /* harmony reexport (safe) */
 
@@ -3836,6 +3886,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony reexport (safe) */
 
 
+    __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
+      return _selectors__WEBPACK_IMPORTED_MODULE_3__["getUserUpdated"];
+    });
+    /* harmony reexport (safe) */
+
+
     __webpack_require__.d(__webpack_exports__, "getProteinState", function () {
       return _selectors__WEBPACK_IMPORTED_MODULE_3__["getProteinState"];
     });
@@ -3931,8 +3987,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     ;
     var reducers = {
-      protein: _protein_reducer__WEBPACK_IMPORTED_MODULE_2__["proteinReducer"],
-      user: _user_reducer__WEBPACK_IMPORTED_MODULE_3__["userReducer"]
+      user: _user_reducer__WEBPACK_IMPORTED_MODULE_3__["userReducer"],
+      protein: _protein_reducer__WEBPACK_IMPORTED_MODULE_2__["proteinReducer"]
     };
     var getProductsState = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createFeatureSelector"])("products");
     /***/
@@ -4053,7 +4109,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/reducers/user.reducer.ts ***!
     \************************************************/
 
-  /*! exports provided: initialState, userReducer, getUserLoaded, getUser */
+  /*! exports provided: initialState, userReducer, getUser, getUserLoaded, getUserUpdated */
 
   /***/
   function srcAppStoreReducersUserReducerTs(module, __webpack_exports__, __webpack_require__) {
@@ -4075,14 +4131,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony export (binding) */
 
 
+    __webpack_require__.d(__webpack_exports__, "getUser", function () {
+      return getUser;
+    });
+    /* harmony export (binding) */
+
+
     __webpack_require__.d(__webpack_exports__, "getUserLoaded", function () {
       return getUserLoaded;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "getUser", function () {
-      return getUser;
+    __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
+      return getUserUpdated;
     });
     /* harmony import */
 
@@ -4105,7 +4167,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var initialState = {
       user: null,
-      loaded: false
+      loaded: false,
+      updated: false
     };
     var userReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["LoadUserSuccess"], function (state, action) {
       var user = action.user;
@@ -4135,16 +4198,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UpdateUserSuccess"], function (state, action) {
       var user = action.user;
       return Object.assign({}, state, {
+        updated: true,
         user: user
       });
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserUpdated"], function (state) {
+      return Object.assign({}, state, {
+        updated: false
+      });
     }));
+
+    var getUser = function getUser(state) {
+      return state.user;
+    };
 
     var getUserLoaded = function getUserLoaded(state) {
       return state.loaded;
     };
 
-    var getUser = function getUser(state) {
-      return state.user;
+    var getUserUpdated = function getUserUpdated(state) {
+      return state.updated;
     };
     /***/
 
@@ -4156,7 +4228,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/selectors/index.ts ***!
     \******************************************/
 
-  /*! exports provided: getUserState, getUser, getUserLoaded, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+  /*! exports provided: getUserState, getUser, getUserLoaded, getUserUpdated, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreSelectorsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -4228,6 +4300,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "getUserLoaded", function () {
       return _user_selectors__WEBPACK_IMPORTED_MODULE_2__["getUserLoaded"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
+      return _user_selectors__WEBPACK_IMPORTED_MODULE_2__["getUserUpdated"];
     });
     /***/
 
@@ -4325,7 +4403,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/selectors/user.selectors.ts ***!
     \***************************************************/
 
-  /*! exports provided: getUserState, getUser, getUserLoaded */
+  /*! exports provided: getUserState, getUser, getUserLoaded, getUserUpdated */
 
   /***/
   function srcAppStoreSelectorsUserSelectorsTs(module, __webpack_exports__, __webpack_require__) {
@@ -4349,6 +4427,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "getUserLoaded", function () {
       return getUserLoaded;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
+      return getUserUpdated;
     });
     /* harmony import */
 
@@ -4380,6 +4464,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     });
     var getUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUser"]);
     var getUserLoaded = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUserLoaded"]);
+    var getUserUpdated = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUserUpdated"]);
     /***/
   },
 

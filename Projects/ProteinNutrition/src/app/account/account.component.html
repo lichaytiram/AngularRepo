@@ -22,7 +22,8 @@
                     <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">username: </label>
                     <span *ngIf="!editToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.username}}</span>
-                    <input *ngIf="editToggle && !usernameToggle" type="button" value="&#xf4ff; Edit username"
+                    <input *ngIf="editToggle && !usernameToggle" type="button"
+                        [disabled]="allowToEdit() && !usernameToggle" value="&#xf4ff; Edit username"
                         (click)="nameToggle('username')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
 
                     <div [class.d-none]="!editToggle || editToggle && !usernameToggle"
@@ -42,6 +43,7 @@
                                 class="far text-danger">
                             <input type="button" value="&#xf0c7; Save" [disabled]="username.invalid"
                                 (click)="updateUser(user,'username')" class="btn far text-primary">
+                            <i *ngIf="updateToggle && usernameToggle" class="fas fa-check text-success"></i>
 
                         </div>
 
@@ -66,7 +68,8 @@
 
                     </div>
 
-                    <input *ngIf="editToggle && !passwordToggle" type="button" value="&#xf4ff; Edit password"
+                    <input *ngIf="editToggle && !passwordToggle" type="button"
+                        [disabled]="allowToEdit() && !passwordToggle" value="&#xf4ff; Edit password"
                         (click)="nameToggle('password')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
 
                     <div [class.d-none]="!editToggle || editToggle && !passwordToggle"
@@ -118,6 +121,7 @@
                             <input type="button" value="&#xf0c7; Save"
                                 [disabled]="confirmPassword.value!==password.value || password.invalid"
                                 (click)="updateUser(user,'password')" class="btn far text-primary">
+                            <i *ngIf="updateToggle && passwordToggle" class="fas fa-check text-success"></i>
 
                         </div>
 
@@ -130,8 +134,9 @@
                     <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">gender: </label>
                     <span *ngIf="!editToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.gender}}</span>
-                    <input *ngIf="editToggle && !genderToggle" type="button" value="&#xf4ff; Edit gender"
-                        (click)="nameToggle('gender')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
+                    <input *ngIf="editToggle && !genderToggle" type="button" [disabled]="allowToEdit() && !genderToggle"
+                        value="&#xf4ff; Edit gender" (click)="nameToggle('gender')"
+                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
 
                     <div [class.d-none]="!editToggle || editToggle && !genderToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
@@ -155,6 +160,7 @@
                                 class="far text-danger">
                             <input type="button" value="&#xf0c7; Save" [disabled]="male.invalid && female.invalid"
                                 (click)="updateUser(user,'gender')" class="btn far text-primary">
+                            <i *ngIf="updateToggle && genderToggle" class="fas fa-check text-success"></i>
 
                         </div>
 
@@ -167,8 +173,9 @@
                     <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">weight: </label>
                     <span *ngIf="!editToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.weight}}</span>
-                    <input *ngIf="editToggle && !weightToggle" type="button" value="&#xf4ff; Edit weight"
-                        (click)="nameToggle('weight')" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
+                    <input *ngIf="editToggle && !weightToggle" type="button" [disabled]="allowToEdit() && !weightToggle"
+                        value="&#xf4ff; Edit weight" (click)="nameToggle('weight')"
+                        class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas">
 
                     <div [class.d-none]="!editToggle || editToggle && !weightToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
@@ -187,6 +194,7 @@
                                 class="far text-danger">
                             <input type="button" value="&#xf0c7; Save" [disabled]="weight.invalid"
                                 (click)="updateUser(user,'weight')" class="btn far text-primary">
+                            <i *ngIf="updateToggle && weightToggle" class="fas fa-check text-success"></i>
 
                         </div>
 
@@ -201,8 +209,9 @@
         <div class="text-center">
             <input type="button" value="&#xf4ff; Edit account" [class.d-none]="editToggle" (click)="editToggleOn()"
                 class="fas text-primary">
-            <input type="button" value="&#xf410; Cancel edit" [class.d-none]="!editToggle"
-                (click)="editToggleOff(userForm)" class="far text-danger">
+            <input type="button" value="&#xf410; Cancel edit"
+                [class.d-none]="!editToggle || editToggle && allowToEdit()" (click)="editToggleOff()"
+                class="far text-danger">
         </div>
 
     </div>

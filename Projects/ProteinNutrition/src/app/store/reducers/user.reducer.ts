@@ -5,11 +5,13 @@ import * as fromUser from '../actions/user.action';
 export interface IRegisterState {
     user: IUser;
     loaded: boolean;
+    updated: boolean;
 }
 
 export const initialState: IRegisterState = {
     user: null,
-    loaded: false
+    loaded: false,
+    updated: false
 }
 
 export const userReducer = createReducer<IRegisterState>(
@@ -58,12 +60,21 @@ export const userReducer = createReducer<IRegisterState>(
             const { user } = action;
             return {
                 ...state,
+                updated: true,
                 user
+            };
+        }
+    ), on(
+        fromUser.UserUpdated, (state: IRegisterState) => {
+            return {
+                ...state,
+                updated: false
             };
         }
     )
 
 )
 
-export const getUserLoaded = (state: IRegisterState) => state.loaded;
 export const getUser = (state: IRegisterState) => state.user;
+export const getUserLoaded = (state: IRegisterState) => state.loaded;
+export const getUserUpdated = (state: IRegisterState) => state.updated;

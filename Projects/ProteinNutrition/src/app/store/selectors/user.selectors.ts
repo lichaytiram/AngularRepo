@@ -10,3 +10,4 @@ export const getUserState = createSelector(
 
 export const getUser = createSelector(getUserState, fromUser.getUser);
 export const getUserLoaded = createSelector(getUserState, fromUser.getUserLoaded);
+export const getUserUpdated = createSelector(getUserState, fromUser.getUserUpdated);
