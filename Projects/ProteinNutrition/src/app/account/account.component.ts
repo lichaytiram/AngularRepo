@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription, interval } from 'rxjs';
 
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
@@ -17,7 +17,7 @@ import { catchError } from 'rxjs/operators';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit, OnDestroy {
 
   public user$: Observable<IUser>;
   public newUser: IUser;
@@ -30,6 +30,9 @@ export class AccountComponent implements OnInit {
   public weightToggle: boolean;
 
   public updateToggle: boolean;
+
+  // unSubscribe list
+  private unSubscribe: Subscription[] = [];
 
   // click button for show password instead ******.
   public showPasswordToggle: boolean;
@@ -44,13 +47,21 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
 
+    this.newUser = new User(undefined, undefined, undefined, undefined, undefined);
+
     this.user$ = this.store.pipe(select(getUser));
-    this.store.pipe(select(getUserUpdated)).subscribe(
+
+    this.unSubscribe.push(this.store.pipe(select(getUserUpdated)).subscribe(
       res => this.updateToggle = res,
       catchError(error => of(console.log(error))
       )
-    );
-    this.newUser = new User(undefined, undefined, undefined, undefined, undefined);
+    ));
+
+  }
+
+  ngOnDestroy() {
+
+    this.unSubscribe.forEach(subscribe => subscribe.unsubscribe());
 
   }
 
@@ -167,7 +178,7 @@ export class AccountComponent implements OnInit {
 
     setTimeout(() => {
       this.store.dispatch(UserUpdated());
-      // this.
+      this.allTogglesOff();
     }, 3000);
 
   }
