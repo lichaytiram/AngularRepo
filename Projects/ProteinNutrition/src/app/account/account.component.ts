@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, Subscription, interval } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
@@ -9,7 +9,7 @@ import { getUser, getUserUpdated } from '../store/selectors/user.selectors';
 
 import { IUser } from '../shared/models/iUser.model';
 import { User } from '../shared/models/user.model';
-import { NgModel } from '@angular/forms';
+import { NgModel, NgForm } from '@angular/forms';
 import { catchError } from 'rxjs/operators';
 
 @Component({
@@ -96,9 +96,28 @@ export class AccountComponent implements OnInit, OnDestroy {
   // check if one of Toggles is on
   public allowToEdit(): boolean {
 
-    if (this.editToggle && this.usernameToggle || this.passwordToggle || this.genderToggle || this.weightToggle)
+    if (this.editToggle && this.findAvailableToken())
       return true;
     return false;
+
+  }
+
+  // check if one of Toggles is on and return toggle name
+  private findAvailableToken(): string {
+
+    if (this.usernameToggle)
+      return "username";
+
+    if (this.passwordToggle)
+      return "password";
+
+    if (this.genderToggle)
+      return "gender";
+
+    if (this.weightToggle)
+      return "weight";
+
+    return null;
 
   }
 
@@ -131,7 +150,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   }
 
-  public cancelTogglesOff(firstInput?: any, secondInput?: NgModel) {
+  public cancelTogglesOff(firstInput?: NgModel, secondInput?: NgModel) {
 
     if (firstInput)
       firstInput.reset();
@@ -149,7 +168,9 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.weightToggle = false;
   }
 
-  public updateUser(oldUser: IUser, valueToUpdate: string): void {
+  public updateUser(oldUser: IUser, userForm: NgForm): void {
+
+    const valueToUpdate: string = this.findAvailableToken();
 
     let user: IUser = { ...oldUser };
     const userValue = { ...this.newUser }
@@ -179,7 +200,11 @@ export class AccountComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.store.dispatch(UserUpdated());
       this.allTogglesOff();
-    }, 3000);
+
+      if (valueToUpdate != "gender")
+        userForm.controls[valueToUpdate].reset();
+
+    }, 2000);
 
   }
 
