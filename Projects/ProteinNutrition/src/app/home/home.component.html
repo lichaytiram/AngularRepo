@@ -5,7 +5,7 @@
     <h2 class="text-center">Let's start to calculate your protein </h2>
   </div>
 
-  <div *ngIf="!login" id="popup" class="invisible">
+  <div *ngIf="!user" id="popup" class="invisible">
     <div class="card">
       <img src="/assets/photos/popup.jpg" class="cardImage">
       <button (click)="cancelPopup()" class="text-right cancel m-2 ml-auto">
@@ -149,7 +149,7 @@
 
             <input
               class="btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button"
-              [disabled]="!login" type="submit" value="&#xf0c7; Save">
+              [disabled]="!user" type="submit" value="&#xf0c7; Save">
           </div>
         </div>
 

@@ -6,7 +6,7 @@ export class User implements IUser {
         public password: string,
         public confirmPassword: string,
         public gender: string,
-        public weight: string,
+        public weight: number,
         public id?: string
     ) { }
 }

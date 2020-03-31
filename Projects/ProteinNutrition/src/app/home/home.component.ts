@@ -6,9 +6,12 @@ import { Protein } from '../shared/models/protein.model';
 import { Egg } from '../shared/models/egg.model';
 import { IEgg } from '../shared/models/iEgg.model';
 
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AddProtein } from '../store/actions/protein.action'
-import { IProductsState } from '../store';
+import { IProductsState, getUser } from '../store';
+import { Observable, of, Subscription } from 'rxjs';
+import { IUser } from '../shared/models/iUser.model';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -18,10 +21,11 @@ import { IProductsState } from '../store';
 export class HomeComponent implements OnInit, OnDestroy {
 
   public acccept: boolean;
-  public login: boolean;
-  private userId: string;
+  public user: IUser;
   public protein: IProtein;
+
   private clearInterval = [];
+  private unSubscribe: Subscription[] = [];
 
   constructor(private store: Store<IProductsState>, private router: Router) { }
 
@@ -34,14 +38,23 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.visibility();
     }
 
-    const id: string = sessionStorage.getItem("login");
-    id ? (this.login = true, this.userId = id) : this.popup();
+    this.unSubscribe.push(this.store.pipe(select(getUser)).subscribe(
+      user => {
+        if (user == null)
+          this.popup();
+
+        this.user = user
+
+      },
+      catchError(error => of(console.log(error)))
+    ));
 
   }
 
   ngOnDestroy() {
 
     this.clearInterval.forEach(id => clearInterval(id));
+    this.unSubscribe.forEach(subscribe => subscribe.unsubscribe());
 
   }
 
@@ -66,7 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public submit(): void {
 
-    let userId: string = this.userId;
+    const userId: string = this.user.id;
     const protein: IProtein = { ...this.protein };
 
     this.store.dispatch(AddProtein({ userId, protein }));
@@ -101,7 +114,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     protein.gainer *= 22;
 
     Object.values(protein).forEach(value => value ? sum += value : sum += 0);
-    alert(`You eat ${sum} protein approximately`);
+
+    this.user ? alert(`You eat ${sum} protein approximately./nYou need more ${this.user.weight * 2 - sum}`) : alert(`You eat ${sum} protein approximately.`);
 
   }
 

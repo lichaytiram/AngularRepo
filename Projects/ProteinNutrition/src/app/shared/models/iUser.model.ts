@@ -3,6 +3,6 @@ export interface IUser {
     password: string,
     confirmPassword: string,
     gender: string,
-    weight: string,
+    weight: number,
     id?:string;
 }

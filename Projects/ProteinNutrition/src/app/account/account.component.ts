@@ -52,7 +52,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.user$ = this.store.pipe(select(getUser));
 
     this.unSubscribe.push(this.store.pipe(select(getUserUpdated)).subscribe(
-      res => this.updateToggle = res,
+      userUpdated => this.updateToggle = userUpdated,
       catchError(error => of(console.log(error))
       )
     ));

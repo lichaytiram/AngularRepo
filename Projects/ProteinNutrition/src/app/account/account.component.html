@@ -41,7 +41,7 @@
 
                             <input type="button" value="&#xf410; Cancel" (click)="cancelTogglesOff(username)"
                                 class="far text-danger">
-                            <input type="submit" value="&#xf0c7; Save" [disabled]="username.invalid"
+                            <input type="submit" value="&#xf0c7; Save" [disabled]="username.invalid || updateToggle"
                                 class="btn far text-primary">
                             <i *ngIf="updateToggle && usernameToggle" class="fas fa-check text-success"></i>
 
@@ -119,7 +119,7 @@
                             <input type="button" value="&#xf410; Cancel"
                                 (click)="cancelTogglesOff(password,confirmPassword)" class="far text-danger">
                             <input type="submit" value="&#xf0c7; Save"
-                                [disabled]="confirmPassword.value!==password.value || password.invalid"
+                                [disabled]="confirmPassword.value!==password.value || password.invalid || updateToggle"
                                 class="btn far text-primary">
                             <i *ngIf="updateToggle && passwordToggle" class="fas fa-check text-success"></i>
 
@@ -158,7 +158,8 @@
 
                             <input type="button" value="&#xf410; Cancel" (click)="cancelTogglesOff()"
                                 class="far text-danger">
-                            <input type="submit" value="&#xf0c7; Save" [disabled]="male.invalid && female.invalid"
+                            <input type="submit" value="&#xf0c7; Save"
+                                [disabled]="male.invalid && female.invalid || updateToggle"
                                 class="btn far text-primary">
                             <i *ngIf="updateToggle && genderToggle" class="fas fa-check text-success"></i>
 
@@ -192,7 +193,7 @@
 
                             <input type="button" value="&#xf410; Cancel" (click)="cancelTogglesOff(weight)"
                                 class="far text-danger">
-                            <input type="submit" value="&#xf0c7; Save" [disabled]="weight.invalid"
+                            <input type="submit" value="&#xf0c7; Save" [disabled]="weight.invalid || updateToggle"
                                 class="btn far text-primary">
                             <i *ngIf="updateToggle && weightToggle" class="fas fa-check text-success"></i>
 
