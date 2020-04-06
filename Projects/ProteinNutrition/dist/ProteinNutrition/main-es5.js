@@ -51,7 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"user$ | async as user\">\r\n\r\n    <div>\r\n\r\n        <button (click)=\"logout()\" class=\"text-primary m-1\"><i class=\"fas fa-sign-out-alt\"></i> Log\r\n            Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger m-1\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div>\r\n\r\n            <h5 class=\"text-center\">Your user</h5>\r\n\r\n            <form #userForm=\"ngForm\" (ngSubmit)=\"updateUser(user,userForm)\">\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">username: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.username}}</span>\r\n                    <input *ngIf=\"editToggle && !usernameToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit username\" (click)=\"nameToggle('username')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !usernameToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                            Must to enter only three letters at least</small>\r\n\r\n                        <input type=\"text\" title=\"Enter an username\" placeholder=\"Enter an username\" name=\"username\"\r\n                            #username=\"ngModel\" [(ngModel)]=\"newUser.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                            [class.border-danger]=\"username.invalid && username.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(username)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\" [disabled]=\"username.invalid\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && usernameToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">password: </label>\r\n\r\n                    <div *ngIf=\"!editToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <span *ngIf=\"!showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>******** </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye eye\"></i></button>\r\n                        </span>\r\n                        <span *ngIf=\"showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>{{user.password}} </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye-slash eye\"></i></button>\r\n                        </span>\r\n\r\n                    </div>\r\n\r\n                    <input *ngIf=\"editToggle && !passwordToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit password\" (click)=\"nameToggle('password')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\r\n                            <small>Must to enter eight letters at least.</small>\r\n                            <small>(one upper case one lower case and a number)</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter a password\" placeholder=\"Enter a password\" name=\"password\"\r\n                            #password=\"ngModel\" [(ngModel)]=\"newUser.password\" required\r\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [class.border-danger]=\"password.invalid && password.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\" [class.d-none]=\"!editToggle || editToggle && !passwordToggle\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">confirm: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.confirmPassword}}</span>\r\n                    <span *ngIf=\"editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\"></span>\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\"\r\n                            [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\r\n                            <small>Your passwords isn't match!</small>\r\n                            <small>Please try again.</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter again a password to confirm\" placeholder=\"Enter a password\"\r\n                            name=\"confirmPassword\" #confirmPassword=\"ngModel\" [(ngModel)]=\"newUser.confirmPassword\"\r\n                            required pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [disabled]=\"password.invalid\"\r\n                            [class.border-danger]=\"(confirmPassword.touched && confirmPassword.value!==password.value)\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\"\r\n                                (click)=\"cancelTogglesOff(password,confirmPassword)\" class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\"\r\n                                [disabled]=\"confirmPassword.value!==password.value || password.invalid\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && passwordToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">gender: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.gender}}</span>\r\n                    <input *ngIf=\"editToggle && !genderToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit gender\" (click)=\"nameToggle('gender')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !genderToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"male\" #male=\"ngModel\" value=\"Male\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioMale\"><i class=\"fas fa-male m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"female\" #female=\"ngModel\" value=\"Female\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioFemale\"><i\r\n                                    class=\"fas fa-female m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\" [disabled]=\"male.invalid && female.invalid\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && genderToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">weight: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.weight}}</span>\r\n                    <input *ngIf=\"editToggle && !weightToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit weight\" (click)=\"nameToggle('weight')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !weightToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\r\n                            must be greater than zero .</small>\r\n\r\n                        <input type=\"number\" title=\"Enter your weight\" placeholder=\"Enter a weight\" name=\"weight\"\r\n                            #weight=\"ngModel\" [(ngModel)]=\"newUser.weight\" required pattern=\"^[1-9]\\d*$\"\r\n                            [class.border-danger]=\"weight.invalid && weight.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(weight)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\" [disabled]=\"weight.invalid\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && weightToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\">\r\n            <input type=\"button\" value=\"&#xf4ff; Edit account\" [class.d-none]=\"editToggle\" (click)=\"editToggleOn()\"\r\n                class=\"fas text-primary\">\r\n            <input type=\"button\" value=\"&#xf410; Cancel edit\"\r\n                [class.d-none]=\"!editToggle || editToggle && allowToEdit()\" (click)=\"editToggleOff()\"\r\n                class=\"far text-danger\">\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"user$ | async as user\">\r\n\r\n    <div>\r\n\r\n        <button (click)=\"logout()\" class=\"text-primary m-1\"><i class=\"fas fa-sign-out-alt\"></i> Log\r\n            Out</button><br>\r\n        <button (click)=\"deleteAccount(user.id)\" class=\"text-danger m-1\"><i class=\"fas fa-minus-circle\"></i> Delete\r\n            Account</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n\r\n        <div>\r\n\r\n            <h5 class=\"text-center\">Your user</h5>\r\n\r\n            <form #userForm=\"ngForm\" (ngSubmit)=\"updateUser(user,userForm)\">\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">username: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.username}}</span>\r\n                    <input *ngIf=\"editToggle && !usernameToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit username\" (click)=\"nameToggle('username')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !usernameToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"username.untouched || username.valid\">\r\n                            Must to enter only three letters at least</small>\r\n\r\n                        <input type=\"text\" title=\"Enter an username\" placeholder=\"Enter an username\" name=\"username\"\r\n                            #username=\"ngModel\" [(ngModel)]=\"newUser.username\" required pattern=\"^[a-zA-Z]{3,}$\"\r\n                            [class.border-danger]=\"username.invalid && username.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(username)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\" [disabled]=\"username.invalid || updateToggle\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && usernameToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">password: </label>\r\n\r\n                    <div *ngIf=\"!editToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <span *ngIf=\"!showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>******** </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye eye\"></i></button>\r\n                        </span>\r\n                        <span *ngIf=\"showPasswordToggle\" class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n                            <span>{{user.password}} </span>\r\n                            <button (click)=\"showPasswordSwitch()\"><i class=\"fas fa-eye-slash eye\"></i></button>\r\n                        </span>\r\n\r\n                    </div>\r\n\r\n                    <input *ngIf=\"editToggle && !passwordToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit password\" (click)=\"nameToggle('password')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\" [class.d-none]=\"password.untouched || password.valid\">\r\n                            <small>Must to enter eight letters at least.</small>\r\n                            <small>(one upper case one lower case and a number)</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter a password\" placeholder=\"Enter a password\" name=\"password\"\r\n                            #password=\"ngModel\" [(ngModel)]=\"newUser.password\" required\r\n                            pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [class.border-danger]=\"password.invalid && password.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\" [class.d-none]=\"!editToggle || editToggle && !passwordToggle\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">confirm: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.confirmPassword}}</span>\r\n                    <span *ngIf=\"editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\"></span>\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !passwordToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <div class=\"text-danger\"\r\n                            [class.d-none]=\"confirmPassword.untouched || confirmPassword.valid && confirmPassword.value===password.value\">\r\n                            <small>Your passwords isn't match!</small>\r\n                            <small>Please try again.</small>\r\n                        </div>\r\n\r\n                        <input type=\"password\" title=\"Enter again a password to confirm\" placeholder=\"Enter a password\"\r\n                            name=\"confirmPassword\" #confirmPassword=\"ngModel\" [(ngModel)]=\"newUser.confirmPassword\"\r\n                            required pattern=\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$\"\r\n                            [disabled]=\"password.invalid\"\r\n                            [class.border-danger]=\"(confirmPassword.touched && confirmPassword.value!==password.value)\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\"\r\n                                (click)=\"cancelTogglesOff(password,confirmPassword)\" class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\"\r\n                                [disabled]=\"confirmPassword.value!==password.value || password.invalid || updateToggle\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && passwordToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">gender: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.gender}}</span>\r\n                    <input *ngIf=\"editToggle && !genderToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit gender\" (click)=\"nameToggle('gender')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !genderToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"male\" #male=\"ngModel\" value=\"Male\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioMale\"><i class=\"fas fa-male m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <label>\r\n                            <input type=\"radio\" name=\"female\" #female=\"ngModel\" value=\"Female\" required\r\n                                [(ngModel)]=\"newUser.gender\">\r\n                            <span class=\"rounded-pill text-center m-1 radioFemale\"><i\r\n                                    class=\"fas fa-female m-1\"></i></span>\r\n                        </label>\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff()\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\"\r\n                                [disabled]=\"male.invalid && female.invalid || updateToggle\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && genderToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"row justify-content-center\">\r\n\r\n                    <label class=\"col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0\">weight: </label>\r\n                    <span *ngIf=\"!editToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">{{user.weight}}</span>\r\n                    <input *ngIf=\"editToggle && !weightToggle\" type=\"button\" [disabled]=\"allowToEdit()\"\r\n                        value=\"&#xf4ff; Edit weight\" (click)=\"nameToggle('weight')\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas\">\r\n\r\n                    <div [class.d-none]=\"!editToggle || editToggle && !weightToggle\"\r\n                        class=\"col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0\">\r\n\r\n                        <small class=\"text-danger\" [class.d-none]=\"weight.untouched || weight.valid\">Your weight\r\n                            must be greater than zero .</small>\r\n\r\n                        <input type=\"number\" title=\"Enter your weight\" placeholder=\"Enter a weight\" name=\"weight\"\r\n                            #weight=\"ngModel\" [(ngModel)]=\"newUser.weight\" required pattern=\"^[1-9]\\d*$\"\r\n                            [class.border-danger]=\"weight.invalid && weight.touched\"\r\n                            class=\"rounded-pill border border-primary text-center inputValue\">\r\n\r\n                        <div class=\"row justify-content-around p-1\">\r\n\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelTogglesOff(weight)\"\r\n                                class=\"far text-danger\">\r\n                            <input type=\"submit\" value=\"&#xf0c7; Save\" [disabled]=\"weight.invalid || updateToggle\"\r\n                                class=\"btn far text-primary\">\r\n                            <i *ngIf=\"updateToggle && weightToggle\" class=\"fas fa-check text-success\"></i>\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"text-center\">\r\n            <input type=\"button\" value=\"&#xf4ff; Edit account\" [class.d-none]=\"editToggle\" (click)=\"editToggleOn()\"\r\n                class=\"fas text-primary\">\r\n            <input type=\"button\" value=\"&#xf410; Cancel edit\"\r\n                [class.d-none]=\"!editToggle || editToggle && allowToEdit()\" (click)=\"editToggleOff()\"\r\n                class=\"far text-danger\">\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -111,7 +111,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n  <div>\r\n    <h1 class=\"text-center\">muscle is your life?</h1>\r\n    <h2 class=\"text-center\">Let's start to calculate your protein </h2>\r\n  </div>\r\n\r\n  <div *ngIf=\"!login\" id=\"popup\" class=\"invisible\">\r\n    <div class=\"card\">\r\n      <img src=\"/assets/photos/popup.jpg\" class=\"cardImage\">\r\n      <button (click)=\"cancelPopup()\" class=\"text-right cancel m-2 ml-auto\">\r\n        <i class=\"fas fa-times \"></i>\r\n      </button>\r\n      <div class=\"card-body text-center\">\r\n        <h5 class=\"card-title\">Do don't have account yet?</h5>\r\n        <span>Click </span>\r\n        <button (click)=\"register()\" class=\"navigate\">here</button>\r\n        <span> to register or </span>\r\n        <button (click)=\"loginPage()\" class=\"navigate\">here</button>\r\n        <span> to login</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n  <div class=\"text-center\">\r\n    <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!acccept\" (click)=\"isAcccept()\">Lets started</button>\r\n  </div>\r\n\r\n  <div *ngIf=\"acccept\">\r\n\r\n    <form (ngSubmit)=\"submit()\">\r\n\r\n      <div class=\"container\">\r\n\r\n        <div id=\"egg\" class=\"invisible\">\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <small class=\"text-danger p-2 m-1\"\r\n              [class.d-none]=\"egg.untouched || !egg.value || egg.value && eggSize.dirty\">You must\r\n              choose a size <i class=\"fas fa-arrow-circle-right\"></i></small>\r\n          </div>\r\n\r\n          <div class=\"row justify-content-center\">\r\n\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Egg</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Egg\" #egg=\"ngModel\" name=\"egg\" placeholder=\"amount\" [(ngModel)]=\"protein.egg.amount\">\r\n\r\n            <select class=\"border border-danger p-1 m-1 space\" [(ngModel)]=\"protein.egg.sizeEgg\" #eggSize=\"ngModel\"\r\n              name=\"eggSize\">\r\n              <option [value]=\"size\" disabled>size</option>\r\n              <option value=\"S\">S</option>\r\n              <option value=\"M\">M</option>\r\n              <option value=\"L\">L</option>\r\n            </select>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"bread\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Bread</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Bread\" name=\"bread\" placeholder=\"slices\" [(ngModel)]=\"protein.bread\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"tuna\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Tuna</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Tuna\" name=\"tuna\" placeholder=\"grams\" [(ngModel)]=\"protein.tuna\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"meat\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Meat</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Meat\" name=\"meat\" placeholder=\"grams\" [(ngModel)]=\"protein.meat\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cheese\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cheese</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cheese\" name=\"cheese\" placeholder=\"grams\" [(ngModel)]=\"protein.cheese\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cottage\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cottage</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cottage\" name=\"cottage\" placeholder=\"grams\" [(ngModel)]=\"protein.cottage\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"quinoa\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Quinoa</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Quinoa\" name=\"quinoa\" placeholder=\"grams\" [(ngModel)]=\"protein.quinoa\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"almonds\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Almonds</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Almonds\" name=\"almonds\" placeholder=\"handful\" [(ngModel)]=\"protein.almonds\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"powder\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Powder</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Powder\" name=\"powder\" placeholder=\"portions\" [(ngModel)]=\"protein.powder\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"gainer\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Gainer</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Gainer\" name=\"gainer\" placeholder=\"portions\" [(ngModel)]=\"protein.gainer\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"submit\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-1\"></div>\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              type=\"button\" value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              [disabled]=\"!login\" type=\"submit\" value=\"&#xf0c7; Save\">\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n  <div>\r\n    <h1 class=\"text-center\">Muscle is your life?</h1>\r\n    <h2 class=\"text-center\">Let's start to calculate your protein </h2>\r\n  </div>\r\n\r\n  <div id=\"popup\" class=\"invisible\">\r\n    <div class=\"card popup\">\r\n      <img src=\"/assets/photos/popup.jpg\" class=\"cardImage\">\r\n      <button (click)=\"cancelPopup()\" class=\"text-right cancel m-2 ml-auto\">\r\n        <i class=\"fas fa-times \"></i>\r\n      </button>\r\n      <div class=\"card-body text-center\">\r\n        <h5 class=\"card-title\">Do don't have account yet?</h5>\r\n        <span>Click </span>\r\n        <button (click)=\"register()\" class=\"navigate\">here</button>\r\n        <span> to register or </span>\r\n        <button (click)=\"loginPage()\" class=\"navigate\">here</button>\r\n        <span> to login</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n  <div class=\"text-center\">\r\n    <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!acccept\" (click)=\"isAcccept()\">Lets started</button>\r\n  </div>\r\n\r\n  <div *ngIf=\"acccept\">\r\n\r\n    <form (ngSubmit)=\"submit()\">\r\n\r\n      <div class=\"container\">\r\n\r\n        <div id=\"egg\" class=\"invisible\">\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <small class=\"text-danger p-2 m-1\"\r\n              [class.d-none]=\"egg.untouched || !egg.value || egg.value && eggSize.dirty\">You must\r\n              choose a size <i class=\"fas fa-arrow-circle-right\"></i></small>\r\n          </div>\r\n\r\n          <div class=\"row justify-content-center\">\r\n\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Egg</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Egg\" #egg=\"ngModel\" name=\"egg\" placeholder=\"amount\" [(ngModel)]=\"protein.egg.amount\">\r\n\r\n            <select class=\"border border-danger p-1 m-1 space\" [(ngModel)]=\"protein.egg.sizeEgg\" #eggSize=\"ngModel\"\r\n              name=\"eggSize\">\r\n              <option [value]=\"size\" disabled>size</option>\r\n              <option value=\"S\">S</option>\r\n              <option value=\"M\">M</option>\r\n              <option value=\"L\">L</option>\r\n            </select>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"bread\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Bread</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Bread\" name=\"bread\" placeholder=\"slices\" [(ngModel)]=\"protein.bread\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"tuna\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Tuna</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Tuna\" name=\"tuna\" placeholder=\"grams\" [(ngModel)]=\"protein.tuna\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"meat\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Meat</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Meat\" name=\"meat\" placeholder=\"grams\" [(ngModel)]=\"protein.meat\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cheese\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cheese</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cheese\" name=\"cheese\" placeholder=\"grams\" [(ngModel)]=\"protein.cheese\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cottage\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cottage</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cottage\" name=\"cottage\" placeholder=\"grams\" [(ngModel)]=\"protein.cottage\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"quinoa\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Quinoa</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Quinoa\" name=\"quinoa\" placeholder=\"grams\" [(ngModel)]=\"protein.quinoa\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"almonds\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Almonds</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Almonds\" name=\"almonds\" placeholder=\"handful\" [(ngModel)]=\"protein.almonds\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"powder\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Powder</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Powder\" name=\"powder\" placeholder=\"portions\" [(ngModel)]=\"protein.powder\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"gainer\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Gainer</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Gainer\" name=\"gainer\" placeholder=\"portions\" [(ngModel)]=\"protein.gainer\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"submit\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-1\"></div>\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              type=\"button\" value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              [disabled]=\"!user\" type=\"submit\" value=\"&#xf0c7; Save\">\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n    <div id=\"show\" class=\"invisible\">\r\n\r\n      <div class=\"card show text-center\">\r\n\r\n        <div class=\"card-body\">\r\n          <p>{{showMessage}}</p>\r\n          <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n          <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -868,8 +868,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_7__["User"](undefined, undefined, undefined, undefined, undefined);
           this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_6__["getUser"]));
-          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_6__["getUserUpdated"])).subscribe(function (res) {
-            return _this.updateToggle = res;
+          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_6__["getUserUpdated"])).subscribe(function (userUpdated) {
+            return _this.updateToggle = userUpdated;
           }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(console.log(error));
           })));
@@ -1045,127 +1045,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./src/app/app-routing.module.ts":
-  /*!***************************************!*\
-    !*** ./src/app/app-routing.module.ts ***!
-    \***************************************/
-
-  /*! exports provided: AppRoutingModule */
-
-  /***/
-  function srcAppAppRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function () {
-      return AppRoutingModule;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/fesm2015/router.js");
-    /* harmony import */
-
-
-    var _store_guards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./store/guards */
-    "./src/app/store/guards/index.ts");
-    /* harmony import */
-
-
-    var _home_home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./home/home.component */
-    "./src/app/home/home.component.ts");
-    /* harmony import */
-
-
-    var _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./favorite/favorite.component */
-    "./src/app/favorite/favorite.component.ts");
-    /* harmony import */
-
-
-    var _info_info_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./info/info.component */
-    "./src/app/info/info.component.ts");
-    /* harmony import */
-
-
-    var _account_account_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ./account/account.component */
-    "./src/app/account/account.component.ts");
-    /* harmony import */
-
-
-    var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-    /*! ./login/login.component */
-    "./src/app/login/login.component.ts");
-    /* harmony import */
-
-
-    var _register_register_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! ./register/register.component */
-    "./src/app/register/register.component.ts");
-
-    var routes = [{
-      path: 'product',
-      children: [{
-        path: 'home',
-        component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"],
-        canActivate: _store_guards__WEBPACK_IMPORTED_MODULE_3__["guards"]
-      }, {
-        path: 'favorite',
-        component: _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_5__["FavoriteComponent"],
-        canActivate: _store_guards__WEBPACK_IMPORTED_MODULE_3__["guards"]
-      }, {
-        path: 'account',
-        component: _account_account_component__WEBPACK_IMPORTED_MODULE_7__["AccountComponent"],
-        canActivate: _store_guards__WEBPACK_IMPORTED_MODULE_3__["guards"]
-      }, {
-        path: 'login',
-        component: _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"]
-      }, {
-        path: 'register',
-        component: _register_register_component__WEBPACK_IMPORTED_MODULE_9__["RegisterComponent"]
-      }, {
-        path: 'info',
-        component: _info_info_component__WEBPACK_IMPORTED_MODULE_6__["InfoComponent"]
-      }]
-    }, {
-      path: '**',
-      redirectTo: 'product/home',
-      pathMatch: 'full'
-    }];
-
-    var AppRoutingModule = function AppRoutingModule() {
-      _classCallCheck(this, AppRoutingModule);
-    };
-
-    AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
-      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], AppRoutingModule);
-    /***/
-  },
-
-  /***/
   "./src/app/app.component.css":
   /*!***********************************!*\
     !*** ./src/app/app.component.css ***!
@@ -1263,75 +1142,75 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/platform-browser */
-    "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _shared_modules_app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./shared/modules/app-routing.module */
+    "./src/app/shared/modules/app-routing.module.ts");
+    /* harmony import */
+
+
+    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/platform-browser */
+    "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/fesm2015/forms.js");
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
     /* harmony import */
 
 
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/fesm2015/store.js");
     /* harmony import */
 
 
-    var _ngrx_effects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _ngrx_effects__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @ngrx/effects */
     "./node_modules/@ngrx/effects/fesm2015/effects.js");
     /* harmony import */
 
 
-    var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @ngrx/store-devtools */
     "./node_modules/@ngrx/store-devtools/fesm2015/store-devtools.js");
     /* harmony import */
 
 
-    var _ngrx_router_store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _ngrx_router_store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! @ngrx/router-store */
     "./node_modules/@ngrx/router-store/fesm2015/router-store.js");
     /* harmony import */
 
 
-    var _storeRouter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _storeRouter__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ./storeRouter */
     "./src/app/storeRouter/index.ts");
     /* harmony import */
 
 
-    var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ./store */
     "./src/app/store/index.ts");
-    /* harmony import */
-
-
-    var _app_routing_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-    /*! ./app-routing.module */
-    "./src/app/app-routing.module.ts");
-    /* harmony import */
-
-
-    var src_environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-    /*! src/environments/environment */
-    "./src/environments/environment.ts");
     /* harmony import */
 
 
@@ -1385,27 +1264,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _classCallCheck(this, AppModule);
     };
 
-    AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+    AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_13__["AppComponent"], _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_14__["NavbarComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_15__["HomeComponent"], _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_16__["FavoriteComponent"], _info_info_component__WEBPACK_IMPORTED_MODULE_17__["InfoComponent"], _account_account_component__WEBPACK_IMPORTED_MODULE_18__["AccountComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_20__["RegisterComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"], _ngrx_router_store__WEBPACK_IMPORTED_MODULE_8__["StoreRouterConnectingModule"].forRoot({
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"], _shared_modules_app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _ngrx_router_store__WEBPACK_IMPORTED_MODULE_10__["StoreRouterConnectingModule"].forRoot({
         routerState: 1
         /* Minimal */
 
-      }), _ngrx_effects__WEBPACK_IMPORTED_MODULE_6__["EffectsModule"].forRoot(_store__WEBPACK_IMPORTED_MODULE_10__["effects"]), _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["StoreModule"].forRoot(_storeRouter__WEBPACK_IMPORTED_MODULE_9__["reducer"], {
+      }), _ngrx_effects__WEBPACK_IMPORTED_MODULE_8__["EffectsModule"].forRoot(_store__WEBPACK_IMPORTED_MODULE_12__["effects"]), _ngrx_store__WEBPACK_IMPORTED_MODULE_7__["StoreModule"].forRoot(_storeRouter__WEBPACK_IMPORTED_MODULE_11__["reducer"], {
         runtimeChecks: {
           strictStateImmutability: false,
           strictActionImmutability: false,
           strictStateSerializability: false,
           strictActionSerializability: false
         }
-      }), _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["StoreModule"].forFeature('products', _store__WEBPACK_IMPORTED_MODULE_10__["reducers"]), // Only a tool for developers will delete on products
-      _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_7__["StoreDevtoolsModule"].instrument({
+      }), _ngrx_store__WEBPACK_IMPORTED_MODULE_7__["StoreModule"].forFeature('products', _store__WEBPACK_IMPORTED_MODULE_12__["reducers"]), // Only a tool for developers will delete on products
+      _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_9__["StoreDevtoolsModule"].instrument({
         maxAge: 25,
-        logOnly: src_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].production
+        logOnly: src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production
       })],
       providers: [{
-        provide: _ngrx_router_store__WEBPACK_IMPORTED_MODULE_8__["RouterStateSerializer"],
-        useClass: _storeRouter__WEBPACK_IMPORTED_MODULE_9__["CustomSerializer"]
+        provide: _ngrx_router_store__WEBPACK_IMPORTED_MODULE_10__["RouterStateSerializer"],
+        useClass: _storeRouter__WEBPACK_IMPORTED_MODULE_11__["CustomSerializer"]
       }],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_13__["AppComponent"]]
     })], AppModule);
@@ -1529,7 +1408,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "label {\r\n    color: oldlace;\r\n    width: 70px;\r\n}\r\n\r\nsmall {\r\n    left: 30px;\r\n}\r\n\r\nh1, h2 {\r\n    color: white;\r\n}\r\n\r\nselect {\r\n    border-radius: 17px;\r\n    outline: 0;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n}\r\n\r\nselect:focus {\r\n    color: white;\r\n    background-color: rgb(34, 34, 32);\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n\r\ninput:hover {\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\ninput::-webkit-outer-spin-button, input::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n::-webkit-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-moz-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-ms-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n.space {\r\n    width: 70px;\r\n}\r\n\r\n.button {\r\n    right: 3%;\r\n    max-width: 160px;\r\n}\r\n\r\n.cancel {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: red;\r\n    text-shadow: red;\r\n    background-color: rgb(59, 63, 57);\r\n}\r\n\r\n.navigate {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: rgb(179, 5, 5);\r\n    background-color: inherit;\r\n    font-weight: bold;\r\n    font-style: oblique;\r\n}\r\n\r\n.card {\r\n    position: fixed;\r\n    width: 50%;\r\n    height: 40%;\r\n    z-index: 1;\r\n    margin: -5% auto;\r\n    left: 0;\r\n    right: 0;\r\n    background-color: pink;\r\n    color: seashell;\r\n}\r\n\r\n.cardImage {\r\n    opacity: 0.9;\r\n    width: 100%;\r\n    position: absolute;\r\n    height: 100%;\r\n    z-index: -1;\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .card {\r\n        margin: -13% auto;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0lBQ2QsV0FBVztBQUNmOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLG1CQUFtQjtJQUNuQixVQUFVO0lBQ1Ysd0NBQXdDO0FBQzVDOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0Qix3Q0FBd0M7SUFDeEMsNENBQTRDO0FBQ2hEOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSx3QkFBd0I7SUFDeEIsU0FBUztBQUNiOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFIQTtJQUNJLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckI7O0FBSEE7SUFDSSxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCOztBQUhBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFNBQVM7SUFDVCxnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsU0FBUztJQUNULFVBQVU7SUFDVixVQUFVO0lBQ1YsZ0JBQWdCO0lBQ2hCLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtJQUNWLHFCQUFxQjtJQUNyQix5QkFBeUI7SUFDekIsaUJBQWlCO0lBQ2pCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGVBQWU7SUFDZixVQUFVO0lBQ1YsV0FBVztJQUNYLFVBQVU7SUFDVixnQkFBZ0I7SUFDaEIsT0FBTztJQUNQLFFBQVE7SUFDUixzQkFBc0I7SUFDdEIsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixXQUFXO0FBQ2Y7O0FBRUE7SUFDSTtRQUNJLGlCQUFpQjtJQUNyQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCB7XHJcbiAgICBjb2xvcjogb2xkbGFjZTtcclxuICAgIHdpZHRoOiA3MHB4O1xyXG59XHJcblxyXG5zbWFsbCB7XHJcbiAgICBsZWZ0OiAzMHB4O1xyXG59XHJcblxyXG5oMSwgaDIge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5zZWxlY3Qge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTdweDtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAxcHggcmdiKDE0NSwgMTQwLCAxNDUpO1xyXG59XHJcblxyXG5zZWxlY3Q6Zm9jdXMge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDM0LCAzNCwgMzIpO1xyXG59XHJcblxyXG5pbnB1dDpmb2N1cyB7XHJcbiAgICBvdXRsaW5lLXN0eWxlOiBpbmhlcml0O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgMXB4IHJnYigxNDUsIDE0MCwgMTQ1KTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjUwLCAyNDEsIDIzMiwgMC43ODgpO1xyXG59XHJcblxyXG5pbnB1dDpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbiwgaW5wdXQ6Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24ge1xyXG4gICAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG46OnBsYWNlaG9sZGVyIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiBsaWdodGNvcmFsO1xyXG59XHJcblxyXG4uc3BhY2Uge1xyXG4gICAgd2lkdGg6IDcwcHg7XHJcbn1cclxuXHJcbi5idXR0b24ge1xyXG4gICAgcmlnaHQ6IDMlO1xyXG4gICAgbWF4LXdpZHRoOiAxNjBweDtcclxufVxyXG5cclxuLmNhbmNlbCB7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGNvbG9yOiByZWQ7XHJcbiAgICB0ZXh0LXNoYWRvdzogcmVkO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDU5LCA2MywgNTcpO1xyXG59XHJcblxyXG4ubmF2aWdhdGUge1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIGJvcmRlcjogMDtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBjb2xvcjogcmdiKDE3OSwgNSwgNSk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXN0eWxlOiBvYmxpcXVlO1xyXG59XHJcblxyXG4uY2FyZCB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogNTAlO1xyXG4gICAgaGVpZ2h0OiA0MCU7XHJcbiAgICB6LWluZGV4OiAxO1xyXG4gICAgbWFyZ2luOiAtNSUgYXV0bztcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHBpbms7XHJcbiAgICBjb2xvcjogc2Vhc2hlbGw7XHJcbn1cclxuXHJcbi5jYXJkSW1hZ2Uge1xyXG4gICAgb3BhY2l0eTogMC45O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICB6LWluZGV4OiAtMTtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtaGVpZ2h0OiA0MjBweCkge1xyXG4gICAgLmNhcmQge1xyXG4gICAgICAgIG1hcmdpbjogLTEzJSBhdXRvO1xyXG4gICAgfVxyXG59Il19 */";
+    __webpack_exports__["default"] = "label {\r\n    color: oldlace;\r\n    width: 70px;\r\n}\r\n\r\nsmall {\r\n    left: 30px;\r\n}\r\n\r\nh1, h2 {\r\n    color: white;\r\n}\r\n\r\nselect {\r\n    border-radius: 17px;\r\n    outline: 0;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n}\r\n\r\nselect:focus {\r\n    color: white;\r\n    background-color: rgb(34, 34, 32);\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n\r\ninput:hover {\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\ninput::-webkit-outer-spin-button, input::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n::-webkit-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-moz-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-ms-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n.space {\r\n    width: 70px;\r\n}\r\n\r\n.button {\r\n    right: 3%;\r\n    max-width: 160px;\r\n}\r\n\r\n.cancel {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: red;\r\n    text-shadow: red;\r\n    background-color: rgb(59, 63, 57);\r\n}\r\n\r\n.navigate {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: rgb(179, 5, 5);\r\n    background-color: inherit;\r\n    font-weight: bold;\r\n    font-style: oblique;\r\n}\r\n\r\n.popup {\r\n    position: fixed;\r\n    z-index: 1;\r\n    width: 50%;\r\n    height: 40%;\r\n    margin: -5% auto;\r\n    left: 0;\r\n    right: 0;\r\n    background-color: pink;\r\n    color: seashell;\r\n}\r\n\r\n.show {\r\n    position: fixed;\r\n    width: 300px;\r\n    height: 150px;\r\n    left: 50%;\r\n    top: 60%;\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n    color: seashell;\r\n    background-color: rgb(88, 81, 81);\r\n}\r\n\r\n.showButton {\r\n    background-color: inherit;\r\n    color: rgb(127, 255, 110);\r\n    outline: 0;\r\n    border: 0;\r\n    padding: 0;\r\n}\r\n\r\n.showButton:hover{\r\n    color: rgb(87, 241, 67);\r\n}\r\n\r\n.cardImage {\r\n    opacity: 0.9;\r\n    width: 100%;\r\n    position: absolute;\r\n    height: 100%;\r\n    z-index: -1;\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .popup {\r\n        margin: -12% auto;\r\n        height: 50%;\r\n    }\r\n    .show {\r\n        top: 75%;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0lBQ2QsV0FBVztBQUNmOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLG1CQUFtQjtJQUNuQixVQUFVO0lBQ1Ysd0NBQXdDO0FBQzVDOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0Qix3Q0FBd0M7SUFDeEMsNENBQTRDO0FBQ2hEOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSx3QkFBd0I7SUFDeEIsU0FBUztBQUNiOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFIQTtJQUNJLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckI7O0FBSEE7SUFDSSxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCOztBQUhBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFNBQVM7SUFDVCxnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsU0FBUztJQUNULFVBQVU7SUFDVixVQUFVO0lBQ1YsZ0JBQWdCO0lBQ2hCLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtJQUNWLHFCQUFxQjtJQUNyQix5QkFBeUI7SUFDekIsaUJBQWlCO0lBQ2pCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGVBQWU7SUFDZixVQUFVO0lBQ1YsVUFBVTtJQUNWLFdBQVc7SUFDWCxnQkFBZ0I7SUFDaEIsT0FBTztJQUNQLFFBQVE7SUFDUixzQkFBc0I7SUFDdEIsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLGVBQWU7SUFDZixZQUFZO0lBQ1osYUFBYTtJQUNiLFNBQVM7SUFDVCxRQUFRO0lBQ1Isd0NBQWdDO1lBQWhDLGdDQUFnQztJQUNoQyxlQUFlO0lBQ2YsaUNBQWlDO0FBQ3JDOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLHlCQUF5QjtJQUN6QixVQUFVO0lBQ1YsU0FBUztJQUNULFVBQVU7QUFDZDs7QUFFQTtJQUNJLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixXQUFXO0FBQ2Y7O0FBRUE7SUFDSTtRQUNJLGlCQUFpQjtRQUNqQixXQUFXO0lBQ2Y7SUFDQTtRQUNJLFFBQVE7SUFDWjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCB7XHJcbiAgICBjb2xvcjogb2xkbGFjZTtcclxuICAgIHdpZHRoOiA3MHB4O1xyXG59XHJcblxyXG5zbWFsbCB7XHJcbiAgICBsZWZ0OiAzMHB4O1xyXG59XHJcblxyXG5oMSwgaDIge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5zZWxlY3Qge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTdweDtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAxcHggcmdiKDE0NSwgMTQwLCAxNDUpO1xyXG59XHJcblxyXG5zZWxlY3Q6Zm9jdXMge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDM0LCAzNCwgMzIpO1xyXG59XHJcblxyXG5pbnB1dDpmb2N1cyB7XHJcbiAgICBvdXRsaW5lLXN0eWxlOiBpbmhlcml0O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgMXB4IHJnYigxNDUsIDE0MCwgMTQ1KTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjUwLCAyNDEsIDIzMiwgMC43ODgpO1xyXG59XHJcblxyXG5pbnB1dDpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbiwgaW5wdXQ6Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24ge1xyXG4gICAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG46OnBsYWNlaG9sZGVyIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiBsaWdodGNvcmFsO1xyXG59XHJcblxyXG4uc3BhY2Uge1xyXG4gICAgd2lkdGg6IDcwcHg7XHJcbn1cclxuXHJcbi5idXR0b24ge1xyXG4gICAgcmlnaHQ6IDMlO1xyXG4gICAgbWF4LXdpZHRoOiAxNjBweDtcclxufVxyXG5cclxuLmNhbmNlbCB7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGNvbG9yOiByZWQ7XHJcbiAgICB0ZXh0LXNoYWRvdzogcmVkO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDU5LCA2MywgNTcpO1xyXG59XHJcblxyXG4ubmF2aWdhdGUge1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIGJvcmRlcjogMDtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBjb2xvcjogcmdiKDE3OSwgNSwgNSk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXN0eWxlOiBvYmxpcXVlO1xyXG59XHJcblxyXG4ucG9wdXAge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBoZWlnaHQ6IDQwJTtcclxuICAgIG1hcmdpbjogLTUlIGF1dG87XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBwaW5rO1xyXG4gICAgY29sb3I6IHNlYXNoZWxsO1xyXG59XHJcblxyXG4uc2hvdyB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogMzAwcHg7XHJcbiAgICBoZWlnaHQ6IDE1MHB4O1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdG9wOiA2MCU7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICAgIGNvbG9yOiBzZWFzaGVsbDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYig4OCwgODEsIDgxKTtcclxufVxyXG5cclxuLnNob3dCdXR0b24ge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogaW5oZXJpdDtcclxuICAgIGNvbG9yOiByZ2IoMTI3LCAyNTUsIDExMCk7XHJcbiAgICBvdXRsaW5lOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgcGFkZGluZzogMDtcclxufVxyXG5cclxuLnNob3dCdXR0b246aG92ZXJ7XHJcbiAgICBjb2xvcjogcmdiKDg3LCAyNDEsIDY3KTtcclxufVxyXG5cclxuLmNhcmRJbWFnZSB7XHJcbiAgICBvcGFjaXR5OiAwLjk7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIHotaW5kZXg6IC0xO1xyXG59XHJcblxyXG5AbWVkaWEgKG1heC1oZWlnaHQ6IDQyMHB4KSB7XHJcbiAgICAucG9wdXAge1xyXG4gICAgICAgIG1hcmdpbjogLTEyJSBhdXRvO1xyXG4gICAgICAgIGhlaWdodDogNTAlO1xyXG4gICAgfVxyXG4gICAgLnNob3cge1xyXG4gICAgICAgIHRvcDogNzUlO1xyXG4gICAgfVxyXG59Il19 */";
     /***/
   },
 
@@ -1594,6 +1473,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../store/actions/protein.action */
     "./src/app/store/actions/protein.action.ts");
+    /* harmony import */
+
+
+    var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../store */
+    "./src/app/store/index.ts");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
 
     var HomeComponent =
     /*#__PURE__*/
@@ -1602,13 +1499,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, HomeComponent);
 
         this.store = store;
-        this.router = router;
+        this.router = router; // Messages to user
+
+        this.showMessage = "";
+        this.showMessageLogin = "";
         this.clearInterval = [];
+        this.unSubscribe = [];
       }
 
       _createClass(HomeComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var _this3 = this;
+
           this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_3__["Protein"](new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_4__["Egg"]());
 
           if (!!localStorage.getItem("acccept")) {
@@ -1616,8 +1519,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.visibility();
           }
 
-          var id = sessionStorage.getItem("login");
-          id ? (this.login = true, this.userId = id) : this.popup();
+          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_5__["select"])(_store__WEBPACK_IMPORTED_MODULE_7__["getUser"])).subscribe(function (user) {
+            var userId = !!sessionStorage.getItem('login');
+            if (!user && !userId) _this3.popup();
+            _this3.user = user;
+          }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(console.log(error));
+          })));
         }
       }, {
         key: "ngOnDestroy",
@@ -1625,20 +1533,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.clearInterval.forEach(function (id) {
             return clearInterval(id);
           });
+          this.unSubscribe.forEach(function (subscribe) {
+            return subscribe.unsubscribe();
+          });
         }
       }, {
         key: "popup",
         value: function popup() {
-          var _this3 = this;
+          var _this4 = this;
 
           this.clearInterval.push(setTimeout(function () {
-            _this3.visibilityOn("popup");
+            _this4.visibilityOn("popup");
           }, 8000));
         }
       }, {
         key: "cancelPopup",
         value: function cancelPopup() {
-          document.getElementById("popup").className = "visibility: invisible";
+          this.visibilityOff('popup');
+        }
+      }, {
+        key: "cancelShow",
+        value: function cancelShow() {
+          this.visibilityOff('show');
         }
       }, {
         key: "isAcccept",
@@ -1650,7 +1566,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit() {
-          var userId = this.userId;
+          var userId = this.user.id;
           var protein = Object.assign({}, this.protein);
           this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"])({
             userId: userId,
@@ -1687,32 +1603,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           Object.values(protein).forEach(function (value) {
             return value ? sum += value : sum += 0;
           });
-          alert("You eat ".concat(sum, " protein approximately"));
+          this.showMessage = "You eat ".concat(sum, " protein approximately.");
+
+          if (this.user) {
+            var value = this.user.weight * 2 - sum;
+            this.showMessageLogin = value > 0 ? "You need more ".concat(value) : 'You Eat enough protein for today good job!';
+          }
+
+          this.visibilityOn('show');
         }
       }, {
         key: "visibility",
         value: function visibility() {
-          var _this4 = this;
+          var _this5 = this;
 
           var timeToShow = 100;
           var _a = this.protein,
               id = _a.id,
               protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](_a, ["id"]);
           Object.keys(protein).forEach(function (key) {
-            _this4.clearInterval.push(setTimeout(function () {
-              return _this4.visibilityOn(key);
+            _this5.clearInterval.push(setTimeout(function () {
+              return _this5.visibilityOn(key);
             }, timeToShow));
 
             timeToShow += 250;
           });
           this.clearInterval.push(setTimeout(function () {
-            return _this4.visibilityOn("submit");
+            return _this5.visibilityOn("submit");
           }, timeToShow));
         }
       }, {
         key: "visibilityOn",
         value: function visibilityOn(name) {
           document.getElementById(name).className = "visibility: visible";
+        }
+      }, {
+        key: "visibilityOff",
+        value: function visibilityOff(name) {
+          document.getElementById(name).className = "visibility: invisible";
         }
       }, {
         key: "register",
@@ -2329,6 +2257,132 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
     /***/
 
+  },
+
+  /***/
+  "./src/app/shared/modules/app-routing.module.ts":
+  /*!******************************************************!*\
+    !*** ./src/app/shared/modules/app-routing.module.ts ***!
+    \******************************************************/
+
+  /*! exports provided: AppRoutingModule */
+
+  /***/
+  function srcAppSharedModulesAppRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function () {
+      return AppRoutingModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _store_guards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../store/guards */
+    "./src/app/store/guards/index.ts");
+    /* harmony import */
+
+
+    var _home_home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../home/home.component */
+    "./src/app/home/home.component.ts");
+    /* harmony import */
+
+
+    var _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../favorite/favorite.component */
+    "./src/app/favorite/favorite.component.ts");
+    /* harmony import */
+
+
+    var _info_info_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../../info/info.component */
+    "./src/app/info/info.component.ts");
+    /* harmony import */
+
+
+    var _account_account_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../../account/account.component */
+    "./src/app/account/account.component.ts");
+    /* harmony import */
+
+
+    var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ../../login/login.component */
+    "./src/app/login/login.component.ts");
+    /* harmony import */
+
+
+    var _register_register_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ../../register/register.component */
+    "./src/app/register/register.component.ts"); // const routes: Routes = [
+    //   { path: '', component: HomeComponent, canActivate: guards },
+    //   { path: 'product', loadChildren: () => import('./product.module').then(m => m.ProductModule) },
+    //   { path: '**', redirectTo: 'product/home', pathMatch: 'full' }
+    // ];
+
+
+    var routes = [{
+      path: 'product',
+      children: [{
+        path: 'home',
+        component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"],
+        canActivate: _store_guards__WEBPACK_IMPORTED_MODULE_3__["guards"]
+      }, {
+        path: 'favorite',
+        component: _favorite_favorite_component__WEBPACK_IMPORTED_MODULE_5__["FavoriteComponent"],
+        canActivate: _store_guards__WEBPACK_IMPORTED_MODULE_3__["guards"]
+      }, {
+        path: 'account',
+        component: _account_account_component__WEBPACK_IMPORTED_MODULE_7__["AccountComponent"],
+        canActivate: _store_guards__WEBPACK_IMPORTED_MODULE_3__["guards"]
+      }, {
+        path: 'login',
+        component: _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"]
+      }, {
+        path: 'register',
+        component: _register_register_component__WEBPACK_IMPORTED_MODULE_9__["RegisterComponent"]
+      }, {
+        path: 'info',
+        component: _info_info_component__WEBPACK_IMPORTED_MODULE_6__["InfoComponent"]
+      }]
+    }, {
+      path: '**',
+      redirectTo: 'product/home',
+      pathMatch: 'full'
+    }];
+
+    var AppRoutingModule = function AppRoutingModule() {
+      _classCallCheck(this, AppRoutingModule);
+    };
+
+    AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })], AppRoutingModule);
+    /***/
   },
 
   /***/
@@ -3178,15 +3232,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/store/actions/protein.action.ts");
 
     var ProteinEffect = function ProteinEffect(actions$, proteinService) {
-      var _this5 = this;
+      var _this6 = this;
 
       _classCallCheck(this, ProteinEffect);
 
       this.actions$ = actions$;
       this.proteinService = proteinService;
       this.loadProteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this5.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this6.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteinsSuccess"]({
               proteins: proteins
             });
@@ -3196,8 +3250,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this5.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this6.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
             var protein = action.protein;
             protein.id = userId.name;
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProteinSuccess"]({
@@ -3209,8 +3263,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this5.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this6.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProteinSuccess"]({
               proteinId: action.proteinId
             });
@@ -3220,8 +3274,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteAllproteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this5.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this5.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this6.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsFail"](error));
@@ -3319,7 +3373,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/shared/services/user.service.ts");
 
     var UserEffects = function UserEffects(actions$, userService, router) {
-      var _this6 = this;
+      var _this7 = this;
 
       _classCallCheck(this, UserEffects);
 
@@ -3327,8 +3381,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       this.userService = userService;
       this.router = router;
       this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this6.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this7.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.userId;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUserSuccess"]({
               user: user
@@ -3339,9 +3393,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this6.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
-            _this6.router.navigate(['product/login']);
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this7.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
+            _this7.router.navigate(['product/login']);
 
             var user = action.user;
             user.id = userId.name;
@@ -3354,11 +3408,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this6.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this7.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
             var userId = user.id;
 
-            _this6.router.navigate(['product/account']);
+            _this7.router.navigate(['product/account']);
 
             return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUserSuccess"]({
               user: user
@@ -3371,8 +3425,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.updateUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this6.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this7.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.user.id;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUserSuccess"]({
               user: user
@@ -3383,9 +3437,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this6.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
-            _this6.router.navigate(["product/home"]);
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this7.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
+            _this7.router.navigate(["product/home"]);
 
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUserSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
@@ -3530,11 +3584,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this7 = this;
+          var _this8 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getProteinLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this7.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
+            if (!loaded && userId) _this8.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -3633,11 +3687,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this8 = this;
+          var _this9 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getUserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this8.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
+            if (!loaded && userId) _this9.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -3665,7 +3719,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/index.ts ***!
     \********************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, reducers, getProductsState, getUserState, getUser, getUserLoaded, getUserUpdated, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+  /*! exports provided: reducers, getProductsState, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, getUserState, getUser, getUserLoaded, getUserUpdated, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreIndexTs(module, __webpack_exports__, __webpack_require__) {

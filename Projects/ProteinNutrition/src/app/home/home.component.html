@@ -1,12 +1,12 @@
 <div>
 
   <div>
-    <h1 class="text-center">muscle is your life?</h1>
+    <h1 class="text-center">Muscle is your life?</h1>
     <h2 class="text-center">Let's start to calculate your protein </h2>
   </div>
 
-  <div *ngIf="!user" id="popup" class="invisible">
-    <div class="card">
+  <div id="popup" class="invisible">
+    <div class="card popup">
       <img src="/assets/photos/popup.jpg" class="cardImage">
       <button (click)="cancelPopup()" class="text-right cancel m-2 ml-auto">
         <i class="fas fa-times "></i>
@@ -156,6 +156,20 @@
       </div>
 
     </form>
+
+    <div id="show" class="invisible">
+
+      <div class="card show text-center">
+
+        <div class="card-body">
+          <p>{{showMessage}}</p>
+          <p *ngIf="user">{{showMessageLogin}}</p>
+          <input type="button" value="&#xf164;" (click)="cancelShow()" class="fas showButton">
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 

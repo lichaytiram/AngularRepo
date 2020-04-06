@@ -71,16 +71,39 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     font-style: oblique;
 }
 
-.card {
+.popup {
     position: fixed;
+    z-index: 1;
     width: 50%;
     height: 40%;
-    z-index: 1;
     margin: -5% auto;
     left: 0;
     right: 0;
     background-color: pink;
     color: seashell;
+}
+
+.show {
+    position: fixed;
+    width: 300px;
+    height: 150px;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    color: seashell;
+    background-color: rgb(88, 81, 81);
+}
+
+.showButton {
+    background-color: inherit;
+    color: rgb(127, 255, 110);
+    outline: 0;
+    border: 0;
+    padding: 0;
+}
+
+.showButton:hover{
+    color: rgb(87, 241, 67);
 }
 
 .cardImage {
@@ -92,7 +115,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 @media (max-height: 420px) {
-    .card {
-        margin: -13% auto;
+    .popup {
+        margin: -12% auto;
+        height: 50%;
+    }
+    .show {
+        top: 75%;
     }
 }

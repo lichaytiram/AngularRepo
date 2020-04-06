@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div>\n\n  <h2>קורות חיים</h2>\n\n  <h3>Click <a href=\"assets/CV.doc\" download=\"CV\">here</a> to download my CV</h3>\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n  <h2>קורות חיים</h2>\r\n\r\n  <h3>Click <a href=\"assets/CV.doc\" download=\"CV\">here</a> to download my CV</h3>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -430,7 +430,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\Users\Lichay\gitStudio\AngularRepo\Projects\Cv\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Lichay\gitStudio\AngularRepo\Projects\Cv\src\main.ts */"./src/main.ts");
 
 
 /***/ })

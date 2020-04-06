@@ -45,7 +45,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\n\n  <h2>קורות חיים</h2>\n\n  <h3>Click <a href=\"assets/CV.doc\" download=\"CV\">here</a> to download my CV</h3>\n\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n  <h2>קורות חיים</h2>\r\n\r\n  <h3>Click <a href=\"assets/CV.doc\" download=\"CV\">here</a> to download my CV</h3>\r\n\r\n</div>";
     /***/
   },
 
@@ -849,7 +849,7 @@
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! c:\Users\Lichay\gitStudio\AngularRepo\Projects\Cv\src\main.ts */
+    /*! C:\Users\Lichay\gitStudio\AngularRepo\Projects\Cv\src\main.ts */
     "./src/main.ts");
     /***/
   }

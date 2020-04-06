@@ -2,7 +2,7 @@
 heroku login
 
 git init
-heroku git:remote -a projectName
+heroku git:remote -a protein-lichay
 
 git add .
 git commit -am "make it better"

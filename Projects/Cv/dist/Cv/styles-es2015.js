@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\n\nbody {\n    background: url('/assets/background1.jpg') no-repeat center center fixed;\n    background-size: cover;\n}\n\nbody:hover {\n    background: url('/assets/background2.jpg') no-repeat center center fixed;\n    background-size: cover;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RTs7QUFFOUU7SUFDSSx3RUFBd0U7SUFJeEUsc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksd0VBQXdFO0lBSXhFLHNCQUFzQjtBQUMxQiIsImZpbGUiOiJzcmMvc3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cblxuYm9keSB7XG4gICAgYmFja2dyb3VuZDogdXJsKCcvYXNzZXRzL2JhY2tncm91bmQxLmpwZycpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyIGZpeGVkO1xuICAgIC1tb3otYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgICAtd2Via2l0LWJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gICAgLW8tYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xufVxuXG5ib2R5OmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kOiB1cmwoJy9hc3NldHMvYmFja2dyb3VuZDIuanBnJykgbm8tcmVwZWF0IGNlbnRlciBjZW50ZXIgZml4ZWQ7XG4gICAgLW1vei1iYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICAgIC13ZWJraXQtYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgICAtby1iYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG59Il19 */", '', '']]
+module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\r\n\r\nbody {\r\n    background: url('/assets/background1.jpg') no-repeat center center fixed;\r\n    background-size: cover;\r\n}\r\n\r\nbody:hover {\r\n    background: url('/assets/background2.jpg') no-repeat center center fixed;\r\n    background-size: cover;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RTs7QUFFOUU7SUFDSSx3RUFBd0U7SUFJeEUsc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksd0VBQXdFO0lBSXhFLHNCQUFzQjtBQUMxQiIsImZpbGUiOiJzcmMvc3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cclxuXHJcbmJvZHkge1xyXG4gICAgYmFja2dyb3VuZDogdXJsKCcvYXNzZXRzL2JhY2tncm91bmQxLmpwZycpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyIGZpeGVkO1xyXG4gICAgLW1vei1iYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG4gICAgLXdlYmtpdC1iYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG4gICAgLW8tYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbn1cclxuXHJcbmJvZHk6aG92ZXIge1xyXG4gICAgYmFja2dyb3VuZDogdXJsKCcvYXNzZXRzL2JhY2tncm91bmQyLmpwZycpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyIGZpeGVkO1xyXG4gICAgLW1vei1iYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG4gICAgLXdlYmtpdC1iYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG4gICAgLW8tYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbn0iXX0= */", '', '']]
 
 /***/ }),
 
@@ -338,7 +338,7 @@ if (content.locals) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\Users\Lichay\gitStudio\AngularRepo\Projects\Cv\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\Lichay\gitStudio\AngularRepo\Projects\Cv\src\styles.css */"./src/styles.css");
 
 
 /***/ })

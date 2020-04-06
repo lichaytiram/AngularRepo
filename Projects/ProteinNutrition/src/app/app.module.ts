@@ -1,5 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './shared/modules/app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,8 +13,6 @@ import { reducer, CustomSerializer } from './storeRouter';
 
 import { reducers, effects } from './store';
 
-import { AppRoutingModule } from './app-routing.module';
-import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';

@@ -9,7 +9,7 @@ import { IEgg } from '../shared/models/iEgg.model';
 import { Store, select } from '@ngrx/store';
 import { AddProtein } from '../store/actions/protein.action'
 import { IProductsState, getUser } from '../store';
-import { Observable, of, Subscription } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { IUser } from '../shared/models/iUser.model';
 import { catchError } from 'rxjs/operators';
 
@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   public acccept: boolean;
   public user: IUser;
   public protein: IProtein;
+
+  // Messages to user
+  public showMessage: string = "";
+  public showMessageLogin: string = "";
 
   private clearInterval = [];
   private unSubscribe: Subscription[] = [];
@@ -40,7 +44,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.unSubscribe.push(this.store.pipe(select(getUser)).subscribe(
       user => {
-        if (user == null)
+        const userId: boolean = !!sessionStorage.getItem('login');
+
+        if (!user && !userId)
           this.popup();
 
         this.user = user
@@ -67,7 +73,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public cancelPopup(): void {
-    document.getElementById("popup").className = "visibility: invisible";
+    this.visibilityOff('popup');
+  }
+
+  public cancelShow(): void {
+    this.visibilityOff('show');
   }
 
   public isAcccept(): void {
@@ -115,7 +125,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     Object.values(protein).forEach(value => value ? sum += value : sum += 0);
 
-    this.user ? alert(`You eat ${sum} protein approximately./nYou need more ${this.user.weight * 2 - sum}`) : alert(`You eat ${sum} protein approximately.`);
+    this.showMessage = `You eat ${sum} protein approximately.`;
+
+    if (this.user) {
+      const value: number = this.user.weight * 2 - sum;
+      this.showMessageLogin = value > 0 ? `You need more ${value}` : 'You Eat enough protein for today good job!';
+    }
+
+    this.visibilityOn('show');
 
   }
 
@@ -134,6 +151,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private visibilityOn(name: string): void {
     document.getElementById(name).className = "visibility: visible";
+  }
+
+  private visibilityOff(name: string): void {
+    document.getElementById(name).className = "visibility: invisible";
   }
 
   public register(): void {
