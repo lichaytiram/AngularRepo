@@ -85,19 +85,20 @@
                         </div>
 
                         <div>
-                            <div>
-                                <small>By clicking Sign Up, you agree to our
-                                    <input type="button" value="Terms" class="terms" (click)="showTerms()">
-                                </small>
-
-                                <label>
+                            <small>
+                                <label class="width">
                                     <input type="checkbox" name="accept" #accept="ngModel" ngModel required>
-                                    <span class="m-1">
+                                    <span>
                                         <i *ngIf="accept.valid" class="fas fa-check-circle fa-lg checkbox"></i>
                                         <i *ngIf="accept.invalid" class="fas fa-circle fa-lg checkbox"></i>
                                     </span>
                                 </label>
-                            </div>
+                                <label>By clicking Sign Up, you</label><br>
+                                <label class="width"></label>
+                                <span>agree to our </span>
+                                <input type="button" value="Terms" class="terms" (click)="showTerms()">
+
+                            </small>
 
                             <div *ngIf="terms">
                                 <p>By clicking Sign Up, you agree to our Data Policy and Cookies Policy</p>

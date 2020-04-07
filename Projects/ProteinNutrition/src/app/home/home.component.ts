@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { IProtein } from '../shared/models/iProtein.model';
 import { Protein } from '../shared/models/protein.model';
-import { Egg } from '../shared/models/egg.model';
 import { IEgg } from '../shared/models/iEgg.model';
+import { Egg } from '../shared/models/egg.model';
 
 import { Store, select } from '@ngrx/store';
 import { AddProtein } from '../store/actions/protein.action'
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.visibility();
     }
 
-    this.unSubscribe.push(this.store.pipe(select(getUser)).subscribe(
+    this.unSubscribe.push(this.store.pipe<IUser>(select(getUser)).subscribe(
       user => {
         const userId: boolean = !!sessionStorage.getItem('login');
 

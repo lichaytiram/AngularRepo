@@ -73,3 +73,7 @@ input[type="checkbox"] {
 small {
     display: block;
 }
+
+.width{
+    width: 24px;
+}
