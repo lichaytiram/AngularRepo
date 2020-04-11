@@ -1,14 +1,43 @@
 <div class="text-center">
 
-    <div *ngIf="!login">
+    <div *ngIf="!(user$ |async)" class="disconnected">
 
         <p>You must login to see your favorite list.</p>
         <p>You can click <button (click)="loginPage()">here</button> to move login page</p>
 
     </div>
 
-    <div *ngIf="login">
-        Welcome
+    <div *ngIf="user$ | async as user" class="connected text-center">
+
+
+        <div class="header">
+
+            <h2>Welcome Back - {{user.username}}</h2>
+            <h3>Your favorite list on the front </h3>
+            <h5>You can edit to see another mix</h5>
+
+        </div>
+
+        <div *ngFor="let protein of proteins$ | async ;index as i" class="color">
+            <div class="parallax2 m-0">
+
+                <h6>index | {{i+1}}</h6>
+                <div class="row m-1 justify-content-center">
+                    <div *ngFor="let pro of protein | keyvalue" class="col-12 col-sm-6 col-xl-4 p-2">
+                        <div class="card">
+
+                            <h6 class="m-0">{{pro.key}} | {{pro.value}}</h6>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="parallax3"></div>
+
+        </div>
+
     </div>
 
 </div>

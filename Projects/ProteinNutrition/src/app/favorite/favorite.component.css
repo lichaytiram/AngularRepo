@@ -1,5 +1,9 @@
-div {
+.disconnected {
     color: crimson;
+}
+
+.connected {
+    color: black;
 }
 
 button {
@@ -8,4 +12,45 @@ button {
     outline: 0;
     background-color: inherit;
     color: white;
+}
+
+.card {
+    height: 80px;
+    justify-content: center;
+}
+
+.header {
+    background: linear-gradient(to right, black, white);
+    text-shadow: 2px 2px rgb(88, 88, 87);
+    height: 130px;
+}
+
+.parallax2 {
+    background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));
+    height: 650px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media(max-width :420px) {
+    .parallax2 {
+        height: auto;
+    }
+}
+
+@media(max-height :420px) {
+    .parallax2 {
+        height: auto;
+    }
+}
+
+.parallax3 {
+    background-image: url("/assets/photos/biceps_black_and_white_body.jpg");
+    height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
