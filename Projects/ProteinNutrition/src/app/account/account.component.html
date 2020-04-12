@@ -19,7 +19,7 @@
 
                 <div class="row justify-content-center">
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">username: </label>
+                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">Username: </label>
                     <span *ngIf="!editToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.username}}</span>
                     <input *ngIf="editToggle && !usernameToggle" type="button" [disabled]="allowToEdit()"
@@ -53,7 +53,7 @@
 
                 <div class="row justify-content-center">
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">password: </label>
+                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">Password: </label>
 
                     <div *ngIf="!editToggle" class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">
 
@@ -92,7 +92,7 @@
 
                 <div class="row justify-content-center" [class.d-none]="!editToggle || editToggle && !passwordToggle">
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">confirm: </label>
+                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">Confirm: </label>
                     <span *ngIf="!editToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.confirmPassword}}</span>
                     <span *ngIf="editToggle && !passwordToggle"
@@ -131,7 +131,7 @@
 
                 <div class="row justify-content-center">
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">gender: </label>
+                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">Gender: </label>
                     <span *ngIf="!editToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.gender}}</span>
                     <input *ngIf="editToggle && !genderToggle" type="button" [disabled]="allowToEdit()"
@@ -171,7 +171,7 @@
 
                 <div class="row justify-content-center">
 
-                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">weight: </label>
+                    <label class="col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 p-0">Weight: </label>
                     <span *ngIf="!editToggle"
                         class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0">{{user.weight}}</span>
                     <input *ngIf="editToggle && !weightToggle" type="button" [disabled]="allowToEdit()"

@@ -28,6 +28,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public showMessage: string = "";
   public showMessageLogin: string = "";
 
+  // Toggles
+  public saveToggle: boolean;
+
   private clearInterval = [];
   private unSubscribe: Subscription[] = [];
 
@@ -90,7 +93,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   public submit(): void {
 
     const userId: string = this.user.id;
-    const protein: IProtein = { ...this.protein };
+    let protein: IProtein = { ...this.protein };
+
+    // Send clean Object without undefined properties to Store
+    Object.keys(protein).forEach(key => (protein[key] === undefined) && delete protein[key]);
+    if (!protein.egg.sizeEgg || !protein.egg.amount)
+      delete protein.egg;
 
     this.store.dispatch(AddProtein({ userId, protein }));
   }
@@ -163,6 +171,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public loginPage(): void {
     this.router.navigate(['/product/login']);
+  }
+
+  public saveSwitch(): void {
+    const { id, egg, ...protein } = this.protein;
+    let updateToggle: boolean = false;
+    Object.values(protein).some(value => value && (updateToggle = true) && true);
+    egg.amount && egg.sizeEgg && (updateToggle = true);
+
+    this.saveToggle = updateToggle;
   }
 
 }

@@ -29,7 +29,7 @@
 
   <div *ngIf="acccept">
 
-    <form (ngSubmit)="submit()">
+    <form #proteinForm="ngForm" (change)="saveSwitch()" (ngSubmit)="submit()">
 
       <div class="container">
 
@@ -149,7 +149,7 @@
 
             <input
               class="btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button"
-              [disabled]="!user" type="submit" value="&#xf0c7; Save">
+              [disabled]="!user || !saveToggle" type="submit" value="&#xf0c7; Save">
           </div>
         </div>
 

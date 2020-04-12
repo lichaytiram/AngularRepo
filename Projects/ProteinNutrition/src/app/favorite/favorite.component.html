@@ -23,15 +23,42 @@
 
                 <h6>index | {{i+1}}</h6>
                 <div class="row m-1 justify-content-center">
-                    <div *ngFor="let pro of protein | keyvalue" class="col-12 col-sm-6 col-xl-4 p-2">
+                    <div *ngFor="let proteinKeyValue of protein | keyvalue" class="col-12 col-sm-6 col-xl-4 p-2">
                         <div class="card">
 
-                            <h6 class="m-0">{{pro.key}} | {{pro.value}}</h6>
+                            <h6 *ngIf="proteinKeyValue.key!=='egg'" class="m-0">{{proteinKeyValue.key}} |
+                                {{proteinKeyValue.value}}</h6>
+
+                            <div *ngIf="proteinKeyValue.key==='egg'">
+                                <h6 class="m-0">{{proteinKeyValue.key}}</h6>
+                                <h6 class="m-0">amount | {{proteinKeyValue.value.amount}} ,
+                                    sizeEgg | {{proteinKeyValue.value.sizeEgg}}
+                                </h6>
+                            </div>
 
                         </div>
                     </div>
 
                 </div>
+
+                <div class="card size">
+
+                    <div class="row justify-content-center">
+
+                        <input type="button" value="&#xf06e; Show" (click)="t"
+                            class="btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6">
+
+                        <div class="col-12 p-0">
+                            <input type="button" value="&#xf410; Delete" (click)="delete(user.id,protein.id)"
+                                class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
+                            <input type="button" value="&#xf4ff; Edit" (click)="t"
+                                class="btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3">
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="parallax3"></div>

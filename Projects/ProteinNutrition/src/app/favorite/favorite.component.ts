@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
+import { DeleteProtein } from '../store/actions/protein.action';
 
 import { getUser, getAllProteins } from '../store/selectors'
 import { Observable } from 'rxjs';
@@ -29,6 +30,12 @@ export class FavoriteComponent implements OnInit {
 
   public loginPage(): void {
     this.router.navigate(['/product/login']);
+  }
+
+  public delete(userId: string, proteinId: string): void {
+
+    this.store.dispatch(DeleteProtein({ userId, proteinId }));
+
   }
 
 }

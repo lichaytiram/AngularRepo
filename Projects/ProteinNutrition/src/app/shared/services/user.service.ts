@@ -4,8 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { IUser } from '../models/iUser.model';
 import { catchError, map, switchMap, tap, take } from 'rxjs/operators';
 import { ILogin } from '../models/iLogin.model';
-import { User } from '../models/user.model';
-import { throwError } from 'rxjs';
 import { IId } from '../models/iId.model';
 
 @Injectable({
