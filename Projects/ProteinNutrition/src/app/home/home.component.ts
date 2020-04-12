@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 import { IProtein } from '../shared/models/iProtein.model';
 import { Protein } from '../shared/models/protein.model';
-import { IEgg } from '../shared/models/iEgg.model';
 import { Egg } from '../shared/models/egg.model';
 
 import { Store, select } from '@ngrx/store';
@@ -12,6 +11,7 @@ import { IProductsState, getUser } from '../store';
 import { of, Subscription } from 'rxjs';
 import { IUser } from '../shared/models/iUser.model';
 import { catchError } from 'rxjs/operators';
+import { showCalculator } from '../shared/services/showCalculator';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private clearInterval = [];
   private unSubscribe: Subscription[] = [];
 
-  constructor(private store: Store<IProductsState>, private router: Router) { }
+  constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
 
   ngOnInit() {
 
@@ -106,32 +106,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public show(): void {
 
     const { id, egg, ...protein } = this.protein;
-    this.calculateProtein(protein, egg);
-  }
-
-  public calculateProtein(protein: IProtein, egg: IEgg): void {
-
-    let sum: number = 0;
-
-    if (egg.amount && egg.sizeEgg) {
-
-      if (egg.sizeEgg === 'S')
-        sum += egg.amount * 6.029;
-      else egg.sizeEgg === 'M' ? sum += egg.amount * 7.285 : sum += egg.amount * 8.541;
-
-    }
-
-    protein.bread *= 3.24;
-    protein.tuna /= 3.571428571428571;
-    protein.meat /= 3.225806451612903;
-    protein.cheese /= 10.52631578947368;
-    protein.cottage /= 9.090909090909091;
-    protein.quinoa /= 7.575757575757576;
-    protein.almonds *= 6.154;
-    protein.powder *= 25;
-    protein.gainer *= 22;
-
-    Object.values(protein).forEach(value => value ? sum += value : sum += 0);
+    const sum: number = this.showCalculator.calculateProtein(protein, egg);
 
     this.showMessage = `You eat ${sum} protein approximately.`;
 
@@ -141,7 +116,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     this.visibilityOn('show');
-
   }
 
   private visibility(): void {

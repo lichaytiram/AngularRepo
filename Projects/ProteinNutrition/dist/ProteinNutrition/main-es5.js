@@ -1520,15 +1520,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! rxjs/operators */
     "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ../shared/services/showCalculator */
+    "./src/app/shared/services/showCalculator.ts");
 
     var HomeComponent =
     /*#__PURE__*/
     function () {
-      function HomeComponent(store, router) {
+      function HomeComponent(store, router, showCalculator) {
         _classCallCheck(this, HomeComponent);
 
         this.store = store;
-        this.router = router; // Messages to user
+        this.router = router;
+        this.showCalculator = showCalculator; // Messages to user
 
         this.showMessage = "";
         this.showMessageLogin = "";
@@ -1614,29 +1621,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               id = _a.id,
               egg = _a.egg,
               protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](_a, ["id", "egg"]);
-          this.calculateProtein(protein, egg);
-        }
-      }, {
-        key: "calculateProtein",
-        value: function calculateProtein(protein, egg) {
-          var sum = 0;
-
-          if (egg.amount && egg.sizeEgg) {
-            if (egg.sizeEgg === 'S') sum += egg.amount * 6.029;else egg.sizeEgg === 'M' ? sum += egg.amount * 7.285 : sum += egg.amount * 8.541;
-          }
-
-          protein.bread *= 3.24;
-          protein.tuna /= 3.571428571428571;
-          protein.meat /= 3.225806451612903;
-          protein.cheese /= 10.52631578947368;
-          protein.cottage /= 9.090909090909091;
-          protein.quinoa /= 7.575757575757576;
-          protein.almonds *= 6.154;
-          protein.powder *= 25;
-          protein.gainer *= 22;
-          Object.values(protein).forEach(function (value) {
-            return value ? sum += value : sum += 0;
-          });
+          var sum = this.showCalculator.calculateProtein(protein, egg);
           this.showMessage = "You eat ".concat(sum, " protein approximately.");
 
           if (this.user) {
@@ -1710,6 +1695,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_10__["showCalculator"]
       }];
     };
 
@@ -2548,6 +2535,79 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     ProteinService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     })], ProteinService);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/services/showCalculator.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/shared/services/showCalculator.ts ***!
+    \***************************************************/
+
+  /*! exports provided: showCalculator */
+
+  /***/
+  function srcAppSharedServicesShowCalculatorTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "showCalculator", function () {
+      return showCalculator;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var showCalculator =
+    /*#__PURE__*/
+    function () {
+      function showCalculator() {
+        _classCallCheck(this, showCalculator);
+      }
+
+      _createClass(showCalculator, [{
+        key: "calculateProtein",
+        value: function calculateProtein(protein, egg) {
+          var sum = 0;
+
+          if (egg.amount && egg.sizeEgg) {
+            if (egg.sizeEgg === 'S') sum += egg.amount * 6.029;else egg.sizeEgg === 'M' ? sum += egg.amount * 7.285 : sum += egg.amount * 8.541;
+          }
+
+          protein.bread *= 3.24;
+          protein.tuna /= 3.571428571428571;
+          protein.meat /= 3.225806451612903;
+          protein.cheese /= 10.52631578947368;
+          protein.cottage /= 9.090909090909091;
+          protein.quinoa /= 7.575757575757576;
+          protein.almonds *= 6.154;
+          protein.powder *= 25;
+          protein.gainer *= 22;
+          Object.values(protein).forEach(function (value) {
+            return value ? sum += value : sum += 0;
+          });
+          return Number.parseFloat(sum.toFixed(4));
+        }
+      }]);
+
+      return showCalculator;
+    }();
+
+    showCalculator = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], showCalculator);
     /***/
   },
 
