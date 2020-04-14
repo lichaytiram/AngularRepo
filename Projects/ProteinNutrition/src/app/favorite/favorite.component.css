@@ -19,6 +19,10 @@ button {
     justify-content: center;
 }
 
+.displayOff {
+    display: none;
+}
+
 .size {
     width: 450px;
     margin: auto;

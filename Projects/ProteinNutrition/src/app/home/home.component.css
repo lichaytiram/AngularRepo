@@ -86,7 +86,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .show {
     position: fixed;
     width: 300px;
-    height: 150px;
+    height: 200px;
+    /* min-height: auto; */
     left: 50%;
     top: 60%;
     transform: translate(-50%, -50%);
@@ -102,7 +103,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     padding: 0;
 }
 
-.showButton:hover{
+.showButton:hover {
     color: rgb(87, 241, 67);
 }
 
@@ -120,6 +121,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
         height: 50%;
     }
     .show {
-        top: 75%;
+        top: 65%;
+    }
+}
+
+@media (max-height: 330px) {
+    .show {
+        z-index: 9999;
     }
 }

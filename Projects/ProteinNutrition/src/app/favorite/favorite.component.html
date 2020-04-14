@@ -24,18 +24,21 @@
                 <h6>index | {{i+1}}</h6>
                 <div class="row m-1 justify-content-center">
                     <div *ngFor="let proteinKeyValue of protein | keyvalue" class="col-12 col-sm-6 col-xl-4 p-2">
-                        <div class="card">
+                        <div *ngIf="proteinKeyValue.key!='id'" [class.displayOff]="proteinKeyValue.key=='id'">
 
-                            <h6 *ngIf="proteinKeyValue.key!=='egg'" class="m-0">{{proteinKeyValue.key}} |
-                                {{proteinKeyValue.value}}</h6>
+                            <div class="card">
 
-                            <div *ngIf="proteinKeyValue.key==='egg'">
-                                <h6 class="m-0">{{proteinKeyValue.key}}</h6>
-                                <h6 class="m-0">amount | {{proteinKeyValue.value.amount}} ,
-                                    sizeEgg | {{proteinKeyValue.value.sizeEgg}}
-                                </h6>
+                                <h6 *ngIf="proteinKeyValue.key!=='egg'" class="m-0">{{proteinKeyValue.key}} |
+                                    {{proteinKeyValue.value}}</h6>
+
+                                <div *ngIf="proteinKeyValue.key==='egg'">
+                                    <h6 class="m-0">{{proteinKeyValue.key}}</h6>
+                                    <h6 class="m-0">amount | {{proteinKeyValue.value.amount}} ,
+                                        sizeEgg | {{proteinKeyValue.value.sizeEgg}}
+                                    </h6>
+                                </div>
+
                             </div>
-
                         </div>
                     </div>
 
