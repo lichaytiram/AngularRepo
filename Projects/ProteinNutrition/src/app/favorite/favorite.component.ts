@@ -8,6 +8,7 @@ import { getUser, getAllProteins } from '../store/selectors'
 import { Observable } from 'rxjs';
 import { IUser } from '../shared/models/iUser.model';
 import { IProtein } from '../shared/models/iProtein.model';
+import { showCalculator } from '../shared/services/showCalculator';
 
 @Component({
   selector: 'app-favorite',
@@ -19,7 +20,11 @@ export class FavoriteComponent implements OnInit {
   public user$: Observable<IUser>
   public proteins$: Observable<IProtein[]>
 
-  constructor(private store: Store<IProductsState>, private router: Router) { }
+  // Messages to user
+  public showMessage: string = "";
+  public showMessageLogin: string = "";
+
+  constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
 
   ngOnInit() {
 
@@ -36,6 +41,30 @@ export class FavoriteComponent implements OnInit {
 
     this.store.dispatch(DeleteProtein({ userId, proteinId }));
 
+  }
+
+  public show(user: IUser, tempProtein: IProtein): void {
+
+    const { id, egg, ...protein } = tempProtein;
+    const sum: number = this.showCalculator.calculateProtein(protein, egg);
+
+    const value: number = user.weight * 2 - sum;
+    this.showMessage = `You eat ${sum} protein approximately.`;
+    this.showMessageLogin = value > 0 ? `You need more ${value}` : 'You Eat enough protein for today good job!';
+
+    this.visibilityOn('show');
+  }
+
+  public cancelShow(): void {
+    this.visibilityOff('show');
+  }
+
+  private visibilityOn(name: string): void {
+    document.getElementById(name).className = "visibility: visible";
+  }
+
+  private visibilityOff(name: string): void {
+    document.getElementById(name).className = "visibility: invisible";
   }
 
 }

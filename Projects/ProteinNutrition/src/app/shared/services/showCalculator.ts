@@ -13,7 +13,7 @@ export class showCalculator {
 
     let sum: number = 0;
 
-    if (egg.amount && egg.sizeEgg) {
+    if (egg && egg.amount && egg.sizeEgg) {
 
       if (egg.sizeEgg === 'S')
         sum += egg.amount * 6.029;
@@ -36,5 +36,5 @@ export class showCalculator {
     return Number.parseFloat(sum.toFixed(4));
 
   }
-  
+
 }

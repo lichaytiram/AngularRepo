@@ -62,6 +62,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
+    if (!this.user)
+      document.body.style.opacity = '1';
+
     this.clearInterval.forEach(id => clearInterval(id));
     this.unSubscribe.forEach(subscribe => subscribe.unsubscribe());
 
@@ -70,12 +73,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   public popup(): void {
 
     this.clearInterval.push(setTimeout(() => {
+      document.body.style.opacity = '0.3';
+      document.getElementById('popup').style.opacity = '1';
       this.visibilityOn("popup")
     }, 8000))
 
   }
 
   public cancelPopup(): void {
+    document.body.style.opacity = '1';
     this.visibilityOff('popup');
   }
 
