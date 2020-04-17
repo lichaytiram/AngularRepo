@@ -47,14 +47,25 @@
 
                     <div class="row justify-content-center">
 
-                        <input type="button" value="&#xf06e; Show" (click)="show(user,protein)"
-                            class="btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6">
+                        <div *ngIf="editToggle != protein.id" class="col-12 p-0">
 
-                        <div class="col-12 p-0">
-                            <input type="button" value="&#xf410; Delete" (click)="delete(user.id,protein.id)"
-                                class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
-                            <input type="button" value="&#xf4ff; Edit" (click)="t"
-                                class="btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3">
+                            <input type="button" value="&#xf06e; Show" (click)="show(user,protein)"
+                                class="btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6">
+
+                            <div class="col-12 p-0">
+                                <input type="button" value="&#xf410; Delete" (click)="delete(user.id,protein.id)"
+                                    class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
+                                <input type="button" value="&#xf4ff; Edit" (click)="edit(protein.id)"
+                                    class="btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3">
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="editToggle == protein.id" class="col-12 p-0">
+
+                            <input type="button" value="&#xf4ff; Save" (click)="save(i+1)"
+                                class="btn btn-outline-secondary rounded-pill fas m-1 col-6">
+
                         </div>
 
                     </div>

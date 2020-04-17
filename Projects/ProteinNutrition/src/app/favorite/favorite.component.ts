@@ -24,6 +24,9 @@ export class FavoriteComponent implements OnInit {
   public showMessage: string = "";
   public showMessageLogin: string = "";
 
+  // Toggles
+  public editToggle: number;
+
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
 
   ngOnInit() {
@@ -57,6 +60,15 @@ export class FavoriteComponent implements OnInit {
 
   public cancelShow(): void {
     this.visibilityOff('show');
+  }
+
+  public edit(editToggle: number): void {
+    this.editToggle = editToggle;
+  }
+
+  public save(index): void {
+    console.log(index);
+
   }
 
   private visibilityOn(name: string): void {
