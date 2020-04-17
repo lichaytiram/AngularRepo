@@ -91,7 +91,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"text-center\">\r\n\r\n    <div *ngIf=\"!(user$ |async)\" class=\"disconnected\">\r\n\r\n        <p>You must login to see your favorite list.</p>\r\n        <p>You can click <button (click)=\"loginPage()\">here</button> to move login page</p>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"user$ | async as user\" class=\"connected text-center\">\r\n\r\n\r\n        <div class=\"header\">\r\n\r\n            <h2>Welcome Back - {{user.username}}</h2>\r\n            <h3>Your favorite list on the front </h3>\r\n            <h5>You can edit to see another mix</h5>\r\n\r\n        </div>\r\n\r\n        <div *ngFor=\"let protein of proteins$ | async ;index as i\" class=\"color\">\r\n            <div class=\"parallax2 m-0\">\r\n\r\n                <h6>index | {{i+1}}</h6>\r\n                <div class=\"row m-1 justify-content-center\">\r\n                    <div *ngFor=\"let proteinKeyValue of protein | keyvalue\" class=\"col-12 col-sm-6 col-xl-4 p-2\">\r\n                        <div *ngIf=\"proteinKeyValue.key!='id'\" [class.displayOff]=\"proteinKeyValue.key=='id'\">\r\n\r\n                            <div class=\"card\">\r\n\r\n                                <h6 *ngIf=\"proteinKeyValue.key!=='egg'\" class=\"m-0\">{{proteinKeyValue.key}} |\r\n                                    {{proteinKeyValue.value}}</h6>\r\n\r\n                                <div *ngIf=\"proteinKeyValue.key==='egg'\">\r\n                                    <h6 class=\"m-0\">{{proteinKeyValue.key}}</h6>\r\n                                    <h6 class=\"m-0\">amount | {{proteinKeyValue.value.amount}} ,\r\n                                        sizeEgg | {{proteinKeyValue.value.sizeEgg}}\r\n                                    </h6>\r\n                                </div>\r\n\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"card size\">\r\n\r\n                    <div class=\"row justify-content-center\">\r\n\r\n                        <input type=\"button\" value=\"&#xf06e; Show\" (click)=\"t\"\r\n                            class=\"btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6\">\r\n\r\n                        <div class=\"col-12 p-0\">\r\n                            <input type=\"button\" value=\"&#xf410; Delete\" (click)=\"delete(user.id,protein.id)\"\r\n                                class=\"btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3\">\r\n                            <input type=\"button\" value=\"&#xf4ff; Edit\" (click)=\"t\"\r\n                                class=\"btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3\">\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"parallax3\"></div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div class=\"text-center\">\r\n\r\n    <div *ngIf=\"!(user$ |async)\" class=\"disconnected\">\r\n\r\n        <p>You must login to see your favorite list.</p>\r\n        <p>You can click <button (click)=\"loginPage()\">here</button> to move login page</p>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"user$ | async as user\" class=\"connected text-center\">\r\n\r\n\r\n        <div class=\"header\">\r\n\r\n            <h2>Welcome Back - {{user.username}}</h2>\r\n            <h3>Your favorite list on the front </h3>\r\n            <h5>You can edit to see another mix</h5>\r\n\r\n        </div>\r\n\r\n        <div *ngFor=\"let protein of proteins$ | async ;index as i\" class=\"color\">\r\n            <div class=\"parallax2 m-0\">\r\n\r\n                <h6>index | {{i+1}}</h6>\r\n                <div class=\"row m-1 justify-content-center\">\r\n                    <div [class.d-none]=\"proteinKeyValue.key=='id'\" *ngFor=\"let proteinKeyValue of protein | keyvalue\"\r\n                        class=\"col-12 col-sm-6 col-xl-4 p-2\">\r\n\r\n                        <div class=\"card\">\r\n\r\n                            <h6 *ngIf=\"proteinKeyValue.key!=='egg'\" class=\"m-0\">{{proteinKeyValue.key}} |\r\n                                {{proteinKeyValue.value}}</h6>\r\n\r\n                            <div *ngIf=\"proteinKeyValue.key==='egg'\">\r\n                                <h6 class=\"m-0\">{{proteinKeyValue.key}}</h6>\r\n                                <h6 class=\"m-0\">amount | {{proteinKeyValue.value.amount}} ,\r\n                                    sizeEgg | {{proteinKeyValue.value.sizeEgg}}\r\n                                </h6>\r\n                            </div>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"card size\">\r\n\r\n                    <div class=\"row justify-content-center\">\r\n\r\n                        <input type=\"button\" value=\"&#xf06e; Show\" (click)=\"show(user,protein)\"\r\n                            class=\"btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6\">\r\n\r\n                        <div class=\"col-12 p-0\">\r\n                            <input type=\"button\" value=\"&#xf410; Delete\" (click)=\"delete(user.id,protein.id)\"\r\n                                class=\"btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3\">\r\n                            <input type=\"button\" value=\"&#xf4ff; Edit\" (click)=\"t\"\r\n                                class=\"btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3\">\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"parallax3\"></div>\r\n\r\n        </div>\r\n\r\n        <div id=\"show\" class=\"invisible\">\r\n\r\n            <div class=\"card show text-center\">\r\n\r\n                <div class=\"card-body\">\r\n                    <p>{{showMessage}}</p>\r\n                    <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n                    <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -111,7 +111,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n  <div>\r\n    <h1 class=\"text-center\">Muscle is your life?</h1>\r\n    <h2 class=\"text-center\">Let's start to calculate your protein </h2>\r\n  </div>\r\n\r\n  <div id=\"popup\" class=\"invisible\">\r\n    <div class=\"card popup\">\r\n      <img src=\"/assets/photos/popup.jpg\" class=\"cardImage\">\r\n      <button (click)=\"cancelPopup()\" class=\"text-right cancel m-2 ml-auto\">\r\n        <i class=\"fas fa-times \"></i>\r\n      </button>\r\n      <nav class=\"card-body text-center\">\r\n        <h5 class=\"card-title\">Don't have an account yet?</h5>\r\n        <span>Click </span>\r\n        <button (click)=\"register()\" class=\"navigate\">here</button>\r\n        <span> to register or </span>\r\n        <button (click)=\"loginPage()\" class=\"navigate\">here</button>\r\n        <span> to login</span>\r\n      </nav>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n  <div class=\"text-center\">\r\n    <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!acccept\" (click)=\"isAcccept()\">Lets started</button>\r\n  </div>\r\n\r\n  <div *ngIf=\"acccept\">\r\n\r\n    <form #proteinForm=\"ngForm\" (change)=\"saveSwitch()\" (ngSubmit)=\"submit()\">\r\n\r\n      <div class=\"container\">\r\n\r\n        <div id=\"egg\" class=\"invisible\">\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <small class=\"text-danger p-2 m-1\"\r\n              [class.d-none]=\"egg.untouched || !egg.value || egg.value && eggSize.dirty\">You must\r\n              choose a size <i class=\"fas fa-arrow-circle-right\"></i></small>\r\n          </div>\r\n\r\n          <div class=\"row justify-content-center\">\r\n\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Egg</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Egg\" #egg=\"ngModel\" name=\"egg\" placeholder=\"amount\" [(ngModel)]=\"protein.egg.amount\">\r\n\r\n            <select class=\"border border-danger p-1 m-1 space\" [(ngModel)]=\"protein.egg.sizeEgg\" #eggSize=\"ngModel\"\r\n              name=\"eggSize\">\r\n              <option [value]=\"size\" disabled>size</option>\r\n              <option value=\"S\">S</option>\r\n              <option value=\"M\">M</option>\r\n              <option value=\"L\">L</option>\r\n            </select>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"bread\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Bread</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Bread\" name=\"bread\" placeholder=\"slices\" [(ngModel)]=\"protein.bread\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"tuna\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Tuna</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Tuna\" name=\"tuna\" placeholder=\"grams\" [(ngModel)]=\"protein.tuna\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"meat\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Meat</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Meat\" name=\"meat\" placeholder=\"grams\" [(ngModel)]=\"protein.meat\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cheese\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cheese</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cheese\" name=\"cheese\" placeholder=\"grams\" [(ngModel)]=\"protein.cheese\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cottage\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cottage</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cottage\" name=\"cottage\" placeholder=\"grams\" [(ngModel)]=\"protein.cottage\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"quinoa\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Quinoa</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Quinoa\" name=\"quinoa\" placeholder=\"grams\" [(ngModel)]=\"protein.quinoa\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"almonds\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Almonds</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Almonds\" name=\"almonds\" placeholder=\"handful\" [(ngModel)]=\"protein.almonds\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"powder\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Powder</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Powder\" name=\"powder\" placeholder=\"portions\" [(ngModel)]=\"protein.powder\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"gainer\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Gainer</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Gainer\" name=\"gainer\" placeholder=\"portions\" [(ngModel)]=\"protein.gainer\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"submit\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-1\"></div>\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              type=\"button\" value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              [disabled]=\"!user || !saveToggle\" type=\"submit\" value=\"&#xf0c7; Save\">\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n    <div id=\"show\" class=\"invisible\">\r\n\r\n      <div class=\"card show text-center\">\r\n\r\n        <div class=\"card-body\">\r\n          <p>{{showMessage}}</p>\r\n          <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n          <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n  {{popupToggle}}\r\n  <div [class.opacity]=\"popupToggle\">\r\n    <h1 class=\"text-center\">Muscle is your life?</h1>\r\n    <h2 class=\"text-center\">Let's start to calculate your protein </h2>\r\n  </div>\r\n\r\n  <div [class.d-none]=\"!popupToggle\">\r\n    <div class=\"card popup\">\r\n      <img src=\"/assets/photos/popup.jpg\" class=\"cardImage\">\r\n      <button (click)=\"cancelPopup()\" class=\"text-right cancel m-2 ml-auto\">\r\n        <i class=\"fas fa-times \"></i>\r\n      </button>\r\n      <nav class=\"card-body text-center\">\r\n        <h5 class=\"card-title\">Don't have an account yet?</h5>\r\n        <span>Click </span>\r\n        <button (click)=\"register()\" class=\"navigate\">here</button>\r\n        <span> to register or </span>\r\n        <button (click)=\"loginPage()\" class=\"navigate\">here</button>\r\n        <span> to login</span>\r\n      </nav>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n  <div class=\"text-center\">\r\n    <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!acccept\" (click)=\"isAcccept()\">Lets started</button>\r\n  </div>\r\n\r\n  <div *ngIf=\"acccept\" [class.opacity]=\"popupToggle\">\r\n\r\n    <form #proteinForm=\"ngForm\" (change)=\"saveSwitch()\" (ngSubmit)=\"submit()\">\r\n\r\n      <div class=\"container\">\r\n\r\n        <div id=\"egg\" class=\"invisible\">\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <small class=\"text-danger p-2 m-1\"\r\n              [class.d-none]=\"egg.untouched || !egg.value || egg.value && eggSize.dirty\">You must\r\n              choose a size <i class=\"fas fa-arrow-circle-right\"></i></small>\r\n          </div>\r\n\r\n          <div class=\"row justify-content-center\">\r\n\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Egg</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Egg\" #egg=\"ngModel\" name=\"egg\" placeholder=\"amount\" [(ngModel)]=\"protein.egg.amount\">\r\n\r\n            <select class=\"border border-danger p-1 m-1 space\" [(ngModel)]=\"protein.egg.sizeEgg\" #eggSize=\"ngModel\"\r\n              name=\"eggSize\">\r\n              <option [value]=\"size\" disabled>size</option>\r\n              <option value=\"S\">S</option>\r\n              <option value=\"M\">M</option>\r\n              <option value=\"L\">L</option>\r\n            </select>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"bread\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Bread</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Bread\" name=\"bread\" placeholder=\"slices\" [(ngModel)]=\"protein.bread\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"tuna\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Tuna</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Tuna\" name=\"tuna\" placeholder=\"grams\" [(ngModel)]=\"protein.tuna\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"meat\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Meat</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Meat\" name=\"meat\" placeholder=\"grams\" [(ngModel)]=\"protein.meat\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cheese\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cheese</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cheese\" name=\"cheese\" placeholder=\"grams\" [(ngModel)]=\"protein.cheese\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cottage\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cottage</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cottage\" name=\"cottage\" placeholder=\"grams\" [(ngModel)]=\"protein.cottage\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"quinoa\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Quinoa</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Quinoa\" name=\"quinoa\" placeholder=\"grams\" [(ngModel)]=\"protein.quinoa\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"almonds\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Almonds</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Almonds\" name=\"almonds\" placeholder=\"handful\" [(ngModel)]=\"protein.almonds\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"powder\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Powder</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Powder\" name=\"powder\" placeholder=\"portions\" [(ngModel)]=\"protein.powder\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"gainer\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Gainer</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Gainer\" name=\"gainer\" placeholder=\"portions\" [(ngModel)]=\"protein.gainer\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"submit\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-1\"></div>\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              type=\"button\" value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              [disabled]=\"!user || !saveToggle\" type=\"submit\" value=\"&#xf0c7; Save\">\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n    <div id=\"show\" class=\"invisible\">\r\n\r\n      <div class=\"card show text-center\">\r\n\r\n        <div class=\"card-body\">\r\n          <p>{{showMessage}}</p>\r\n          <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n          <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -171,7 +171,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n        <header class=\"fixed-top\">\r\n\r\n                <nav class=\"navbar\">\r\n\r\n                        <button routerLink=\"product/home\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span class=\"fas fa-home\">\r\n                                </span>\r\n                                Home</button>\r\n\r\n                        <button routerLink=\"product/{{login()}}\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-user-circle\">\r\n                                </span>\r\n                                Account</button>\r\n\r\n                        <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span\r\n                                        class=\"far fa-thumbs-up\"></span>\r\n                                Favorite</button>\r\n\r\n                        <button routerLink=\"product/info\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-question-circle\"></span>\r\n                                Info</button>\r\n\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-on\"></span> Hebrew</button> -->\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-off\"></span> English</button> -->\r\n\r\n                </nav>\r\n\r\n                <div class=\"row\">\r\n                        <img src=\"/assets/photos/bodybuilding_weightlifting.jpg\"\r\n                                class=\"backgroundImage col-6 smartphone\">\r\n                        <img src=\"/assets/photos/sport_girl_fitness.jpg\"\r\n                                class=\"backgroundImage col-6 smartphone smallSreen\">\r\n                </div>\r\n\r\n        </header>\r\n\r\n        <router-outlet></router-outlet>\r\n\r\n        <footer class=\"m-1 text-light bg-dark text-center\">\r\n                <small>&copy; Created by - Lichay Tiram -</small>\r\n        </footer>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n        <header class=\"fixed-top\" [class.opacity]=\"popupToggle\">\r\n\r\n                <nav class=\"navbar\">\r\n\r\n                        <button routerLink=\"product/home\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span class=\"fas fa-home\">\r\n                                </span>\r\n                                Home</button>\r\n\r\n                        <button routerLink=\"product/{{login()}}\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-user-circle\">\r\n                                </span>\r\n                                Account</button>\r\n\r\n                        <button routerLink=\"product/favorite\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-secondary\"><span\r\n                                        class=\"far fa-thumbs-up\"></span>\r\n                                Favorite</button>\r\n\r\n                        <button routerLink=\"product/info\" routerLinkActive=\"is-active\"\r\n                                class=\"btn btn-outline-light col-6 col-sm bg-dark text-light\"><span\r\n                                        class=\"fas fa-question-circle\"></span>\r\n                                Info</button>\r\n\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-on\"></span> Hebrew</button> -->\r\n                        <!-- <button class=\"btn btn-outline-light col-2\"><span class=\"fas fa-toggle-off\"></span> English</button> -->\r\n\r\n                </nav>\r\n\r\n                <div class=\"row\">\r\n                        <img src=\"/assets/photos/bodybuilding_weightlifting.jpg\"\r\n                                class=\"backgroundImage col-6 smartphone\">\r\n                        <img src=\"/assets/photos/sport_girl_fitness.jpg\"\r\n                                class=\"backgroundImage col-6 smartphone smallSreen\">\r\n                </div>\r\n\r\n        </header>\r\n\r\n        <router-outlet></router-outlet>\r\n\r\n        <footer [class.opacity]=\"popupToggle\" class=\"m-1 text-light bg-dark text-center\">\r\n                <small>&copy; Created by - Lichay Tiram -</small>\r\n        </footer>\r\n\r\n</div>";
     /***/
   },
 
@@ -1307,7 +1307,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".disconnected {\r\n    color: crimson;\r\n}\r\n\r\n.connected {\r\n    color: black;\r\n}\r\n\r\nbutton {\r\n    border: 0;\r\n    padding: 0;\r\n    outline: 0;\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\n.card {\r\n    height: 80px;\r\n    -webkit-box-pack: center;\r\n            justify-content: center;\r\n}\r\n\r\n.displayOff {\r\n    display: none;\r\n}\r\n\r\n.size {\r\n    width: 450px;\r\n    margin: auto;\r\n}\r\n\r\n.header {\r\n    background: -webkit-gradient(linear, left top, right top, from(black), to(white));\r\n    background: linear-gradient(to right, black, white);\r\n    text-shadow: 2px 2px rgb(88, 88, 87);\r\n    height: 130px;\r\n}\r\n\r\n.parallax2 {\r\n    background: -webkit-gradient( linear, left top, left bottom, color-stop(40%, rgb(179, 145, 218)), color-stop(rgb(169, 235, 255)), to(rgb(43, 39, 255)));\r\n    background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));\r\n    height: 650px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n@media(max-width :420px) {\r\n    .parallax2 {\r\n        height: auto;\r\n    }\r\n    .size {\r\n        width: 250px;\r\n    }\r\n}\r\n\r\n@media(max-height :420px) {\r\n    .parallax2 {\r\n        height: auto;\r\n    }\r\n}\r\n\r\n.parallax3 {\r\n    background-image: url(\"/assets/photos/biceps_black_and_white_body.jpg\");\r\n    height: 300px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksU0FBUztJQUNULFVBQVU7SUFDVixVQUFVO0lBQ1YseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osd0JBQXVCO1lBQXZCLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osWUFBWTtBQUNoQjs7QUFFQTtJQUNJLGlGQUFtRDtJQUFuRCxtREFBbUQ7SUFDbkQsb0NBQW9DO0lBQ3BDLGFBQWE7QUFDakI7O0FBRUE7SUFDSSx1SkFBMEY7SUFBMUYsMEZBQTBGO0lBQzFGLGFBQWE7SUFDYiw0QkFBNEI7SUFDNUIsMkJBQTJCO0lBQzNCLDRCQUE0QjtJQUM1QixzQkFBc0I7QUFDMUI7O0FBRUE7SUFDSTtRQUNJLFlBQVk7SUFDaEI7SUFDQTtRQUNJLFlBQVk7SUFDaEI7QUFDSjs7QUFFQTtJQUNJO1FBQ0ksWUFBWTtJQUNoQjtBQUNKOztBQUVBO0lBQ0ksdUVBQXVFO0lBQ3ZFLGFBQWE7SUFDYiw0QkFBNEI7SUFDNUIsMkJBQTJCO0lBQzNCLDRCQUE0QjtJQUM1QixzQkFBc0I7QUFDMUIiLCJmaWxlIjoic3JjL2FwcC9mYXZvcml0ZS9mYXZvcml0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpc2Nvbm5lY3RlZCB7XHJcbiAgICBjb2xvcjogY3JpbXNvbjtcclxufVxyXG5cclxuLmNvbm5lY3RlZCB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbmJ1dHRvbiB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIGhlaWdodDogODBweDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG4uZGlzcGxheU9mZiB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcblxyXG4uc2l6ZSB7XHJcbiAgICB3aWR0aDogNDUwcHg7XHJcbiAgICBtYXJnaW46IGF1dG87XHJcbn1cclxuXHJcbi5oZWFkZXIge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCBibGFjaywgd2hpdGUpO1xyXG4gICAgdGV4dC1zaGFkb3c6IDJweCAycHggcmdiKDg4LCA4OCwgODcpO1xyXG4gICAgaGVpZ2h0OiAxMzBweDtcclxufVxyXG5cclxuLnBhcmFsbGF4MiB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoIHJnYigxNzksIDE0NSwgMjE4KSA0MCUsIHJnYigxNjksIDIzNSwgMjU1KSwgcmdiKDQzLCAzOSwgMjU1KSk7XHJcbiAgICBoZWlnaHQ6IDY1MHB4O1xyXG4gICAgYmFja2dyb3VuZC1hdHRhY2htZW50OiBmaXhlZDtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcclxuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XHJcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG59XHJcblxyXG5AbWVkaWEobWF4LXdpZHRoIDo0MjBweCkge1xyXG4gICAgLnBhcmFsbGF4MiB7XHJcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgfVxyXG4gICAgLnNpemUge1xyXG4gICAgICAgIHdpZHRoOiAyNTBweDtcclxuICAgIH1cclxufVxyXG5cclxuQG1lZGlhKG1heC1oZWlnaHQgOjQyMHB4KSB7XHJcbiAgICAucGFyYWxsYXgyIHtcclxuICAgICAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICB9XHJcbn1cclxuXHJcbi5wYXJhbGxheDMge1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy9waG90b3MvYmljZXBzX2JsYWNrX2FuZF93aGl0ZV9ib2R5LmpwZ1wiKTtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbn0iXX0= */";
+    __webpack_exports__["default"] = ".disconnected {\r\n    color: crimson;\r\n}\r\n\r\n.connected {\r\n    color: black;\r\n}\r\n\r\nbutton {\r\n    border: 0;\r\n    padding: 0;\r\n    outline: 0;\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\n.card {\r\n    height: 80px;\r\n    -webkit-box-pack: center;\r\n            justify-content: center;\r\n}\r\n\r\n.size {\r\n    width: 450px;\r\n    margin: auto;\r\n}\r\n\r\n.header {\r\n    background: -webkit-gradient(linear, left top, right top, from(black), to(white));\r\n    background: linear-gradient(to right, black, white);\r\n    text-shadow: 2px 2px rgb(88, 88, 87);\r\n    height: 130px;\r\n}\r\n\r\n.show {\r\n    position: fixed;\r\n    width: 300px;\r\n    height: 200px;\r\n    left: 50%;\r\n    top: 60%;\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n    color: rgb(39, 5, 61);\r\n    background: -webkit-gradient( linear, left top, left bottom, from(rgb(153, 183, 240)), to(rgb(97, 214, 243)));\r\n    background: linear-gradient( rgb(153, 183, 240), rgb(97, 214, 243));\r\n}\r\n\r\n.showButton {\r\n    background-color: inherit;\r\n    color: rgb(77, 77, 77);\r\n    outline: 0;\r\n    border: 0;\r\n    padding: 0;\r\n}\r\n\r\n.showButton:hover {\r\n    color: black;\r\n}\r\n\r\n.parallax2 {\r\n    background: -webkit-gradient( linear, left top, left bottom, color-stop(40%, rgb(179, 145, 218)), color-stop(rgb(169, 235, 255)), to(rgb(43, 39, 255)));\r\n    background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));\r\n    height: 650px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n@media(max-width :420px) {\r\n    .parallax2 {\r\n        height: auto;\r\n    }\r\n    .size {\r\n        width: 250px;\r\n    }\r\n}\r\n\r\n@media(max-height :420px) {\r\n    .parallax2 {\r\n        height: auto;\r\n    }\r\n}\r\n\r\n.parallax3 {\r\n    background-image: url(\"/assets/photos/biceps_black_and_white_body.jpg\");\r\n    height: 300px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksU0FBUztJQUNULFVBQVU7SUFDVixVQUFVO0lBQ1YseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osd0JBQXVCO1lBQXZCLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksaUZBQW1EO0lBQW5ELG1EQUFtRDtJQUNuRCxvQ0FBb0M7SUFDcEMsYUFBYTtBQUNqQjs7QUFFQTtJQUNJLGVBQWU7SUFDZixZQUFZO0lBQ1osYUFBYTtJQUNiLFNBQVM7SUFDVCxRQUFRO0lBQ1Isd0NBQWdDO1lBQWhDLGdDQUFnQztJQUNoQyxxQkFBcUI7SUFDckIsNkdBQW1FO0lBQW5FLG1FQUFtRTtBQUN2RTs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixzQkFBc0I7SUFDdEIsVUFBVTtJQUNWLFNBQVM7SUFDVCxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksdUpBQTBGO0lBQTFGLDBGQUEwRjtJQUMxRixhQUFhO0lBQ2IsNEJBQTRCO0lBQzVCLDJCQUEyQjtJQUMzQiw0QkFBNEI7SUFDNUIsc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0k7UUFDSSxZQUFZO0lBQ2hCO0lBQ0E7UUFDSSxZQUFZO0lBQ2hCO0FBQ0o7O0FBRUE7SUFDSTtRQUNJLFlBQVk7SUFDaEI7QUFDSjs7QUFFQTtJQUNJLHVFQUF1RTtJQUN2RSxhQUFhO0lBQ2IsNEJBQTRCO0lBQzVCLDJCQUEyQjtJQUMzQiw0QkFBNEI7SUFDNUIsc0JBQXNCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kaXNjb25uZWN0ZWQge1xyXG4gICAgY29sb3I6IGNyaW1zb247XHJcbn1cclxuXHJcbi5jb25uZWN0ZWQge1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG5idXR0b24ge1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4uY2FyZCB7XHJcbiAgICBoZWlnaHQ6IDgwcHg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG5cclxuLnNpemUge1xyXG4gICAgd2lkdGg6IDQ1MHB4O1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG59XHJcblxyXG4uaGVhZGVyIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgYmxhY2ssIHdoaXRlKTtcclxuICAgIHRleHQtc2hhZG93OiAycHggMnB4IHJnYig4OCwgODgsIDg3KTtcclxuICAgIGhlaWdodDogMTMwcHg7XHJcbn1cclxuXHJcbi5zaG93IHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGhlaWdodDogMjAwcHg7XHJcbiAgICBsZWZ0OiA1MCU7XHJcbiAgICB0b3A6IDYwJTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xyXG4gICAgY29sb3I6IHJnYigzOSwgNSwgNjEpO1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCByZ2IoMTUzLCAxODMsIDI0MCksIHJnYig5NywgMjE0LCAyNDMpKTtcclxufVxyXG5cclxuLnNob3dCdXR0b24ge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogaW5oZXJpdDtcclxuICAgIGNvbG9yOiByZ2IoNzcsIDc3LCA3Nyk7XHJcbiAgICBvdXRsaW5lOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgcGFkZGluZzogMDtcclxufVxyXG5cclxuLnNob3dCdXR0b246aG92ZXIge1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG4ucGFyYWxsYXgyIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCggcmdiKDE3OSwgMTQ1LCAyMTgpIDQwJSwgcmdiKDE2OSwgMjM1LCAyNTUpLCByZ2IoNDMsIDM5LCAyNTUpKTtcclxuICAgIGhlaWdodDogNjUwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbn1cclxuXHJcbkBtZWRpYShtYXgtd2lkdGggOjQyMHB4KSB7XHJcbiAgICAucGFyYWxsYXgyIHtcclxuICAgICAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICB9XHJcbiAgICAuc2l6ZSB7XHJcbiAgICAgICAgd2lkdGg6IDI1MHB4O1xyXG4gICAgfVxyXG59XHJcblxyXG5AbWVkaWEobWF4LWhlaWdodCA6NDIwcHgpIHtcclxuICAgIC5wYXJhbGxheDIge1xyXG4gICAgICAgIGhlaWdodDogYXV0bztcclxuICAgIH1cclxufVxyXG5cclxuLnBhcmFsbGF4MyB7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3Bob3Rvcy9iaWNlcHNfYmxhY2tfYW5kX3doaXRlX2JvZHkuanBnXCIpO1xyXG4gICAgaGVpZ2h0OiAzMDBweDtcclxuICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxufSJdfQ== */";
     /***/
   },
 
@@ -1366,15 +1366,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _store_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../store/selectors */
     "./src/app/store/selectors/index.ts");
+    /* harmony import */
+
+
+    var _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/services/showCalculator */
+    "./src/app/shared/services/showCalculator.ts");
 
     var FavoriteComponent =
     /*#__PURE__*/
     function () {
-      function FavoriteComponent(store, router) {
+      function FavoriteComponent(store, router, showCalculator) {
         _classCallCheck(this, FavoriteComponent);
 
         this.store = store;
         this.router = router;
+        this.showCalculator = showCalculator; // Messages to user
+
+        this.showMessage = "";
+        this.showMessageLogin = "";
       }
 
       _createClass(FavoriteComponent, [{
@@ -1396,6 +1406,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             proteinId: proteinId
           }));
         }
+      }, {
+        key: "show",
+        value: function show(user, tempProtein) {
+          var id = tempProtein.id,
+              egg = tempProtein.egg,
+              protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](tempProtein, ["id", "egg"]);
+          var sum = this.showCalculator.calculateProtein(protein, egg);
+          var value = user.weight * 2 - sum;
+          this.showMessage = "You eat ".concat(sum, " protein approximately.");
+          this.showMessageLogin = value > 0 ? "You need more ".concat(value) : 'You Eat enough protein for today good job!';
+          this.visibilityOn('show');
+        }
+      }, {
+        key: "cancelShow",
+        value: function cancelShow() {
+          this.visibilityOff('show');
+        }
+      }, {
+        key: "visibilityOn",
+        value: function visibilityOn(name) {
+          document.getElementById(name).className = "visibility: visible";
+        }
+      }, {
+        key: "visibilityOff",
+        value: function visibilityOff(name) {
+          document.getElementById(name).className = "visibility: invisible";
+        }
       }]);
 
       return FavoriteComponent;
@@ -1406,6 +1443,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_6__["showCalculator"]
       }];
     };
 
@@ -1437,7 +1476,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "label {\r\n    color: oldlace;\r\n    width: 70px;\r\n}\r\n\r\nsmall {\r\n    left: 30px;\r\n}\r\n\r\nh1, h2 {\r\n    color: white;\r\n}\r\n\r\nselect {\r\n    border-radius: 17px;\r\n    outline: 0;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n}\r\n\r\nselect:focus {\r\n    color: white;\r\n    background-color: rgb(34, 34, 32);\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n\r\ninput:hover {\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\ninput::-webkit-outer-spin-button, input::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n::-webkit-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-moz-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-ms-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n.space {\r\n    width: 70px;\r\n}\r\n\r\n.button {\r\n    right: 3%;\r\n    max-width: 160px;\r\n}\r\n\r\n.cancel {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: red;\r\n    text-shadow: red;\r\n    background-color: rgb(59, 63, 57);\r\n}\r\n\r\n.navigate {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: rgb(179, 5, 5);\r\n    background-color: inherit;\r\n    font-weight: bold;\r\n    font-style: oblique;\r\n}\r\n\r\n.popup {\r\n    position: fixed;\r\n    z-index: 1;\r\n    width: 50%;\r\n    height: 40%;\r\n    margin: -5% auto;\r\n    left: 0;\r\n    right: 0;\r\n    background-color: pink;\r\n    color: seashell;\r\n}\r\n\r\n.show {\r\n    position: fixed;\r\n    width: 300px;\r\n    height: 200px;\r\n    /* min-height: auto; */\r\n    left: 50%;\r\n    top: 60%;\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n    color: seashell;\r\n    background-color: rgb(88, 81, 81);\r\n}\r\n\r\n.showButton {\r\n    background-color: inherit;\r\n    color: rgb(127, 255, 110);\r\n    outline: 0;\r\n    border: 0;\r\n    padding: 0;\r\n}\r\n\r\n.showButton:hover {\r\n    color: rgb(87, 241, 67);\r\n}\r\n\r\n.cardImage {\r\n    opacity: 0.9;\r\n    width: 100%;\r\n    position: absolute;\r\n    height: 100%;\r\n    z-index: -1;\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .popup {\r\n        margin: -12% auto;\r\n        height: 50%;\r\n    }\r\n    .show {\r\n        top: 65%;\r\n    }\r\n}\r\n\r\n@media (max-height: 330px) {\r\n    .show {\r\n        z-index: 9999;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0lBQ2QsV0FBVztBQUNmOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLG1CQUFtQjtJQUNuQixVQUFVO0lBQ1Ysd0NBQXdDO0FBQzVDOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLHNCQUFzQjtJQUN0Qix3Q0FBd0M7SUFDeEMsNENBQTRDO0FBQ2hEOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSx3QkFBd0I7SUFDeEIsU0FBUztBQUNiOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFIQTtJQUNJLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckI7O0FBSEE7SUFDSSxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCOztBQUhBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFNBQVM7SUFDVCxnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsU0FBUztJQUNULFVBQVU7SUFDVixVQUFVO0lBQ1YsZ0JBQWdCO0lBQ2hCLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtJQUNWLHFCQUFxQjtJQUNyQix5QkFBeUI7SUFDekIsaUJBQWlCO0lBQ2pCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGVBQWU7SUFDZixVQUFVO0lBQ1YsVUFBVTtJQUNWLFdBQVc7SUFDWCxnQkFBZ0I7SUFDaEIsT0FBTztJQUNQLFFBQVE7SUFDUixzQkFBc0I7SUFDdEIsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLGVBQWU7SUFDZixZQUFZO0lBQ1osYUFBYTtJQUNiLHNCQUFzQjtJQUN0QixTQUFTO0lBQ1QsUUFBUTtJQUNSLHdDQUFnQztZQUFoQyxnQ0FBZ0M7SUFDaEMsZUFBZTtJQUNmLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6Qix5QkFBeUI7SUFDekIsVUFBVTtJQUNWLFNBQVM7SUFDVCxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSx1QkFBdUI7QUFDM0I7O0FBRUE7SUFDSSxZQUFZO0lBQ1osV0FBVztJQUNYLGtCQUFrQjtJQUNsQixZQUFZO0lBQ1osV0FBVztBQUNmOztBQUVBO0lBQ0k7UUFDSSxpQkFBaUI7UUFDakIsV0FBVztJQUNmO0lBQ0E7UUFDSSxRQUFRO0lBQ1o7QUFDSjs7QUFFQTtJQUNJO1FBQ0ksYUFBYTtJQUNqQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCB7XHJcbiAgICBjb2xvcjogb2xkbGFjZTtcclxuICAgIHdpZHRoOiA3MHB4O1xyXG59XHJcblxyXG5zbWFsbCB7XHJcbiAgICBsZWZ0OiAzMHB4O1xyXG59XHJcblxyXG5oMSwgaDIge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5zZWxlY3Qge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTdweDtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAxcHggcmdiKDE0NSwgMTQwLCAxNDUpO1xyXG59XHJcblxyXG5zZWxlY3Q6Zm9jdXMge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDM0LCAzNCwgMzIpO1xyXG59XHJcblxyXG5pbnB1dDpmb2N1cyB7XHJcbiAgICBvdXRsaW5lLXN0eWxlOiBpbmhlcml0O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDAgMXB4IHJnYigxNDUsIDE0MCwgMTQ1KTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjUwLCAyNDEsIDIzMiwgMC43ODgpO1xyXG59XHJcblxyXG5pbnB1dDpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbiwgaW5wdXQ6Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24ge1xyXG4gICAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG46OnBsYWNlaG9sZGVyIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiBsaWdodGNvcmFsO1xyXG59XHJcblxyXG4uc3BhY2Uge1xyXG4gICAgd2lkdGg6IDcwcHg7XHJcbn1cclxuXHJcbi5idXR0b24ge1xyXG4gICAgcmlnaHQ6IDMlO1xyXG4gICAgbWF4LXdpZHRoOiAxNjBweDtcclxufVxyXG5cclxuLmNhbmNlbCB7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGNvbG9yOiByZWQ7XHJcbiAgICB0ZXh0LXNoYWRvdzogcmVkO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDU5LCA2MywgNTcpO1xyXG59XHJcblxyXG4ubmF2aWdhdGUge1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIGJvcmRlcjogMDtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBjb2xvcjogcmdiKDE3OSwgNSwgNSk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXN0eWxlOiBvYmxpcXVlO1xyXG59XHJcblxyXG4ucG9wdXAge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBoZWlnaHQ6IDQwJTtcclxuICAgIG1hcmdpbjogLTUlIGF1dG87XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBwaW5rO1xyXG4gICAgY29sb3I6IHNlYXNoZWxsO1xyXG59XHJcblxyXG4uc2hvdyB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogMzAwcHg7XHJcbiAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgLyogbWluLWhlaWdodDogYXV0bzsgKi9cclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIHRvcDogNjAlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XHJcbiAgICBjb2xvcjogc2Vhc2hlbGw7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoODgsIDgxLCA4MSk7XHJcbn1cclxuXHJcbi5zaG93QnV0dG9uIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogcmdiKDEyNywgMjU1LCAxMTApO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGJvcmRlcjogMDtcclxuICAgIHBhZGRpbmc6IDA7XHJcbn1cclxuXHJcbi5zaG93QnV0dG9uOmhvdmVyIHtcclxuICAgIGNvbG9yOiByZ2IoODcsIDI0MSwgNjcpO1xyXG59XHJcblxyXG4uY2FyZEltYWdlIHtcclxuICAgIG9wYWNpdHk6IDAuOTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgei1pbmRleDogLTE7XHJcbn1cclxuXHJcbkBtZWRpYSAobWF4LWhlaWdodDogNDIwcHgpIHtcclxuICAgIC5wb3B1cCB7XHJcbiAgICAgICAgbWFyZ2luOiAtMTIlIGF1dG87XHJcbiAgICAgICAgaGVpZ2h0OiA1MCU7XHJcbiAgICB9XHJcbiAgICAuc2hvdyB7XHJcbiAgICAgICAgdG9wOiA2NSU7XHJcbiAgICB9XHJcbn1cclxuXHJcbkBtZWRpYSAobWF4LWhlaWdodDogMzMwcHgpIHtcclxuICAgIC5zaG93IHtcclxuICAgICAgICB6LWluZGV4OiA5OTk5O1xyXG4gICAgfVxyXG59Il19 */";
+    __webpack_exports__["default"] = "label {\r\n    color: oldlace;\r\n    width: 70px;\r\n}\r\n\r\nsmall {\r\n    left: 30px;\r\n}\r\n\r\nh1, h2 {\r\n    color: white;\r\n}\r\n\r\n.opacity {\r\n    opacity: 0.3;\r\n}\r\n\r\nselect {\r\n    border-radius: 17px;\r\n    outline: 0;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n}\r\n\r\nselect:focus {\r\n    color: white;\r\n    background-color: rgb(34, 34, 32);\r\n}\r\n\r\ninput:focus {\r\n    outline-style: inherit;\r\n    box-shadow: 0 0 0 1px rgb(145, 140, 145);\r\n    background-color: rgba(250, 241, 232, 0.788);\r\n}\r\n\r\ninput:hover {\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\ninput::-webkit-outer-spin-button, input::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n::-webkit-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-moz-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::-ms-input-placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n::placeholder {\r\n    text-align: center;\r\n    color: lightcoral;\r\n}\r\n\r\n.space {\r\n    width: 70px;\r\n}\r\n\r\n.button {\r\n    right: 3%;\r\n    max-width: 160px;\r\n}\r\n\r\n.cancel {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: red;\r\n    text-shadow: red;\r\n    background-color: rgb(59, 63, 57);\r\n}\r\n\r\n.navigate {\r\n    padding: 0;\r\n    border: 0;\r\n    outline: 0;\r\n    color: rgb(179, 5, 5);\r\n    background-color: inherit;\r\n    font-weight: bold;\r\n    font-style: oblique;\r\n}\r\n\r\n.popup {\r\n    position: fixed;\r\n    z-index: 1;\r\n    width: 50%;\r\n    height: 40%;\r\n    margin: -5% auto;\r\n    left: 0;\r\n    right: 0;\r\n    background-color: pink;\r\n    color: seashell;\r\n}\r\n\r\n.show {\r\n    position: fixed;\r\n    width: 300px;\r\n    height: 200px;\r\n    left: 50%;\r\n    top: 60%;\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n    color: seashell;\r\n    background-color: rgb(88, 81, 81);\r\n}\r\n\r\n.showButton {\r\n    background-color: inherit;\r\n    color: rgb(127, 255, 110);\r\n    outline: 0;\r\n    border: 0;\r\n    padding: 0;\r\n}\r\n\r\n.showButton:hover {\r\n    color: rgb(87, 241, 67);\r\n}\r\n\r\n.cardImage {\r\n    opacity: 0.9;\r\n    width: 100%;\r\n    position: absolute;\r\n    height: 100%;\r\n    z-index: -1;\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .popup {\r\n        margin: -12% auto;\r\n        height: 50%;\r\n    }\r\n    .show {\r\n        top: 65%;\r\n    }\r\n}\r\n\r\n@media (max-height: 330px) {\r\n    .show {\r\n        z-index: 9999;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0lBQ2QsV0FBVztBQUNmOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxtQkFBbUI7SUFDbkIsVUFBVTtJQUNWLHdDQUF3QztBQUM1Qzs7QUFFQTtJQUNJLFlBQVk7SUFDWixpQ0FBaUM7QUFDckM7O0FBRUE7SUFDSSxzQkFBc0I7SUFDdEIsd0NBQXdDO0lBQ3hDLDRDQUE0QztBQUNoRDs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksd0JBQXdCO0lBQ3hCLFNBQVM7QUFDYjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckI7O0FBSEE7SUFDSSxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCOztBQUhBO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFIQTtJQUNJLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckI7O0FBRUE7SUFDSSxXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxTQUFTO0lBQ1QsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksVUFBVTtJQUNWLFNBQVM7SUFDVCxVQUFVO0lBQ1YsVUFBVTtJQUNWLGdCQUFnQjtJQUNoQixpQ0FBaUM7QUFDckM7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsU0FBUztJQUNULFVBQVU7SUFDVixxQkFBcUI7SUFDckIseUJBQXlCO0lBQ3pCLGlCQUFpQjtJQUNqQixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxlQUFlO0lBQ2YsVUFBVTtJQUNWLFVBQVU7SUFDVixXQUFXO0lBQ1gsZ0JBQWdCO0lBQ2hCLE9BQU87SUFDUCxRQUFRO0lBQ1Isc0JBQXNCO0lBQ3RCLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxlQUFlO0lBQ2YsWUFBWTtJQUNaLGFBQWE7SUFDYixTQUFTO0lBQ1QsUUFBUTtJQUNSLHdDQUFnQztZQUFoQyxnQ0FBZ0M7SUFDaEMsZUFBZTtJQUNmLGlDQUFpQztBQUNyQzs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6Qix5QkFBeUI7SUFDekIsVUFBVTtJQUNWLFNBQVM7SUFDVCxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSx1QkFBdUI7QUFDM0I7O0FBRUE7SUFDSSxZQUFZO0lBQ1osV0FBVztJQUNYLGtCQUFrQjtJQUNsQixZQUFZO0lBQ1osV0FBVztBQUNmOztBQUVBO0lBQ0k7UUFDSSxpQkFBaUI7UUFDakIsV0FBVztJQUNmO0lBQ0E7UUFDSSxRQUFRO0lBQ1o7QUFDSjs7QUFFQTtJQUNJO1FBQ0ksYUFBYTtJQUNqQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCB7XHJcbiAgICBjb2xvcjogb2xkbGFjZTtcclxuICAgIHdpZHRoOiA3MHB4O1xyXG59XHJcblxyXG5zbWFsbCB7XHJcbiAgICBsZWZ0OiAzMHB4O1xyXG59XHJcblxyXG5oMSwgaDIge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4ub3BhY2l0eSB7XHJcbiAgICBvcGFjaXR5OiAwLjM7XHJcbn1cclxuXHJcbnNlbGVjdCB7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxN3B4O1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGJveC1zaGFkb3c6IDAgMCAwIDFweCByZ2IoMTQ1LCAxNDAsIDE0NSk7XHJcbn1cclxuXHJcbnNlbGVjdDpmb2N1cyB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMzQsIDM0LCAzMik7XHJcbn1cclxuXHJcbmlucHV0OmZvY3VzIHtcclxuICAgIG91dGxpbmUtc3R5bGU6IGluaGVyaXQ7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMCAxcHggcmdiKDE0NSwgMTQwLCAxNDUpO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTAsIDI0MSwgMjMyLCAwLjc4OCk7XHJcbn1cclxuXHJcbmlucHV0OmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbmlucHV0Ojotd2Via2l0LW91dGVyLXNwaW4tYnV0dG9uLCBpbnB1dDo6LXdlYmtpdC1pbm5lci1zcGluLWJ1dHRvbiB7XHJcbiAgICAtd2Via2l0LWFwcGVhcmFuY2U6IG5vbmU7XHJcbiAgICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbjo6cGxhY2Vob2xkZXIge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgY29sb3I6IGxpZ2h0Y29yYWw7XHJcbn1cclxuXHJcbi5zcGFjZSB7XHJcbiAgICB3aWR0aDogNzBweDtcclxufVxyXG5cclxuLmJ1dHRvbiB7XHJcbiAgICByaWdodDogMyU7XHJcbiAgICBtYXgtd2lkdGg6IDE2MHB4O1xyXG59XHJcblxyXG4uY2FuY2VsIHtcclxuICAgIHBhZGRpbmc6IDA7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBvdXRsaW5lOiAwO1xyXG4gICAgY29sb3I6IHJlZDtcclxuICAgIHRleHQtc2hhZG93OiByZWQ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoNTksIDYzLCA1Nyk7XHJcbn1cclxuXHJcbi5uYXZpZ2F0ZSB7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGNvbG9yOiByZ2IoMTc5LCA1LCA1KTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGZvbnQtc3R5bGU6IG9ibGlxdWU7XHJcbn1cclxuXHJcbi5wb3B1cCB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB6LWluZGV4OiAxO1xyXG4gICAgd2lkdGg6IDUwJTtcclxuICAgIGhlaWdodDogNDAlO1xyXG4gICAgbWFyZ2luOiAtNSUgYXV0bztcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHBpbms7XHJcbiAgICBjb2xvcjogc2Vhc2hlbGw7XHJcbn1cclxuXHJcbi5zaG93IHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGhlaWdodDogMjAwcHg7XHJcbiAgICBsZWZ0OiA1MCU7XHJcbiAgICB0b3A6IDYwJTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xyXG4gICAgY29sb3I6IHNlYXNoZWxsO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDg4LCA4MSwgODEpO1xyXG59XHJcblxyXG4uc2hvd0J1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgY29sb3I6IHJnYigxMjcsIDI1NSwgMTEwKTtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG59XHJcblxyXG4uc2hvd0J1dHRvbjpob3ZlciB7XHJcbiAgICBjb2xvcjogcmdiKDg3LCAyNDEsIDY3KTtcclxufVxyXG5cclxuLmNhcmRJbWFnZSB7XHJcbiAgICBvcGFjaXR5OiAwLjk7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIHotaW5kZXg6IC0xO1xyXG59XHJcblxyXG5AbWVkaWEgKG1heC1oZWlnaHQ6IDQyMHB4KSB7XHJcbiAgICAucG9wdXAge1xyXG4gICAgICAgIG1hcmdpbjogLTEyJSBhdXRvO1xyXG4gICAgICAgIGhlaWdodDogNTAlO1xyXG4gICAgfVxyXG4gICAgLnNob3cge1xyXG4gICAgICAgIHRvcDogNjUlO1xyXG4gICAgfVxyXG59XHJcblxyXG5AbWVkaWEgKG1heC1oZWlnaHQ6IDMzMHB4KSB7XHJcbiAgICAuc2hvdyB7XHJcbiAgICAgICAgei1pbmRleDogOTk5OTtcclxuICAgIH1cclxufSJdfQ== */";
     /***/
   },
 
@@ -1481,49 +1520,55 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../shared/models/protein.model */
-    "./src/app/shared/models/protein.model.ts");
-    /* harmony import */
-
-
-    var _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../shared/models/egg.model */
-    "./src/app/shared/models/egg.model.ts");
-    /* harmony import */
-
-
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! @ngrx/store */
-    "./node_modules/@ngrx/store/fesm2015/store.js");
-    /* harmony import */
-
-
-    var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ../store/actions/protein.action */
-    "./src/app/store/actions/protein.action.ts");
-    /* harmony import */
-
-
-    var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ../store */
-    "./src/app/store/index.ts");
-    /* harmony import */
-
-
-    var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! rxjs */
     "./node_modules/rxjs/_esm2015/index.js");
     /* harmony import */
 
 
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! rxjs/operators */
     "./node_modules/rxjs/_esm2015/operators/index.js");
     /* harmony import */
 
 
-    var _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../shared/models/protein.model */
+    "./src/app/shared/models/protein.model.ts");
+    /* harmony import */
+
+
+    var _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/models/egg.model */
+    "./src/app/shared/models/egg.model.ts");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/fesm2015/store.js");
+    /* harmony import */
+
+
+    var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ../store/actions/protein.action */
+    "./src/app/store/actions/protein.action.ts");
+    /* harmony import */
+
+
+    var _store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ../store */
+    "./src/app/store/index.ts");
+    /* harmony import */
+
+
+    var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ../store/actions/user.action */
+    "./src/app/store/actions/user.action.ts");
+    /* harmony import */
+
+
+    var _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ../shared/services/showCalculator */
     "./src/app/shared/services/showCalculator.ts");
 
@@ -1548,24 +1593,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this3 = this;
 
-          this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_3__["Protein"](new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_4__["Egg"]());
+          this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_5__["Protein"](new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_6__["Egg"]());
 
           if (!!localStorage.getItem("acccept")) {
             this.acccept = true;
             this.visibility();
           }
 
-          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_5__["select"])(_store__WEBPACK_IMPORTED_MODULE_7__["getUser"])).subscribe(function (user) {
+          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_7__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getUser"])).subscribe(function (user) {
             var userId = !!sessionStorage.getItem('login');
             if (!user && !userId) _this3.popup();
             _this3.user = user;
-          }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["catchError"])(function (error) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(console.log(error));
+          }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(console.log(error));
           })));
         }
       }, {
         key: "ngOnDestroy",
         value: function ngOnDestroy() {
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_10__["UserPopupOff"])());
           this.clearInterval.forEach(function (id) {
             return clearInterval(id);
           });
@@ -1579,13 +1625,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this4 = this;
 
           this.clearInterval.push(setTimeout(function () {
-            _this4.visibilityOn("popup");
+            if (!_this4.user) _this4.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_10__["UserPopupOn"])());
+
+            _this4.unSubscribe.push(_this4.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_7__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getPopup"])).subscribe(function (popupToggle) {
+              return _this4.popupToggle = popupToggle;
+            }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+              return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(console.log(error));
+            })));
           }, 8000));
         }
       }, {
         key: "cancelPopup",
         value: function cancelPopup() {
-          this.visibilityOff('popup');
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_10__["UserPopupOff"])());
         }
       }, {
         key: "cancelShow",
@@ -1609,7 +1661,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return protein[key] === undefined && delete protein[key];
           });
           if (!protein.egg.sizeEgg || !protein.egg.amount) delete protein.egg;
-          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"])({
+          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_8__["AddProtein"])({
             userId: userId,
             protein: protein
           }));
@@ -1692,11 +1744,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     HomeComponent.ctorParameters = function () {
       return [{
-        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"]
+        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_7__["Store"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }, {
-        type: _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_10__["showCalculator"]
+        type: _shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_11__["showCalculator"]
       }];
     };
 
@@ -1952,7 +2004,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".backgroundImage {\r\n    opacity: 0.9;\r\n    position: relative;\r\n    padding: 0;\r\n    z-index: -2;\r\n    left: 15px;\r\n    max-height: 210px;\r\n    min-height: 165px;\r\n}\r\n\r\n@media (max-width: 420px) {\r\n    .smartphone {\r\n        max-height: 90px;\r\n        min-height: 50px;\r\n    }\r\n    .smallSreen {\r\n        content: url(\"/assets/photos/sport_girl_fitness_small_screen.jpg\");\r\n    }\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .smartphone {\r\n        max-height: 80px;\r\n        min-height: 50px;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsV0FBVztJQUNYLFVBQVU7SUFDVixpQkFBaUI7SUFDakIsaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0k7UUFDSSxnQkFBZ0I7UUFDaEIsZ0JBQWdCO0lBQ3BCO0lBQ0E7UUFDSSxrRUFBa0U7SUFDdEU7QUFDSjs7QUFFQTtJQUNJO1FBQ0ksZ0JBQWdCO1FBQ2hCLGdCQUFnQjtJQUNwQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tncm91bmRJbWFnZSB7XHJcbiAgICBvcGFjaXR5OiAwLjk7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgei1pbmRleDogLTI7XHJcbiAgICBsZWZ0OiAxNXB4O1xyXG4gICAgbWF4LWhlaWdodDogMjEwcHg7XHJcbiAgICBtaW4taGVpZ2h0OiAxNjVweDtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDQyMHB4KSB7XHJcbiAgICAuc21hcnRwaG9uZSB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogOTBweDtcclxuICAgICAgICBtaW4taGVpZ2h0OiA1MHB4O1xyXG4gICAgfVxyXG4gICAgLnNtYWxsU3JlZW4ge1xyXG4gICAgICAgIGNvbnRlbnQ6IHVybChcIi9hc3NldHMvcGhvdG9zL3Nwb3J0X2dpcmxfZml0bmVzc19zbWFsbF9zY3JlZW4uanBnXCIpO1xyXG4gICAgfVxyXG59XHJcblxyXG5AbWVkaWEgKG1heC1oZWlnaHQ6IDQyMHB4KSB7XHJcbiAgICAuc21hcnRwaG9uZSB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogODBweDtcclxuICAgICAgICBtaW4taGVpZ2h0OiA1MHB4O1xyXG4gICAgfVxyXG59Il19 */";
+    __webpack_exports__["default"] = ".backgroundImage {\r\n    opacity: 0.9;\r\n    position: relative;\r\n    padding: 0;\r\n    z-index: -2;\r\n    left: 15px;\r\n    max-height: 210px;\r\n    min-height: 165px;\r\n}\r\n\r\n.opacity {\r\n    opacity: 0.3;\r\n}\r\n\r\n@media (max-width: 420px) {\r\n    .smartphone {\r\n        max-height: 90px;\r\n        min-height: 50px;\r\n    }\r\n    .smallSreen {\r\n        content: url(\"/assets/photos/sport_girl_fitness_small_screen.jpg\");\r\n    }\r\n}\r\n\r\n@media (max-height: 420px) {\r\n    .smartphone {\r\n        max-height: 80px;\r\n        min-height: 50px;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsV0FBVztJQUNYLFVBQVU7SUFDVixpQkFBaUI7SUFDakIsaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJO1FBQ0ksZ0JBQWdCO1FBQ2hCLGdCQUFnQjtJQUNwQjtJQUNBO1FBQ0ksa0VBQWtFO0lBQ3RFO0FBQ0o7O0FBRUE7SUFDSTtRQUNJLGdCQUFnQjtRQUNoQixnQkFBZ0I7SUFDcEI7QUFDSiIsImZpbGUiOiJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYWNrZ3JvdW5kSW1hZ2Uge1xyXG4gICAgb3BhY2l0eTogMC45O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIHotaW5kZXg6IC0yO1xyXG4gICAgbGVmdDogMTVweDtcclxuICAgIG1heC1oZWlnaHQ6IDIxMHB4O1xyXG4gICAgbWluLWhlaWdodDogMTY1cHg7XHJcbn1cclxuXHJcbi5vcGFjaXR5IHtcclxuICAgIG9wYWNpdHk6IDAuMztcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDQyMHB4KSB7XHJcbiAgICAuc21hcnRwaG9uZSB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogOTBweDtcclxuICAgICAgICBtaW4taGVpZ2h0OiA1MHB4O1xyXG4gICAgfVxyXG4gICAgLnNtYWxsU3JlZW4ge1xyXG4gICAgICAgIGNvbnRlbnQ6IHVybChcIi9hc3NldHMvcGhvdG9zL3Nwb3J0X2dpcmxfZml0bmVzc19zbWFsbF9zY3JlZW4uanBnXCIpO1xyXG4gICAgfVxyXG59XHJcblxyXG5AbWVkaWEgKG1heC1oZWlnaHQ6IDQyMHB4KSB7XHJcbiAgICAuc21hcnRwaG9uZSB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogODBweDtcclxuICAgICAgICBtaW4taGVpZ2h0OiA1MHB4O1xyXG4gICAgfVxyXG59Il19 */";
     /***/
   },
 
@@ -1987,15 +2039,60 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/fesm2015/store.js");
+    /* harmony import */
+
+
+    var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../store */
+    "./src/app/store/index.ts");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
 
     var NavbarComponent =
     /*#__PURE__*/
     function () {
-      function NavbarComponent() {
+      function NavbarComponent(store) {
         _classCallCheck(this, NavbarComponent);
+
+        this.store = store;
+        this.unSubscribe = [];
       }
 
       _createClass(NavbarComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this6 = this;
+
+          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store__WEBPACK_IMPORTED_MODULE_3__["getPopup"])).subscribe(function (popupToggle) {
+            return _this6.popupToggle = popupToggle;
+          }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(console.log(error));
+          })));
+        }
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this.unSubscribe.forEach(function (subscribe) {
+            return subscribe.unsubscribe();
+          });
+        }
+      }, {
         key: "login",
         value: function login() {
           return !!sessionStorage.getItem('login') ? "account" : "login";
@@ -2004,6 +2101,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return NavbarComponent;
     }();
+
+    NavbarComponent.ctorParameters = function () {
+      return [{
+        type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]
+      }];
+    };
 
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-navbar',
@@ -2582,7 +2685,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function calculateProtein(protein, egg) {
           var sum = 0;
 
-          if (egg.amount && egg.sizeEgg) {
+          if (egg && egg.amount && egg.sizeEgg) {
             if (egg.sizeEgg === 'S') sum += egg.amount * 6.029;else egg.sizeEgg === 'M' ? sum += egg.amount * 7.285 : sum += egg.amount * 8.541;
           }
 
@@ -2758,7 +2861,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/index.ts ***!
     \****************************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff */
 
   /***/
   function srcAppStoreActionsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -2963,6 +3066,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
       return _user_action__WEBPACK_IMPORTED_MODULE_2__["UserLogout"];
     });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserPopupOn", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["UserPopupOn"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserPopupOff", function () {
+      return _user_action__WEBPACK_IMPORTED_MODULE_2__["UserPopupOff"];
+    });
     /***/
 
   },
@@ -3093,7 +3208,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/actions/user.action.ts ***!
     \**********************************************/
 
-  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout */
+  /*! exports provided: CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff */
 
   /***/
   function srcAppStoreActionsUserActionTs(module, __webpack_exports__, __webpack_require__) {
@@ -3202,6 +3317,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
       return UserLogout;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserPopupOn", function () {
+      return UserPopupOn;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserPopupOff", function () {
+      return UserPopupOff;
+    });
     /* harmony import */
 
 
@@ -3232,6 +3359,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var UpdateUserSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] Update User Success', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["props"])());
     var UserUpdated = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] User Updated');
     var UserLogout = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] User Logout');
+    var UserPopupOn = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] User Popup On');
+    var UserPopupOff = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createAction"])('[Products] User Popup Off');
     /***/
   },
 
@@ -3340,15 +3469,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/store/actions/protein.action.ts");
 
     var ProteinEffect = function ProteinEffect(actions$, proteinService) {
-      var _this6 = this;
+      var _this7 = this;
 
       _classCallCheck(this, ProteinEffect);
 
       this.actions$ = actions$;
       this.proteinService = proteinService;
       this.loadProteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this6.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this7.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteinsSuccess"]({
               proteins: proteins
             });
@@ -3358,8 +3487,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this6.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this7.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
             var protein = action.protein;
             protein.id = userId.name;
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProteinSuccess"]({
@@ -3371,8 +3500,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this6.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this7.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProteinSuccess"]({
               proteinId: action.proteinId
             });
@@ -3382,8 +3511,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteAllproteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this6.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this6.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this7.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsFail"](error));
@@ -3481,7 +3610,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/shared/services/user.service.ts");
 
     var UserEffects = function UserEffects(actions$, userService, router) {
-      var _this7 = this;
+      var _this8 = this;
 
       _classCallCheck(this, UserEffects);
 
@@ -3489,8 +3618,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       this.userService = userService;
       this.router = router;
       this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this7.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this8.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.userId;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUserSuccess"]({
               user: user
@@ -3501,9 +3630,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this7.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
-            _this7.router.navigate(['product/login']);
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this8.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
+            _this8.router.navigate(['product/login']);
 
             var user = action.user;
             user.id = userId.name;
@@ -3516,11 +3645,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this7.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this8.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
             var userId = user.id;
 
-            _this7.router.navigate(['product/account']);
+            _this8.router.navigate(['product/account']);
 
             return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUserSuccess"]({
               user: user
@@ -3533,8 +3662,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.updateUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this7.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this8.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.user.id;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUserSuccess"]({
               user: user
@@ -3545,9 +3674,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this7.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
-            _this7.router.navigate(["product/home"]);
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this8.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
+            _this8.router.navigate(["product/home"]);
 
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUserSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
@@ -3692,11 +3821,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this8 = this;
+          var _this9 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getProteinLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this8.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
+            if (!loaded && userId) _this9.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -3795,11 +3924,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this9 = this;
+          var _this10 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getUserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this9.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
+            if (!loaded && userId) _this10.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -3827,7 +3956,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/index.ts ***!
     \********************************/
 
-  /*! exports provided: reducers, getProductsState, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, getUserState, getUser, getUserLoaded, getUserUpdated, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+  /*! exports provided: reducers, getProductsState, LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, getUserState, getUser, getUserLoaded, getUserUpdated, getPopup, effects, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -4026,6 +4155,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "UserLogout", function () {
       return _actions__WEBPACK_IMPORTED_MODULE_1__["UserLogout"];
     });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserPopupOn", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["UserPopupOn"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UserPopupOff", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_1__["UserPopupOff"];
+    });
     /* harmony import */
 
 
@@ -4073,6 +4214,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
       return _selectors__WEBPACK_IMPORTED_MODULE_3__["getUserUpdated"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getPopup", function () {
+      return _selectors__WEBPACK_IMPORTED_MODULE_3__["getPopup"];
     });
     /* harmony reexport (safe) */
 
@@ -4294,7 +4441,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/reducers/user.reducer.ts ***!
     \************************************************/
 
-  /*! exports provided: initialState, userReducer, getUser, getUserLoaded, getUserUpdated */
+  /*! exports provided: initialState, userReducer, getUser, getUserLoaded, getUserUpdated, getPopup */
 
   /***/
   function srcAppStoreReducersUserReducerTs(module, __webpack_exports__, __webpack_require__) {
@@ -4331,6 +4478,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
       return getUserUpdated;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getPopup", function () {
+      return getPopup;
+    });
     /* harmony import */
 
 
@@ -4353,7 +4506,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var initialState = {
       user: null,
       loaded: false,
-      updated: false
+      updated: false,
+      popup: false
     };
     var userReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["LoadUserSuccess"], function (state, action) {
       var user = action.user;
@@ -4367,6 +4521,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserLogout"], function () {
       sessionStorage.removeItem("login");
       return initialState;
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserPopupOn"], function (state) {
+      return Object.assign({}, state, {
+        popup: true
+      });
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserPopupOff"], function (state) {
+      return Object.assign({}, state, {
+        popup: false
+      });
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["on"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["CreateUserSuccess"], function (state) {
       alert("Your user has been created success!");
       return state;
@@ -4403,6 +4565,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var getUserUpdated = function getUserUpdated(state) {
       return state.updated;
     };
+
+    var getPopup = function getPopup(state) {
+      return state.popup;
+    };
     /***/
 
   },
@@ -4413,7 +4579,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/selectors/index.ts ***!
     \******************************************/
 
-  /*! exports provided: getUserState, getUser, getUserLoaded, getUserUpdated, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+  /*! exports provided: getUserState, getUser, getUserLoaded, getUserUpdated, getPopup, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
 
   /***/
   function srcAppStoreSelectorsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -4491,6 +4657,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
       return _user_selectors__WEBPACK_IMPORTED_MODULE_2__["getUserUpdated"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getPopup", function () {
+      return _user_selectors__WEBPACK_IMPORTED_MODULE_2__["getPopup"];
     });
     /***/
 
@@ -4588,7 +4760,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/store/selectors/user.selectors.ts ***!
     \***************************************************/
 
-  /*! exports provided: getUserState, getUser, getUserLoaded, getUserUpdated */
+  /*! exports provided: getUserState, getUser, getUserLoaded, getUserUpdated, getPopup */
 
   /***/
   function srcAppStoreSelectorsUserSelectorsTs(module, __webpack_exports__, __webpack_require__) {
@@ -4618,6 +4790,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "getUserUpdated", function () {
       return getUserUpdated;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getPopup", function () {
+      return getPopup;
     });
     /* harmony import */
 
@@ -4650,6 +4828,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var getUser = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUser"]);
     var getUserLoaded = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUserLoaded"]);
     var getUserUpdated = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getUserUpdated"]);
+    var getPopup = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getUserState, _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_3__["getPopup"]);
     /***/
   },
 

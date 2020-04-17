@@ -1,6 +1,6 @@
 <div>
 
-        <header class="fixed-top">
+        <header class="fixed-top" [class.opacity]="popupToggle">
 
                 <nav class="navbar">
 
@@ -41,7 +41,7 @@
 
         <router-outlet></router-outlet>
 
-        <footer class="m-1 text-light bg-dark text-center">
+        <footer [class.opacity]="popupToggle" class="m-1 text-light bg-dark text-center">
                 <small>&copy; Created by - Lichay Tiram -</small>
         </footer>
 

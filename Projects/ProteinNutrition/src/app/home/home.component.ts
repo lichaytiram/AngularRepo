@@ -1,16 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { of, Subscription } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { IProtein } from '../shared/models/iProtein.model';
+import { IUser } from '../shared/models/iUser.model';
 import { Protein } from '../shared/models/protein.model';
 import { Egg } from '../shared/models/egg.model';
 
 import { Store, select } from '@ngrx/store';
 import { AddProtein } from '../store/actions/protein.action'
-import { IProductsState, getUser } from '../store';
-import { of, Subscription } from 'rxjs';
-import { IUser } from '../shared/models/iUser.model';
-import { catchError } from 'rxjs/operators';
+import { IProductsState, getUser, getPopup } from '../store';
+import { UserPopupOn, UserPopupOff } from '../store/actions/user.action'
+
 import { showCalculator } from '../shared/services/showCalculator';
 
 @Component({
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Toggles
   public saveToggle: boolean;
+  public popupToggle: boolean;
 
   private clearInterval = [];
   private unSubscribe: Subscription[] = [];
@@ -62,9 +65,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
-    if (!this.user)
-      document.body.style.opacity = '1';
-
+    this.store.dispatch(UserPopupOff());
     this.clearInterval.forEach(id => clearInterval(id));
     this.unSubscribe.forEach(subscribe => subscribe.unsubscribe());
 
@@ -73,16 +74,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   public popup(): void {
 
     this.clearInterval.push(setTimeout(() => {
-      document.body.style.opacity = '0.3';
-      document.getElementById('popup').style.opacity = '1';
-      this.visibilityOn("popup")
+
+      if (!this.user)
+        this.store.dispatch(UserPopupOn());
+
+      this.unSubscribe.push(this.store.pipe<boolean>(select(getPopup)).subscribe(
+        popupToggle => this.popupToggle = popupToggle,
+        catchError(error => of(console.log(error)))
+      ))
     }, 8000))
 
   }
 
   public cancelPopup(): void {
-    document.body.style.opacity = '1';
-    this.visibilityOff('popup');
+    this.store.dispatch(UserPopupOff());
   }
 
   public cancelShow(): void {

@@ -11,6 +11,10 @@ h1, h2 {
     color: white;
 }
 
+.opacity {
+    opacity: 0.3;
+}
+
 select {
     border-radius: 17px;
     outline: 0;
@@ -84,7 +88,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .show {
-    opacity: 1;
     position: fixed;
     width: 300px;
     height: 200px;

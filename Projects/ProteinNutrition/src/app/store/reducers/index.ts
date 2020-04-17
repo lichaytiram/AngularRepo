@@ -1,9 +1,9 @@
 import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 import { IProteinState, proteinReducer } from './protein.reducer';
-import { IRegisterState, userReducer } from './user.reducer';
+import { IUserState, userReducer } from './user.reducer';
 
 export interface IProductsState {
-    user: IRegisterState,
+    user: IUserState,
     protein: IProteinState
 };
 

@@ -2,22 +2,24 @@ import { IUser } from 'src/app/shared/models/iUser.model';
 import { createReducer, on } from '@ngrx/store';
 import * as fromUser from '../actions/user.action';
 
-export interface IRegisterState {
+export interface IUserState {
     user: IUser;
     loaded: boolean;
     updated: boolean;
+    popup: boolean;
 }
 
-export const initialState: IRegisterState = {
+export const initialState: IUserState = {
     user: null,
     loaded: false,
-    updated: false
+    updated: false,
+    popup: false
 }
 
-export const userReducer = createReducer<IRegisterState>(
+export const userReducer = createReducer<IUserState>(
     initialState
     , on(
-        fromUser.LoadUserSuccess, (state: IRegisterState, action) => {
+        fromUser.LoadUserSuccess, (state: IUserState, action) => {
             const { user } = action;
             return {
                 ...state,
@@ -26,7 +28,7 @@ export const userReducer = createReducer<IRegisterState>(
             };
         }
     ), on(
-        fromUser.LoginUserFail, (state: IRegisterState) => {
+        fromUser.LoginUserFail, (state: IUserState) => {
             alert("Your username and password don't match!\nPlease try again.");
             return state;
         }
@@ -36,12 +38,26 @@ export const userReducer = createReducer<IRegisterState>(
             return initialState;
         }
     ), on(
-        fromUser.CreateUserSuccess, (state: IRegisterState) => {
+        fromUser.UserPopupOn, (state: IUserState) => {
+            return {
+                ...state,
+                popup: true
+            };
+        }
+    ), on(
+        fromUser.UserPopupOff, (state: IUserState) => {
+            return {
+                ...state,
+                popup: false
+            };
+        }
+    ), on(
+        fromUser.CreateUserSuccess, (state: IUserState) => {
             alert("Your user has been created success!");
             return state;
         }
     ), on(
-        fromUser.LoginUserSuccess, (state: IRegisterState, action) => {
+        fromUser.LoginUserSuccess, (state: IUserState, action) => {
             const { user } = action;
             sessionStorage.setItem("login", user.id);
             return {
@@ -56,7 +72,7 @@ export const userReducer = createReducer<IRegisterState>(
             return initialState;
         }
     ), on(
-        fromUser.UpdateUserSuccess, (state: IRegisterState, action) => {
+        fromUser.UpdateUserSuccess, (state: IUserState, action) => {
             const { user } = action;
             return {
                 ...state,
@@ -65,7 +81,7 @@ export const userReducer = createReducer<IRegisterState>(
             };
         }
     ), on(
-        fromUser.UserUpdated, (state: IRegisterState) => {
+        fromUser.UserUpdated, (state: IUserState) => {
             return {
                 ...state,
                 updated: false
@@ -75,6 +91,7 @@ export const userReducer = createReducer<IRegisterState>(
 
 )
 
-export const getUser = (state: IRegisterState) => state.user;
-export const getUserLoaded = (state: IRegisterState) => state.loaded;
-export const getUserUpdated = (state: IRegisterState) => state.updated;
+export const getUser = (state: IUserState) => state.user;
+export const getUserLoaded = (state: IUserState) => state.loaded;
+export const getUserUpdated = (state: IUserState) => state.updated;
+export const getPopup = (state: IUserState) => state.popup;

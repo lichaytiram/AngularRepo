@@ -8,6 +8,10 @@
     min-height: 165px;
 }
 
+.opacity {
+    opacity: 0.3;
+}
+
 @media (max-width: 420px) {
     .smartphone {
         max-height: 90px;

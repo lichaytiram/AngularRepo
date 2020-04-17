@@ -1,11 +1,12 @@
 <div>
 
-  <div>
+  {{popupToggle}}
+  <div [class.opacity]="popupToggle">
     <h1 class="text-center">Muscle is your life?</h1>
     <h2 class="text-center">Let's start to calculate your protein </h2>
   </div>
 
-  <div id="popup" class="invisible">
+  <div [class.d-none]="!popupToggle">
     <div class="card popup">
       <img src="/assets/photos/popup.jpg" class="cardImage">
       <button (click)="cancelPopup()" class="text-right cancel m-2 ml-auto">
@@ -27,7 +28,7 @@
     <button class="btn-lg btn-danger col-10" *ngIf="!acccept" (click)="isAcccept()">Lets started</button>
   </div>
 
-  <div *ngIf="acccept">
+  <div *ngIf="acccept" [class.opacity]="popupToggle">
 
     <form #proteinForm="ngForm" (change)="saveSwitch()" (ngSubmit)="submit()">
 
