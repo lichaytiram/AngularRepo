@@ -35,6 +35,13 @@ export class ProteinEffect {
     ))
   ));
 
+  public updateProtein$ = createEffect(() => this.actions$.pipe(ofType(proteinActions.UpdateProtein),
+    switchMap(action => this.proteinService.updateProtein(action.userId, action.protein).pipe(
+      map(() => proteinActions.UpdateProteinSuccess({ protein: action.protein })),
+      catchError(error => of(proteinActions.UpdateProteinFail(error)))
+    ))
+  ));
+
   public deleteProtein$ = createEffect(() => this.actions$.pipe(ofType(proteinActions.DeleteProtein),
     switchMap(action => this.proteinService.deleteProtein(action.userId, action.proteinId).pipe(
       map(() => proteinActions.DeleteProteinSuccess({ proteinId: action.proteinId })),

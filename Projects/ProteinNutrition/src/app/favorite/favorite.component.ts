@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
-import { DeleteProtein } from '../store/actions/protein.action';
+import { UpdateProtein, DeleteProtein } from '../store/actions/protein.action';
 
 import { getUser, getAllProteins } from '../store/selectors'
 import { Observable } from 'rxjs';
+
 import { IUser } from '../shared/models/iUser.model';
 import { IProtein } from '../shared/models/iProtein.model';
+import { Protein } from '../shared/models/protein.model';
 import { showCalculator } from '../shared/services/showCalculator';
+import { Egg } from '../shared/models/egg.model';
 
 @Component({
   selector: 'app-favorite',
@@ -19,12 +22,14 @@ export class FavoriteComponent implements OnInit {
 
   public user$: Observable<IUser>
   public proteins$: Observable<IProtein[]>
+  public protein: IProtein;
 
   // Messages to user
   public showMessage: string = "";
   public showMessageLogin: string = "";
 
   // Toggles
+  // public editToggle: number;
   public editToggle: number;
 
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
@@ -33,6 +38,7 @@ export class FavoriteComponent implements OnInit {
 
     this.user$ = this.store.pipe(select(getUser));
     this.proteins$ = this.store.pipe(select(getAllProteins));
+    this.protein = new Protein(new Egg());
 
   }
 
@@ -66,8 +72,20 @@ export class FavoriteComponent implements OnInit {
     this.editToggle = editToggle;
   }
 
-  public save(index): void {
-    console.log(index);
+  public cancelEdit(): void {
+    this.editToggle = undefined;
+  }
+
+  public save(userId: string, proteinId: string): void {
+    let protein: IProtein = { ...this.protein };
+    protein.id = proteinId;
+
+    // Send clean Object without undefined properties to Store
+    // Object.keys(protein).forEach(key => (protein[key] === undefined) && delete protein[key]);
+    // if (!protein.egg.sizeEgg || !protein.egg.amount)
+    //   delete protein.egg;
+
+    this.store.dispatch(UpdateProtein({ userId, protein }));
 
   }
 

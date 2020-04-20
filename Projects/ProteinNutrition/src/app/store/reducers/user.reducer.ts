@@ -67,11 +67,6 @@ export const userReducer = createReducer<IUserState>(
             };
         }
     ), on(
-        fromUser.DeleteUserSuccess, () => {
-            sessionStorage.removeItem("login");
-            return initialState;
-        }
-    ), on(
         fromUser.UpdateUserSuccess, (state: IUserState, action) => {
             const { user } = action;
             return {
@@ -79,6 +74,11 @@ export const userReducer = createReducer<IUserState>(
                 updated: true,
                 user
             };
+        }
+    ), on(
+        fromUser.DeleteUserSuccess, () => {
+            sessionStorage.removeItem("login");
+            return initialState;
         }
     ), on(
         fromUser.UserUpdated, (state: IUserState) => {

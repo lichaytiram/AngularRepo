@@ -19,6 +19,18 @@ button {
     justify-content: center;
 }
 
+.box {
+    text-transform: capitalize;
+    border: 1px solid rgb(194, 193, 193);
+    box-shadow: 0 0 2px 2px rgb(185, 235, 250);
+}
+.smallBox {
+    text-transform: capitalize;
+    border: 1px solid rgb(238, 193, 193);
+    box-shadow: 0 0 2px 2px rgb(243, 203, 195);
+    z-index: 1;
+}
+
 .size {
     width: 450px;
     margin: auto;

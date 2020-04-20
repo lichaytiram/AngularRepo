@@ -40,6 +40,13 @@ export class ProteinService {
         catchError(error => Observable.throw(error.json())));
   }
 
+  public updateProtein(userId: string,protein: IProtein): Observable<IProtein> {
+    const { id, ...proteinToUpdate } = protein;
+    const url = `${this.URL}/${userId}/${id}${this.endURL}`;
+    return this.http.put<IProtein>(url, proteinToUpdate).pipe(
+      catchError(error => Observable.throw(error.json())));
+  }
+
   public deleteProtein(userId: string, proteinId: string): Observable<any> {
     const url = `${this.URL}/${userId}/${proteinId}${this.endURL}`;
     return this.http.delete(url).pipe(

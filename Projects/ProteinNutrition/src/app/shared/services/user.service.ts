@@ -57,16 +57,16 @@ export class UserService {
       .pipe(catchError(error => Observable.throw(error.json())));
   }
 
-  public deleteUser(userId: string): Observable<any> {
-    const url = `${this.URL}/${userId}${this.endURL}`;
-    return this.http.delete(url).pipe(
-      catchError(error => Observable.throw(error.json())));
-  }
-
   public updateUser(user: IUser): Observable<IUser> {
     const { id, ...userToUpdate } = user;
     const url = `${this.URL}/${id}${this.endURL}`;
     return this.http.put<IUser>(url, userToUpdate).pipe(
+      catchError(error => Observable.throw(error.json())));
+  }
+
+  public deleteUser(userId: string): Observable<any> {
+    const url = `${this.URL}/${userId}${this.endURL}`;
+    return this.http.delete(url).pipe(
       catchError(error => Observable.throw(error.json())));
   }
 
