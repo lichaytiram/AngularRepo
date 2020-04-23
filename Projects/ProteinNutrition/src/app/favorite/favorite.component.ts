@@ -12,6 +12,7 @@ import { IProtein } from '../shared/models/iProtein.model';
 import { Protein } from '../shared/models/protein.model';
 import { showCalculator } from '../shared/services/showCalculator';
 import { Egg } from '../shared/models/egg.model';
+import { IEgg } from '../shared/models/iEgg.model';
 
 @Component({
   selector: 'app-favorite',
@@ -20,16 +21,18 @@ import { Egg } from '../shared/models/egg.model';
 })
 export class FavoriteComponent implements OnInit {
 
+  c() {
+    console.log(this.editToggle);
+
+  }
   public user$: Observable<IUser>
   public proteins$: Observable<IProtein[]>
-  public protein: IProtein;
 
   // Messages to user
   public showMessage: string = "";
   public showMessageLogin: string = "";
 
   // Toggles
-  // public editToggle: number;
   public editToggle: number;
 
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
@@ -38,7 +41,6 @@ export class FavoriteComponent implements OnInit {
 
     this.user$ = this.store.pipe(select(getUser));
     this.proteins$ = this.store.pipe(select(getAllProteins));
-    this.protein = new Protein(new Egg());
 
   }
 
@@ -77,16 +79,42 @@ export class FavoriteComponent implements OnInit {
   }
 
   public save(userId: string, proteinId: string): void {
-    let protein: IProtein = { ...this.protein };
+
+    const index: number = this.editToggle;
+    const protein: IProtein = new Protein();
     protein.id = proteinId;
 
+    Object.keys(protein).filter(key => key !== 'id' && key !== 'egg').forEach(key => {
+
+      const value = this.getInputValue(key, index);
+      if (value)
+        protein[key] = value;
+
+    });
+
+    if (this.getInputValue('amount', index) && this.getInputValue('sizeEgg', index)) {
+
+      const amount: number = Number(this.getInputValue('amount', index));
+      const sizeEgg: string = this.getInputValue('sizeEgg', index);
+      const egg: IEgg = new Egg(amount, sizeEgg);
+      protein.egg = egg;
+    }
+
     // Send clean Object without undefined properties to Store
-    // Object.keys(protein).forEach(key => (protein[key] === undefined) && delete protein[key]);
-    // if (!protein.egg.sizeEgg || !protein.egg.amount)
-    //   delete protein.egg;
+    Object.keys(protein).forEach(key => !protein[key] && delete protein[key]);
+    if (!protein.egg || !protein.egg.sizeEgg || !protein.egg.amount)
+      delete protein.egg;
 
     this.store.dispatch(UpdateProtein({ userId, protein }));
+    this.cancelEdit();
 
+  }
+
+  // Get element value by his id ( id is contain key and index of array -HTML Template- ).
+  private getInputValue(key: string, index: number): string {
+    const elementId: string = key + index;
+    const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementId);
+    return inputElement ? inputElement.value : null;
   }
 
   private visibilityOn(name: string): void {

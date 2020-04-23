@@ -19,16 +19,34 @@ button {
     justify-content: center;
 }
 
+.eggCard {
+    height: 176px;
+    display: block;
+}
+
 .box {
     text-transform: capitalize;
     border: 1px solid rgb(194, 193, 193);
     box-shadow: 0 0 2px 2px rgb(185, 235, 250);
 }
+
 .smallBox {
     text-transform: capitalize;
     border: 1px solid rgb(238, 193, 193);
     box-shadow: 0 0 2px 2px rgb(243, 203, 195);
     z-index: 1;
+}
+
+span{
+    text-transform: capitalize;
+    
+}
+
+.inputEdit {
+    outline: 0;
+    margin: 5px;
+    background: linear-gradient( rgb(252, 217, 249) 20%, rgb(158, 226, 247));
+    box-shadow: 0 0 1px 1px rgb(174, 175, 175);
 }
 
 .size {
@@ -48,6 +66,7 @@ button {
     height: 200px;
     left: 50%;
     top: 60%;
+    z-index: 2;
     transform: translate(-50%, -50%);
     color: rgb(39, 5, 61);
     background: linear-gradient( rgb(153, 183, 240), rgb(97, 214, 243));
@@ -65,7 +84,7 @@ button {
     color: black;
 }
 
-.parallax2 {
+.parallax1 {
     background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));
     height: 650px;
     background-attachment: fixed;
@@ -74,8 +93,17 @@ button {
     background-size: cover;
 }
 
+.parallax2 {
+    background-image: url("/assets/photos/biceps_black_and_white_body.jpg");
+    height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 @media(max-width :420px) {
-    .parallax2 {
+    .parallax1 {
         height: auto;
     }
     .size {
@@ -84,16 +112,7 @@ button {
 }
 
 @media(max-height :420px) {
-    .parallax2 {
+    .parallax1 {
         height: auto;
     }
-}
-
-.parallax3 {
-    background-image: url("/assets/photos/biceps_black_and_white_body.jpg");
-    height: 300px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }

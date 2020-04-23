@@ -104,13 +104,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   public submit(): void {
 
     const userId: string = this.user.id;
-    let protein: IProtein = { ...this.protein };
+    const protein: IProtein = { ...this.protein };
 
     // Send clean Object without undefined properties to Store
-    Object.keys(protein).forEach(key => (protein[key] === undefined) && delete protein[key]);
-    if (!protein.egg.sizeEgg || !protein.egg.amount)
+    Object.keys(protein).forEach(key => !protein[key] && delete protein[key]);
+    if (!protein.egg || !protein.egg.sizeEgg || !protein.egg.amount)
       delete protein.egg;
-
+    
     this.store.dispatch(AddProtein({ userId, protein }));
   }
 
