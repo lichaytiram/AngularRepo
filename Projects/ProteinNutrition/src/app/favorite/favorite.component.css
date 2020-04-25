@@ -37,8 +37,25 @@ button {
     z-index: 1;
 }
 
+select {
+    border-radius: 17px;
+    outline: 0;
+    margin: 5px;
+    padding: 1px 15px;
+    border-top: 1px dotted rgb(146, 224, 248);
+    border-left: 1px solid rgb(161, 227, 247);
+    border-bottom: 1px solid rgb(144, 169, 252);
+    border-right: 1px solid rgb(96, 161, 236);
+}
+
 span {
     text-transform: capitalize;
+}
+
+.eggSize {
+    display: inline-block;
+    text-align: start;
+    width: 70px;
 }
 
 .inputEdit {
@@ -80,9 +97,15 @@ span {
     right: 0;
     background-color: rgb(198, 216, 221);
     border-radius: 30%;
-    z-index: 1;
     height: 25px;
     width: 25px;
+}
+
+.deleteOneProteinEgg {
+    right: 1px;
+    top: 1px;
+    height: 24px;
+    width: 24px;
 }
 
 .showButton {

@@ -28,10 +28,11 @@
 
                             <div [class.d-none]="editToggle !== i">
                                 <input type="button" (click)="deleteOneProtein(user.id,protein.id,proteinKeyValue.key)"
-                                    value="&#xf2ed;" class="fas text-danger deleteOneProtein">
+                                    value="&#xf2ed;" [class.deleteOneProteinEgg]="proteinKeyValue.key === 'egg'"
+                                    class="fas text-danger deleteOneProtein">
                             </div>
 
-                            <div *ngIf="proteinKeyValue.key !== 'egg'" class="m-0" style="width:100%">
+                            <div *ngIf="proteinKeyValue.key !== 'egg'" class="m-0">
 
                                 <div class="row justify-content-center m-0">
 
@@ -89,17 +90,30 @@
 
                                 <div [class.d-none]="editToggle !== i">
 
-                                    <div class="row justify-content-center m-0">
+                                    <div class="row justify-content-center m-3">
 
-                                        <input type="number" [id]="'amount'+i" (keyup)="proteinKeyValue.value.amount"
-                                            [value]="proteinKeyValue.value.amount"
-                                            class="text-center rounded-pill border border-white inputEdit">
+                                        <div class="col-12">
 
-                                        <select [id]="'sizeEgg'+i" [value]="proteinKeyValue.value.sizeEgg">
-                                            <option value="S">S</option>
-                                            <option value="M">M</option>
-                                            <option value="L">L</option>
-                                        </select>
+                                            <small class="text-capitalize eggSize">amount</small>
+
+                                            <input type="number" [id]="'amount'+i"
+                                                (keyup)="proteinKeyValue.value.amount"
+                                                [value]="proteinKeyValue.value.amount"
+                                                class="text-center col-4 rounded-pill border border-white inputEdit">
+                                        </div>
+
+                                        <div class="col-12">
+
+                                            <small class="text-capitalize eggSize">size</small>
+
+                                            <select [id]="'sizeEgg'+i" [value]="proteinKeyValue.value.sizeEgg"
+                                                class="text-capitalize col-4">
+                                                <option value="S">small</option>
+                                                <option value="M">medium</option>
+                                                <option value="L">large</option>
+                                            </select>
+
+                                        </div>
 
                                     </div>
 
