@@ -36,8 +36,9 @@ export const proteinReducer = createReducer<IProteinState>(
     ), on(
         fromProtein.UpdateProteinSuccess, (state: IProteinState, action) => {
             const { protein } = action;
-            const { id, ...changes } = protein;
-            const update: UpdateStr<IProtein> = { id, changes }
+            const { id, ...newProtein } = protein;
+            const changes: Partial<IProtein> = { id, ...state.entities[id] = newProtein }
+            const update: UpdateStr<IProtein> = { id, changes };
             return adapter.updateOne(update, state);
         }
     ), on(
@@ -51,7 +52,7 @@ export const proteinReducer = createReducer<IProteinState>(
         }
     )
 
-)
+);
 
 const { selectEntities, selectAll } = adapter.getSelectors();
 

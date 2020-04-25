@@ -89,7 +89,7 @@ export const userReducer = createReducer<IUserState>(
         }
     )
 
-)
+);
 
 export const getUser = (state: IUserState) => state.user;
 export const getUserLoaded = (state: IUserState) => state.loaded;

@@ -21,10 +21,6 @@ import { IEgg } from '../shared/models/iEgg.model';
 })
 export class FavoriteComponent implements OnInit {
 
-  c() {
-    console.log(this.editToggle);
-
-  }
   public user$: Observable<IUser>
   public proteins$: Observable<IProtein[]>
 
@@ -78,6 +74,15 @@ export class FavoriteComponent implements OnInit {
     this.editToggle = undefined;
   }
 
+
+  public deleteOneProtein(userId: string, proteinId: string, key: string): void {
+
+    const index: number = this.editToggle;
+    this.deleteElement(key, index);
+    this.save(userId, proteinId);
+
+  }
+
   public save(userId: string, proteinId: string): void {
 
     const index: number = this.editToggle;
@@ -94,8 +99,8 @@ export class FavoriteComponent implements OnInit {
 
     if (this.getInputValue('amount', index) && this.getInputValue('sizeEgg', index)) {
 
-      const amount: number = Number(this.getInputValue('amount', index));
-      const sizeEgg: string = this.getInputValue('sizeEgg', index);
+      const amount: number = this.getInputValue('amount', index);
+      const sizeEgg: string = this.getInputValue('sizeEgg', index).toString();
       const egg: IEgg = new Egg(amount, sizeEgg);
       protein.egg = egg;
     }
@@ -111,10 +116,15 @@ export class FavoriteComponent implements OnInit {
   }
 
   // Get element value by his id ( id is contain key and index of array -HTML Template- ).
-  private getInputValue(key: string, index: number): string {
+  private getInputValue(key: string, index: number): number {
     const elementId: string = key + index;
     const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementId);
-    return inputElement ? inputElement.value : null;
+    return inputElement ? Number(inputElement.value) : null;
+  }
+
+  private deleteElement(key: string, index: number): void {
+    const elementId: string = key + index;
+    document.getElementById(elementId).remove();
   }
 
   private visibilityOn(name: string): void {

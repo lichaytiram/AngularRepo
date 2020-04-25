@@ -91,7 +91,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"text-center\">\r\n\r\n    <div *ngIf=\"!(user$ |async)\" class=\"disconnected\">\r\n\r\n        <p>You must login to see your favorite list.</p>\r\n        <p>You can click <button (click)=\"loginPage()\">here</button> to move login page</p>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"user$ | async as user\" class=\"connected text-center\">\r\n\r\n        <div class=\"header\">\r\n\r\n            <h2>Welcome Back - {{user.username}}</h2>\r\n            <h3>Your favorite list on the front </h3>\r\n            <h5>You can edit to see another mix</h5>\r\n\r\n        </div>\r\n\r\n        <div *ngFor=\"let protein of proteins$ | async\" class=\"color\">\r\n            <div class=\"parallax2 m-0\">\r\n\r\n                <div class=\"row m-1 justify-content-center\">\r\n                    <div [class.d-none]=\"proteinKeyValue.key=='id'\" *ngFor=\"let proteinKeyValue of protein | keyvalue\"\r\n                        class=\"col-12 col-sm-6 col-xl-4 p-2\">\r\n\r\n                        <div class=\"card\">\r\n\r\n                            <div *ngIf=\"proteinKeyValue.key!=='egg'\" class=\"m-0\">\r\n                                <div class=\"row justify-content-center m-0\">\r\n\r\n                                    <div class=\"col-5 col-sm-4 box p-1\">\r\n                                        {{proteinKeyValue.key}}\r\n                                    </div>\r\n\r\n                                    <div class=\"col-1\"></div>\r\n\r\n                                    <div class=\"col-5 col-sm-4 box p-1\">\r\n                                        {{proteinKeyValue.value}}\r\n                                    </div>\r\n\r\n                                    <div [class.d-none]=\"!editToggle\">\r\n                                        <input type=\"text\" value=\"{{proteinKeyValue.value}}\" class=\"text-center\">\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n\r\n                            <div *ngIf=\"proteinKeyValue.key==='egg'\">\r\n\r\n                                <div class=\"row justify-content-center m-0\">\r\n                                    <label class=\"col smallBox p-0 m-0\">{{proteinKeyValue.key}}</label>\r\n                                </div>\r\n\r\n                                <div class=\"row justify-content-center m-0\">\r\n\r\n                                    <div class=\"col-5 col-sm-4 box p-0\">\r\n                                        <small>amount</small>\r\n                                    </div>\r\n\r\n                                    <div class=\"col-1\"></div>\r\n\r\n                                    <div class=\"col-5 col-sm-4 box p-0\">\r\n                                        <small>{{proteinKeyValue.value.amount}}</small>\r\n                                    </div>\r\n                                </div>\r\n\r\n                                <div class=\"row justify-content-center m-0\">\r\n\r\n                                    <div class=\"col-5 col-sm-4 box p-0\">\r\n                                        <small>sizeEgg</small>\r\n                                    </div>\r\n\r\n                                    <div class=\"col-1\"></div>\r\n\r\n                                    <div class=\"col-5 col-sm-4 box p-0\">\r\n                                        <small>{{proteinKeyValue.value.sizeEgg}}</small>\r\n                                    </div>\r\n                                </div>\r\n\r\n                            </div>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"card size\">\r\n\r\n                    <div class=\"row justify-content-center\">\r\n\r\n                        <div *ngIf=\"editToggle != protein.id\" class=\"col-12 p-0\">\r\n\r\n                            <input type=\"button\" value=\"&#xf06e; Show\" (click)=\"show(user,protein)\"\r\n                                class=\"btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6\">\r\n\r\n                            <div class=\"col-12 p-0\">\r\n                                <input type=\"button\" value=\"&#xf410; Delete\" (click)=\"delete(user.id,protein.id)\"\r\n                                    class=\"btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3\">\r\n                                <input type=\"button\" value=\"&#xf044; Edit\" (click)=\"edit(protein.id)\"\r\n                                    class=\"btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3\">\r\n                            </div>\r\n\r\n                        </div>\r\n\r\n                        <div *ngIf=\"editToggle == protein.id\" class=\"col-12 p-0\">\r\n\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" (click)=\"save(user.id,protein.id)\"\r\n                                class=\"btn btn-outline-primary rounded-pill fas m-1 col-6\">\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelEdit()\"\r\n                                class=\"btn btn-outline-danger rounded-pill far m-1 col-6\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"parallax3\"></div>\r\n\r\n        </div>\r\n\r\n        <div id=\"show\" class=\"invisible\">\r\n\r\n            <div class=\"card show text-center\">\r\n\r\n                <div class=\"card-body\">\r\n                    <p>{{showMessage}}</p>\r\n                    <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n                    <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div class=\"text-center\">\r\n\r\n    <div *ngIf=\"!(user$ |async)\" class=\"disconnected\">\r\n\r\n        <p>You must login to see your favorite list.</p>\r\n        <p>You can click <button (click)=\"loginPage()\">here</button> to move login page</p>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"user$ | async as user\" class=\"connected text-center\">\r\n\r\n        <div class=\"header\">\r\n\r\n            <h2>Welcome Back - {{user.username}}</h2>\r\n            <h3>Your favorite list on the front </h3>\r\n            <h5>You can edit to see another mix</h5>\r\n\r\n        </div>\r\n\r\n        <div *ngFor=\"let protein of proteins$ | async ; index as i;\">\r\n            <div class=\"parallax1 m-0\">\r\n\r\n                <div class=\"row m-1 justify-content-center\">\r\n                    <div [class.d-none]=\"proteinKeyValue.key === 'id'\"\r\n                        *ngFor=\"let proteinKeyValue of protein | keyvalue\" class=\"col-12 col-sm-6 col-xl-4 p-2\">\r\n\r\n                        <div [class.eggCard]=\"proteinKeyValue.key === 'egg' && editToggle === i\" class=\"card\">\r\n\r\n                            <div [class.d-none]=\"editToggle !== i\">\r\n                                <input type=\"button\" (click)=\"deleteOneProtein(user.id,protein.id,proteinKeyValue.key)\"\r\n                                    value=\"&#xf2ed;\" class=\"fas text-danger deleteOneProtein\">\r\n                            </div>\r\n\r\n                            <div *ngIf=\"proteinKeyValue.key !== 'egg'\" class=\"m-0\" style=\"width:100%\">\r\n\r\n                                <div class=\"row justify-content-center m-0\">\r\n\r\n                                    <label class=\"col-5 col-sm-4 box m-1\">{{proteinKeyValue.key}}</label>\r\n                                    <label class=\"col-1\"></label>\r\n                                    <label class=\"col-5 col-sm-4 box m-1\"> {{proteinKeyValue.value}}</label>\r\n\r\n                                    <div [class.d-none]=\"editToggle !== i\" class=\"col-12 p-0\">\r\n\r\n                                        <span class=\"col-2\">{{proteinKeyValue.key}}</span>\r\n\r\n                                        <input type=\"number\" [id]=\"proteinKeyValue.key+i\"\r\n                                            (keyup)=\"proteinKeyValue.value\" [value]=\"proteinKeyValue.value\"\r\n                                            class=\"text-center rounded-pill border border-white inputEdit col-4\">\r\n\r\n                                        <div class=\"d-inline col-2\">\r\n\r\n                                            <label\r\n                                                *ngIf=\"proteinKeyValue.key === 'tuna'|| proteinKeyValue.key === 'meat' || proteinKeyValue.key === 'cheese' || proteinKeyValue.key === 'cottage' || proteinKeyValue.key === 'quinoa'\">grams</label>\r\n                                            <label *ngIf=\"proteinKeyValue.key === 'almonds'\">handful</label>\r\n                                            <label *ngIf=\"proteinKeyValue.key === 'bread'\">slices</label>\r\n                                            <label\r\n                                                *ngIf=\"proteinKeyValue.key === 'powder' || proteinKeyValue.key === 'gainer'\">portions</label>\r\n\r\n                                        </div>\r\n\r\n                                    </div>\r\n                                </div>\r\n\r\n                            </div>\r\n\r\n                            <div *ngIf=\"proteinKeyValue.key === 'egg'\">\r\n\r\n                                <div class=\"row justify-content-center m-0\">\r\n\r\n                                    <label class=\"col smallBox p-0 m-0\">{{proteinKeyValue.key}}</label>\r\n\r\n                                </div>\r\n\r\n                                <div class=\"row justify-content-center m-0\">\r\n\r\n                                    <small class=\"col-5 col-sm-4 box\">amount</small>\r\n                                    <label class=\"col-1\"></label>\r\n                                    <small class=\"col-5 col-sm-4 box\">{{proteinKeyValue.value.amount}}</small>\r\n\r\n                                </div>\r\n\r\n                                <div class=\"row justify-content-center m-0\">\r\n\r\n                                    <small class=\"col-5 col-sm-4 box\">size</small>\r\n                                    <small class=\"col-1\"></small>\r\n                                    <small class=\"col-5 col-sm-4 box\">{{proteinKeyValue.value.sizeEgg}}</small>\r\n\r\n                                </div>\r\n\r\n                                <div [class.d-none]=\"editToggle !== i\">\r\n\r\n                                    <div class=\"row justify-content-center m-0\">\r\n\r\n                                        <input type=\"number\" [id]=\"'amount'+i\" (keyup)=\"proteinKeyValue.value.amount\"\r\n                                            [value]=\"proteinKeyValue.value.amount\"\r\n                                            class=\"text-center rounded-pill border border-white inputEdit\">\r\n\r\n                                        <select [id]=\"'sizeEgg'+i\" [value]=\"proteinKeyValue.value.sizeEgg\">\r\n                                            <option value=\"S\">S</option>\r\n                                            <option value=\"M\">M</option>\r\n                                            <option value=\"L\">L</option>\r\n                                        </select>\r\n\r\n                                    </div>\r\n\r\n                                </div>\r\n\r\n                            </div>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"card size\">\r\n\r\n                    <div class=\"row justify-content-center\">\r\n\r\n                        <div *ngIf=\"editToggle !== i\" class=\"col-12 p-0\">\r\n\r\n                            <input type=\"button\" value=\"&#xf06e; Show\" (click)=\"show(user,protein)\"\r\n                                class=\"btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6\">\r\n\r\n                            <div class=\"col-12 p-0\">\r\n                                <input type=\"button\" value=\"&#xf410; Delete\" (click)=\"delete(user.id,protein.id)\"\r\n                                    class=\"btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3\">\r\n                                <input type=\"button\" value=\"&#xf044; Edit\" (click)=\"edit(i)\"\r\n                                    class=\"btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3\">\r\n                            </div>\r\n\r\n                        </div>\r\n\r\n                        <div *ngIf=\"editToggle === i\" class=\"col-12 p-0\">\r\n\r\n                            <input type=\"button\" value=\"&#xf0c7; Save\" (click)=\"save(user.id,protein.id)\"\r\n                                class=\"btn btn-outline-primary rounded-pill fas m-1 col-6\">\r\n                            <input type=\"button\" value=\"&#xf410; Cancel\" (click)=\"cancelEdit()\"\r\n                                class=\"btn btn-outline-danger rounded-pill far m-1 col-6\">\r\n\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"parallax2\"></div>\r\n\r\n        </div>\r\n\r\n        <div id=\"show\" class=\"invisible\">\r\n\r\n            <div class=\"card show text-center\">\r\n\r\n                <div class=\"card-body\">\r\n                    <p>{{showMessage}}</p>\r\n                    <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n                    <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -111,7 +111,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div>\r\n\r\n  {{popupToggle}}\r\n  <div [class.opacity]=\"popupToggle\">\r\n    <h1 class=\"text-center\">Muscle is your life?</h1>\r\n    <h2 class=\"text-center\">Let's start to calculate your protein </h2>\r\n  </div>\r\n\r\n  <div [class.d-none]=\"!popupToggle\">\r\n    <div class=\"card popup\">\r\n      <img src=\"/assets/photos/popup.jpg\" class=\"cardImage\">\r\n      <button (click)=\"cancelPopup()\" class=\"text-right cancel m-2 ml-auto\">\r\n        <i class=\"fas fa-times \"></i>\r\n      </button>\r\n      <nav class=\"card-body text-center\">\r\n        <h5 class=\"card-title\">Don't have an account yet?</h5>\r\n        <span>Click </span>\r\n        <button (click)=\"register()\" class=\"navigate\">here</button>\r\n        <span> to register or </span>\r\n        <button (click)=\"loginPage()\" class=\"navigate\">here</button>\r\n        <span> to login</span>\r\n      </nav>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n  <div class=\"text-center\">\r\n    <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!acccept\" (click)=\"isAcccept()\">Lets started</button>\r\n  </div>\r\n\r\n  <div *ngIf=\"acccept\" [class.opacity]=\"popupToggle\">\r\n\r\n    <form #proteinForm=\"ngForm\" (change)=\"saveSwitch()\" (ngSubmit)=\"submit()\">\r\n\r\n      <div class=\"container\">\r\n\r\n        <div id=\"egg\" class=\"invisible\">\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <small class=\"text-danger p-2 m-1\"\r\n              [class.d-none]=\"egg.untouched || !egg.value || egg.value && eggSize.dirty\">You must\r\n              choose a size <i class=\"fas fa-arrow-circle-right\"></i></small>\r\n          </div>\r\n\r\n          <div class=\"row justify-content-center\">\r\n\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Egg</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Egg\" #egg=\"ngModel\" name=\"egg\" placeholder=\"amount\" [(ngModel)]=\"protein.egg.amount\">\r\n\r\n            <select class=\"border border-danger p-1 m-1 space\" [(ngModel)]=\"protein.egg.sizeEgg\" #eggSize=\"ngModel\"\r\n              name=\"eggSize\">\r\n              <option [value]=\"size\" disabled>size</option>\r\n              <option value=\"S\">S</option>\r\n              <option value=\"M\">M</option>\r\n              <option value=\"L\">L</option>\r\n            </select>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"bread\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Bread</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Bread\" name=\"bread\" placeholder=\"slices\" [(ngModel)]=\"protein.bread\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"tuna\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Tuna</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Tuna\" name=\"tuna\" placeholder=\"grams\" [(ngModel)]=\"protein.tuna\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"meat\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Meat</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Meat\" name=\"meat\" placeholder=\"grams\" [(ngModel)]=\"protein.meat\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cheese\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cheese</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cheese\" name=\"cheese\" placeholder=\"grams\" [(ngModel)]=\"protein.cheese\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cottage\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cottage</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cottage\" name=\"cottage\" placeholder=\"grams\" [(ngModel)]=\"protein.cottage\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"quinoa\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Quinoa</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Quinoa\" name=\"quinoa\" placeholder=\"grams\" [(ngModel)]=\"protein.quinoa\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"almonds\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Almonds</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Almonds\" name=\"almonds\" placeholder=\"handful\" [(ngModel)]=\"protein.almonds\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"powder\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Powder</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Powder\" name=\"powder\" placeholder=\"portions\" [(ngModel)]=\"protein.powder\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"gainer\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Gainer</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Gainer\" name=\"gainer\" placeholder=\"portions\" [(ngModel)]=\"protein.gainer\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"submit\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-1\"></div>\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              type=\"button\" value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              [disabled]=\"!user || !saveToggle\" type=\"submit\" value=\"&#xf0c7; Save\">\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n    <div id=\"show\" class=\"invisible\">\r\n\r\n      <div class=\"card show text-center\">\r\n\r\n        <div class=\"card-body\">\r\n          <p>{{showMessage}}</p>\r\n          <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n          <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div>";
+    __webpack_exports__["default"] = "<div>\r\n\r\n  {{popupToggle}}\r\n  <div [class.opacity]=\"popupToggle\">\r\n    <h1 class=\"text-center\">Muscle is your life?</h1>\r\n    <h2 class=\"text-center\">Let's start to calculate your protein </h2>\r\n  </div>\r\n\r\n  <div [class.d-none]=\"!popupToggle\">\r\n    <div class=\"card popup\">\r\n      <img src=\"/assets/photos/popup.jpg\" class=\"cardImage\">\r\n      <button (click)=\"cancelPopup()\" class=\"text-right cancel m-2 ml-auto\">\r\n        <i class=\"fas fa-times \"></i>\r\n      </button>\r\n      <nav class=\"card-body text-center\">\r\n        <h5 class=\"card-title\">Don't have an account yet?</h5>\r\n        <span>Click </span>\r\n        <button (click)=\"register()\" class=\"navigate\">here</button>\r\n        <span> to register or </span>\r\n        <button (click)=\"loginPage()\" class=\"navigate\">here</button>\r\n        <span> to login</span>\r\n      </nav>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n  <div class=\"text-center\">\r\n    <button class=\"btn-lg btn-danger col-10\" *ngIf=\"!acccept\" (click)=\"isAcccept()\">Lets started</button>\r\n  </div>\r\n\r\n  <div *ngIf=\"acccept\" [class.opacity]=\"popupToggle\">\r\n\r\n    <form #proteinForm=\"ngForm\" (change)=\"saveSwitch()\" (ngSubmit)=\"submit()\">\r\n\r\n      <div class=\"container\">\r\n\r\n        <div id=\"egg\" class=\"invisible\">\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <small class=\"text-danger p-2 m-1\"\r\n              [class.d-none]=\"egg.untouched || !egg.value || egg.value && eggSize.dirty\">You must\r\n              choose a size <i class=\"fas fa-arrow-circle-right\"></i></small>\r\n          </div>\r\n\r\n          <div class=\"row justify-content-center\">\r\n\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Egg</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Egg\" #egg=\"ngModel\" name=\"egg\" placeholder=\"amount\" [(ngModel)]=\"protein.egg.amount\">\r\n\r\n            <select class=\"border border-danger p-1 m-1 space\" [(ngModel)]=\"protein.egg.sizeEgg\" #eggSize=\"ngModel\"\r\n              name=\"eggSize\">\r\n              <option [value]=\"size\" disabled>Size</option>\r\n              <option value=\"S\">S</option>\r\n              <option value=\"M\">M</option>\r\n              <option value=\"L\">L</option>\r\n            </select>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"bread\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Bread</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Bread\" name=\"bread\" placeholder=\"slices\" [(ngModel)]=\"protein.bread\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"tuna\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Tuna</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Tuna\" name=\"tuna\" placeholder=\"grams\" [(ngModel)]=\"protein.tuna\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"meat\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Meat</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Meat\" name=\"meat\" placeholder=\"grams\" [(ngModel)]=\"protein.meat\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cheese\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cheese</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cheese\" name=\"cheese\" placeholder=\"grams\" [(ngModel)]=\"protein.cheese\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"cottage\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Cottage</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Cottage\" name=\"cottage\" placeholder=\"grams\" [(ngModel)]=\"protein.cottage\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"quinoa\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Quinoa</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Quinoa\" name=\"quinoa\" placeholder=\"grams\" [(ngModel)]=\"protein.quinoa\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"almonds\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Almonds</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Almonds\" name=\"almonds\" placeholder=\"handful\" [(ngModel)]=\"protein.almonds\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"powder\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Powder</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Powder\" name=\"powder\" placeholder=\"portions\" [(ngModel)]=\"protein.powder\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"gainer\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <label class=\"p-1 m-1 col-2 col-sm-2 col-md-1\">Gainer</label>\r\n            <input class=\"text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2\" type=\"number\"\r\n              title=\"Gainer\" name=\"gainer\" placeholder=\"portions\" [(ngModel)]=\"protein.gainer\">\r\n            <div class=\"space p-1 m-1\"></div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"submit\" class=\"invisible\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-1\"></div>\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              type=\"button\" value=\"&#xf06e; Show\" (click)=\"show()\">\r\n\r\n            <input\r\n              class=\"btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button\"\r\n              [disabled]=\"!user || !saveToggle\" type=\"submit\" value=\"&#xf0c7; Save\">\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </form>\r\n\r\n    <div id=\"show\" class=\"invisible\">\r\n\r\n      <div class=\"card show text-center\">\r\n\r\n        <div class=\"card-body\">\r\n          <p>{{showMessage}}</p>\r\n          <p *ngIf=\"user\">{{showMessageLogin}}</p>\r\n          <input type=\"button\" value=\"&#xf164;\" (click)=\"cancelShow()\" class=\"fas showButton\">\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div>";
     /***/
   },
 
@@ -1307,7 +1307,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".disconnected {\r\n    color: crimson;\r\n}\r\n\r\n.connected {\r\n    color: black;\r\n}\r\n\r\nbutton {\r\n    border: 0;\r\n    padding: 0;\r\n    outline: 0;\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\n.card {\r\n    height: 80px;\r\n    -webkit-box-pack: center;\r\n            justify-content: center;\r\n}\r\n\r\n.box {\r\n    text-transform: capitalize;\r\n    border: 1px solid rgb(194, 193, 193);\r\n    box-shadow: 0 0 2px 2px rgb(185, 235, 250);\r\n}\r\n\r\n.smallBox {\r\n    text-transform: capitalize;\r\n    border: 1px solid rgb(238, 193, 193);\r\n    box-shadow: 0 0 2px 2px rgb(243, 203, 195);\r\n    z-index: 1;\r\n}\r\n\r\n.size {\r\n    width: 450px;\r\n    margin: auto;\r\n}\r\n\r\n.header {\r\n    background: -webkit-gradient(linear, left top, right top, from(black), to(white));\r\n    background: linear-gradient(to right, black, white);\r\n    text-shadow: 2px 2px rgb(88, 88, 87);\r\n    height: 130px;\r\n}\r\n\r\n.show {\r\n    position: fixed;\r\n    width: 300px;\r\n    height: 200px;\r\n    left: 50%;\r\n    top: 60%;\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n    color: rgb(39, 5, 61);\r\n    background: -webkit-gradient( linear, left top, left bottom, from(rgb(153, 183, 240)), to(rgb(97, 214, 243)));\r\n    background: linear-gradient( rgb(153, 183, 240), rgb(97, 214, 243));\r\n}\r\n\r\n.showButton {\r\n    background-color: inherit;\r\n    color: rgb(77, 77, 77);\r\n    outline: 0;\r\n    border: 0;\r\n    padding: 0;\r\n}\r\n\r\n.showButton:hover {\r\n    color: black;\r\n}\r\n\r\n.parallax2 {\r\n    background: -webkit-gradient( linear, left top, left bottom, color-stop(40%, rgb(179, 145, 218)), color-stop(rgb(169, 235, 255)), to(rgb(43, 39, 255)));\r\n    background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));\r\n    height: 650px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n@media(max-width :420px) {\r\n    .parallax2 {\r\n        height: auto;\r\n    }\r\n    .size {\r\n        width: 250px;\r\n    }\r\n}\r\n\r\n@media(max-height :420px) {\r\n    .parallax2 {\r\n        height: auto;\r\n    }\r\n}\r\n\r\n.parallax3 {\r\n    background-image: url(\"/assets/photos/biceps_black_and_white_body.jpg\");\r\n    height: 300px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksU0FBUztJQUNULFVBQVU7SUFDVixVQUFVO0lBQ1YseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osd0JBQXVCO1lBQXZCLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLDBCQUEwQjtJQUMxQixvQ0FBb0M7SUFDcEMsMENBQTBDO0FBQzlDOztBQUNBO0lBQ0ksMEJBQTBCO0lBQzFCLG9DQUFvQztJQUNwQywwQ0FBMEM7SUFDMUMsVUFBVTtBQUNkOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxpRkFBbUQ7SUFBbkQsbURBQW1EO0lBQ25ELG9DQUFvQztJQUNwQyxhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLFlBQVk7SUFDWixhQUFhO0lBQ2IsU0FBUztJQUNULFFBQVE7SUFDUix3Q0FBZ0M7WUFBaEMsZ0NBQWdDO0lBQ2hDLHFCQUFxQjtJQUNyQiw2R0FBbUU7SUFBbkUsbUVBQW1FO0FBQ3ZFOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLHNCQUFzQjtJQUN0QixVQUFVO0lBQ1YsU0FBUztJQUNULFVBQVU7QUFDZDs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSx1SkFBMEY7SUFBMUYsMEZBQTBGO0lBQzFGLGFBQWE7SUFDYiw0QkFBNEI7SUFDNUIsMkJBQTJCO0lBQzNCLDRCQUE0QjtJQUM1QixzQkFBc0I7QUFDMUI7O0FBRUE7SUFDSTtRQUNJLFlBQVk7SUFDaEI7SUFDQTtRQUNJLFlBQVk7SUFDaEI7QUFDSjs7QUFFQTtJQUNJO1FBQ0ksWUFBWTtJQUNoQjtBQUNKOztBQUVBO0lBQ0ksdUVBQXVFO0lBQ3ZFLGFBQWE7SUFDYiw0QkFBNEI7SUFDNUIsMkJBQTJCO0lBQzNCLDRCQUE0QjtJQUM1QixzQkFBc0I7QUFDMUIiLCJmaWxlIjoic3JjL2FwcC9mYXZvcml0ZS9mYXZvcml0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpc2Nvbm5lY3RlZCB7XHJcbiAgICBjb2xvcjogY3JpbXNvbjtcclxufVxyXG5cclxuLmNvbm5lY3RlZCB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbmJ1dHRvbiB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIGhlaWdodDogODBweDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG4uYm94IHtcclxuICAgIHRleHQtdHJhbnNmb3JtOiBjYXBpdGFsaXplO1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgcmdiKDE5NCwgMTkzLCAxOTMpO1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDJweCAycHggcmdiKDE4NSwgMjM1LCAyNTApO1xyXG59XHJcbi5zbWFsbEJveCB7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogY2FwaXRhbGl6ZTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYigyMzgsIDE5MywgMTkzKTtcclxuICAgIGJveC1zaGFkb3c6IDAgMCAycHggMnB4IHJnYigyNDMsIDIwMywgMTk1KTtcclxuICAgIHotaW5kZXg6IDE7XHJcbn1cclxuXHJcbi5zaXplIHtcclxuICAgIHdpZHRoOiA0NTBweDtcclxuICAgIG1hcmdpbjogYXV0bztcclxufVxyXG5cclxuLmhlYWRlciB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsIGJsYWNrLCB3aGl0ZSk7XHJcbiAgICB0ZXh0LXNoYWRvdzogMnB4IDJweCByZ2IoODgsIDg4LCA4Nyk7XHJcbiAgICBoZWlnaHQ6IDEzMHB4O1xyXG59XHJcblxyXG4uc2hvdyB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogMzAwcHg7XHJcbiAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdG9wOiA2MCU7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICAgIGNvbG9yOiByZ2IoMzksIDUsIDYxKTtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCggcmdiKDE1MywgMTgzLCAyNDApLCByZ2IoOTcsIDIxNCwgMjQzKSk7XHJcbn1cclxuXHJcbi5zaG93QnV0dG9uIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogcmdiKDc3LCA3NywgNzcpO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGJvcmRlcjogMDtcclxuICAgIHBhZGRpbmc6IDA7XHJcbn1cclxuXHJcbi5zaG93QnV0dG9uOmhvdmVyIHtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLnBhcmFsbGF4MiB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoIHJnYigxNzksIDE0NSwgMjE4KSA0MCUsIHJnYigxNjksIDIzNSwgMjU1KSwgcmdiKDQzLCAzOSwgMjU1KSk7XHJcbiAgICBoZWlnaHQ6IDY1MHB4O1xyXG4gICAgYmFja2dyb3VuZC1hdHRhY2htZW50OiBmaXhlZDtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcclxuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XHJcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG59XHJcblxyXG5AbWVkaWEobWF4LXdpZHRoIDo0MjBweCkge1xyXG4gICAgLnBhcmFsbGF4MiB7XHJcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgfVxyXG4gICAgLnNpemUge1xyXG4gICAgICAgIHdpZHRoOiAyNTBweDtcclxuICAgIH1cclxufVxyXG5cclxuQG1lZGlhKG1heC1oZWlnaHQgOjQyMHB4KSB7XHJcbiAgICAucGFyYWxsYXgyIHtcclxuICAgICAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICB9XHJcbn1cclxuXHJcbi5wYXJhbGxheDMge1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy9waG90b3MvYmljZXBzX2JsYWNrX2FuZF93aGl0ZV9ib2R5LmpwZ1wiKTtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbn0iXX0= */";
+    __webpack_exports__["default"] = ".disconnected {\r\n    color: crimson;\r\n}\r\n\r\n.connected {\r\n    color: black;\r\n}\r\n\r\nbutton {\r\n    border: 0;\r\n    padding: 0;\r\n    outline: 0;\r\n    background-color: inherit;\r\n    color: white;\r\n}\r\n\r\n.card {\r\n    height: 80px;\r\n    -webkit-box-pack: center;\r\n            justify-content: center;\r\n}\r\n\r\n.eggCard {\r\n    height: 176px;\r\n    display: block;\r\n}\r\n\r\n.box {\r\n    text-transform: capitalize;\r\n    border: 1px solid rgb(194, 193, 193);\r\n    box-shadow: 0 0 2px 2px rgb(185, 235, 250);\r\n}\r\n\r\n.smallBox {\r\n    text-transform: capitalize;\r\n    border: 1px solid rgb(238, 193, 193);\r\n    box-shadow: 0 0 2px 2px rgb(243, 203, 195);\r\n    z-index: 1;\r\n}\r\n\r\nspan {\r\n    text-transform: capitalize;\r\n}\r\n\r\n.inputEdit {\r\n    outline: 0;\r\n    margin: 5px;\r\n    background: -webkit-gradient( linear, left top, left bottom, color-stop(20%, rgb(252, 217, 249)), to(rgb(158, 226, 247)));\r\n    background: linear-gradient( rgb(252, 217, 249) 20%, rgb(158, 226, 247));\r\n    box-shadow: 0 0 1px 1px rgb(174, 175, 175);\r\n}\r\n\r\n.size {\r\n    width: 450px;\r\n    margin: auto;\r\n}\r\n\r\n.header {\r\n    background: -webkit-gradient(linear, left top, right top, from(black), to(white));\r\n    background: linear-gradient(to right, black, white);\r\n    text-shadow: 2px 2px rgb(88, 88, 87);\r\n    height: 130px;\r\n}\r\n\r\n.show {\r\n    position: fixed;\r\n    width: 300px;\r\n    height: 200px;\r\n    left: 50%;\r\n    top: 60%;\r\n    z-index: 2;\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n    color: rgb(39, 5, 61);\r\n    background: -webkit-gradient( linear, left top, left bottom, from(rgb(153, 183, 240)), to(rgb(97, 214, 243)));\r\n    background: linear-gradient( rgb(153, 183, 240), rgb(97, 214, 243));\r\n}\r\n\r\n.deleteOneProtein {\r\n    outline: 1px;\r\n    padding: 0;\r\n    border: 0;\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    background-color: rgb(198, 216, 221);\r\n    border-radius: 30%;\r\n    z-index: 1;\r\n    height: 25px;\r\n    width: 25px;\r\n}\r\n\r\n.showButton {\r\n    background-color: inherit;\r\n    color: rgb(77, 77, 77);\r\n    outline: 0;\r\n    border: 0;\r\n    padding: 0;\r\n}\r\n\r\ninput::-webkit-outer-spin-button, input::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.showButton:hover {\r\n    color: black;\r\n}\r\n\r\n.parallax1 {\r\n    background: -webkit-gradient( linear, left top, left bottom, color-stop(40%, rgb(179, 145, 218)), color-stop(rgb(169, 235, 255)), to(rgb(43, 39, 255)));\r\n    background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));\r\n    height: 650px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n.parallax2 {\r\n    background-image: url(\"/assets/photos/biceps_black_and_white_body.jpg\");\r\n    height: 300px;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n@media(max-width :420px) {\r\n    .parallax1 {\r\n        height: auto;\r\n    }\r\n    .size {\r\n        width: 250px;\r\n    }\r\n}\r\n\r\n@media(max-height :420px) {\r\n    .parallax1 {\r\n        height: auto;\r\n    }\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmF2b3JpdGUvZmF2b3JpdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksU0FBUztJQUNULFVBQVU7SUFDVixVQUFVO0lBQ1YseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osd0JBQXVCO1lBQXZCLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksMEJBQTBCO0lBQzFCLG9DQUFvQztJQUNwQywwQ0FBMEM7QUFDOUM7O0FBRUE7SUFDSSwwQkFBMEI7SUFDMUIsb0NBQW9DO0lBQ3BDLDBDQUEwQztJQUMxQyxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSwwQkFBMEI7QUFDOUI7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsV0FBVztJQUNYLHlIQUF3RTtJQUF4RSx3RUFBd0U7SUFDeEUsMENBQTBDO0FBQzlDOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxpRkFBbUQ7SUFBbkQsbURBQW1EO0lBQ25ELG9DQUFvQztJQUNwQyxhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLFlBQVk7SUFDWixhQUFhO0lBQ2IsU0FBUztJQUNULFFBQVE7SUFDUixVQUFVO0lBQ1Ysd0NBQWdDO1lBQWhDLGdDQUFnQztJQUNoQyxxQkFBcUI7SUFDckIsNkdBQW1FO0lBQW5FLG1FQUFtRTtBQUN2RTs7QUFFQTtJQUNJLFlBQVk7SUFDWixVQUFVO0lBQ1YsU0FBUztJQUNULGtCQUFrQjtJQUNsQixNQUFNO0lBQ04sUUFBUTtJQUNSLG9DQUFvQztJQUNwQyxrQkFBa0I7SUFDbEIsVUFBVTtJQUNWLFlBQVk7SUFDWixXQUFXO0FBQ2Y7O0FBRUE7SUFDSSx5QkFBeUI7SUFDekIsc0JBQXNCO0lBQ3RCLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtBQUNkOztBQUVBO0lBQ0ksd0JBQXdCO0lBQ3hCLFNBQVM7QUFDYjs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSx1SkFBMEY7SUFBMUYsMEZBQTBGO0lBQzFGLGFBQWE7SUFDYiw0QkFBNEI7SUFDNUIsMkJBQTJCO0lBQzNCLDRCQUE0QjtJQUM1QixzQkFBc0I7QUFDMUI7O0FBRUE7SUFDSSx1RUFBdUU7SUFDdkUsYUFBYTtJQUNiLDRCQUE0QjtJQUM1QiwyQkFBMkI7SUFDM0IsNEJBQTRCO0lBQzVCLHNCQUFzQjtBQUMxQjs7QUFFQTtJQUNJO1FBQ0ksWUFBWTtJQUNoQjtJQUNBO1FBQ0ksWUFBWTtJQUNoQjtBQUNKOztBQUVBO0lBQ0k7UUFDSSxZQUFZO0lBQ2hCO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9mYXZvcml0ZS9mYXZvcml0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpc2Nvbm5lY3RlZCB7XHJcbiAgICBjb2xvcjogY3JpbXNvbjtcclxufVxyXG5cclxuLmNvbm5lY3RlZCB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbmJ1dHRvbiB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGluaGVyaXQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIGhlaWdodDogODBweDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG4uZWdnQ2FyZCB7XHJcbiAgICBoZWlnaHQ6IDE3NnB4O1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuXHJcbi5ib3gge1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCByZ2IoMTk0LCAxOTMsIDE5Myk7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMnB4IDJweCByZ2IoMTg1LCAyMzUsIDI1MCk7XHJcbn1cclxuXHJcbi5zbWFsbEJveCB7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogY2FwaXRhbGl6ZTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYigyMzgsIDE5MywgMTkzKTtcclxuICAgIGJveC1zaGFkb3c6IDAgMCAycHggMnB4IHJnYigyNDMsIDIwMywgMTk1KTtcclxuICAgIHotaW5kZXg6IDE7XHJcbn1cclxuXHJcbnNwYW4ge1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7XHJcbn1cclxuXHJcbi5pbnB1dEVkaXQge1xyXG4gICAgb3V0bGluZTogMDtcclxuICAgIG1hcmdpbjogNXB4O1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCByZ2IoMjUyLCAyMTcsIDI0OSkgMjAlLCByZ2IoMTU4LCAyMjYsIDI0NykpO1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDFweCAxcHggcmdiKDE3NCwgMTc1LCAxNzUpO1xyXG59XHJcblxyXG4uc2l6ZSB7XHJcbiAgICB3aWR0aDogNDUwcHg7XHJcbiAgICBtYXJnaW46IGF1dG87XHJcbn1cclxuXHJcbi5oZWFkZXIge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCBibGFjaywgd2hpdGUpO1xyXG4gICAgdGV4dC1zaGFkb3c6IDJweCAycHggcmdiKDg4LCA4OCwgODcpO1xyXG4gICAgaGVpZ2h0OiAxMzBweDtcclxufVxyXG5cclxuLnNob3cge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgd2lkdGg6IDMwMHB4O1xyXG4gICAgaGVpZ2h0OiAyMDBweDtcclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIHRvcDogNjAlO1xyXG4gICAgei1pbmRleDogMjtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xyXG4gICAgY29sb3I6IHJnYigzOSwgNSwgNjEpO1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCByZ2IoMTUzLCAxODMsIDI0MCksIHJnYig5NywgMjE0LCAyNDMpKTtcclxufVxyXG5cclxuLmRlbGV0ZU9uZVByb3RlaW4ge1xyXG4gICAgb3V0bGluZTogMXB4O1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIGJvcmRlcjogMDtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMDtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDE5OCwgMjE2LCAyMjEpO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMzAlO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIGhlaWdodDogMjVweDtcclxuICAgIHdpZHRoOiAyNXB4O1xyXG59XHJcblxyXG4uc2hvd0J1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBpbmhlcml0O1xyXG4gICAgY29sb3I6IHJnYig3NywgNzcsIDc3KTtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG59XHJcblxyXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbiwgaW5wdXQ6Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24ge1xyXG4gICAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xyXG4gICAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG4uc2hvd0J1dHRvbjpob3ZlciB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbi5wYXJhbGxheDEge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCByZ2IoMTc5LCAxNDUsIDIxOCkgNDAlLCByZ2IoMTY5LCAyMzUsIDI1NSksIHJnYig0MywgMzksIDI1NSkpO1xyXG4gICAgaGVpZ2h0OiA2NTBweDtcclxuICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxufVxyXG5cclxuLnBhcmFsbGF4MiB7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3Bob3Rvcy9iaWNlcHNfYmxhY2tfYW5kX3doaXRlX2JvZHkuanBnXCIpO1xyXG4gICAgaGVpZ2h0OiAzMDBweDtcclxuICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxufVxyXG5cclxuQG1lZGlhKG1heC13aWR0aCA6NDIwcHgpIHtcclxuICAgIC5wYXJhbGxheDEge1xyXG4gICAgICAgIGhlaWdodDogYXV0bztcclxuICAgIH1cclxuICAgIC5zaXplIHtcclxuICAgICAgICB3aWR0aDogMjUwcHg7XHJcbiAgICB9XHJcbn1cclxuXHJcbkBtZWRpYShtYXgtaGVpZ2h0IDo0MjBweCkge1xyXG4gICAgLnBhcmFsbGF4MSB7XHJcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgfVxyXG59Il19 */";
     /***/
   },
 
@@ -1404,7 +1404,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors__WEBPACK_IMPORTED_MODULE_5__["getUser"]));
           this.proteins$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors__WEBPACK_IMPORTED_MODULE_5__["getAllProteins"]));
-          this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_6__["Protein"](new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_8__["Egg"]());
         }
       }, {
         key: "loginPage",
@@ -1447,18 +1446,59 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.editToggle = undefined;
         }
       }, {
+        key: "deleteOneProtein",
+        value: function deleteOneProtein(userId, proteinId, key) {
+          var index = this.editToggle;
+          this.deleteElement(key, index);
+          this.save(userId, proteinId);
+        }
+      }, {
         key: "save",
         value: function save(userId, proteinId) {
-          var protein = Object.assign({}, this.protein);
-          protein.id = proteinId; // Send clean Object without undefined properties to Store
-          // Object.keys(protein).forEach(key => (protein[key] === undefined) && delete protein[key]);
-          // if (!protein.egg.sizeEgg || !protein.egg.amount)
-          //   delete protein.egg;
+          var _this3 = this;
 
+          var index = this.editToggle;
+          var protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_6__["Protein"]();
+          protein.id = proteinId;
+          Object.keys(protein).filter(function (key) {
+            return key !== 'id' && key !== 'egg';
+          }).forEach(function (key) {
+            var value = _this3.getInputValue(key, index);
+
+            if (value) protein[key] = value;
+          });
+
+          if (this.getInputValue('amount', index) && this.getInputValue('sizeEgg', index)) {
+            var amount = this.getInputValue('amount', index);
+            var sizeEgg = this.getInputValue('sizeEgg', index).toString();
+            var egg = new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_8__["Egg"](amount, sizeEgg);
+            protein.egg = egg;
+          } // Send clean Object without undefined properties to Store
+
+
+          Object.keys(protein).forEach(function (key) {
+            return !protein[key] && delete protein[key];
+          });
+          if (!protein.egg || !protein.egg.sizeEgg || !protein.egg.amount) delete protein.egg;
           this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_4__["UpdateProtein"])({
             userId: userId,
             protein: protein
           }));
+          this.cancelEdit();
+        } // Get element value by his id ( id is contain key and index of array -HTML Template- ).
+
+      }, {
+        key: "getInputValue",
+        value: function getInputValue(key, index) {
+          var elementId = key + index;
+          var inputElement = document.getElementById(elementId);
+          return inputElement ? Number(inputElement.value) : null;
+        }
+      }, {
+        key: "deleteElement",
+        value: function deleteElement(key, index) {
+          var elementId = key + index;
+          document.getElementById(elementId).remove();
         }
       }, {
         key: "visibilityOn",
@@ -1628,7 +1668,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(HomeComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this3 = this;
+          var _this4 = this;
 
           this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_5__["Protein"](new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_6__["Egg"]());
 
@@ -1639,8 +1679,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_7__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getUser"])).subscribe(function (user) {
             var userId = !!sessionStorage.getItem('login');
-            if (!user && !userId) _this3.popup();
-            _this3.user = user;
+            if (!user && !userId) _this4.popup();
+            _this4.user = user;
           }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(console.log(error));
           })));
@@ -1659,13 +1699,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "popup",
         value: function popup() {
-          var _this4 = this;
+          var _this5 = this;
 
           this.clearInterval.push(setTimeout(function () {
-            if (!_this4.user) _this4.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_10__["UserPopupOn"])());
+            if (!_this5.user) _this5.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_10__["UserPopupOn"])());
 
-            _this4.unSubscribe.push(_this4.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_7__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getPopup"])).subscribe(function (popupToggle) {
-              return _this4.popupToggle = popupToggle;
+            _this5.unSubscribe.push(_this5.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_7__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getPopup"])).subscribe(function (popupToggle) {
+              return _this5.popupToggle = popupToggle;
             }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
               return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(console.log(error));
             })));
@@ -1695,9 +1735,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var protein = Object.assign({}, this.protein); // Send clean Object without undefined properties to Store
 
           Object.keys(protein).forEach(function (key) {
-            return protein[key] === undefined && delete protein[key];
+            return !protein[key] && delete protein[key];
           });
-          if (!protein.egg.sizeEgg || !protein.egg.amount) delete protein.egg;
+          if (!protein.egg || !protein.egg.sizeEgg || !protein.egg.amount) delete protein.egg;
           this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_8__["AddProtein"])({
             userId: userId,
             protein: protein
@@ -1723,21 +1763,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "visibility",
         value: function visibility() {
-          var _this5 = this;
+          var _this6 = this;
 
           var timeToShow = 100;
           var _a = this.protein,
               id = _a.id,
               protein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](_a, ["id"]);
           Object.keys(protein).forEach(function (key) {
-            _this5.clearInterval.push(setTimeout(function () {
-              return _this5.visibilityOn(key);
+            _this6.clearInterval.push(setTimeout(function () {
+              return _this6.visibilityOn(key);
             }, timeToShow));
 
             timeToShow += 250;
           });
           this.clearInterval.push(setTimeout(function () {
-            return _this5.visibilityOn("submit");
+            return _this6.visibilityOn("submit");
           }, timeToShow));
         }
       }, {
@@ -2114,10 +2154,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(NavbarComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this6 = this;
+          var _this7 = this;
 
           this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store__WEBPACK_IMPORTED_MODULE_3__["getPopup"])).subscribe(function (popupToggle) {
-            return _this6.popupToggle = popupToggle;
+            return _this7.popupToggle = popupToggle;
           }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(console.log(error));
           })));
@@ -3555,15 +3595,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/store/actions/protein.action.ts");
 
     var ProteinEffect = function ProteinEffect(actions$, proteinService) {
-      var _this7 = this;
+      var _this8 = this;
 
       _classCallCheck(this, ProteinEffect);
 
       this.actions$ = actions$;
       this.proteinService = proteinService;
       this.loadProteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this7.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this8.proteinService.getProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (proteins) {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["LoadProteinsSuccess"]({
               proteins: proteins
             });
@@ -3573,8 +3613,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this7.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this8.proteinService.createProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userId) {
             var protein = action.protein;
             protein.id = userId.name;
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["AddProteinSuccess"]({
@@ -3586,8 +3626,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.updateProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["UpdateProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this7.proteinService.updateProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["UpdateProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this8.proteinService.updateProtein(action.userId, action.protein).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["UpdateProteinSuccess"]({
               protein: action.protein
             });
@@ -3597,8 +3637,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteProtein$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this7.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProtein"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this8.proteinService.deleteProtein(action.userId, action.proteinId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteProteinSuccess"]({
               proteinId: action.proteinId
             });
@@ -3608,8 +3648,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteAllproteins$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["createEffect"])(function () {
-        return _this7.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
-          return _this7.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
+        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteins"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (action) {
+          return _this8.proteinService.deleteAllProteins(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function () {
             return _actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_6__["DeleteAllProteinsFail"](error));
@@ -3707,7 +3747,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/shared/services/user.service.ts");
 
     var UserEffects = function UserEffects(actions$, userService, router) {
-      var _this8 = this;
+      var _this9 = this;
 
       _classCallCheck(this, UserEffects);
 
@@ -3715,8 +3755,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       this.userService = userService;
       this.router = router;
       this.loadUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this8.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this9.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this9.userService.getUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.userId;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoadUserSuccess"]({
               user: user
@@ -3727,9 +3767,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.createUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this8.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
-            _this8.router.navigate(['product/login']);
+        return _this9.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["CreateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this9.userService.createUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (userId) {
+            _this9.router.navigate(['product/login']);
 
             var user = action.user;
             user.id = userId.name;
@@ -3742,11 +3782,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.loginUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this8.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
+        return _this9.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this9.userService.login(action.login).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
             var userId = user.id;
 
-            _this8.router.navigate(['product/account']);
+            _this9.router.navigate(['product/account']);
 
             return [_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["LoginUserSuccess"]({
               user: user
@@ -3759,8 +3799,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.updateUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this8.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
+        return _this9.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this9.userService.updateUser(action.user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (user) {
             user.id = action.user.id;
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UpdateUserSuccess"]({
               user: user
@@ -3771,9 +3811,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }));
       });
       this.deleteUser$ = Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["createEffect"])(function () {
-        return _this8.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
-          return _this8.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
-            _this8.router.navigate(["product/home"]);
+        return _this9.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_4__["ofType"])(_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUser"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (action) {
+          return _this9.userService.deleteUser(action.userId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
+            _this9.router.navigate(["product/home"]);
 
             return _actions_user_action__WEBPACK_IMPORTED_MODULE_6__["DeleteUserSuccess"]();
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (error) {
@@ -3918,11 +3958,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this9 = this;
+          var _this10 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getProteinLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this9.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
+            if (!loaded && userId) _this10.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -4021,11 +4061,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkStore",
         value: function checkStore() {
-          var _this10 = this;
+          var _this11 = this;
 
           return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getUserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this10.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
+            if (!loaded && userId) _this11.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
               userId: userId
             }));
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1));
@@ -4532,7 +4572,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["UpdateProteinSuccess"], function (state, action) {
       var protein = action.protein;
       var id = protein.id,
-          changes = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](protein, ["id"]);
+          newProtein = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](protein, ["id"]);
+      var changes = Object.assign({
+        id: id
+      }, state.entities[id] = newProtein);
       var update = {
         id: id,
         changes: changes

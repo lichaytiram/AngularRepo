@@ -21,12 +21,17 @@
             <div class="parallax1 m-0">
 
                 <div class="row m-1 justify-content-center">
-                    <div [class.d-none]="proteinKeyValue.key=='id'" *ngFor="let proteinKeyValue of protein | keyvalue"
-                        class="col-12 col-sm-6 col-xl-4 p-2">
+                    <div [class.d-none]="proteinKeyValue.key === 'id'"
+                        *ngFor="let proteinKeyValue of protein | keyvalue" class="col-12 col-sm-6 col-xl-4 p-2">
 
-                        <div [class.eggCard]="proteinKeyValue.key==='egg' && editToggle === i" class="card">
+                        <div [class.eggCard]="proteinKeyValue.key === 'egg' && editToggle === i" class="card">
 
-                            <div *ngIf="proteinKeyValue.key!=='egg'" class="m-0" style="width:100%">
+                            <div [class.d-none]="editToggle !== i">
+                                <input type="button" (click)="deleteOneProtein(user.id,protein.id,proteinKeyValue.key)"
+                                    value="&#xf2ed;" class="fas text-danger deleteOneProtein">
+                            </div>
+
+                            <div *ngIf="proteinKeyValue.key !== 'egg'" class="m-0" style="width:100%">
 
                                 <div class="row justify-content-center m-0">
 
@@ -38,16 +43,27 @@
 
                                         <span class="col-2">{{proteinKeyValue.key}}</span>
 
-                                        <input type="text" [id]="proteinKeyValue.key+i" (keyup)="proteinKeyValue.value"
-                                            [value]="proteinKeyValue.value"
+                                        <input type="number" [id]="proteinKeyValue.key+i"
+                                            (keyup)="proteinKeyValue.value" [value]="proteinKeyValue.value"
                                             class="text-center rounded-pill border border-white inputEdit col-4">
+
+                                        <div class="d-inline col-2">
+
+                                            <label
+                                                *ngIf="proteinKeyValue.key === 'tuna'|| proteinKeyValue.key === 'meat' || proteinKeyValue.key === 'cheese' || proteinKeyValue.key === 'cottage' || proteinKeyValue.key === 'quinoa'">grams</label>
+                                            <label *ngIf="proteinKeyValue.key === 'almonds'">handful</label>
+                                            <label *ngIf="proteinKeyValue.key === 'bread'">slices</label>
+                                            <label
+                                                *ngIf="proteinKeyValue.key === 'powder' || proteinKeyValue.key === 'gainer'">portions</label>
+
+                                        </div>
 
                                     </div>
                                 </div>
 
                             </div>
 
-                            <div *ngIf="proteinKeyValue.key==='egg'">
+                            <div *ngIf="proteinKeyValue.key === 'egg'">
 
                                 <div class="row justify-content-center m-0">
 
@@ -65,7 +81,7 @@
 
                                 <div class="row justify-content-center m-0">
 
-                                    <small class="col-5 col-sm-4 box">sizeEgg</small>
+                                    <small class="col-5 col-sm-4 box">size</small>
                                     <small class="col-1"></small>
                                     <small class="col-5 col-sm-4 box">{{proteinKeyValue.value.sizeEgg}}</small>
 
@@ -75,7 +91,7 @@
 
                                     <div class="row justify-content-center m-0">
 
-                                        <input type="text" [id]="'amount'+i" (keyup)="proteinKeyValue.value.amount"
+                                        <input type="number" [id]="'amount'+i" (keyup)="proteinKeyValue.value.amount"
                                             [value]="proteinKeyValue.value.amount"
                                             class="text-center rounded-pill border border-white inputEdit">
 
@@ -100,7 +116,7 @@
 
                     <div class="row justify-content-center">
 
-                        <div *ngIf="editToggle != i" class="col-12 p-0">
+                        <div *ngIf="editToggle !== i" class="col-12 p-0">
 
                             <input type="button" value="&#xf06e; Show" (click)="show(user,protein)"
                                 class="btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6">
