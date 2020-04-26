@@ -14,6 +14,7 @@ import { IProductsState, getUser, getPopup } from '../store';
 import { UserPopupOn, UserPopupOff } from '../store/actions/user.action'
 
 import { showCalculator } from '../shared/services/showCalculator';
+import { IEgg } from '../shared/models/iEgg.model';
 
 @Component({
   selector: 'app-home',
@@ -104,13 +105,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   public submit(): void {
 
     const userId: string = this.user.id;
+
+    // Create a new reference
     const protein: IProtein = { ...this.protein };
+    const { egg } = protein
+    protein.egg = { ...egg };
 
     // Send clean Object without undefined properties to Store
     Object.keys(protein).forEach(key => !protein[key] && delete protein[key]);
     if (!protein.egg || !protein.egg.sizeEgg || !protein.egg.amount)
       delete protein.egg;
-    
+
     this.store.dispatch(AddProtein({ userId, protein }));
   }
 

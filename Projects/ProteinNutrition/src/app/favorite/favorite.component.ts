@@ -119,7 +119,7 @@ export class FavoriteComponent implements OnInit {
   private getInputValue(key: string, index: number): string {
     const elementId: string = key + index;
     const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementId);
-    return inputElement && inputElement?.value;
+    return inputElement && inputElement.value;
   }
 
   private deleteElement(key: string, index: number): void {
