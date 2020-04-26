@@ -99,8 +99,8 @@ export class FavoriteComponent implements OnInit {
 
     if (this.getInputValue('amount', index) && this.getInputValue('sizeEgg', index)) {
 
-      const amount: number = this.getInputValue('amount', index);
-      const sizeEgg: string = this.getInputValue('sizeEgg', index).toString();
+      const amount: number = Number(this.getInputValue('amount', index));
+      const sizeEgg: string = this.getInputValue('sizeEgg', index);
       const egg: IEgg = new Egg(amount, sizeEgg);
       protein.egg = egg;
     }
@@ -116,10 +116,10 @@ export class FavoriteComponent implements OnInit {
   }
 
   // Get element value by his id ( id is contain key and index of array -HTML Template- ).
-  private getInputValue(key: string, index: number): number {
+  private getInputValue(key: string, index: number): string {
     const elementId: string = key + index;
     const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementId);
-    return inputElement ? Number(inputElement.value) : null;
+    return inputElement?.value;
   }
 
   private deleteElement(key: string, index: number): void {

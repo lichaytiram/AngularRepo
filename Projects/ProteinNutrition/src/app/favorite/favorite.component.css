@@ -61,7 +61,7 @@ span {
 .inputEdit {
     outline: 0;
     margin: 5px;
-    background: linear-gradient( rgb(252, 217, 249) 20%, rgb(158, 226, 247));
+    background: linear-gradient( to right ,rgb(252, 217, 249) 20%, rgb(158, 226, 247));
     box-shadow: 0 0 1px 1px rgb(174, 175, 175);
 }
 
