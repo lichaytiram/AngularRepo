@@ -46,10 +46,11 @@
 
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Egg</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Egg" #egg="ngModel" name="egg" placeholder="amount" [(ngModel)]="protein.egg.amount">
+              title="Egg" #egg="ngModel" name="egg" pattern="^[1-9][0-9]*$" placeholder="amount"
+              [(ngModel)]="protein.egg.amount">
 
-            <select class="border border-danger p-1 m-1 space" [(ngModel)]="protein.egg.sizeEgg" #eggSize="ngModel"
-              name="eggSize">
+            <select class="border border-danger p-1 m-1 space" [required]="egg.value" [(ngModel)]="protein.egg.sizeEgg"
+              #eggSize="ngModel" name="eggSize">
               <option [value]="size" disabled>Size</option>
               <option>S</option>
               <option>M</option>
@@ -64,7 +65,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Bread</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Bread" name="bread" placeholder="slices" [(ngModel)]="protein.bread">
+              title="Bread" name="bread" pattern="^[1-9][0-9]*$" placeholder="slices" [(ngModel)]="protein.bread">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -73,7 +74,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Tuna</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Tuna" name="tuna" placeholder="grams" [(ngModel)]="protein.tuna">
+              title="Tuna" name="tuna" pattern="^[1-9][0-9]*$" placeholder="grams" [(ngModel)]="protein.tuna">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -82,7 +83,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Meat</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Meat" name="meat" placeholder="grams" [(ngModel)]="protein.meat">
+              title="Meat" name="meat" pattern="^[1-9][0-9]*$" placeholder="grams" [(ngModel)]="protein.meat">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -91,7 +92,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Cheese</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Cheese" name="cheese" placeholder="grams" [(ngModel)]="protein.cheese">
+              title="Cheese" name="cheese" pattern="^[1-9][0-9]*$" placeholder="grams" [(ngModel)]="protein.cheese">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -100,7 +101,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Cottage</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Cottage" name="cottage" placeholder="grams" [(ngModel)]="protein.cottage">
+              title="Cottage" name="cottage" pattern="^[1-9][0-9]*$" placeholder="grams" [(ngModel)]="protein.cottage">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -109,7 +110,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Quinoa</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Quinoa" name="quinoa" placeholder="grams" [(ngModel)]="protein.quinoa">
+              title="Quinoa" name="quinoa" pattern="^[1-9][0-9]*$" placeholder="grams" [(ngModel)]="protein.quinoa">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -118,7 +119,8 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Almonds</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Almonds" name="almonds" placeholder="handful" [(ngModel)]="protein.almonds">
+              title="Almonds" name="almonds" pattern="^[1-9][0-9]*$" placeholder="handful"
+              [(ngModel)]="protein.almonds">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -127,7 +129,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Powder</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Powder" name="powder" placeholder="portions" [(ngModel)]="protein.powder">
+              title="Powder" name="powder" pattern="^[1-9][0-9]*$" placeholder="portions" [(ngModel)]="protein.powder">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -136,7 +138,7 @@
           <div class="row justify-content-center">
             <label class="p-1 m-1 col-2 col-sm-2 col-md-1">Gainer</label>
             <input class="text-center rounded-pill border border-danger p-1 m-1 col-5 col-md-3 col-lg-2" type="number"
-              title="Gainer" name="gainer" placeholder="portions" [(ngModel)]="protein.gainer">
+              title="Gainer" name="gainer" pattern="^[1-9][0-9]*$" placeholder="portions" [(ngModel)]="protein.gainer">
             <div class="space p-1 m-1"></div>
           </div>
         </div>
@@ -144,13 +146,11 @@
         <div id="submit" class="invisible">
           <div class="row justify-content-center">
             <div class="col-1"></div>
-            <input
-              class="btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button"
-              type="button" value="&#xf06e; Show" (click)="show()">
+            <input type="button" value="&#xf06e; Show" (click)="show()"
+              class="btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button">
 
-            <input
-              class="btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button"
-              [disabled]="!user || !saveToggle" type="submit" value="&#xf0c7; Save">
+            <input [disabled]="!user || !saveToggle || !proteinForm.valid" type="submit" value="&#xf0c7; Save"
+              class="btn btn-secondary rounded-pill border far m-1 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button">
           </div>
         </div>
 

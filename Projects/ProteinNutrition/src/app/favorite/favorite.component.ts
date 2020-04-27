@@ -24,63 +24,40 @@ export class FavoriteComponent implements OnInit {
   public user$: Observable<IUser>
   public proteins$: Observable<IProtein[]>
 
+  // Add values for create add of lines in favorites
+  public addList: string[];
+  public add: string;
+
   // Messages to user
   public showMessage: string = "";
   public showMessageLogin: string = "";
 
   // Toggles
   public editToggle: number;
+  public addToggle: boolean;
 
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
 
   ngOnInit() {
 
+    this.addList = [];
     this.user$ = this.store.pipe(select(getUser));
     this.proteins$ = this.store.pipe(select(getAllProteins));
 
   }
 
-  public loginPage(): void {
-    this.router.navigate(['/product/login']);
-  }
+  public addProtein(userId: string, protein: IProtein): void {
 
-  public delete(userId: string, proteinId: string): void {
+    const valueToAdd: string = this.add;
 
-    this.store.dispatch(DeleteProtein({ userId, proteinId }));
+    if (valueToAdd === 'egg') {
+      const egg: IEgg = new Egg(0, 'empty');
+      protein.egg = egg;
+    } else
+      protein[valueToAdd] = 0;
 
-  }
-
-  public show(user: IUser, tempProtein: IProtein): void {
-
-    const { id, egg, ...protein } = tempProtein;
-    const sum: number = this.showCalculator.calculateProtein(protein, egg);
-
-    const value: number = user.weight * 2 - sum;
-    this.showMessage = `You eat ${sum} protein approximately.`;
-    this.showMessageLogin = value > 0 ? `You need more ${value}` : 'You Eat enough protein for today good job!';
-
-    this.visibilityOn('show');
-  }
-
-  public cancelShow(): void {
-    this.visibilityOff('show');
-  }
-
-  public edit(editToggle: number): void {
-    this.editToggle = editToggle;
-  }
-
-  public cancelEdit(): void {
-    this.editToggle = undefined;
-  }
-
-
-  public deleteOneProtein(userId: string, proteinId: string, key: string): void {
-
-    const index: number = this.editToggle;
-    this.deleteElement(key, index);
-    this.save(userId, proteinId);
-
+    this.store.dispatch(UpdateProtein({ userId, protein }));
+    this.addToggle = false;
   }
 
   public save(userId: string, proteinId: string): void {
@@ -112,6 +89,67 @@ export class FavoriteComponent implements OnInit {
 
     this.store.dispatch(UpdateProtein({ userId, protein }));
     this.cancelEdit();
+
+  }
+
+  public loginPage(): void {
+    this.router.navigate(['/product/login']);
+  }
+
+  public show(user: IUser, tempProtein: IProtein): void {
+
+    const { id, egg, ...protein } = tempProtein;
+    const sum: number = this.showCalculator.calculateProtein(protein, egg);
+
+    const value: number = user.weight * 2 - sum;
+    this.showMessage = `You eat ${sum} protein approximately.`;
+    this.showMessageLogin = value > 0 ? `You need more ${value}` : 'You Eat enough protein for today good job!';
+
+    this.visibilityOn('show');
+  }
+
+  public cancelShow(): void {
+    this.visibilityOff('show');
+  }
+
+  public editToggleSwitch(editToggle: number): void {
+    this.editToggle = editToggle;
+    this.addToggle = undefined;
+  }
+
+  public addToggleSwitch(protein: IProtein): void {
+
+    const tempList: IProtein = new Protein();
+    const addList: string[] = [];
+
+    Object.keys(protein).forEach(key => delete tempList[key]);
+    Object.keys(tempList).forEach(key => addList.push(key));
+
+    this.addToggle = true;
+    this.addList = addList;
+  }
+
+  public cancelEdit(): void {
+    this.editToggle = undefined;
+    this.addToggle = undefined;
+  }
+
+  public deleteProtein(userId: string, proteinId: string): void {
+
+    this.store.dispatch(DeleteProtein({ userId, proteinId }));
+
+  }
+
+  public deleteOneProtein(userId: string, proteinId: string, key: string): void {
+
+    const index: number = this.editToggle;
+    if (key === 'egg') {
+      this.deleteElement('amount', index);
+      this.deleteElement('sizeEgg', index);
+    } else
+      this.deleteElement(key, index);
+
+    this.save(userId, proteinId);
 
   }
 

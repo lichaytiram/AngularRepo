@@ -14,7 +14,6 @@ import { IProductsState, getUser, getPopup } from '../store';
 import { UserPopupOn, UserPopupOff } from '../store/actions/user.action'
 
 import { showCalculator } from '../shared/services/showCalculator';
-import { IEgg } from '../shared/models/iEgg.model';
 
 @Component({
   selector: 'app-home',
@@ -163,6 +162,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.router.navigate(['/product/login']);
   }
 
+  // Check if form is valid ( one of input must be with value )
   public saveSwitch(): void {
     const { id, egg, ...protein } = this.protein;
     let updateToggle: boolean = false;
