@@ -13,7 +13,6 @@
 
             <h2>Welcome Back - {{user.username}}</h2>
             <h3>Your favorite list on the front </h3>
-            <h5>You can edit to see another mix</h5>
 
         </div>
 
@@ -44,7 +43,7 @@
 
                                         <span class="col-2">{{proteinKeyValue.key}}</span>
 
-                                        <input type="number" [id]="proteinKeyValue.key+i"
+                                        <input type="number" title="Enter a new value" [id]="proteinKeyValue.key+i"
                                             (keyup)="proteinKeyValue.value" [value]="proteinKeyValue.value"
                                             class="text-center rounded-pill border border-white inputEdit col-4">
 
@@ -92,13 +91,14 @@
 
                                     <div class="row justify-content-center m-3">
 
-                                        <small *ngIf="proteinKeyValue.value.sizeEgg === 'empty'" class="text-primary">*Must enter an amount and size</small>
+                                        <small *ngIf="proteinKeyValue.value.sizeEgg === 'empty'"
+                                            class="text-primary">*Must enter an amount and size</small>
 
                                         <div class="col-12">
 
                                             <small class="text-capitalize eggSize">amount</small>
 
-                                            <input type="number" [id]="'amount'+i"
+                                            <input type="number" title="Enter a new value" [id]="'amount'+i"
                                                 (keyup)="proteinKeyValue.value.amount"
                                                 [value]="proteinKeyValue.value.amount"
                                                 class="text-center col-4 rounded-pill border border-white inputEdit">
@@ -108,7 +108,7 @@
 
                                             <small class="text-capitalize eggSize">size</small>
 
-                                            <select [id]="'sizeEgg'+i" [value]="proteinKeyValue.value.sizeEgg"
+                                            <select [id]="'sizeEgg'+i" title="Select a new value from list" [value]="proteinKeyValue.value.sizeEgg"
                                                 class="text-capitalize col-4">
                                                 <option value="S">small</option>
                                                 <option value="M">medium</option>
