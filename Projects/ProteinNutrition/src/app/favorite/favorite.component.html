@@ -92,6 +92,8 @@
 
                                     <div class="row justify-content-center m-3">
 
+                                        <small *ngIf="proteinKeyValue.value.sizeEgg === 'empty'" class="text-primary">*Must enter an amount and size</small>
+
                                         <div class="col-12">
 
                                             <small class="text-capitalize eggSize">amount</small>
@@ -146,7 +148,7 @@
 
                         <div *ngIf="editToggle === i && !addToggle" class="col-12 p-0">
 
-                            <input type="button" value="&#xf0c7; Update" (click)="save(user.id,protein.id)"
+                            <input type="button" value="&#xf0c7; Update" (click)="saveNewUpdate(user.id,protein.id)"
                                 class="btn btn-outline-primary rounded-pill fas m-1 col-8 col-sm-6">
                             <div class="col-12 p-0">
                                 <input type="button" value="&#xf410; Cancel" (click)="cancelEdit()"
@@ -184,14 +186,31 @@
 
         </div>
 
-        <div id="show" class="invisible">
+        <div class="text-center">
 
-            <div class="card show text-center">
+            <div id="show" class="invisible">
 
-                <div class="card-body">
-                    <p>{{showMessage}}</p>
-                    <p *ngIf="user">{{showMessageLogin}}</p>
-                    <input type="button" value="&#xf164;" (click)="cancelShow()" class="fas showButton">
+                <div class="card show">
+
+                    <div class="card-body">
+                        <p>{{showMessage}}</p>
+                        <p *ngIf="user">{{showMessageLogin}}</p>
+                        <input type="button" value="&#xf164;" (click)="cancelShow()" class="fas showButton">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="updateToggle">
+
+                <div class="card update">
+
+                    <div class="card-body">
+                        <h4>Must enter a positive number</h4>
+                        <input type="button" value="&#xf164;" (click)="updateToggleSwitch()" class="fas updateButton">
+                    </div>
+
                 </div>
 
             </div>

@@ -83,10 +83,22 @@ span {
     height: 200px;
     left: 50%;
     top: 60%;
-    z-index: 2;
+    z-index: 3;
     transform: translate(-50%, -50%);
     color: rgb(39, 5, 61);
     background: linear-gradient( rgb(153, 183, 240), rgb(97, 214, 243));
+}
+
+.update {
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    left: 50%;
+    top: 60%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    color: rgb(58, 76, 240);
+    background: linear-gradient( rgb(250, 176, 213), rgb(240, 75, 124));
 }
 
 .deleteOneProtein {
@@ -118,6 +130,14 @@ span {
     padding: 0;
 }
 
+.updateButton {
+    background-color: inherit;
+    color: rgb(7, 3, 245);
+    outline: 0;
+    border: 0;
+    padding: 0;
+}
+
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -125,6 +145,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 .showButton:hover {
     color: black;
+}
+
+.updateButton:hover {
+    color: rgb(111, 5, 182);
 }
 
 .parallax1 {

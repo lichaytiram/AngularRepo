@@ -35,6 +35,7 @@ export class FavoriteComponent implements OnInit {
   // Toggles
   public editToggle: number;
   public addToggle: boolean;
+  public updateToggle: boolean;
 
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
 
@@ -46,9 +47,13 @@ export class FavoriteComponent implements OnInit {
 
   }
 
+  // Add one element inside existing protein
   public addProtein(userId: string, protein: IProtein): void {
 
     const valueToAdd: string = this.add;
+
+    if (valueToAdd === undefined)
+      return;
 
     if (valueToAdd === 'egg') {
       const egg: IEgg = new Egg(0, 'empty');
@@ -58,13 +63,14 @@ export class FavoriteComponent implements OnInit {
 
     this.store.dispatch(UpdateProtein({ userId, protein }));
     this.addToggle = false;
+
+
   }
 
-  public save(userId: string, proteinId: string): void {
+  public saveNewUpdate(userId: string, proteinId: string): void {
 
     const index: number = this.editToggle;
     const protein: IProtein = new Protein();
-    protein.id = proteinId;
 
     Object.keys(protein).filter(key => key !== 'id' && key !== 'egg').forEach(key => {
 
@@ -73,6 +79,7 @@ export class FavoriteComponent implements OnInit {
         protein[key] = value;
 
     });
+
 
     if (this.getInputValue('amount', index) && this.getInputValue('sizeEgg', index)) {
 
@@ -84,11 +91,16 @@ export class FavoriteComponent implements OnInit {
 
     // Send clean Object without undefined properties to Store
     Object.keys(protein).forEach(key => !protein[key] && delete protein[key]);
-    if (!protein.egg || !protein.egg.sizeEgg || !protein.egg.amount)
+
+    if (!protein.egg || !protein.egg.sizeEgg)
       delete protein.egg;
 
-    this.store.dispatch(UpdateProtein({ userId, protein }));
-    this.cancelEdit();
+    if (this.checkUpdateValidation(protein)) {
+      protein.id = proteinId;
+      this.store.dispatch(UpdateProtein({ userId, protein }));
+      this.cancelEdit();
+    } else
+      this.updateToggle = true;
 
   }
 
@@ -115,6 +127,10 @@ export class FavoriteComponent implements OnInit {
   public editToggleSwitch(editToggle: number): void {
     this.editToggle = editToggle;
     this.addToggle = undefined;
+  }
+
+  public updateToggleSwitch(): void {
+    this.updateToggle = undefined;
   }
 
   public addToggleSwitch(protein: IProtein): void {
@@ -149,8 +165,21 @@ export class FavoriteComponent implements OnInit {
     } else
       this.deleteElement(key, index);
 
-    this.save(userId, proteinId);
+    this.saveNewUpdate(userId, proteinId);
 
+  }
+
+  private checkUpdateValidation(protein: IProtein): boolean {
+
+    const { egg, ...pro } = protein;
+
+    if (egg && egg.amount < 0)
+      return false;
+
+    let validation: boolean = true
+    Object.values(pro).some(value => value < 0 && (validation = false) && true);
+
+    return validation;
   }
 
   // Get element value by his id ( id is contain key and index of array -HTML Template- ).
