@@ -1,7 +1,3 @@
-h2, h4, p, strong, small {
-    color: oldlace;
-}
-
 .backgroundImage {
     opacity: 0.6;
     position: fixed;
@@ -9,6 +5,134 @@ h2, h4, p, strong, small {
     width: 100%;
     height: 72%;
     top: 264px;
+}
+
+small {
+    color: oldlace;
+}
+
+strong {
+    color: oldlace;
+    position: relative;
+    /* left: 140%; */
+    /* animation-name: left;
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear; */
+}
+
+h2 {
+    color: oldlace;
+    position: relative;
+    top: -200px;
+    animation-name: top;
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+h4 {
+    color: oldlace;
+    position: relative;
+    bottom: -10px;
+    animation-name: bottom;
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+p {
+    color: oldlace;
+    position: relative;
+    right: 140%;
+    animation-name: right;
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+p:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+p:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+p:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+p:nth-child(7) {
+    animation-delay: 1.6s;
+}
+
+p:nth-child(8) {
+    animation-delay: 2s;
+}
+
+@keyframes top {
+    0% {
+        top: -200px;
+    }
+    90% {
+        top: 0;
+    }
+    91% {
+        transform: rotate(2deg);
+    }
+    92% {
+        transform: rotate(-2deg);
+    }
+    93% {
+        transform: rotate(2deg);
+    }
+    94% {
+        transform: rotate(-2deg);
+    }
+    95% {
+        transform: rotate(2deg);
+    }
+    96% {
+        transform: rotate(-2deg);
+    }
+    97% {
+        transform: rotate(2deg);
+    }
+    98% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        top: 0;
+        transform: rotate(0);
+    }
+}
+
+@keyframes bottom {
+    from {
+        bottom: -100px;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+@keyframes left {
+    from {
+        left: 140%;
+    }
+    to {
+        left: 0%;
+    }
+}
+
+@keyframes right {
+    from {
+        right: 140%;
+    }
+    to {
+        right: 0%;
+    }
 }
 
 @media (max-width: 420px) {

@@ -152,7 +152,10 @@ export class FavoriteComponent implements OnInit {
 
   public deleteProtein(userId: string, proteinId: string): void {
 
-    this.store.dispatch(DeleteProtein({ userId, proteinId }));
+    const isConfirm: boolean = window.confirm('You going to delete that protein.\nPlease confirm!');
+
+    if (isConfirm)
+      this.store.dispatch(DeleteProtein({ userId, proteinId }));
 
   }
 
