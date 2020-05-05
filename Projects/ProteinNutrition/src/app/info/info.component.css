@@ -7,45 +7,42 @@
     top: 264px;
 }
 
-small {
+.container {
     color: oldlace;
 }
 
 strong {
-    color: oldlace;
     position: relative;
-    /* left: 140%; */
-    /* animation-name: left;
+    transform: translateX(140%);
+    display: block;
+    animation-name: moveLeft;
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
-    animation-timing-function: linear; */
+    animation-timing-function: linear;
 }
 
 h2 {
-    color: oldlace;
     position: relative;
-    top: -200px;
-    animation-name: top;
+    transform: translateY(-200px);
+    animation-name: movieBottom;
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
 
 h4 {
-    color: oldlace;
     position: relative;
-    bottom: -10px;
-    animation-name: bottom;
+    transform: translateY(100px);
+    animation-name: moveTop;
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
 
 p {
-    color: oldlace;
     position: relative;
-    right: 140%;
-    animation-name: right;
+    transform: translateX(-140%);
+    animation-name: moveRight;
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
@@ -71,12 +68,21 @@ p:nth-child(8) {
     animation-delay: 2s;
 }
 
-@keyframes top {
+@keyframes moveTop {
+    from {
+        transform: translateY(100px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes movieBottom {
     0% {
-        top: -200px;
+        transform: translateY(-200px);
     }
     90% {
-        top: 0;
+        transform: translateY(0);
     }
     91% {
         transform: rotate(2deg);
@@ -103,35 +109,26 @@ p:nth-child(8) {
         transform: rotate(-2deg);
     }
     100% {
-        top: 0;
+        transform: translateY(0);
         transform: rotate(0);
     }
 }
 
-@keyframes bottom {
+@keyframes moveRight {
     from {
-        bottom: -100px;
+        transform: translateX(-140%);
     }
     to {
-        bottom: 0;
+        transform: translateX(0);
     }
 }
 
-@keyframes left {
+@keyframes moveLeft {
     from {
-        left: 140%;
+        transform: translateX(140%);
     }
     to {
-        left: 0%;
-    }
-}
-
-@keyframes right {
-    from {
-        right: 140%;
-    }
-    to {
-        right: 0%;
+        transform: translateX(0);
     }
 }
 

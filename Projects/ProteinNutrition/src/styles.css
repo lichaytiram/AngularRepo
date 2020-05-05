@@ -3,6 +3,7 @@
 body {
     background-color: #1D1C1C;
     padding-top: 280px;
+    overflow-x: hidden;
 }
 
 @media (max-width: 420px) {
