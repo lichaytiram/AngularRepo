@@ -19,7 +19,6 @@ label {
 label:hover {
     color: black;
     transition-duration: 2s;
-    background-color: rgb(255, 199, 199);
 }
 
 label::before {
