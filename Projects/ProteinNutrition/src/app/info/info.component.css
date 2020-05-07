@@ -1,10 +1,13 @@
 .backgroundImage {
-    opacity: 0.6;
     position: fixed;
     z-index: -1;
     width: 100%;
     height: 72%;
     top: 264px;
+    opacity: 0.1;
+    animation-name: opacity;
+    animation-duration: 7s;
+    animation-fill-mode: forwards;
 }
 
 .container {
@@ -115,20 +118,20 @@ p:nth-child(8) {
 }
 
 @keyframes moveRight {
-    from {
-        transform: translateX(-140%);
-    }
     to {
         transform: translateX(0);
     }
 }
 
 @keyframes moveLeft {
-    from {
-        transform: translateX(140%);
-    }
     to {
         transform: translateX(0);
+    }
+}
+
+@keyframes opacity {
+    to {
+        opacity: 0.6;
     }
 }
 

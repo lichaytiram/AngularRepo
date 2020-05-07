@@ -1,6 +1,5 @@
 <div>
 
-  {{popupToggle}}
   <div [class.opacity]="popupToggle">
     <h1 class="text-center">Muscle is your life?</h1>
     <h2 class="text-center">Let's start to calculate your protein </h2>
@@ -38,8 +37,8 @@
 
           <div class="row justify-content-center">
             <small class="text-danger p-2 m-1"
-              [class.d-none]="egg.untouched || !egg.value || egg.value && eggSize.dirty">You must
-              choose a size <i class="fas fa-arrow-circle-right"></i></small>
+              [class.d-none]="egg.untouched || !egg.value || egg.value && eggSize.dirty">You must choose a size <i
+                class="fas fa-arrow-circle-right"></i></small>
           </div>
 
           <div class="row justify-content-center">

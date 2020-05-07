@@ -19,6 +19,7 @@ label {
 label:hover {
     color: black;
     transition-duration: 2s;
+    background-color: rgb(255, 199, 199);
 }
 
 label::before {
@@ -150,8 +151,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     from {
         transform: rotate(180deg) translateX(250px);
         background-color: rgb(7, 7, 7);
+        pointer-events: none;
     }
     to {
+        pointer-events: none;
         transform: rotate(360deg);
     }
 }

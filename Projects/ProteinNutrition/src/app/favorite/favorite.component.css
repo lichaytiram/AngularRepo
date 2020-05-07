@@ -1,5 +1,6 @@
 .disconnected {
     color: crimson;
+    min-height: 620px;
 }
 
 .disconnected:hover {
@@ -94,6 +95,8 @@ span {
 .size {
     width: 450px;
     margin: auto;
+    transform: translateY(450px);
+    animation: top 1.5s forwards;
 }
 
 .header {
@@ -179,6 +182,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .parallax1 {
     background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));
     height: 650px;
+    position: relative;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -200,6 +204,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
 }
 
+@keyframes top {
+    to {
+        transform: translateY(0)
+    }
+}
+
 @media(max-width :420px) {
     .parallax1 {
         height: auto;
@@ -207,10 +217,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     .size {
         width: 280px;
     }
+    .disconnected {
+        min-height: 550px;
+    }
 }
 
 @media(max-height :420px) {
     .parallax1 {
         height: auto;
+    }
+    .disconnected {
+        min-height: 210px;
     }
 }

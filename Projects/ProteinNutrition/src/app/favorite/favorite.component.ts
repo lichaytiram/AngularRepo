@@ -36,6 +36,7 @@ export class FavoriteComponent implements OnInit {
   public editToggle: number;
   public addToggle: boolean;
   public updateToggle: boolean;
+  public deleteToggle: boolean;
 
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
 
@@ -133,6 +134,10 @@ export class FavoriteComponent implements OnInit {
     this.updateToggle = undefined;
   }
 
+  public deleteProteinSwitch(): void {
+    this.deleteToggle = !this.deleteToggle;
+  }
+
   public addToggleSwitch(protein: IProtein): void {
 
     const tempList: IProtein = new Protein();
@@ -150,12 +155,10 @@ export class FavoriteComponent implements OnInit {
     this.addToggle = undefined;
   }
 
-  public deleteProtein(userId: string, proteinId: string): void {
+  public deleteProteinConfirmed(userId: string, proteinId: string): void {
 
-    const isConfirm: boolean = window.confirm('You going to delete that protein.\nPlease confirm!');
-
-    if (isConfirm)
-      this.store.dispatch(DeleteProtein({ userId, proteinId }));
+    this.store.dispatch(DeleteProtein({ userId, proteinId }));
+    this.deleteProteinSwitch();
 
   }
 

@@ -30,12 +30,13 @@ export class AccountComponent implements OnInit, OnDestroy {
   public weightToggle: boolean;
 
   public updateToggle: boolean;
-
-  // unSubscribe list
-  private unSubscribe: Subscription[] = [];
+  public deleteToggle: boolean;
 
   // click button for show password instead ******.
   public showPasswordToggle: boolean;
+
+  // unSubscribe list
+  private unSubscribe: Subscription[] = [];
 
   constructor(private store: Store<IProductsState>, private router: Router) {
 
@@ -53,8 +54,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
     this.unSubscribe.push(this.store.pipe(select(getUserUpdated)).subscribe(
       userUpdated => this.updateToggle = userUpdated,
-      catchError(error => of(console.log(error))
-      )
+      catchError(error => of(console.log(error)))
     ));
 
   }
