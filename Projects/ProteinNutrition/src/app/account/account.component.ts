@@ -74,13 +74,10 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   public deleteAccount(userId: string): void {
-    const isConfirm = confirm("You are try to delete your account!\nYou are sure?");
 
-    // Should be one function , FireBase (data base) don't save proteins id as a foreign key.
-    if (isConfirm) {
-      this.store.dispatch(DeleteUser({ userId }));
-      this.store.dispatch(DeleteAllProteins({ userId }));
-    }
+    // Should be one function , FireBase (data base) doesn't save proteins id as a foreign key.
+    this.store.dispatch(DeleteUser({ userId }));
+    this.store.dispatch(DeleteAllProteins({ userId }));
 
   }
 
@@ -119,6 +116,10 @@ export class AccountComponent implements OnInit, OnDestroy {
 
     return null;
 
+  }
+
+  public deleteAccountSwitch() {
+    this.deleteToggle = !this.deleteToggle;
   }
 
   public showPasswordSwitch() {
