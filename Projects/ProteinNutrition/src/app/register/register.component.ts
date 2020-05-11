@@ -15,11 +15,16 @@ export class RegisterComponent implements OnInit {
   public user: IUser;
   public terms: boolean;
 
+  // Toggles
+  // public registerToggle: boolean;
+
   constructor(private store: Store<IProductsState>) { }
 
   ngOnInit() {
     this.user = new User(undefined, undefined, undefined, undefined, undefined);
   }
+
+  // public createUser
 
   public createUser(): void {
 

@@ -2,29 +2,27 @@
     opacity: 0.9;
     position: relative;
     padding: 0;
+    top: 0;
     z-index: -2;
-    left: 15px;
-    max-height: 210px;
-    min-height: 165px;
+    height: 170px;
+}
+
+.sideImage {
+    background-image: linear-gradient(to top, rgb(5, 5, 5), rgb(48, 47, 47));
 }
 
 .opacity {
     opacity: 0.3;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 576px) {
     .smartphone {
-        max-height: 90px;
-        min-height: 50px;
-    }
-    .smallSreen {
-        content: url("/assets/photos/sport_girl_fitness_small_screen.jpg");
+        height: 90px;
     }
 }
 
 @media (max-height: 420px) {
     .smartphone {
-        max-height: 80px;
-        min-height: 50px;
+        height: 60px;
     }
 }
