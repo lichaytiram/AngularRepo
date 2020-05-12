@@ -37,6 +37,7 @@ export class FavoriteComponent implements OnInit {
   public addToggle: boolean;
   public updateToggle: boolean;
   public deleteToggle: boolean;
+  public animationBlockToggle: boolean;
 
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
 
@@ -126,6 +127,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   public editToggleSwitch(editToggle: number): void {
+    this.animationBlockToggle = true;
     this.editToggle = editToggle;
     this.addToggle = undefined;
   }

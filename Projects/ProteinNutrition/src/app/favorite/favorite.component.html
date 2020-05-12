@@ -129,7 +129,7 @@
 
                 </div>
 
-                <div class="card size">
+                <div [class.animationBlock]="animationBlockToggle" class="card size animation">
 
                     <div class="row justify-content-center">
 
@@ -192,9 +192,10 @@
                     <div class="card-body">
                         <h4>You try to delete a protein!</h4>
                         <h5>Please confirm!</h5>
-                        <input type="button" value="&#xf2ed; Delete" (click)="deleteProteinConfirmed(user.id,protein.id)"
-                            class="fas p-1 btn text-danger">
-                        <input type="button" value="&#xf0e2; Cancel" (click)="deleteProteinSwitch()" class="fas p-1 btn text-primary">
+                        <input type="button" value="&#xf2ed; Delete"
+                            (click)="deleteProteinConfirmed(user.id,protein.id)" class="fas p-1 btn text-danger">
+                        <input type="button" value="&#xf0e2; Cancel" (click)="deleteProteinSwitch()"
+                            class="fas p-1 btn text-primary">
                     </div>
 
                 </div>

@@ -95,8 +95,16 @@ span {
 .size {
     width: 450px;
     margin: auto;
+}
+
+.animation {
     transform: translateY(450px);
     animation: top 1.5s forwards;
+}
+
+.animationBlock {
+    transform: translateY(0);
+    animation: none;
 }
 
 .header {
