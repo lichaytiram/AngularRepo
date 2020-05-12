@@ -1,30 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IUser } from '../shared/models/iUser.model';
 import { User } from '../shared/models/user.model';
-import { CreateUser, CreateUserSuccess } from '../store/actions/user.action';
+import { CreateUser, UserCreatedOff } from '../store/actions/user.action';
+import { getUserCreated } from '../store/selectors/user.selectors';
 import { IProductsState } from '../store';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   public user: IUser;
   public terms: boolean;
+  public userCreated$: Observable<boolean>;
 
-  // Toggles
-  // public registerToggle: boolean;
-
-  constructor(private store: Store<IProductsState>) { }
+  constructor(private store: Store<IProductsState>, private router: Router) { }
 
   ngOnInit() {
     this.user = new User(undefined, undefined, undefined, undefined, undefined);
+    this.userCreated$ = this.store.pipe(select(getUserCreated));
   }
 
-  // public createUser
+  ngOnDestroy() {
+    this.store.dispatch(UserCreatedOff());
+  }
+
+  public createUserNavigate(): void {
+    this.router.navigate(['product/login']);
+  }
 
   public createUser(): void {
 

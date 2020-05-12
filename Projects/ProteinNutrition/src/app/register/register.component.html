@@ -1,8 +1,20 @@
 <div>
 
+    <!-- <div *ngIf="userCreated$ | async"> -->
+    <div *ngIf="userCreated$" class="text-center">
+
+        <div class="userCreated">
+
+            <h4>Your user has been created successfully!</h4>
+            <button (click)="createUserNavigate()">Login <i class="fas fa-sign-in-alt"></i></button>
+
+        </div>
+    </div>
+
     <div class="card m-auto">
 
         <div class="row">
+
             <div class="col-8">
 
                 <div class="card-body">
@@ -55,7 +67,7 @@
                         <div>
                             <p class="m-0">Enter your weight</p>
                             <small class="text-danger" [class.d-none]="weight.untouched || weight.valid">Your weight
-                                must be greater than 0 .</small>
+                                must be greater than 0.</small>
 
                             <input type="number" title="Enter your weight" name="weight" #weight="ngModel"
                                 [(ngModel)]="user.weight" required pattern="^[1-9]\d*$"
@@ -123,7 +135,7 @@
             <div class="col-4">
                 <img src="/assets/photos/bodybuilder_register.jpg" class="image">
                 <hr>
-                <p>Dreams come true sometimes</p>
+                <small>Dreams come true sometimes</small>
             </div>
 
         </div>

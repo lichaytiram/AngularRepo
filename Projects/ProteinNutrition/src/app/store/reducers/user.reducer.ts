@@ -4,6 +4,7 @@ import * as fromUser from '../actions/user.action';
 
 export interface IUserState {
     user: IUser;
+    created: boolean;
     loaded: boolean;
     updated: boolean;
     popup: boolean;
@@ -11,6 +12,7 @@ export interface IUserState {
 
 export const initialState: IUserState = {
     user: null,
+    created: false,
     loaded: false,
     updated: false,
     popup: false
@@ -53,8 +55,17 @@ export const userReducer = createReducer<IUserState>(
         }
     ), on(
         fromUser.CreateUserSuccess, (state: IUserState) => {
-            alert("Your user has been created success!");
-            return state;
+            return {
+                ...state,
+                created: true
+            };
+        }
+    ), on(
+        fromUser.UserCreatedOff, (state: IUserState) => {
+            return {
+                ...state,
+                created: false
+            };
         }
     ), on(
         fromUser.LoginUserSuccess, (state: IUserState, action) => {
@@ -92,6 +103,7 @@ export const userReducer = createReducer<IUserState>(
 );
 
 export const getUser = (state: IUserState) => state.user;
+export const getCreated = (state: IUserState) => state.created;
 export const getUserLoaded = (state: IUserState) => state.loaded;
 export const getUserUpdated = (state: IUserState) => state.updated;
 export const getPopup = (state: IUserState) => state.popup;

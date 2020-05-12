@@ -9,6 +9,7 @@ export const getUserState = createSelector(
 )
 
 export const getUser = createSelector(getUserState, fromUser.getUser);
+export const getUserCreated = createSelector(getUserState, fromUser.getCreated);
 export const getUserLoaded = createSelector(getUserState, fromUser.getUserLoaded);
 export const getUserUpdated = createSelector(getUserState, fromUser.getUserUpdated);
 export const getPopup = createSelector(getUserState, fromUser.getPopup);

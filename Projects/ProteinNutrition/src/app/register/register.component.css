@@ -1,5 +1,5 @@
 .card {
-    max-width: 23rem;
+    max-width: 28rem;
     background-color: rgb(175, 171, 169);
 }
 
@@ -76,4 +76,69 @@ small {
 
 .width {
     width: 24px;
+}
+
+.userCreated {
+    position: fixed;
+    width: 400px;
+    height: 200px;
+    left: 50%;
+    top: 50%;
+    padding: 30px;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    color: seashell;
+    background-color: rgb(88, 81, 81);
+}
+
+@media (max-width: 415px) {
+    .card {
+        max-width: 24rem;
+    }
+    .userCreated {
+        width: 375px;
+    }
+}
+
+@media (max-width: 390px) {
+    .card {
+        max-width: 22rem;
+    }
+    .userCreated {
+        width: 340px;
+    }
+}
+
+@media (max-width: 350px) {
+    .card {
+        max-width: 18rem;
+    }
+    .card-body {
+        padding: 0.6rem;
+    }
+    .userCreated {
+        width: 280px;
+        top: 60%;
+    }
+}
+
+/* @media(max-height:330px) {
+    .userCreated {
+        height: 140px;
+        top: 74%;
+    }
+}
+
+@media(max-height:330px) {
+    .userCreated {
+        height: 140px;
+        top: 74%;
+    }
+} */
+
+@media(max-height:330px) {
+    .userCreated {
+        height: 140px;
+        top: 74%;
+    }
 }

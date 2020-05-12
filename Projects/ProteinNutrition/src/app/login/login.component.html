@@ -1,61 +1,58 @@
-<div>
+<div class="card m-auto">
 
-    <div class="card m-auto">
+    <div class="p-0 row">
 
-        <div class="row">
-            <div class="col-8">
+        <div class="col-8">
 
-                <div class="card-body">
+            <div class="card-body">
 
-                    <h5 class="card-title ">Lets login to your user</h5>
-                    <form (ngSubmit)="userLogin()" #userForm="ngForm">
+                <h5 class="card-title ">Lets login to your user</h5>
+                <form (ngSubmit)="userLogin()" #userForm="ngForm">
 
-                        <div>
-                            <p class="m-0">Enter an username</p>
-                            <small class="text-danger" [class.d-none]="username.untouched || username.valid">
-                                Must to enter only three letters at least</small>
-                            <input type="text" title="Enter an username" name="username" #username="ngModel"
-                                [(ngModel)]="login.username" required pattern="^[a-zA-Z]{3,}$"
-                                [class.border-danger]="username.invalid && username.touched"
-                                class="rounded-pill border border-primary">
+                    <div>
+                        <p class="m-0">Enter an username</p>
+                        <small class="text-danger" [class.d-none]="username.untouched || username.valid">
+                            Must to enter only three letters at least.</small>
+                        <input type="text" title="Enter an username" name="username" #username="ngModel"
+                            [(ngModel)]="login.username" required pattern="^[a-zA-Z]{3,}$"
+                            [class.border-danger]="username.invalid && username.touched"
+                            class="rounded-pill border border-primary">
+                    </div>
+
+                    <div>
+                        <p class="m-0">Enter a password</p>
+
+                        <div class="text-danger" [class.d-none]="password.untouched || password.valid">
+                            <small>Must to enter eight letters at least.</small><br>
+                            <small>(one upper case one lower case and a number)</small>
                         </div>
 
-                        <div>
-                            <p class="m-0">Enter a password</p>
+                        <input type="password" title="Enter a password" name="password" #password="ngModel"
+                            [(ngModel)]="login.password" required
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                            [class.border-danger]="password.invalid && password.touched"
+                            class="rounded-pill border border-primary">
+                    </div>
 
-                            <div class="text-danger" [class.d-none]="password.untouched || password.valid">
-                                <small>Must to enter eight letters at least.</small><br>
-                                <small>(one upper case one lower case and a number)</small>
-                            </div>
+                    <div>
 
-                            <input type="password" title="Enter a password" name="password" #password="ngModel"
-                                [(ngModel)]="login.password" required
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                                [class.border-danger]="password.invalid && password.touched"
-                                class="rounded-pill border border-primary">
+                        <hr>
+                        <div class="text-center">
+                            <input type="submit" value="Login &#xf2f6;"
+                                [class.invalid]="userForm.form.invalid && username.touched && password.touched"
+                                [disabled]="userForm.form.invalid" class="btn btn-outline-primary rounded-pill m-1 fas">
+                            <input type="button" (click)="register()" value="Create &#xf234;"
+                                class="btn btn-outline-primary rounded-pill m-1 fas">
                         </div>
 
-                        <div>
+                    </div>
 
-                            <hr>
-                            <div class="text-center">
-                                <input type="submit" value="Login &#xf2f6;"
-                                    [class.invalid]="userForm.form.invalid && username.touched && password.touched"
-                                    [disabled]="userForm.form.invalid"
-                                    class="btn btn-outline-primary rounded-pill m-1 fas">
-                                <input type="button" (click)="register()" value="Create &#xf234;"
-                                    class="btn btn-outline-primary rounded-pill m-1 fas">
-                            </div>
-
-                        </div>
-
-                    </form>
-                </div>
+                </form>
             </div>
+        </div>
 
-            <div class="col-4">
-                <img src="/assets/photos/man_body_torso_muscles.jpg" class="image">
-            </div>
+        <div class="col-4">
+            <img src="/assets/photos/man_body_torso_muscles.jpg" class="image">
         </div>
 
     </div>

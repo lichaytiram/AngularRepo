@@ -120,7 +120,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     width: 300px;
     height: 200px;
     left: 50%;
-    top: 60%;
+    top: 50%;
     transform: translate(-50%, -50%);
     color: seashell;
     background-color: rgb(88, 81, 81);

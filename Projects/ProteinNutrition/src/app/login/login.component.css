@@ -1,5 +1,5 @@
 .card {
-    max-width: 30rem;
+    max-width: 35rem;
     background-color: rgb(175, 171, 169);
 }
 
@@ -26,4 +26,22 @@ input:focus {
     outline-style: inherit;
     box-shadow: 0 0 0 1px rgb(145, 140, 145);
     background-color: rgba(250, 241, 232, 0.788);
+}
+
+@media (max-width: 415px) {
+    .card {
+        max-width: 24rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .card {
+        max-width: 22rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .card {
+        max-width: 18rem;
+    }
 }

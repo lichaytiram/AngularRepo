@@ -21,3 +21,4 @@ export const UserUpdated = createAction('[Products] User Updated');
 export const UserLogout = createAction('[Products] User Logout');
 export const UserPopupOn = createAction('[Products] User Popup On');
 export const UserPopupOff = createAction('[Products] User Popup Off');
+export const UserCreatedOff = createAction('[Products] User Created Off');
