@@ -102,6 +102,12 @@ small {
     outline: inherit;
 }
 
+.userCreatedButton:hover {
+    transition-duration: 1.8s;
+    background-color: rgb(231, 199, 206);
+    color: rgb(77, 47, 47);
+}
+
 .opacity {
     opacity: 0.3;
 }
