@@ -1,17 +1,18 @@
 <div>
 
-    <!-- <div *ngIf="userCreated$ | async"> -->
-    <div *ngIf="userCreated$" class="text-center">
+    <div *ngIf="userCreated$ | async" class="text-center">
 
         <div class="userCreated">
 
             <h4>Your user has been created successfully!</h4>
-            <button (click)="createUserNavigate()">Login <i class="fas fa-sign-in-alt"></i></button>
+            <button (click)="createUserNavigate()" class="userCreatedButton">Login <i
+                    class="fas fa-sign-in-alt"></i></button>
 
         </div>
+
     </div>
 
-    <div class="card m-auto">
+    <div [class.opacity]="userCreated$ | async" class="card m-auto">
 
         <div class="row">
 
