@@ -122,19 +122,12 @@ small {
     }
 }
 
-/* @media(max-height:330px) {
+@media(max-height:420px) {
     .userCreated {
-        height: 140px;
-        top: 74%;
+        height: 160px;
+        top: 65%;
     }
 }
-
-@media(max-height:330px) {
-    .userCreated {
-        height: 140px;
-        top: 74%;
-    }
-} */
 
 @media(max-height:330px) {
     .userCreated {

@@ -158,6 +158,20 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
 }
 
+@media (max-width: 430px) {
+    .popup {
+        top: 250px;
+        width: 85%;
+    }
+}
+
+@media (max-width: 350px) {
+    .popup {
+        top: 230px;
+        width: 75%;
+    }
+}
+
 @media (max-height: 420px) {
     .popup {
         margin: -12% auto;
@@ -171,5 +185,13 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 @media (max-height: 330px) {
     .show {
         z-index: 9999;
+    }
+    .popup {
+        top: 230px;
+        width: 55%;
+        height: 44%;
+    }
+    .card-body {
+        padding: 0;
     }
 }
