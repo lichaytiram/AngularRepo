@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         popupToggle => this.popupToggle = popupToggle,
         catchError(error => of(console.log(error)))
       ))
-    }, 8000))
+    }, 8000));
 
   }
 

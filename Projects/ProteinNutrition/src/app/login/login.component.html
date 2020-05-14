@@ -1,5 +1,15 @@
 <div class="card m-auto">
 
+    <div *ngIf="loginFail$ | async" class="loginFail">
+        <h5>Your username and password don't match!</h5>
+
+        <button (click)="tryAgain()" class="loginFailButton">
+            <h6>Please try again</h6>
+            <i class="fas fa-undo"></i>
+        </button>
+
+    </div>
+
     <div class="p-0 row">
 
         <div class="col-8">

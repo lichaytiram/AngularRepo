@@ -5,6 +5,7 @@ import * as fromUser from '../actions/user.action';
 export interface IUserState {
     user: IUser;
     created: boolean;
+    loginFail: boolean;
     loaded: boolean;
     updated: boolean;
     popup: boolean;
@@ -13,6 +14,7 @@ export interface IUserState {
 export const initialState: IUserState = {
     user: null,
     created: false,
+    loginFail: false,
     loaded: false,
     updated: false,
     popup: false
@@ -31,8 +33,10 @@ export const userReducer = createReducer<IUserState>(
         }
     ), on(
         fromUser.LoginUserFail, (state: IUserState) => {
-            alert("Your username and password don't match!\nPlease try again.");
-            return state;
+            return {
+                ...state,
+                loginFail: true
+            };
         }
     ), on(
         fromUser.UserLogout, () => {
@@ -65,6 +69,13 @@ export const userReducer = createReducer<IUserState>(
             return {
                 ...state,
                 created: false
+            };
+        }
+    ), on(
+        fromUser.UserLoginFailOff, (state: IUserState) => {
+            return {
+                ...state,
+                loginFail: false
             };
         }
     ), on(
@@ -104,6 +115,7 @@ export const userReducer = createReducer<IUserState>(
 
 export const getUser = (state: IUserState) => state.user;
 export const getCreated = (state: IUserState) => state.created;
+export const getLoginFail = (state: IUserState) => state.loginFail;
 export const getUserLoaded = (state: IUserState) => state.loaded;
 export const getUserUpdated = (state: IUserState) => state.updated;
 export const getPopup = (state: IUserState) => state.popup;

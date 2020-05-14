@@ -16,6 +16,10 @@ hr {
     background-color: paleturquoise;
 }
 
+.border {
+    padding-left: 6px;
+}
+
 .invalid {
     background-color: pink;
     color: black;

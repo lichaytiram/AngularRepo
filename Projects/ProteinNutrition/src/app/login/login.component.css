@@ -1,6 +1,11 @@
 .card {
+    position: relative;
     max-width: 35rem;
     background-color: rgb(175, 171, 169);
+}
+
+.border {
+    padding-left: 6px;
 }
 
 .image {
@@ -28,6 +33,36 @@ input:focus {
     background-color: rgba(250, 241, 232, 0.788);
 }
 
+.loginFail {
+    position: absolute;
+    text-align: center;
+    height: 60%;
+    padding: 15px;
+    width: 80%;
+    background-color: rgba(179, 169, 185, 0.938);
+    color: rgb(235, 36, 79);
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+}
+
+.loginFailButton {
+    background-color: inherit;
+    color: rgb(63, 104, 240);
+    border-radius: 20px;
+    border-style: solid;
+    padding: 5px;
+    outline: inherit;
+}
+
+.loginFailButton:hover {
+    background-color: ivory;
+    box-shadow: 0 0 0 2px rgb(66, 65, 65);
+    border: 0.1px solid rgb(29, 28, 28);
+}
+
 @media (max-width: 415px) {
     .card {
         max-width: 24rem;
@@ -43,5 +78,12 @@ input:focus {
 @media (max-width: 350px) {
     .card {
         max-width: 18rem;
+    }
+}
+
+@media (max-height: 350px) {
+    .loginFail {
+        transform: translate(-50%, -85%);
+        height: 50%;
     }
 }
