@@ -14,11 +14,11 @@ label {
     position: relative;
     color: oldlace;
     min-width: 70px;
+    transition-duration: 2s;
 }
 
 label:hover {
     color: black;
-    transition-duration: 2s;
 }
 
 label::before {

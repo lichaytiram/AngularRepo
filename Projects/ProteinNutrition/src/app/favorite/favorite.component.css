@@ -187,23 +187,27 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     color: rgb(111, 5, 182);
 }
 
-.parallax1 {
+.inner {
     background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));
     height: 650px;
     position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
-.parallax2 {
-    background-image: url("/assets/photos/biceps_black_and_white_body.jpg");
+.parallax {
     height: 300px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
+}
+
+.parallax::before {
+    content: '';
+    position: fixed;
+    background: url("/assets/photos/biceps_black_and_white_body.jpg") center no-repeat;
     background-size: cover;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 @keyframes large {
