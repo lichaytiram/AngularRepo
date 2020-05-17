@@ -160,7 +160,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     overflow: hidden;
 }
 
-.side {
+.bottom {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.sides {
     top: 0;
     bottom: 0;
     left: 0;
@@ -169,19 +178,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     border-left: 4px solid rgb(158, 223, 243);
     border-right: 4px solid rgb(158, 223, 243);
     height: 0%;
-}
-
-input:hover+.top+.bottom+.side {
-    height: 100%;
-}
-
-.bottom {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    overflow: hidden;
 }
 
 .top::before {
@@ -213,6 +209,10 @@ input:hover+.top::before {
 input:hover+.top+.bottom::before {
     animation: bottom 3s infinite;
     transform: translateX(100%);
+}
+
+input:hover+.top+.bottom+.sides {
+    height: 100%;
 }
 
 @keyframes top {
