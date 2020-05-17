@@ -71,7 +71,7 @@ input:focus {
 
 @media (max-width: 390px) {
     .card {
-        max-width: 22rem;
+        max-width: 21rem;
     }
 }
 
