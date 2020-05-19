@@ -128,52 +128,48 @@
 
                 </div>
 
-                <div [class.animationBlock]="animationBlockToggle" class="row justify-content-center">
+                <div [class.animationBlock]="animationBlockToggle" class="card size animation">
 
-                    <div class="card size animation">
+                    <div *ngIf="editToggle !== i" class="col-12 p-0">
 
-                        <div *ngIf="editToggle !== i" class="col-12 p-0">
+                        <input type="button" value="&#xf06e; Show" (click)="show(user,protein)"
+                            class="btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6">
 
-                            <input type="button" value="&#xf06e; Show" (click)="show(user,protein)"
-                                class="btn btn-outline-primary rounded-pill far m-1 col-8 col-sm-6">
-
-                            <div class="col-12 p-0">
-                                <input type="button" value="&#xf410; Delete" (click)="deleteProteinSwitch()"
-                                    class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
-                                <input type="button" value="&#xf044; Edit" (click)="editToggleSwitch(i)"
-                                    class="btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3">
-                            </div>
-
+                        <div class="col-12 p-0">
+                            <input type="button" value="&#xf410; Delete" (click)="deleteProteinSwitch()"
+                                class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
+                            <input type="button" value="&#xf044; Edit" (click)="editToggleSwitch(i)"
+                                class="btn btn-outline-secondary rounded-pill fas m-1 col-4 col-sm-3">
                         </div>
 
-                        <div *ngIf="editToggle === i && !addToggle" class="col-12 p-0">
+                    </div>
 
-                            <input type="button" value="&#xf0c7; Update" (click)="saveNewUpdate(user.id,protein.id)"
-                                class="btn btn-outline-primary rounded-pill fas m-1 col-8 col-sm-6">
-                            <div class="col-12 p-0">
-                                <input type="button" value="&#xf410; Cancel" (click)="cancelEdit()"
-                                    class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
-                                <input type="button" value="&#xf0fe; Add" (click)="addToggleSwitch(protein)"
-                                    class="btn btn-outline-success rounded-pill fas m-1 col-4 col-sm-3">
-                            </div>
+                    <div *ngIf="editToggle === i && !addToggle" class="col-12 p-0">
 
+                        <input type="button" value="&#xf0c7; Update" (click)="saveNewUpdate(user.id,protein.id)"
+                            class="btn btn-outline-primary rounded-pill fas m-1 col-8 col-sm-6">
+                        <div class="col-12 p-0">
+                            <input type="button" value="&#xf410; Cancel" (click)="cancelEdit()"
+                                class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
+                            <input type="button" value="&#xf0fe; Add" (click)="addToggleSwitch(protein)"
+                                class="btn btn-outline-success rounded-pill fas m-1 col-4 col-sm-3">
                         </div>
 
-                        <div *ngIf="editToggle === i && addToggle" class="col-12 p-0">
+                    </div>
 
-                            <select [(ngModel)]="add" class="text-capitalize text-center col-8 col-sm-6">
-                                <option *ngIf="addList?.length === 0">Your list full</option>
-                                <option *ngFor="let proteinList of addList">{{proteinList}}</option>
-                            </select>
+                    <div *ngIf="editToggle === i && addToggle" class="col-12 p-0">
 
-                            <div class="col-12 p-0">
-                                <input type="button" value="&#xf410; Cancel" (click)="cancelEdit()"
-                                    class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
-                                <input type="button" value="&#xf0fe; Add" [disabled]="addList?.length === 0"
-                                    (click)="addProtein(user.id,protein)"
-                                    class="btn btn-outline-success rounded-pill fas m-1 col-4 col-sm-3">
-                            </div>
+                        <select [(ngModel)]="add" class="text-capitalize text-center col-8 col-sm-6">
+                            <option *ngIf="addList?.length === 0">Your list full</option>
+                            <option *ngFor="let proteinList of addList">{{proteinList}}</option>
+                        </select>
 
+                        <div class="col-12 p-0">
+                            <input type="button" value="&#xf410; Cancel" (click)="cancelEdit()"
+                                class="btn btn-outline-danger rounded-pill far m-1 col-4 col-sm-3">
+                            <input type="button" value="&#xf0fe; Add" [disabled]="addList?.length === 0"
+                                (click)="addProtein(user.id,protein)"
+                                class="btn btn-outline-success rounded-pill fas m-1 col-4 col-sm-3">
                         </div>
 
                     </div>

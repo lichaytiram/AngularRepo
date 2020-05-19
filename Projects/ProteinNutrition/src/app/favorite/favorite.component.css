@@ -87,7 +87,7 @@ span {
 .eggSize {
     display: inline-block;
     text-align: start;
-    width: 70px;
+    /* width: 70px; */
 }
 
 .inputEdit {
@@ -236,6 +236,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 @media(max-width:850px) {
     .grid {
         grid-template-columns: 1fr;
+    }
+    .eggCard {
+        grid-column: initial;
     }
 }
 
