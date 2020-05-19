@@ -20,103 +20,41 @@
 
             <div class="inner m-0">
 
-                <div class="row m-1 justify-content-center">
-                    <div [class.d-none]="proteinKeyValue.key === 'id'"
-                        *ngFor="let proteinKeyValue of protein | keyvalue" class="col-12 col-sm-6 col-xl-4 p-2">
+                <div class="grid p-2">
 
-                        <div [class.eggCard]="proteinKeyValue.key === 'egg' && editToggle === i && !addToggle"
-                            class="card">
+                    <div [class.eggCard]="proteinKeyValue.key === 'egg' && editToggle === i && !addToggle" class="card"
+                        [class.d-none]="proteinKeyValue.key === 'id'"
+                        *ngFor="let proteinKeyValue of protein | keyvalue">
 
-                            <div [class.d-none]="editToggle !== i || addToggle">
-                                <input type="button" (click)="deleteOneProtein(user.id,protein.id,proteinKeyValue.key)"
-                                    value="&#xf2ed;" class="fas text-danger deleteOneProtein">
-                            </div>
+                        <div [class.d-none]="editToggle !== i || addToggle">
+                            <input type="button" (click)="deleteOneProtein(user.id,protein.id,proteinKeyValue.key)"
+                                value="&#xf2ed;" class="fas text-danger deleteOneProtein">
+                        </div>
 
-                            <div *ngIf="proteinKeyValue.key !== 'egg'" class="m-0">
+                        <div *ngIf="proteinKeyValue.key !== 'egg'" class="m-0">
 
-                                <div class="row justify-content-center m-0">
+                            <div class="row justify-content-center m-0">
 
-                                    <label class="col-5 col-sm-4 box m-1">{{proteinKeyValue.key}}</label>
-                                    <label class="col-1"></label>
-                                    <label class="col-5 col-sm-4 box m-1"> {{proteinKeyValue.value}}</label>
+                                <label class="col-5 col-sm-4 box m-1">{{proteinKeyValue.key}}</label>
+                                <label class="col-1"></label>
+                                <label class="col-5 col-sm-4 box m-1"> {{proteinKeyValue.value}}</label>
 
-                                    <div [class.d-none]="editToggle !== i || addToggle" class="col-12 p-0">
+                                <div [class.d-none]="editToggle !== i || addToggle" class="col-12 p-0">
 
-                                        <span class="col-2">{{proteinKeyValue.key}}</span>
+                                    <span class="col-2">{{proteinKeyValue.key}}</span>
 
-                                        <input type="number" title="Enter a new value" [id]="proteinKeyValue.key+i"
-                                            (keyup)="proteinKeyValue.value" [value]="proteinKeyValue.value"
-                                            class="text-center rounded-pill border border-white inputEdit col-4">
+                                    <input type="number" title="Enter a new value" [id]="proteinKeyValue.key+i"
+                                        (keyup)="proteinKeyValue.value" [value]="proteinKeyValue.value"
+                                        class="text-center rounded-pill border border-white inputEdit col-4">
 
-                                        <div class="d-inline col-2">
+                                    <div class="d-inline col-2">
 
-                                            <label
-                                                *ngIf="proteinKeyValue.key === 'tuna'|| proteinKeyValue.key === 'meat' || proteinKeyValue.key === 'cheese' || proteinKeyValue.key === 'cottage' || proteinKeyValue.key === 'quinoa'">grams</label>
-                                            <label *ngIf="proteinKeyValue.key === 'almonds'">handful</label>
-                                            <label *ngIf="proteinKeyValue.key === 'bread'">slices</label>
-                                            <label
-                                                *ngIf="proteinKeyValue.key === 'powder' || proteinKeyValue.key === 'gainer'">portions</label>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div *ngIf="proteinKeyValue.key === 'egg'">
-
-                                <div class="row justify-content-center m-0">
-
-                                    <label class="col smallBox p-0 m-0">{{proteinKeyValue.key}}</label>
-
-                                </div>
-
-                                <div class="row justify-content-center m-0">
-
-                                    <small class="col-5 col-sm-4 box">amount</small>
-                                    <label class="col-1"></label>
-                                    <small class="col-5 col-sm-4 box">{{proteinKeyValue.value.amount}}</small>
-
-                                </div>
-
-                                <div class="row justify-content-center m-0">
-
-                                    <small class="col-5 col-sm-4 box">size</small>
-                                    <small class="col-1"></small>
-                                    <small class="col-5 col-sm-4 box">{{proteinKeyValue.value.sizeEgg}}</small>
-
-                                </div>
-
-                                <div [class.d-none]="editToggle !== i || addToggle">
-
-                                    <div class="row justify-content-center m-3">
-
-                                        <small *ngIf="proteinKeyValue.value.sizeEgg === 'empty'"
-                                            class="text-primary">*Must enter an amount and size</small>
-
-                                        <div class="col-12">
-
-                                            <small class="text-capitalize eggSize">amount</small>
-
-                                            <input type="number" title="Enter a new value" [id]="'amount'+i"
-                                                (keyup)="proteinKeyValue.value.amount"
-                                                [value]="proteinKeyValue.value.amount"
-                                                class="text-center col-4 rounded-pill border border-white inputEdit">
-                                        </div>
-
-                                        <div class="col-12">
-
-                                            <small class="text-capitalize eggSize">size</small>
-
-                                            <select [id]="'sizeEgg'+i" title="Select a new value from list"
-                                                [value]="proteinKeyValue.value.sizeEgg" class="text-capitalize col-4">
-                                                <option value="S">small</option>
-                                                <option value="M">medium</option>
-                                                <option value="L">large</option>
-                                            </select>
-
-                                        </div>
+                                        <label
+                                            *ngIf="proteinKeyValue.key === 'tuna'|| proteinKeyValue.key === 'meat' || proteinKeyValue.key === 'cheese' || proteinKeyValue.key === 'cottage' || proteinKeyValue.key === 'quinoa'">grams</label>
+                                        <label *ngIf="proteinKeyValue.key === 'almonds'">handful</label>
+                                        <label *ngIf="proteinKeyValue.key === 'bread'">slices</label>
+                                        <label
+                                            *ngIf="proteinKeyValue.key === 'powder' || proteinKeyValue.key === 'gainer'">portions</label>
 
                                     </div>
 
@@ -125,13 +63,74 @@
                             </div>
 
                         </div>
+
+                        <div *ngIf="proteinKeyValue.key === 'egg'">
+
+                            <div class="row justify-content-center m-0">
+
+                                <label class="col smallBox p-0 m-2">{{proteinKeyValue.key}}</label>
+
+                            </div>
+
+                            <div class="row justify-content-center m-0">
+
+                                <small class="col-5 col-sm-4 box">amount</small>
+                                <label class="col-1"></label>
+                                <small class="col-5 col-sm-4 box">{{proteinKeyValue.value.amount}}</small>
+
+                            </div>
+
+                            <div class="row justify-content-center m-0">
+
+                                <small class="col-5 col-sm-4 box">size</small>
+                                <small class="col-1"></small>
+                                <small class="col-5 col-sm-4 box">{{proteinKeyValue.value.sizeEgg}}</small>
+
+                            </div>
+
+                            <div [class.d-none]="editToggle !== i || addToggle">
+
+                                <div class="row justify-content-center m-3">
+
+                                    <small *ngIf="proteinKeyValue.value.sizeEgg === 'empty'" class="text-primary">*Must
+                                        enter an amount and size</small>
+
+                                    <div class="col-12">
+
+                                        <small class="text-capitalize eggSize">amount</small>
+
+                                        <input type="number" title="Enter a new value" [id]="'amount'+i"
+                                            (keyup)="proteinKeyValue.value.amount"
+                                            [value]="proteinKeyValue.value.amount"
+                                            class="text-center col-4 rounded-pill border border-white inputEdit">
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <small class="text-capitalize eggSize">size</small>
+
+                                        <select [id]="'sizeEgg'+i" title="Select a new value from list"
+                                            [value]="proteinKeyValue.value.sizeEgg" class="text-capitalize col-4">
+                                            <option value="S">small</option>
+                                            <option value="M">medium</option>
+                                            <option value="L">large</option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div [class.animationBlock]="animationBlockToggle" class="card size animation">
+                <div [class.animationBlock]="animationBlockToggle" class="row justify-content-center">
 
-                    <div class="row justify-content-center">
+                    <div class="card size animation">
 
                         <div *ngIf="editToggle !== i" class="col-12 p-0">
 
