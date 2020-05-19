@@ -247,10 +247,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
         height: auto;
     }
     .size {
-        width: 280px;
+        width: 290px;
     }
     .disconnected {
         min-height: 550px;
+    }
+}
+
+@media(max-width :350px) {
+
+    .size {
+        width: 310px;
     }
 }
 
