@@ -104,7 +104,7 @@ span {
 
 .animation {
     transform: translateY(450px);
-    animation: top 1.5s forwards;
+    animation: showUp 1.5s forwards;
 }
 
 .animationBlock {
@@ -221,7 +221,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
 }
 
-@keyframes top {
+@keyframes showUp {
     to {
         transform: translateY(0)
     }
