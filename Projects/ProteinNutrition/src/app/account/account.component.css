@@ -1,3 +1,7 @@
+.container {
+    margin-top: 5%;
+}
+
 p, label, span, h5 {
     color: rgb(190, 231, 238);
 }
@@ -71,4 +75,10 @@ small {
     transform: translate(-50%, -50%);
     color: seashell;
     background-color: rgb(88, 81, 81);
+}
+
+@media(max-width :420px) {
+    .container {
+        margin-top: 15%;
+    }
 }

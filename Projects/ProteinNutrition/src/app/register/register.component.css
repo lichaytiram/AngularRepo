@@ -1,6 +1,7 @@
 .card {
     max-width: 28rem;
     background-color: rgb(175, 171, 169);
+    margin: 5% auto;
 }
 
 .image {

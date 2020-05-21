@@ -2,6 +2,7 @@
     position: relative;
     max-width: 35rem;
     background-color: rgb(175, 171, 169);
+    margin: 5% auto;
 }
 
 .border {
@@ -65,18 +66,21 @@ input:focus {
 
 @media (max-width: 415px) {
     .card {
+        margin: 25% auto;
         max-width: 24rem;
     }
 }
 
 @media (max-width: 390px) {
     .card {
+        margin: 20% auto;
         max-width: 21rem;
     }
 }
 
 @media (max-width: 350px) {
     .card {
+        margin: 10% auto;
         max-width: 18rem;
     }
 }
