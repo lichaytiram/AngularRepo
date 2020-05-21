@@ -1,6 +1,6 @@
 .disconnected {
     color: crimson;
-    min-height: 620px;
+    padding-top: 80px;
 }
 
 .disconnected:hover {
@@ -254,9 +254,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
     .size {
         width: 290px;
-    }
-    .disconnected {
-        min-height: 550px;
     }
 }
 
