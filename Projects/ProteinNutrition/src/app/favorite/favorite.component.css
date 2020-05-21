@@ -194,7 +194,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 .inner {
     background: linear-gradient( rgb(179, 145, 218) 40%, rgb(169, 235, 255), rgb(43, 39, 255));
-    min-height: 650px;
+    min-height: calc(100vh - 230px);
     position: relative;
 }
 
@@ -242,6 +242,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
 }
 
+@media (max-width: 576px) {
+    .inner {
+        min-height: calc(100vh - 185px);
+    }
+}
+
 @media(max-width :420px) {
     .parallax1 {
         height: auto;
@@ -255,7 +261,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 @media(max-width :350px) {
-
     .size {
         width: 310px;
     }
@@ -267,5 +272,14 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
     .disconnected {
         min-height: 210px;
+    }
+    .inner {
+        min-height: calc(100vh - 115px);
+    }
+}
+
+@media (max-height: 350px) {
+    .inner {
+        min-height: calc(100vh - 150px);
     }
 }

@@ -15,6 +15,14 @@
     opacity: 0.3;
 }
 
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
 @media (max-width: 576px) {
     .smartphone {
         height: 90px;
