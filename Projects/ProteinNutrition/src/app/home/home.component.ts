@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Toggles
   public saveToggle: boolean;
   public popupToggle: boolean;
+  public infoToggle: boolean;
 
   private clearInterval = [];
   private unSubscribe: Subscription[] = [];
@@ -92,6 +93,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public cancelShow(): void {
     this.visibilityOff('show');
+  }
+
+  public info(): void {
+    this.infoToggle = !this.infoToggle;
   }
 
   public isAcccept(): void {

@@ -1,10 +1,5 @@
 <div>
 
-  <div [class.opacity]="popupToggle">
-    <h1 class="text-center">Muscle is your life?</h1>
-    <h2 class="text-center">Let's start to calculate your protein </h2>
-  </div>
-
   <div [class.d-none]="!popupToggle">
     <div class="card popup">
       <img src="/assets/photos/popup.jpg" class="cardImage">
@@ -22,9 +17,28 @@
     </div>
   </div>
 
-  <br>
+
+  <div [class.opacity]="popupToggle" class="text-center p-3">
+    <h1>Muscle is your life?</h1>
+    <h2 class="d-inline">Let's start to calculate your protein </h2>
+    <input type="button" (click)="info()" value="&#xf059;" class="far fa-lg questionMark">
+  </div>
+
+  <div class="row justify-content-center mb-3 m-0">
+
+    <button (click)="info()" class="arrow"><i class="fas fa-arrow-down fa-3x position-relative"></i></button>
+
+    <div *ngIf="infoToggle" class="col-12 text-center info">
+      <h4>- more information -</h4>
+      <h5>You need to fill everyting you eat from the list , and will see how much protein you gain.</h5>
+      <p>You can create a lot of mixes and save it inside your favorite list <span>( username is required )</span></p>
+      <input type="button" value="&#xf00c;  O.k" (click)="info()" class="fas">
+    </div>
+
+  </div>
+
   <div class="text-center">
-    <button class="btn-lg btn-danger col-10" *ngIf="!acccept" (click)="isAcccept()">Lets started</button>
+    <button *ngIf="!acccept" (click)="isAcccept()" class="btn-lg btn-danger col-10">Lets started</button>
   </div>
 
   <div *ngIf="acccept" [class.opacity]="popupToggle">

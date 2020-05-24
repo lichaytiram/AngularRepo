@@ -10,32 +10,73 @@ h1, h2 {
     opacity: 0.3;
 }
 
+.arrow {
+    background-color: inherit;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    padding-bottom: 2px solid red;
+}
+
 label {
-    position: relative;
     color: oldlace;
     min-width: 70px;
+}
+
+.arrow i {
+    position: relative;
+    color: rgb(212, 197, 197);
     transition-duration: 2s;
 }
 
-label:hover {
-    color: black;
+.arrow i:hover {
+    color: rgb(231, 203, 177);
 }
 
-label::before {
+.arrow i::after {
     content: '';
     position: absolute;
-    width: 0%;
+    height: 0%;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: -1;
-    transition-duration: 2s;
-    background: linear-gradient(to right, rgb(201, 169, 169), rgb(196, 111, 111));
+    transition-duration: 1s;
+    background: linear-gradient( rgb(10, 12, 14), rgb(4, 101, 112), rgb(10, 12, 14));
 }
 
-label:hover::before {
-    width: 100%;
+.arrow i:hover::after {
+    height: 100%;
+}
+
+.info {
+    color: rgb(143, 189, 226);
+    padding-top: 10px;
+}
+
+.info span {
+    color: rgb(224, 83, 83);
+    font-weight: bold;
+}
+
+.info p {
+    margin: 8px;
+}
+
+.info input {
+    background-color: inherit;
+    padding: 0;
+    border: 0;
+    color: lawngreen;
+}
+
+.questionMark {
+    background-color: inherit;
+    color: lightgoldenrodyellow;
+    padding: 3px;
+    border: 0;
+    outline: 0;
 }
 
 select {
@@ -49,18 +90,18 @@ select:focus {
     background-color: rgb(34, 34, 32);
 }
 
-input {
+form input {
     animation-name: input;
     animation-duration: 3s;
 }
 
-input:focus {
+form input:focus {
     outline-style: inherit;
     box-shadow: 0 0 0 1px rgb(145, 140, 145);
     background-color: rgba(250, 241, 232, 0.788);
 }
 
-input:hover {
+form input:hover {
     background-color: inherit;
     color: white;
 }
@@ -113,7 +154,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     z-index: 1;
     width: 50%;
     height: 40%;
-    margin: -4% auto;
+    margin: 5% auto;
     left: 0;
     right: 0;
     background-color: pink;
@@ -267,7 +308,6 @@ input:hover+.top+.bottom+.sides {
 
 @media (max-height: 420px) {
     .popup {
-        margin: -12% auto;
         height: 50%;
     }
     .show {
@@ -280,6 +320,7 @@ input:hover+.top+.bottom+.sides {
         z-index: 9999;
     }
     .popup {
+        margin: -11% auto;
         top: 230px;
         width: 55%;
         height: 44%;
