@@ -156,7 +156,7 @@
           </div>
         </div>
 
-        <div id="submit" class="invisible2">
+        <div id="submit" class="invisible">
 
           <small *ngIf="proteinForm.invalid" class="text-center text-danger d-block m-1">* You must to enter a positive
             values</small>
@@ -164,15 +164,12 @@
           <div class="row justify-content-center">
             <div class="col-1"></div>
 
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button p-0 m-1 position-relative">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 button p-0 m-1">
               <input [disabled]="proteinForm.invalid" type="button" value="&#xf06e; Show" (click)="show()"
-                class="btn btn-secondary  border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 innerButton radius">
-              <span class="position-absolute radius top"></span>
-              <span class="position-absolute radius bottom"></span>
-              <span class="position-absolute radius sides"></span>
+                class="btn btn-secondary border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 innerButton radius">
             </div>
 
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 p-0 m-1 button position-relative">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 p-0 m-1 button">
               <input [disabled]="!user || !saveToggle || !proteinForm.valid" type="submit" value="&#xf0c7; Save"
                 class="btn btn-secondary radius border far col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 innerButton">
             </div>

@@ -90,7 +90,7 @@ select:focus {
     background-color: rgb(34, 34, 32);
 }
 
-form input {
+form .rounded-pill {
     animation-name: input;
     animation-duration: 3s;
 }
@@ -196,87 +196,19 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     border-radius: 10px;
 }
 
-.top {
-    position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    overflow: hidden;
+.radius:hover, .radius:focus {
+    background: linear-gradient(180deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px), linear-gradient(0deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px), linear-gradient(90deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px), linear-gradient(270deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px);
+    background-repeat: no-repeat;
+    background-position: 200px, -200px, 0px, 0px;
+    animation: slide 2s infinite;
 }
 
-.bottom {
-    position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.sides {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    border-left: 4px solid rgb(158, 223, 243);
-    border-right: 4px solid rgb(158, 223, 243);
-    height: 0%;
-}
-
-.top::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: translateX(100%);
-    border-top: 3px solid rgb(158, 223, 243);
-}
-
-.bottom::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: translateX(-100%);
-    border-bottom: 3px solid rgb(158, 223, 243);
-}
-
-input:hover+.top::before {
-    animation: top 3s infinite;
-}
-
-input:hover+.top+.bottom::before {
-    animation: bottom 3s infinite;
-    transform: translateX(100%);
-}
-
-input:hover+.top+.bottom+.sides {
-    height: 100%;
-}
-
-@keyframes top {
+@keyframes slide {
     from {
-        transform: translateX(100%);
+        background-position: 200px, -200px, 0px, 0px;
     }
     to {
-        transform: translateX(-100%);
-    }
-}
-
-@keyframes bottom {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(100%);
+        background-position: -200px, 200px, 0px, 0px;
     }
 }
 
