@@ -21,6 +21,13 @@ h1, h2 {
 label {
     color: oldlace;
     min-width: 70px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(201, 112, 112));
+    background-size: 500%;
+    background-position: left;
+}
+
+label:hover {
+    animation: label 3s;
 }
 
 .arrow i {
@@ -221,6 +228,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     to {
         pointer-events: none;
         transform: rotate(360deg);
+    }
+}
+
+@keyframes label {
+    30% {
+        color: black;
+    }
+    100% {
+        background-position: right;
+        color: black;
     }
 }
 
