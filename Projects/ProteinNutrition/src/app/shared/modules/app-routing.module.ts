@@ -9,12 +9,9 @@ import { LoginComponent } from '../../login/login.component';
 import { RegisterComponent } from '../../register/register.component';
 
 // const routes: Routes = [
-
-//   { path: '', component: HomeComponent, canActivate: guards },
-//   { path: 'product', loadChildren: () => import('./product.module').then(m => m.ProductModule) },
+//   { path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
 //   { path: '**', redirectTo: 'product/home', pathMatch: 'full' }
 // ];
-
 
 const routes: Routes = [
   {

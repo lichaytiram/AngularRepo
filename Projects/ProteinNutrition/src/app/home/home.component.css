@@ -21,13 +21,13 @@ h1, h2 {
 label {
     color: oldlace;
     min-width: 70px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(201, 112, 112));
-    background-size: 500%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgb(199, 137, 137), rgb(212, 100, 100));
+    background-size: 300%;
     background-position: left;
 }
 
 label:hover {
-    animation: label 3s;
+    animation: label 3s forwards;
 }
 
 .arrow i {
@@ -206,16 +206,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .radius:hover, .radius:focus {
     background: linear-gradient(180deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px), linear-gradient(0deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px), linear-gradient(90deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px), linear-gradient(270deg, rgb(158, 223, 243) 2px, rgba(0, 0, 0, 0) 2px);
     background-repeat: no-repeat;
-    background-position: 200px, -200px, 0px, 0px;
+    background-position: 200px, -200px, 0px -30px, 0px 30px;
     animation: slide 2s infinite;
 }
 
 @keyframes slide {
     from {
-        background-position: 200px, -200px, 0px, 0px;
+        background-position: 200px, -200px, 0px -30px, 0px 30px;
     }
     to {
-        background-position: -200px, 200px, 0px, 0px;
+        background-position: -200px, 200px, 0px 0px, 0px 0px;
     }
 }
 
@@ -232,7 +232,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 @keyframes label {
-    30% {
+    90% {
         color: black;
     }
     100% {
