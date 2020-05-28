@@ -2674,6 +2674,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _register_register_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ../../register/register.component */
     "./src/app/register/register.component.ts"); // const routes: Routes = [
+    //   { path: 'product', component: HomeComponent},
     //   { path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
     //   { path: '**', redirectTo: 'product/home', pathMatch: 'full' }
     // ];

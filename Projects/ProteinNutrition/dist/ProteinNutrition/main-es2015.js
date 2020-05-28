@@ -1437,6 +1437,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // const routes: Routes = [
+//   { path: 'product', component: HomeComponent},
 //   { path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
 //   { path: '**', redirectTo: 'product/home', pathMatch: 'full' }
 // ];
