@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public user: IUser;
   public protein: IProtein;
 
+  // contain the disabled value inside dropdown
+  public disabledValue: string;
+
   // Messages to user
   public showMessage: string = "";
   public showMessageLogin: string = "";
