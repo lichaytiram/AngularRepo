@@ -866,7 +866,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loginPage",
         value: function loginPage() {
-          this.router.navigate(['/product/login']);
+          this.router.navigate(['/product/account/login']);
         } // Check if form is valid ( one of input must be with value )
 
       }, {

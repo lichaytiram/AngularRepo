@@ -167,7 +167,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public loginPage(): void {
-    this.router.navigate(['/product/login']);
+    this.router.navigate(['/product/account/login']);
   }
 
   // Check if form is valid ( one of input must be with value )
