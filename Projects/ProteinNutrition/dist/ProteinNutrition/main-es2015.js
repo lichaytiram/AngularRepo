@@ -465,7 +465,7 @@ UserService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjec
 /*!****************************************!*\
   !*** ./src/app/store/actions/index.ts ***!
   \****************************************/
-/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff */
+/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, ProteinSavedOff, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -502,6 +502,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsSuccess", function() { return _protein_action__WEBPACK_IMPORTED_MODULE_0__["DeleteAllProteinsSuccess"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProteinLogout", function() { return _protein_action__WEBPACK_IMPORTED_MODULE_0__["ProteinLogout"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProteinSavedOff", function() { return _protein_action__WEBPACK_IMPORTED_MODULE_0__["ProteinSavedOff"]; });
 
 /* harmony import */ var _user_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user.action */ "./src/app/store/actions/user.action.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateUser", function() { return _user_action__WEBPACK_IMPORTED_MODULE_1__["CreateUser"]; });
@@ -556,7 +558,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./src/app/store/actions/protein.action.ts ***!
   \*************************************************/
-/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout */
+/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, ProteinSavedOff */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -577,6 +579,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsFail", function() { return DeleteAllProteinsFail; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsSuccess", function() { return DeleteAllProteinsSuccess; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProteinLogout", function() { return ProteinLogout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProteinSavedOff", function() { return ProteinSavedOff; });
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
 
 const LoadProteins = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Load Proteins', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["props"])());
@@ -595,6 +598,7 @@ const DeleteAllProteins = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["creat
 const DeleteAllProteinsFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Delete All Proteins Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["props"])());
 const DeleteAllProteinsSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Delete All Proteins Success');
 const ProteinLogout = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Protein Logout');
+const ProteinSavedOff = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Protein Saved Off');
 
 
 /***/ }),
@@ -798,7 +802,7 @@ UserEffects.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjec
 /*!********************************!*\
   !*** ./src/app/store/index.ts ***!
   \********************************/
-/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff, reducers, getProductsState, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup, effects */
+/*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, ProteinSavedOff, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff, reducers, getProductsState, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getProteinSaved, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup, effects */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -835,6 +839,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeleteAllProteinsSuccess", function() { return _actions__WEBPACK_IMPORTED_MODULE_0__["DeleteAllProteinsSuccess"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProteinLogout", function() { return _actions__WEBPACK_IMPORTED_MODULE_0__["ProteinLogout"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProteinSavedOff", function() { return _actions__WEBPACK_IMPORTED_MODULE_0__["ProteinSavedOff"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateUser", function() { return _actions__WEBPACK_IMPORTED_MODULE_0__["CreateUser"]; });
 
@@ -891,6 +897,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getProteinLoaded", function() { return _selectors__WEBPACK_IMPORTED_MODULE_2__["getProteinLoaded"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getProteinsEntities", function() { return _selectors__WEBPACK_IMPORTED_MODULE_2__["getProteinsEntities"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getProteinSaved", function() { return _selectors__WEBPACK_IMPORTED_MODULE_2__["getProteinSaved"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getSelectedProtein", function() { return _selectors__WEBPACK_IMPORTED_MODULE_2__["getSelectedProtein"]; });
 
@@ -950,7 +958,7 @@ const getProductsState = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["create
 /*!***************************************************!*\
   !*** ./src/app/store/reducers/protein.reducer.ts ***!
   \***************************************************/
-/*! exports provided: adapter, initialState, proteinReducer, getAllProteins, getProteinsEntities, getProteinLoaded */
+/*! exports provided: adapter, initialState, proteinReducer, getAllProteins, getProteinsEntities, getProteinLoaded, getProteinSaved */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -961,6 +969,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllProteins", function() { return getAllProteins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProteinsEntities", function() { return getProteinsEntities; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProteinLoaded", function() { return getProteinLoaded; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProteinSaved", function() { return getProteinSaved; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _ngrx_entity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/entity */ "./node_modules/@ngrx/entity/__ivy_ngcc__/fesm2015/entity.js");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
@@ -971,7 +980,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const adapter = Object(_ngrx_entity__WEBPACK_IMPORTED_MODULE_1__["createEntityAdapter"])();
 const initialState = adapter.getInitialState({
-    loaded: false
+    loaded: false,
+    saved: false
 });
 const proteinReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["LoadProteinsSuccess"], (state, action) => {
     const { proteins } = action;
@@ -980,7 +990,8 @@ const proteinReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createRe
     return initialState;
 }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["AddProteinSuccess"], (state, action) => {
     const { protein } = action;
-    return adapter.addOne(protein, state);
+    const newState = Object.assign(Object.assign({}, state), { saved: true });
+    return adapter.addOne(protein, newState);
 }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["UpdateProteinSuccess"], (state, action) => {
     const { protein } = action;
     const { id } = protein, newProtein = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"])(protein, ["id"]);
@@ -992,11 +1003,14 @@ const proteinReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createRe
     return adapter.removeOne(proteinId, state);
 }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["DeleteAllProteinsSuccess"], () => {
     return initialState;
+}), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["ProteinSavedOff"], state => {
+    return Object.assign(Object.assign({}, state), { saved: false });
 }));
 const { selectEntities, selectAll } = adapter.getSelectors();
 const getAllProteins = selectAll;
 const getProteinsEntities = selectEntities;
 const getProteinLoaded = (state) => state.loaded;
+const getProteinSaved = (state) => state.saved;
 
 
 /***/ }),
@@ -1075,7 +1089,7 @@ const getPopup = (state) => state.popup;
 /*!******************************************!*\
   !*** ./src/app/store/selectors/index.ts ***!
   \******************************************/
-/*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup */
+/*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getProteinSaved, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1088,6 +1102,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getProteinLoaded", function() { return _protein_selectors__WEBPACK_IMPORTED_MODULE_0__["getProteinLoaded"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getProteinsEntities", function() { return _protein_selectors__WEBPACK_IMPORTED_MODULE_0__["getProteinsEntities"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getProteinSaved", function() { return _protein_selectors__WEBPACK_IMPORTED_MODULE_0__["getProteinSaved"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getSelectedProtein", function() { return _protein_selectors__WEBPACK_IMPORTED_MODULE_0__["getSelectedProtein"]; });
 
@@ -1116,7 +1132,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./src/app/store/selectors/protein.selectors.ts ***!
   \******************************************************/
-/*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+/*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getProteinSaved, getSelectedProtein */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1125,6 +1141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllProteins", function() { return getAllProteins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProteinLoaded", function() { return getProteinLoaded; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProteinsEntities", function() { return getProteinsEntities; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProteinSaved", function() { return getProteinSaved; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedProtein", function() { return getSelectedProtein; });
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers */ "./src/app/store/reducers/index.ts");
@@ -1138,6 +1155,7 @@ const getProteinState = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createS
 const getAllProteins = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getAllProteins"]);
 const getProteinLoaded = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getProteinLoaded"]);
 const getProteinsEntities = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getProteinsEntities"]);
+const getProteinSaved = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getProteinSaved"]);
 const getSelectedProtein = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinsEntities, src_app_storeRouter__WEBPACK_IMPORTED_MODULE_3__["getRouterState"], (entities, router) => router.state && entities[parseInt(router.state.params.proteinId)]);
 
 

@@ -14,6 +14,7 @@ export const getProteinState = createSelector(
 export const getAllProteins = createSelector(getProteinState, fromProtein.getAllProteins);
 export const getProteinLoaded = createSelector(getProteinState, fromProtein.getProteinLoaded);
 export const getProteinsEntities = createSelector(getProteinState, fromProtein.getProteinsEntities);
+export const getProteinSaved = createSelector(getProteinState, fromProtein.getProteinSaved);
 
 export const getSelectedProtein = createSelector(
     getProteinsEntities,

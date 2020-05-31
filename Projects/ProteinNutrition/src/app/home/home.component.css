@@ -168,6 +168,30 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     color: seashell;
 }
 
+.save {
+    position: fixed;
+    z-index: 1;
+    padding: 3px;
+    width: 300px;
+    height: 130px;
+    left: 50%;
+    top: 50%;
+    border: 5px solid rgb(68, 71, 250);
+    transform: translate(-50%, -50%);
+    color: rgb(54, 36, 36);
+    background-color: rgb(33, 163, 233);
+}
+
+.save input {
+    padding: 0;
+    outline: 0;
+    border: 0;
+    width: 50px;
+    background-color: rgba(57, 60, 61, 0.377);
+    margin: 5% auto;
+    color: rgb(61, 231, 84);
+}
+
 .show {
     position: fixed;
     width: 300px;
@@ -253,13 +277,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
         top: 230px;
         width: 75%;
     }
+    .show, .save {
+        top: 54%;
+    }
 }
 
 @media (max-height: 420px) {
     .popup {
         height: 50%;
     }
-    .show {
+    .show, .save {
         top: 65%;
     }
 }
@@ -267,6 +294,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 @media (max-height: 330px) {
     .show {
         z-index: 9999;
+    }
+    .save {
+        top: 75%;
     }
     .popup {
         margin: -11% auto;

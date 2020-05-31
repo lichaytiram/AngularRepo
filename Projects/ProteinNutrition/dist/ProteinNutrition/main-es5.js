@@ -892,7 +892,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/store/actions/index.ts ***!
     \****************************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, ProteinSavedOff, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff */
 
   /***/
   function srcAppStoreActionsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -1000,6 +1000,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "ProteinLogout", function () {
       return _protein_action__WEBPACK_IMPORTED_MODULE_0__["ProteinLogout"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProteinSavedOff", function () {
+      return _protein_action__WEBPACK_IMPORTED_MODULE_0__["ProteinSavedOff"];
     });
     /* harmony import */
 
@@ -1143,7 +1149,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/store/actions/protein.action.ts ***!
     \*************************************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, ProteinSavedOff */
 
   /***/
   function srcAppStoreActionsProteinActionTs(module, __webpack_exports__, __webpack_require__) {
@@ -1246,6 +1252,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     __webpack_require__.d(__webpack_exports__, "ProteinLogout", function () {
       return ProteinLogout;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProteinSavedOff", function () {
+      return ProteinSavedOff;
+    });
     /* harmony import */
 
 
@@ -1269,6 +1281,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var DeleteAllProteinsFail = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Delete All Proteins Fail', Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["props"])());
     var DeleteAllProteinsSuccess = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Delete All Proteins Success');
     var ProteinLogout = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Protein Logout');
+    var ProteinSavedOff = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])('[Products] Protein Saved Off');
     /***/
   },
 
@@ -1803,7 +1816,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/store/index.ts ***!
     \********************************/
 
-  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff, reducers, getProductsState, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup, effects */
+  /*! exports provided: LoadProteins, LoadProteinsFail, LoadProteinsSuccess, AddProtein, AddProteinFail, AddProteinSuccess, UpdateProtein, UpdateProteinFail, UpdateProteinSuccess, DeleteProtein, DeleteProteinFail, DeleteProteinSuccess, DeleteAllProteins, DeleteAllProteinsFail, DeleteAllProteinsSuccess, ProteinLogout, ProteinSavedOff, CreateUser, CreateUserFail, CreateUserSuccess, LoadUser, LoadUserFail, LoadUserSuccess, LoginUser, LoginUserFail, LoginUserSuccess, UpdateUser, UpdateUserFail, UpdateUserSuccess, DeleteUser, DeleteUserFail, DeleteUserSuccess, UserUpdated, UserLogout, UserPopupOn, UserPopupOff, UserCreatedOff, UserLoginFailOff, reducers, getProductsState, getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getProteinSaved, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup, effects */
 
   /***/
   function srcAppStoreIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -1911,6 +1924,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "ProteinLogout", function () {
       return _actions__WEBPACK_IMPORTED_MODULE_0__["ProteinLogout"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProteinSavedOff", function () {
+      return _actions__WEBPACK_IMPORTED_MODULE_0__["ProteinSavedOff"];
     });
     /* harmony reexport (safe) */
 
@@ -2089,6 +2108,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony reexport (safe) */
 
 
+    __webpack_require__.d(__webpack_exports__, "getProteinSaved", function () {
+      return _selectors__WEBPACK_IMPORTED_MODULE_2__["getProteinSaved"];
+    });
+    /* harmony reexport (safe) */
+
+
     __webpack_require__.d(__webpack_exports__, "getSelectedProtein", function () {
       return _selectors__WEBPACK_IMPORTED_MODULE_2__["getSelectedProtein"];
     });
@@ -2209,7 +2234,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/store/reducers/protein.reducer.ts ***!
     \***************************************************/
 
-  /*! exports provided: adapter, initialState, proteinReducer, getAllProteins, getProteinsEntities, getProteinLoaded */
+  /*! exports provided: adapter, initialState, proteinReducer, getAllProteins, getProteinsEntities, getProteinLoaded, getProteinSaved */
 
   /***/
   function srcAppStoreReducersProteinReducerTs(module, __webpack_exports__, __webpack_require__) {
@@ -2252,6 +2277,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     __webpack_require__.d(__webpack_exports__, "getProteinLoaded", function () {
       return getProteinLoaded;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getProteinSaved", function () {
+      return getProteinSaved;
+    });
     /* harmony import */
 
 
@@ -2279,7 +2310,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var adapter = Object(_ngrx_entity__WEBPACK_IMPORTED_MODULE_1__["createEntityAdapter"])();
     var initialState = adapter.getInitialState({
-      loaded: false
+      loaded: false,
+      saved: false
     });
     var proteinReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"])(initialState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["LoadProteinsSuccess"], function (state, action) {
       var proteins = action.proteins;
@@ -2290,7 +2322,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return initialState;
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["AddProteinSuccess"], function (state, action) {
       var protein = action.protein;
-      return adapter.addOne(protein, state);
+      var newState = Object.assign(Object.assign({}, state), {
+        saved: true
+      });
+      return adapter.addOne(protein, newState);
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["UpdateProteinSuccess"], function (state, action) {
       var protein = action.protein;
       var id = protein.id,
@@ -2308,6 +2343,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return adapter.removeOne(proteinId, state);
     }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["DeleteAllProteinsSuccess"], function () {
       return initialState;
+    }), Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["on"])(_actions_protein_action__WEBPACK_IMPORTED_MODULE_3__["ProteinSavedOff"], function (state) {
+      return Object.assign(Object.assign({}, state), {
+        saved: false
+      });
     }));
 
     var _adapter$getSelectors = adapter.getSelectors(),
@@ -2319,6 +2358,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var getProteinLoaded = function getProteinLoaded(state) {
       return state.loaded;
+    };
+
+    var getProteinSaved = function getProteinSaved(state) {
+      return state.saved;
     };
     /***/
 
@@ -2494,7 +2537,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/store/selectors/index.ts ***!
     \******************************************/
 
-  /*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup */
+  /*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getProteinSaved, getSelectedProtein, getUserState, getUser, getUserCreated, getLoginFail, getUserLoaded, getUserUpdated, getPopup */
 
   /***/
   function srcAppStoreSelectorsIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -2530,6 +2573,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "getProteinsEntities", function () {
       return _protein_selectors__WEBPACK_IMPORTED_MODULE_0__["getProteinsEntities"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getProteinSaved", function () {
+      return _protein_selectors__WEBPACK_IMPORTED_MODULE_0__["getProteinSaved"];
     });
     /* harmony reexport (safe) */
 
@@ -2595,7 +2644,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/store/selectors/protein.selectors.ts ***!
     \******************************************************/
 
-  /*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getSelectedProtein */
+  /*! exports provided: getProteinState, getAllProteins, getProteinLoaded, getProteinsEntities, getProteinSaved, getSelectedProtein */
 
   /***/
   function srcAppStoreSelectorsProteinSelectorsTs(module, __webpack_exports__, __webpack_require__) {
@@ -2625,6 +2674,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "getProteinsEntities", function () {
       return getProteinsEntities;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getProteinSaved", function () {
+      return getProteinSaved;
     });
     /* harmony export (binding) */
 
@@ -2663,6 +2718,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var getAllProteins = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getAllProteins"]);
     var getProteinLoaded = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getProteinLoaded"]);
     var getProteinsEntities = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getProteinsEntities"]);
+    var getProteinSaved = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinState, _reducers_protein_reducer__WEBPACK_IMPORTED_MODULE_2__["getProteinSaved"]);
     var getSelectedProtein = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(getProteinsEntities, src_app_storeRouter__WEBPACK_IMPORTED_MODULE_3__["getRouterState"], function (entities, router) {
       return router.state && entities[parseInt(router.state.params.proteinId)];
     });

@@ -17,3 +17,4 @@ export const DeleteAllProteins = createAction('[Products] Delete All Proteins', 
 export const DeleteAllProteinsFail = createAction('[Products] Delete All Proteins Fail', props<{ error: Error }>());
 export const DeleteAllProteinsSuccess = createAction('[Products] Delete All Proteins Success');
 export const ProteinLogout = createAction('[Products] Protein Logout');
+export const ProteinSavedOff = createAction('[Products] Protein Saved Off');

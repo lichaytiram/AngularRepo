@@ -8,10 +8,12 @@ export const adapter: EntityAdapter<IProtein> = createEntityAdapter<IProtein>();
 
 export interface IProteinState extends EntityState<IProtein> {
     loaded: boolean;
+    saved: boolean;
 }
 
 export const initialState: IProteinState = adapter.getInitialState({
-    loaded: false
+    loaded: false,
+    saved: false
 })
 
 export const proteinReducer = createReducer<IProteinState>(
@@ -31,7 +33,8 @@ export const proteinReducer = createReducer<IProteinState>(
     ), on(
         fromProtein.AddProteinSuccess, (state: IProteinState, action) => {
             const { protein } = action;
-            return adapter.addOne(protein, state);
+            const newState = { ...state, saved: true }
+            return adapter.addOne(protein, newState);
         }
     ), on(
         fromProtein.UpdateProteinSuccess, (state: IProteinState, action) => {
@@ -50,6 +53,13 @@ export const proteinReducer = createReducer<IProteinState>(
         fromProtein.DeleteAllProteinsSuccess, () => {
             return initialState;
         }
+    ), on(
+        fromProtein.ProteinSavedOff, state => {
+            return {
+                ...state,
+                saved: false
+            };
+        }
     )
 
 );
@@ -59,3 +69,4 @@ const { selectEntities, selectAll } = adapter.getSelectors();
 export const getAllProteins = selectAll;
 export const getProteinsEntities = selectEntities;
 export const getProteinLoaded = (state: IProteinState) => state.loaded;
+export const getProteinSaved = (state: IProteinState) => state.saved;

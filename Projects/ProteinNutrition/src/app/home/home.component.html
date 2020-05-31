@@ -17,6 +17,12 @@
     </div>
   </div>
 
+  <div [class.d-none]="!savedToggle">
+    <div class="card text-center save">
+      <h4>Your protein saved successfully</h4>
+      <input type="button" (click)="saveOff()" value="&#xf00c;" class="fas">
+    </div>
+  </div>
 
   <div [class.opacity]="popupToggle" class="text-center p-3">
     <h1>Muscle is your life?</h1>

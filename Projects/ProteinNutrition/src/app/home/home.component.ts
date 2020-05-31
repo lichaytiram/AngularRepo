@@ -9,9 +9,9 @@ import { Protein } from '../shared/models/protein.model';
 import { Egg } from '../shared/models/egg.model';
 
 import { Store, select } from '@ngrx/store';
-import { AddProtein } from '../store/actions/protein.action'
-import { IProductsState, getUser, getPopup } from '../store';
+import { AddProtein, ProteinSavedOff } from '../store/actions/protein.action'
 import { UserPopupOn, UserPopupOff } from '../store/actions/user.action'
+import { IProductsState, getUser, getPopup, getProteinSaved } from '../store';
 
 import { showCalculator } from '../shared/services/showCalculator';
 
@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Toggles
   public saveToggle: boolean;
+  public savedToggle: boolean;
   public popupToggle: boolean;
   public infoToggle: boolean;
 
@@ -51,6 +52,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.acccept = true;
       this.visibility();
     }
+
+    this.unSubscribe.push(this.store.pipe<boolean>(select(getProteinSaved)).subscribe(
+      isSaved => this.savedToggle = isSaved,
+      catchError(error => of(console.log(error)))
+    ));
 
     this.unSubscribe.push(this.store.pipe<IUser>(select(getUser)).subscribe(
       user => {
@@ -178,6 +184,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     egg.amount && egg.sizeEgg && (updateToggle = true);
 
     this.saveToggle = updateToggle;
+  }
+
+  public saveOff(): void {
+    this.store.dispatch(ProteinSavedOff());
+
   }
 
 }
