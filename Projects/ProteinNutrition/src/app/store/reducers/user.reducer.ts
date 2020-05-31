@@ -1,6 +1,6 @@
-import { IUser } from 'src/app/shared/models/iUser.model';
 import { createReducer, on } from '@ngrx/store';
 import * as fromUser from '../actions/user.action';
+import { IUser } from 'src/app/shared/models/iUser.model';
 
 export interface IUserState {
     user: IUser;

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { Subscription, of } from 'rxjs';
+
 import { Store, select } from '@ngrx/store';
 import { IProductsState, getPopup } from '../store';
-import { Subscription, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { unsupported } from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-navbar',

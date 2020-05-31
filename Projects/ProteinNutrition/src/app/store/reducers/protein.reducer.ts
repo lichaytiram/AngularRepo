@@ -1,8 +1,9 @@
-import { IProtein } from 'src/app/shared/models/iProtein.model';
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import * as fromProtein from '../actions/protein.action';
 import { UpdateStr } from '@ngrx/entity/src/models';
+
+import { IProtein } from 'src/app/shared/models/iProtein.model';
 
 export const adapter: EntityAdapter<IProtein> = createEntityAdapter<IProtein>();
 

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 import { ProteinService } from 'src/app/shared/services/protein.service';
 import * as proteinActions from '../actions/protein.action';
+
 import { IId } from 'src/app/shared/models/iId.model';
 import { IProtein } from 'src/app/shared/models/iProtein.model';
 

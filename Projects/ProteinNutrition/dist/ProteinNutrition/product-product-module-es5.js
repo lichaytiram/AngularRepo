@@ -51,39 +51,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../shared/models/protein.model */
-    "./src/app/shared/models/protein.model.ts");
-    /* harmony import */
-
-
-    var _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ../shared/models/egg.model */
-    "./src/app/shared/models/egg.model.ts");
-    /* harmony import */
-
-
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
     /* harmony import */
 
 
-    var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _store_actions_protein_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../store/actions/protein.action */
     "./src/app/store/actions/protein.action.ts");
     /* harmony import */
 
 
-    var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../store/actions/user.action */
     "./src/app/store/actions/user.action.ts");
     /* harmony import */
 
 
-    var _store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ../store */
     "./src/app/store/index.ts");
+    /* harmony import */
+
+
+    var _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ../shared/models/protein.model */
+    "./src/app/shared/models/protein.model.ts");
+    /* harmony import */
+
+
+    var _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ../shared/models/egg.model */
+    "./src/app/shared/models/egg.model.ts");
     /* harmony import */
 
 
@@ -730,19 +730,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this = this;
 
-          this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_4__["Protein"](new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_5__["Egg"]());
+          this.protein = new _shared_models_protein_model__WEBPACK_IMPORTED_MODULE_8__["Protein"](new _shared_models_egg_model__WEBPACK_IMPORTED_MODULE_9__["Egg"]());
 
           if (!!localStorage.getItem("acccept")) {
             this.acccept = true;
             this.visibility();
           }
 
-          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_6__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getProteinSaved"])).subscribe(function (isSaved) {
+          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store__WEBPACK_IMPORTED_MODULE_7__["getProteinSaved"])).subscribe(function (isSaved) {
             return _this.savedToggle = isSaved;
           }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(console.log(error));
           })));
-          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_6__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getUser"])).subscribe(function (user) {
+          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store__WEBPACK_IMPORTED_MODULE_7__["getUser"])).subscribe(function (user) {
             var userId = !!sessionStorage.getItem('login');
             if (!user && !userId) _this.popup();
             _this.user = user;
@@ -753,7 +753,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnDestroy",
         value: function ngOnDestroy() {
-          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_8__["UserPopupOff"])());
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UserPopupOff"])());
           this.clearInterval.forEach(function (id) {
             return clearInterval(id);
           });
@@ -767,9 +767,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this2 = this;
 
           this.clearInterval.push(setTimeout(function () {
-            if (!_this2.user) _this2.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_8__["UserPopupOn"])());
+            if (!_this2.user) _this2.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UserPopupOn"])());
 
-            _this2.unSubscribe.push(_this2.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_6__["select"])(_store__WEBPACK_IMPORTED_MODULE_9__["getPopup"])).subscribe(function (popupToggle) {
+            _this2.unSubscribe.push(_this2.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store__WEBPACK_IMPORTED_MODULE_7__["getPopup"])).subscribe(function (popupToggle) {
               return _this2.popupToggle = popupToggle;
             }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
               return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(console.log(error));
@@ -779,7 +779,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "cancelPopup",
         value: function cancelPopup() {
-          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_8__["UserPopupOff"])());
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_6__["UserPopupOff"])());
         }
       }, {
         key: "cancelShow",
@@ -811,7 +811,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return !protein[key] && delete protein[key];
           });
           if (!protein.egg || !protein.egg.sizeEgg || !protein.egg.amount) delete protein.egg;
-          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_7__["AddProtein"])({
+          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_5__["AddProtein"])({
             userId: userId,
             protein: protein
           }));
@@ -891,7 +891,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "saveOff",
         value: function saveOff() {
-          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_7__["ProteinSavedOff"])());
+          this.store.dispatch(Object(_store_actions_protein_action__WEBPACK_IMPORTED_MODULE_5__["ProteinSavedOff"])());
         }
       }]);
 
@@ -899,7 +899,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     HomeComponent.ɵfac = function HomeComponent_Factory(t) {
-      return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_6__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_10__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_11__["showCalculator"]));
+      return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_10__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_shared_services_showCalculator__WEBPACK_IMPORTED_MODULE_11__["showCalculator"]));
     };
 
     HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
@@ -1094,7 +1094,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_6__["Store"]
+          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_4__["Store"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_10__["Router"]
         }, {
@@ -1292,9 +1292,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ../shared/models/user.model */
-    "./src/app/shared/models/user.model.ts");
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
     /* harmony import */
 
 
@@ -1310,9 +1310,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @ngrx/store */
-    "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
+    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../shared/models/user.model */
+    "./src/app/shared/models/user.model.ts");
     /* harmony import */
 
 
@@ -1405,8 +1405,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(RegisterComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.user = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_1__["User"](undefined, undefined, undefined, undefined, undefined);
-          this.userCreated$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_3__["getUserCreated"]));
+          this.user = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_4__["User"](undefined, undefined, undefined, undefined, undefined);
+          this.userCreated$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_3__["getUserCreated"]));
         }
       }, {
         key: "ngOnDestroy",
@@ -1437,7 +1437,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     RegisterComponent.ɵfac = function RegisterComponent_Factory(t) {
-      return new (t || RegisterComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_4__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]));
+      return new (t || RegisterComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]));
     };
 
     RegisterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -1837,7 +1837,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_4__["Store"]
+          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
         }];
@@ -2299,27 +2299,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @ngrx/store */
-    "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
-    /* harmony import */
-
-
-    var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! rxjs */
     "./node_modules/rxjs/_esm2015/index.js");
     /* harmony import */
 
 
-    var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../index */
-    "./src/app/store/index.ts");
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
     /* harmony import */
 
 
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! rxjs/operators */
-    "./node_modules/rxjs/_esm2015/operators/index.js");
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
+    /* harmony import */
+
+
+    var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../index */
+    "./src/app/store/index.ts");
 
     var ProteinsGuard = /*#__PURE__*/function () {
       function ProteinsGuard(store) {
@@ -2331,10 +2331,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ProteinsGuard, [{
         key: "canActivate",
         value: function canActivate() {
-          return this.checkStore().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(true);
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function () {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(false);
+          return this.checkStore().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function () {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(true);
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function () {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(false);
           }));
         }
       }, {
@@ -2342,12 +2342,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function checkStore() {
           var _this4 = this;
 
-          return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["select"])(_index__WEBPACK_IMPORTED_MODULE_3__["getProteinLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (loaded) {
+          return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getProteinLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this4.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_3__["LoadProteins"]({
+            if (!loaded && userId) _this4.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadProteins"]({
               userId: userId
             }));
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["take"])(1));
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["take"])(1));
         }
       }]);
 
@@ -2355,7 +2355,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     ProteinsGuard.ɵfac = function ProteinsGuard_Factory(t) {
-      return new (t || ProteinsGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]));
+      return new (t || ProteinsGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]));
     };
 
     ProteinsGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
@@ -2373,7 +2373,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]
+          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
         }];
       }, null);
     })();
@@ -2409,27 +2409,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @ngrx/store */
-    "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
-    /* harmony import */
-
-
-    var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! rxjs */
     "./node_modules/rxjs/_esm2015/index.js");
     /* harmony import */
 
 
-    var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../index */
-    "./src/app/store/index.ts");
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
     /* harmony import */
 
 
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! rxjs/operators */
-    "./node_modules/rxjs/_esm2015/operators/index.js");
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ngrx/store */
+    "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
+    /* harmony import */
+
+
+    var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../index */
+    "./src/app/store/index.ts");
 
     var UsersGuard = /*#__PURE__*/function () {
       function UsersGuard(store) {
@@ -2441,10 +2441,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(UsersGuard, [{
         key: "canActivate",
         value: function canActivate() {
-          return this.checkStore().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(true);
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function () {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(false);
+          return this.checkStore().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function () {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(true);
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function () {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(false);
           }));
         }
       }, {
@@ -2452,12 +2452,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function checkStore() {
           var _this5 = this;
 
-          return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["select"])(_index__WEBPACK_IMPORTED_MODULE_3__["getUserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (loaded) {
+          return this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_index__WEBPACK_IMPORTED_MODULE_4__["getUserLoaded"])).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (loaded) {
             var userId = sessionStorage.getItem('login');
-            if (!loaded && userId) _this5.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_3__["LoadUser"]({
+            if (!loaded && userId) _this5.store.dispatch(_index__WEBPACK_IMPORTED_MODULE_4__["LoadUser"]({
               userId: userId
             }));
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["take"])(1));
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["take"])(1));
         }
       }]);
 
@@ -2465,7 +2465,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     UsersGuard.ɵfac = function UsersGuard_Factory(t) {
-      return new (t || UsersGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]));
+      return new (t || UsersGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]));
     };
 
     UsersGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
@@ -2483,7 +2483,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]
+          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
         }];
       }, null);
     })();

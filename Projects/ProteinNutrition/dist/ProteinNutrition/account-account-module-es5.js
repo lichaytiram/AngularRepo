@@ -39,33 +39,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
     /* harmony import */
 
 
-    var _store_actions_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _store_actions_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../store/actions/index */
     "./src/app/store/actions/index.ts");
     /* harmony import */
 
 
-    var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../store/selectors/user.selectors */
     "./src/app/store/selectors/user.selectors.ts");
     /* harmony import */
 
 
-    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../shared/models/user.model */
     "./src/app/shared/models/user.model.ts");
-    /* harmony import */
-
-
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! rxjs/operators */
-    "./node_modules/rxjs/_esm2015/operators/index.js");
     /* harmony import */
 
 
@@ -1056,11 +1056,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this = this;
 
-          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_5__["User"](undefined, undefined, undefined, undefined, undefined);
-          this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__["getUser"]));
-          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__["getUserUpdated"])).subscribe(function (userUpdated) {
+          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__["User"](undefined, undefined, undefined, undefined, undefined);
+          this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__["getUser"]));
+          this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__["getUserUpdated"])).subscribe(function (userUpdated) {
             return _this.updateToggle = userUpdated;
-          }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (error) {
+          }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(console.log(error));
           })));
         }
@@ -1074,18 +1074,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "logout",
         value: function logout() {
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["UserLogout"])());
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["ProteinLogout"])());
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UserLogout"])());
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["ProteinLogout"])());
           this.router.navigate(["product/home"]);
         }
       }, {
         key: "deleteAccount",
         value: function deleteAccount(userId) {
           // Should be one function , FireBase (data base) doesn't save proteins id as a foreign key.
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["DeleteUser"])({
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteUser"])({
             userId: userId
           }));
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["DeleteAllProteins"])({
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteAllProteins"])({
             userId: userId
           }));
         }
@@ -1130,7 +1130,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "nameToggle",
         value: function nameToggle(toggleName) {
-          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_5__["User"](undefined, undefined, undefined, undefined, undefined);
+          this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__["User"](undefined, undefined, undefined, undefined, undefined);
           this.allTogglesOff();
 
           switch (toggleName) {
@@ -1200,11 +1200,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               alert("Something was wrong!\nPlease try again.");
           }
 
-          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["UpdateUser"])({
+          this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UpdateUser"])({
             user: user
           }));
           setTimeout(function () {
-            _this2.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["UserUpdated"])());
+            _this2.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UserUpdated"])());
 
             _this2.allTogglesOff();
 
@@ -1217,7 +1217,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     AccountComponent.ɵfac = function AccountComponent_Factory(t) {
-      return new (t || AccountComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]));
+      return new (t || AccountComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]));
     };
 
     AccountComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -1253,7 +1253,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]
+          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
         }];
@@ -2532,27 +2532,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _shared_models_login_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ../shared/models/login.model */
-    "./src/app/shared/models/login.model.ts");
-    /* harmony import */
-
-
-    var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
     /* harmony import */
 
 
-    var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../store/actions/user.action */
     "./src/app/store/actions/user.action.ts");
     /* harmony import */
 
 
-    var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../store/selectors/user.selectors */
     "./src/app/store/selectors/user.selectors.ts");
+    /* harmony import */
+
+
+    var _shared_models_login_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../shared/models/login.model */
+    "./src/app/shared/models/login.model.ts");
     /* harmony import */
 
 
@@ -2619,24 +2619,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(LoginComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_1__["Login"](undefined, undefined);
-          this.loginFail$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__["getLoginFail"]));
+          this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_4__["Login"](undefined, undefined);
+          this.loginFail$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_3__["getLoginFail"]));
         }
       }, {
         key: "ngOnDestroy",
         value: function ngOnDestroy() {
-          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["UserLoginFailOff"])());
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserLoginFailOff"])());
         }
       }, {
         key: "tryAgain",
         value: function tryAgain() {
-          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["UserLoginFailOff"])());
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserLoginFailOff"])());
         }
       }, {
         key: "userLogin",
         value: function userLogin() {
           var login = this.login;
-          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["LoginUser"])({
+          this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["LoginUser"])({
             login: login
           }));
         }
@@ -2651,7 +2651,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     LoginComponent.ɵfac = function LoginComponent_Factory(t) {
-      return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]));
+      return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]));
     };
 
     LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -2837,7 +2837,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]
+          type: _ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
         }];

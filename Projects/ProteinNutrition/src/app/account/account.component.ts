@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
+import { NgModel, NgForm } from '@angular/forms';
+import { catchError } from 'rxjs/operators';
 
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
@@ -9,8 +11,6 @@ import { getUser, getUserUpdated } from '../store/selectors/user.selectors';
 
 import { IUser } from '../shared/models/iUser.model';
 import { User } from '../shared/models/user.model';
-import { NgModel, NgForm } from '@angular/forms';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account',

@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
 import { UpdateProtein, DeleteProtein } from '../store/actions/protein.action';
-
 import { getUser, getAllProteins } from '../store/selectors'
-import { Observable } from 'rxjs';
+
 
 import { IUser } from '../shared/models/iUser.model';
 import { IProtein } from '../shared/models/iProtein.model';
-import { Protein } from '../shared/models/protein.model';
-import { showCalculator } from '../shared/services/showCalculator';
-import { Egg } from '../shared/models/egg.model';
 import { IEgg } from '../shared/models/iEgg.model';
+import { Protein } from '../shared/models/protein.model';
+import { Egg } from '../shared/models/egg.model';
+
+import { showCalculator } from '../shared/services/showCalculator';
 
 @Component({
   selector: 'app-favorite',

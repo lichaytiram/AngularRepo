@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './shared/modules/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStateSerializer, StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 import { reducer, CustomSerializer } from './storeRouter';
-
 import { reducers, effects } from './store';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
+// Only a tool for developers will delete on products
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -45,10 +46,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     StoreModule.forFeature('products', reducers),
 
     // Only a tool for developers will delete on products
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
+    // StoreDevtoolsModule.instrument({
+    //   maxAge: 25,
+    //   logOnly: environment.production,
+    // }),
 
   ],
   providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],

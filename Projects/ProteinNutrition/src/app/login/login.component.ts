@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { ILogin } from '../shared/models/iLogin.model';
-import { Login } from '../shared/models/login.model';
+import { Observable } from 'rxjs';
 
 import { Store, select } from '@ngrx/store';
 import { IProductsState } from '../store';
 import { LoginUser, UserLoginFailOff } from '../store/actions/user.action';
-import { Observable } from 'rxjs';
 import { getLoginFail } from '../store/selectors/user.selectors';
+
+import { ILogin } from '../shared/models/iLogin.model';
+import { Login } from '../shared/models/login.model';
 
 @Component({
   selector: 'app-login',

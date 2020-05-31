@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { IProductsState } from '../reducers';
-import { Store, select } from '@ngrx/store';
-import { CanActivate } from '@angular/router';
 import { Observable, of } from 'rxjs';
-
-import * as fromStore from '../index';
 import { tap, switchMap, catchError, take } from 'rxjs/operators';
+import { CanActivate } from '@angular/router';
+
+import { Store, select } from '@ngrx/store';
+import { IProductsState } from '../reducers';
+import * as fromStore from '../index';
 
 @Injectable({
   providedIn: 'root'

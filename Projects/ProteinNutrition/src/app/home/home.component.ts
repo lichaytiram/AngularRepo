@@ -3,15 +3,15 @@ import { Router } from '@angular/router';
 import { of, Subscription } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IProtein } from '../shared/models/iProtein.model';
-import { IUser } from '../shared/models/iUser.model';
-import { Protein } from '../shared/models/protein.model';
-import { Egg } from '../shared/models/egg.model';
-
 import { Store, select } from '@ngrx/store';
 import { AddProtein, ProteinSavedOff } from '../store/actions/protein.action'
 import { UserPopupOn, UserPopupOff } from '../store/actions/user.action'
 import { IProductsState, getUser, getPopup, getProteinSaved } from '../store';
+
+import { IProtein } from '../shared/models/iProtein.model';
+import { IUser } from '../shared/models/iUser.model';
+import { Protein } from '../shared/models/protein.model';
+import { Egg } from '../shared/models/egg.model';
 
 import { showCalculator } from '../shared/services/showCalculator';
 

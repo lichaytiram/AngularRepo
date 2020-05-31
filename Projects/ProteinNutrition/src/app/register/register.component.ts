@@ -1,12 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IUser } from '../shared/models/iUser.model';
-import { User } from '../shared/models/user.model';
-import { CreateUser, UserCreatedOff } from '../store/actions/user.action';
-import { getUserCreated } from '../store/selectors/user.selectors';
-import { IProductsState } from '../store';
-import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+
+import { Store, select } from '@ngrx/store';
+import { CreateUser, UserCreatedOff } from '../store/actions/user.action';
+import { getUserCreated } from '../store/selectors/user.selectors';
+import { IProductsState } from '../store/reducers/index';
+
+import { IUser } from '../shared/models/iUser.model';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-register',

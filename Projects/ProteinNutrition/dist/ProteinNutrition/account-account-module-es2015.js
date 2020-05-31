@@ -12,11 +12,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountComponent", function() { return AccountComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
-/* harmony import */ var _store_actions_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/index */ "./src/app/store/actions/index.ts");
-/* harmony import */ var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/selectors/user.selectors */ "./src/app/store/selectors/user.selectors.ts");
-/* harmony import */ var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shared/models/user.model */ "./src/app/shared/models/user.model.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
+/* harmony import */ var _store_actions_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/actions/index */ "./src/app/store/actions/index.ts");
+/* harmony import */ var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/selectors/user.selectors */ "./src/app/store/selectors/user.selectors.ts");
+/* harmony import */ var _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shared/models/user.model */ "./src/app/shared/models/user.model.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
@@ -444,22 +444,22 @@ class AccountComponent {
             this.router.navigate(["product/login"]);
     }
     ngOnInit() {
-        this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_5__["User"](undefined, undefined, undefined, undefined, undefined);
-        this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__["getUser"]));
-        this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__["getUserUpdated"])).subscribe(userUpdated => this.updateToggle = userUpdated, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(console.log(error)))));
+        this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__["User"](undefined, undefined, undefined, undefined, undefined);
+        this.user$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__["getUser"]));
+        this.unSubscribe.push(this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_5__["getUserUpdated"])).subscribe(userUpdated => this.updateToggle = userUpdated, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(console.log(error)))));
     }
     ngOnDestroy() {
         this.unSubscribe.forEach(subscribe => subscribe.unsubscribe());
     }
     logout() {
-        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["UserLogout"])());
-        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["ProteinLogout"])());
+        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UserLogout"])());
+        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["ProteinLogout"])());
         this.router.navigate(["product/home"]);
     }
     deleteAccount(userId) {
         // Should be one function , FireBase (data base) doesn't save proteins id as a foreign key.
-        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["DeleteUser"])({ userId }));
-        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["DeleteAllProteins"])({ userId }));
+        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteUser"])({ userId }));
+        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["DeleteAllProteins"])({ userId }));
     }
     editToggleOn() {
         this.editToggle = true;
@@ -493,7 +493,7 @@ class AccountComponent {
         this.showPasswordToggle = !this.showPasswordToggle;
     }
     nameToggle(toggleName) {
-        this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_5__["User"](undefined, undefined, undefined, undefined, undefined);
+        this.newUser = new _shared_models_user_model__WEBPACK_IMPORTED_MODULE_6__["User"](undefined, undefined, undefined, undefined, undefined);
         this.allTogglesOff();
         switch (toggleName) {
             case "username":
@@ -547,16 +547,16 @@ class AccountComponent {
             default:
                 alert("Something was wrong!\nPlease try again.");
         }
-        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["UpdateUser"])({ user }));
+        this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UpdateUser"])({ user }));
         setTimeout(() => {
-            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_3__["UserUpdated"])());
+            this.store.dispatch(Object(_store_actions_index__WEBPACK_IMPORTED_MODULE_4__["UserUpdated"])());
             this.allTogglesOff();
             if (valueToUpdate != "gender")
                 userForm.controls[valueToUpdate].reset();
         }, 2000);
     }
 }
-AccountComponent.ɵfac = function AccountComponent_Factory(t) { return new (t || AccountComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"])); };
+AccountComponent.ɵfac = function AccountComponent_Factory(t) { return new (t || AccountComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"])); };
 AccountComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AccountComponent, selectors: [["app-account"]], decls: 2, vars: 3, consts: [[4, "ngIf"], [1, "text-center"], [1, "text-primary", "m-1", 3, "click"], [1, "fas", "fa-sign-out-alt"], [1, "text-danger", "m-1", 3, "disabled", "click"], [1, "fas", "fa-minus-circle"], [1, "container"], [3, "ngSubmit"], ["userForm", "ngForm"], [1, "row", "justify-content-center"], [1, "col-4", "col-sm-3", "col-md-2", "col-lg-1", "col-xl-1", "p-0"], ["class", "col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0", 4, "ngIf"], ["type", "button", "value", "\uF4FF Edit username", "class", "col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas", 3, "disabled", "click", 4, "ngIf"], [1, "col-5", "col-sm-4", "col-md-3", "col-lg-2", "col-xl-2", "p-0"], [1, "text-danger"], ["type", "text", "title", "Enter an username", "placeholder", "Enter an username", "name", "username", "required", "", "pattern", "^[a-zA-Z]{3,}$", 1, "rounded-pill", "border", "border-primary", "text-center", "inputValue", 3, "ngModel", "ngModelChange"], ["username", "ngModel"], [1, "row", "justify-content-around", "p-1"], ["type", "button", "value", "\uF410 Cancel", 1, "far", "text-danger", 3, "click"], ["type", "submit", "value", "\uF0C7 Save", 1, "btn", "far", "text-primary", 3, "disabled"], ["class", "fas fa-check text-success", 4, "ngIf"], ["type", "button", "value", "\uF4FF Edit password", "class", "col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas", 3, "disabled", "click", 4, "ngIf"], ["type", "password", "title", "Enter a password", "placeholder", "Enter a password", "name", "password", "required", "", "pattern", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", 1, "rounded-pill", "border", "border-primary", "text-center", "inputValue", 3, "ngModel", "ngModelChange"], ["password", "ngModel"], ["type", "password", "title", "Enter again a password to confirm", "placeholder", "Enter a password", "name", "confirmPassword", "required", "", "pattern", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", 1, "rounded-pill", "border", "border-primary", "text-center", "inputValue", 3, "ngModel", "disabled", "ngModelChange"], ["confirmPassword", "ngModel"], ["type", "button", "value", "\uF4FF Edit gender", "class", "col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas", 3, "disabled", "click", 4, "ngIf"], ["type", "radio", "name", "male", "value", "Male", "required", "", 3, "ngModel", "ngModelChange"], ["male", "ngModel"], [1, "rounded-pill", "text-center", "m-1", "radioMale"], [1, "fas", "fa-male", "m-1"], ["type", "radio", "name", "female", "value", "Female", "required", "", 3, "ngModel", "ngModelChange"], ["female", "ngModel"], [1, "rounded-pill", "text-center", "m-1", "radioFemale"], [1, "fas", "fa-female", "m-1"], ["type", "button", "value", "\uF4FF Edit weight", "class", "col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-0 fas", 3, "disabled", "click", 4, "ngIf"], ["type", "number", "title", "Enter your weight", "placeholder", "Enter a weight", "name", "weight", "required", "", "pattern", "^[1-9]\\d*$", 1, "rounded-pill", "border", "border-primary", "text-center", "inputValue", 3, "ngModel", "ngModelChange"], ["weight", "ngModel"], ["type", "button", "value", "\uF4FF Edit account", 1, "fas", "text-primary", 3, "click"], ["type", "button", "value", "\uF410 Cancel edit", 1, "far", "text-danger", 3, "click"], [1, "row", "justify-content-center", "m-0", "img"], ["src", "../../assets/photos/person-holding-black-and-silver-steel.jpg", 1, "col-11", "col-md-9", "col-lg-8", "col-xl-6"], [1, "card", "show"], [1, "card-body"], ["type", "button", "value", "\uF2ED Delete", 1, "fas", "p-1", "btn", "text-danger", 3, "click"], ["type", "button", "value", "\uF0E2 Cancel", 1, "fas", "p-1", "btn", "text-primary", 3, "click"], ["type", "button", "value", "\uF4FF Edit username", 1, "col-5", "col-sm-4", "col-md-3", "col-lg-2", "col-xl-2", "p-0", "fas", 3, "disabled", "click"], [1, "fas", "fa-check", "text-success"], [3, "click"], [1, "fas", "fa-eye", "eye"], [1, "fas", "fa-eye-slash", "eye"], ["type", "button", "value", "\uF4FF Edit password", 1, "col-5", "col-sm-4", "col-md-3", "col-lg-2", "col-xl-2", "p-0", "fas", 3, "disabled", "click"], ["type", "button", "value", "\uF4FF Edit gender", 1, "col-5", "col-sm-4", "col-md-3", "col-lg-2", "col-xl-2", "p-0", "fas", 3, "disabled", "click"], ["type", "button", "value", "\uF4FF Edit weight", 1, "col-5", "col-sm-4", "col-md-3", "col-lg-2", "col-xl-2", "p-0", "fas", 3, "disabled", "click"]], template: function AccountComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, AccountComponent_div_0_Template, 100, 59, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "async");
@@ -570,7 +570,7 @@ AccountComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
                 templateUrl: './account.component.html',
                 styleUrls: ['./account.component.css']
             }]
-    }], function () { return [{ type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }]; }, null); })();
+    }], function () { return [{ type: _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }]; }, null); })();
 
 
 /***/ }),
@@ -1161,10 +1161,10 @@ FavoriteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefine
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _shared_models_login_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/models/login.model */ "./src/app/shared/models/login.model.ts");
-/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
-/* harmony import */ var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/user.action */ "./src/app/store/actions/user.action.ts");
-/* harmony import */ var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/selectors/user.selectors */ "./src/app/store/selectors/user.selectors.ts");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
+/* harmony import */ var _store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/user.action */ "./src/app/store/actions/user.action.ts");
+/* harmony import */ var _store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/selectors/user.selectors */ "./src/app/store/selectors/user.selectors.ts");
+/* harmony import */ var _shared_models_login_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/models/login.model */ "./src/app/shared/models/login.model.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
@@ -1199,24 +1199,24 @@ class LoginComponent {
         this.route = route;
     }
     ngOnInit() {
-        this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_1__["Login"](undefined, undefined);
-        this.loginFail$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_4__["getLoginFail"]));
+        this.login = new _shared_models_login_model__WEBPACK_IMPORTED_MODULE_4__["Login"](undefined, undefined);
+        this.loginFail$ = this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["select"])(_store_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_3__["getLoginFail"]));
     }
     ngOnDestroy() {
-        this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["UserLoginFailOff"])());
+        this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserLoginFailOff"])());
     }
     tryAgain() {
-        this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["UserLoginFailOff"])());
+        this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["UserLoginFailOff"])());
     }
     userLogin() {
         const login = this.login;
-        this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_3__["LoginUser"])({ login }));
+        this.store.dispatch(Object(_store_actions_user_action__WEBPACK_IMPORTED_MODULE_2__["LoginUser"])({ login }));
     }
     register() {
         this.route.navigate(['/product/register']);
     }
 }
-LoginComponent.ɵfac = function LoginComponent_Factory(t) { return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"])); };
+LoginComponent.ɵfac = function LoginComponent_Factory(t) { return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"])); };
 LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 35, vars: 16, consts: [[1, "card"], ["class", "loginFail", 4, "ngIf"], [1, "p-0", "row"], [1, "col-8"], [1, "card-body"], [1, "card-title"], [3, "ngSubmit"], ["userForm", "ngForm"], [1, "m-0"], [1, "text-danger"], ["type", "text", "title", "Enter an username", "name", "username", "required", "", "pattern", "^[a-zA-Z]{3,}$", 1, "rounded-pill", "border", "border-primary", 3, "ngModel", "ngModelChange"], ["username", "ngModel"], ["type", "password", "title", "Enter a password", "name", "password", "required", "", "pattern", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", 1, "rounded-pill", "border", "border-primary", 3, "ngModel", "ngModelChange"], ["password", "ngModel"], [1, "text-center"], ["type", "submit", "value", "Login \uF2F6", 1, "btn", "btn-outline-primary", "rounded-pill", "m-1", "fas", 3, "disabled"], ["type", "button", "value", "Create \uF234", 1, "btn", "btn-outline-primary", "rounded-pill", "m-1", "fas", 3, "click"], [1, "col-4"], ["src", "/assets/photos/man_body_torso_muscles.jpg", 1, "image"], [1, "loginFail"], [1, "loginFailButton", 3, "click"], [1, "fas", "fa-undo"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, LoginComponent_div_1_Template, 7, 0, "div", 1);
@@ -1301,7 +1301,7 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
                 templateUrl: './login.component.html',
                 styleUrls: ['./login.component.css']
             }]
-    }], function () { return [{ type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }]; }, null); })();
+    }], function () { return [{ type: _ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }]; }, null); })();
 
 
 /***/ }),

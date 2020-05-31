@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, catchError } from 'rxjs/operators';
 import * as userActions from '../actions/user.action';
 import * as proteinActions from '../actions/protein.action';
 
