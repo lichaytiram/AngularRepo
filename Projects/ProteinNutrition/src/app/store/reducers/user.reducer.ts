@@ -72,6 +72,13 @@ export const userReducer = createReducer<IUserState>(
             };
         }
     ), on(
+        fromUser.UserLoginFailOn, (state: IUserState) => {
+            return {
+                ...state,
+                loginFail: true
+            };
+        }
+    ), on(
         fromUser.UserLoginFailOff, (state: IUserState) => {
             return {
                 ...state,

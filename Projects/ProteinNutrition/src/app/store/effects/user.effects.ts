@@ -45,8 +45,10 @@ export class UserEffects {
   public loginUser$ = createEffect(() => this.actions$.pipe(ofType(userActions.LoginUser),
     switchMap(action => this.userService.login(action.login).pipe(
       map((user: IUser) => {
-        this.router.navigate(['product/account']);
-        return userActions.LoginUserSuccess({ user });
+        if (user) {
+          this.router.navigate(['product/account']);
+          return userActions.LoginUserSuccess({ user });
+        } else return userActions.UserLoginFailOn();
       }),
       catchError(error => of(userActions.LoginUserFail(error)))
     ))
