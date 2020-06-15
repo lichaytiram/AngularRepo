@@ -1,0 +1,145 @@
+.mainContainer {
+    font-family: sans-serif;
+    width: 65%;
+    margin: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.height {
+    height: 100vh;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container1 h1 {
+    background-color: rgb(77, 73, 73);
+    border: 10px solid rgb(66, 65, 65);
+    color: lightblue;
+    text-align: center;
+}
+
+.section1 {
+    position: relative;
+    height: 258px;
+    background-color: rgb(49, 48, 48);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section2 {
+    position: absolute;
+    height: inherit;
+    background-color: rgb(241, 55, 55);
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.color h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.z-2 {
+    z-index: 2;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container2 h1 {
+    background-color: rgb(44, 44, 43);
+    border: 10px solid rgb(44, 44, 43);
+    border-left: 30px solid rgb(44, 44, 43);
+    border-right: 50px solid rgb(44, 44, 43);
+    position: relative;
+}
+
+.container2 h1::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    bottom: 0;
+    left: -85px;
+    border-right: 27px solid rgb(44, 44, 43);
+    border-left: 28px solid transparent;
+    border-top: 27px solid transparent;
+    border-bottom: 29px solid transparent;
+}
+
+.container3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container1:before {
+    content: '';
+    position: absolute;
+    background: url("../assets/photos/parallax1.jpg") center no-repeat;
+    background-size: cover;
+    transform: translateZ(-1px) scale(2);
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.container2:before {
+    content: '';
+    position: absolute;
+    background: url("../assets/photos/parallax2.jpg") center no-repeat;
+    background-size: cover;
+    transform: translateZ(-1px) scale(2);
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.container3:before {
+    content: '';
+    position: absolute;
+    background: url("../assets/photos/parallax4.jpg") center no-repeat;
+    background-size: cover;
+    transform: translateZ(-1px) scale(2);
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.space {
+    height: 300px;
+}
