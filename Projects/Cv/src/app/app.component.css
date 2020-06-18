@@ -1,7 +1,102 @@
-div {
+.container {
+    height: 100%;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-a {
+.container img {
+    position: absolute;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    right: 0;
+    top: 0;
+}
+
+.container .inner {
+    padding-top: 20px;
+    width: 20%;
+    margin: auto;
+}
+
+.container .inner:hover {
+    background-color: hotpink;
+}
+
+.container .inner:hover {
+    background: url('/assets/background2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+h2 {
+    margin: 0;
+    opacity: 0;
+    animation: h2 3s forwards .3s;
+}
+
+h3 {
+    animation: h3 3s forwards .3s;
+    opacity: 0;
+}
+
+h3 a {
     color: red;
+}
+
+h2, h3 {
+    background-color: rgba(192, 241, 245, 0.521);
+}
+
+@keyframes h2 {
+    from {
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes h3 {
+    0% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    65% {
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media(max-width: 1260px) {
+    .container .inner {
+        width: 30%;
+    }
+}
+
+@media(max-width: 880px) {
+    .container .inner {
+        width: 40%;
+    }
+}
+
+@media(max-width: 630px) {
+    .container .inner {
+        width: 60%;
+    }
+}
+
+@media(max-width: 500px) {
+    .container .inner {
+        width: 80%;
+    }
 }

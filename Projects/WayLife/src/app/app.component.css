@@ -68,6 +68,15 @@
     overflow: hidden;
 }
 
+.big{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 200vh;
+    overflow: hidden;
+}
+
 .container2 h1 {
     background-color: rgb(44, 44, 43);
     border: 10px solid rgb(44, 44, 43);
@@ -88,6 +97,16 @@
     border-bottom: 29px solid transparent;
 }
 
+.container2 .left img {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
 .container3 {
     display: flex;
     justify-content: center;
@@ -97,7 +116,7 @@
     overflow: hidden;
 }
 
-.container1:before {
+.container1::before {
     content: '';
     position: absolute;
     background: url("../assets/photos/parallax1.jpg") center no-repeat;
@@ -112,7 +131,7 @@
     margin: auto;
 }
 
-.container2:before {
+.container2::before {
     content: '';
     position: absolute;
     background: url("../assets/photos/parallax2.jpg") center no-repeat;
@@ -126,7 +145,7 @@
     left: 0;
 }
 
-.container3:before {
+.container3::before {
     content: '';
     position: absolute;
     background: url("../assets/photos/parallax4.jpg") center no-repeat;
