@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 @Component({
   selector: 'app-root',
@@ -19,50 +20,40 @@ export class AppComponent implements OnInit {
 
   private gsap(): void {
 
-    gsap.registerPlugin(CSSRulePlugin, ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-    const t1 = gsap.timeline({
 
+    // gsap.to('.container .container1', {
+    //   scrollTrigger: {
+    //     trigger: '.container .container1',
+    //     start: 'center center',
+    //     end:'bottom top',
+    //     scrub: true,
+    //     pin:true,
+    //     markers: true
+    //   },
+    //   x: innerWidth *-1
+
+    // })
+
+    gsap.timeline({
       scrollTrigger: {
-        trigger: '.section1',
-        toggleActions: 'restart pause reverse pause',
-        scrub: 4,
-        start: 'bottom 90%',
-        end: 'top 70%',
-        // markers: true
+        trigger: '.container',
+        start: 'center center',
+        end: '+=2300',
+        scrub: true,
+        markers: true,
+        pin: true
       }
-
-    });
-
-    t1.to('.section2',
-      {
-        xPercent: -100,
-        opacity: 1,
-        duration: 5
-      });
-
-    const t2 = gsap.timeline({
-
-      scrollTrigger: {
-        trigger: '.container2',
-        toggleActions: 'restart pause reverse pause',
-        scrub: 4,
-        start: 'bottom 90%',
-        end: 'top center',
-        markers: true
-      }
-
-    });
-
-    var container2Before = CSSRulePlugin.getRule(".cc::after");
-    t2.from('.container2 .left img', {
-      x: innerWidth * 1,
-      opacity: 0,
-      duration: 4
     })
-      gsap.to(container2Before, 3, { cssRule: { color: "#0000FF", opacity: 0 } });
-    // gsap.to(CSSRulePlugin.getRule(".cc:after"), 3, { cssRule: { color: "#0000CC", opacity: 0 } });
-    // gsap.to(container2Before, {duration: 3, cssRule: {opacity:0 }});
+      .to('.outImg', { opacity: 0 })
+      .from('.container .container1 .right', { x: innerWidth * 1, opacity: 0 }, "-=0.6")
+      .from('.right h2', { y: 100, opacity: 0 })
+      .to('.right h2', { y: 50, scale: 0, opacity: 0 })
+      .from('.right h3', { y: 100, x: 30, opacity: 0, scale: 0 })
+      .from('.right .smallImg', { y: -100, opacity: 0, scale: 0 })
+
+
 
   }
 

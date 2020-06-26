@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { gsap } from "gsap";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 @Component({
@@ -19,30 +18,42 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    // gsap.registerPlugin(CSSRulePlugin, ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-    // gsap.from('div h1', {
-    //   scrollTrigger: 'div h1',
-    //   y: 200,
-    //   duration: 5
+    // gsap.set(".container2", { width: 500 });
+    // gsap.to(".container2", {
+    //   scrollTrigger: {
+    //     trigger: ".container2",
+    //     start: "top top",
+    //     end: () => innerWidth * 3,
+    //     scrub: true,
+    //     anticipatePin: 1,
+    //     pin: true
+    //   },
+    //   xPercent: -100,
+    //   x: innerWidth
     // });
 
-    // const rule = CSSRulePlugin.getRule(".cc::before");
-    // console.log(rule);
-    
-    // gsap.to(rule, 3, { cssRule: { color: "#0000FF", x: 50 }, x: 300 });
+    this.gsap();
 
-    gsap.registerPlugin(CSSRulePlugin, ScrollTrigger);
+  }
 
-    gsap.from("h1", {
-      scrollTrigger: "h1",
-      y: 200,
-      duration: 5
-    });
+  private gsap(): void {
 
-    const rule = CSSRulePlugin.getRule(".cc::before");
-    console.log(rule);
-    gsap.to(rule, { duration: 3, cssRule: { color: "#0000FF" }, x: 300 });
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: 'section',
+        start: 'center 55%',
+        end: 'bottom top',
+        scrub: true,
+        markers: true,
+        pin: true
+      }
+    })
+      .to('.text', { scale: 0 })
+      .from('.box1', { x: innerWidth * -1 })
+      .from('.box2', { x: innerWidth * 1 })
+
   }
 
 }

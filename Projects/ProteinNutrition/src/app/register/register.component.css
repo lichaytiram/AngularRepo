@@ -81,6 +81,8 @@ small {
 
 .width {
     width: 24px;
+    float: left;
+    margin-bottom: 30px;
 }
 
 .userCreated {
