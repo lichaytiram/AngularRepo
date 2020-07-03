@@ -72,26 +72,38 @@
   min-height: 100vh;
   background-color: rgb(26, 25, 25);
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   text-align: center;
-  grid-gap: 20px;
 }
 
-.gridBackground {
-  background-color: burlywood;
+.container2>h3 {
+  color: rgb(162, 213, 247);
+  padding: 50px;
+  text-transform: capitalize;
   margin: 0;
 }
 
-.gridBackground:nth-child(even) {
-  background-color: rgb(252, 222, 203);
+.space {
+  height: 700px;
 }
 
-.container2 .grid1 {
-  grid-column: 1/3;
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-.container2 .grid6 {
-  grid-column: 1/3;
+
+.space .flex>img {
+  width: 400px;
+  height: 200px;
+  margin: 75px;
+  border-radius: 10px;
+  padding: 3px;
+  box-shadow: 1px 1px 3px 1px rgb(248, 75, 75);
+}
+
+.space .flex>img:hover {
+  transform: scaleX(1.12) scaleY(1.12) scaleZ(1.5);
+  transition: 1.5s ease-in-out;
 }
 
 @keyframes container1 {

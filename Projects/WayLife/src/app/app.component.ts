@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
         start: 'center center',
         end: '+=2300',
         scrub: true,
-        markers: true,
+        // markers: true,
         pin: true
       }
     })
