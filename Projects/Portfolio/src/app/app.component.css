@@ -1,0 +1,53 @@
+.container {
+    min-height: 100vh;
+    width: 100%;
+    background: radial-gradient(violet, rgb(97, 88, 228));
+    position: fixed;
+}
+
+.container>.containerRight {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(100% 0, 100% 100%, 70% 50%);
+    background: linear-gradient(to top, rgba(243, 34, 34, 0.185), rgba(138, 196, 155, 0.438));
+    z-index: -1;
+}
+
+.container>.containerLeft {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0 0, 0 100%, 30% 50%);
+    background: linear-gradient(to bottom, rgba(243, 34, 34, 0.185), rgba(138, 196, 155, 0.438));
+    z-index: -1;
+}
+
+.container span+h1 {
+    margin: 0;
+    padding-top: 18px;
+    display: block;
+    text-align: center;
+    text-transform: capitalize;
+    color: rgb(22, 34, 68);
+    text-shadow: 0.4px 0.4px 0.4px rgb(146, 17, 17);
+}
+
+.container>.flexContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 170px;
+    margin: 20px;
+    justify-content: space-around;
+}
+
+.container>.flexContainer>.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: brown;
+}
+
+.container>.flexContainer> :nth-child(even){
+background-color: rgba(189, 62, 62, 0.863)
+}
