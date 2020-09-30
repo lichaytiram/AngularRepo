@@ -2,7 +2,7 @@
     min-height: 100vh;
     width: 100%;
     background: radial-gradient(violet, rgb(97, 88, 228));
-    position: fixed;
+    position: relative;
 }
 
 .container>.containerRight {
@@ -11,7 +11,6 @@
     width: 100%;
     clip-path: polygon(100% 0, 100% 100%, 70% 50%);
     background: linear-gradient(to top, rgba(243, 34, 34, 0.185), rgba(138, 196, 155, 0.438));
-    z-index: -1;
 }
 
 .container>.containerLeft {
@@ -20,7 +19,6 @@
     width: 100%;
     clip-path: polygon(0 0, 0 100%, 30% 50%);
     background: linear-gradient(to bottom, rgba(243, 34, 34, 0.185), rgba(138, 196, 155, 0.438));
-    z-index: -1;
 }
 
 .container span+h1 {
@@ -37,7 +35,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 170px;
-    margin: 20px;
+    margin: 1px;
+    min-height: 70vh;
     justify-content: space-around;
 }
 
@@ -45,9 +44,61 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: brown;
+    background-color: rgba(236, 184, 238, 0.432);
+    margin-bottom: 80px;
+    height: 100px;
+    z-index: 1;
+    position: relative;
 }
 
-.container>.flexContainer> :nth-child(even){
-background-color: rgba(189, 62, 62, 0.863)
+.container>.flexContainer>.flexRow:nth-child(even) {
+    background-color: rgba(236, 184, 238, 0.432);
+}
+
+.flexRow h3, .flexRow h4 {
+    margin: 5px;
+}
+
+.flexRow>.rightContainer, .flexRow>.leftContainer {
+    width: 40%;
+    height: 100%;
+    background-color: rgba(220, 20, 60, 0.288);
+}
+
+.flexRow>.leftContainer {
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+
+.flexRow>.rightContainer {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
+
+.flexRow .left{
+padding-left: 2%;
+}
+
+.flexRow .right{
+    padding-left: 30%;
+}
+
+.flexRow>.leftContainer:hover {
+    animation: flexRowLeft 2s forwards;
+}
+
+.flexRow>.rightContainer:hover {
+    animation: flexRowRight 2s forwards;
+}
+
+@keyframes flexRowLeft {
+    to {
+        transform: scaleX(1.3) scaleY(1.5) translateX(11.5%);
+        background-color: rgba(230, 105, 130, 0.801);
+    }
+}
+
+@keyframes flexRowRight {
+    to {
+        transform: translateX(-11.5%) scaleX(1.3) scaleY(1.5);
+        background-color: rgba(230, 105, 130, 0.801);
+    }
 }
