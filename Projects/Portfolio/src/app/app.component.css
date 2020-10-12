@@ -21,14 +21,28 @@
     background: linear-gradient(to bottom, rgba(243, 34, 34, 0.185), rgba(138, 196, 155, 0.438));
 }
 
-.container span+h1 {
-    margin: 0;
+.container>.header {
     padding-top: 80px;
+}
+
+.container>.header>h1 {
+    margin: auto;
     display: block;
     text-align: center;
     text-transform: capitalize;
+    width: 380px;
+    border-radius: 10px;
     color: rgb(22, 34, 68);
+    background-color: rgba(230, 167, 243, 0.753);
     text-shadow: 0.4px 0.4px 0.4px rgb(146, 17, 17);
+    animation: header 2s forwards;
+}
+
+.container>.header>h1:hover {
+    background-color: rgb(247, 176, 232);
+    transition-duration: 3s;
+    color: rgb(115, 167, 245);
+    text-shadow: 0.4px 0.4px 0.4px rgb(48, 2, 85);
 }
 
 .container>.flexContainer {
@@ -89,6 +103,26 @@
 
 .flexRow>.rightContainer:hover {
     animation: flexRowRight 2s forwards;
+}
+
+footer>p {
+    margin: 0;
+    background-color: rgba(104, 104, 104, 0.466);
+    height: 20px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+@keyframes header {
+    0% {
+        transform: translateY(-100px) scale(0.1);
+    }
+    50% {
+        transform: translateY(30px) scale(1.5);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
 }
 
 @keyframes flexRowLeft {

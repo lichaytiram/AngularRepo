@@ -1,7 +1,11 @@
-1) firebase login
+1) type - cmd inside dist folder.
 
-2) firebase init
-the first choose yes and after choose all no
-* 404 file add html code (copy and paste)
+2) type - firebase login.
 
-3) firebase deploy
+3) type - firebase init,
+The first option choose yes,
+after inside public write your project name (inside dist folder) , and after options choose no.
+
+4) firebase deploy.
+
+*if have problem with refresh after deploy - copy html code and paste inside 404 file.
