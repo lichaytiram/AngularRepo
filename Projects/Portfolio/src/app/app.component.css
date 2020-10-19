@@ -60,7 +60,7 @@
     justify-content: space-between;
     background-color: rgba(236, 184, 238, 0.432);
     margin-bottom: 80px;
-    height: 100px;
+    min-height: 100px;
     z-index: 1;
     position: relative;
 }
@@ -69,13 +69,18 @@
     background-color: rgba(236, 184, 238, 0.432);
 }
 
+.flexRow h3 {
+    text-transform: capitalize;
+    text-align: center;
+}
+
 .flexRow h3, .flexRow h4 {
     margin: 5px;
 }
 
-.flexRow>.rightContainer, .flexRow>.leftContainer {
+.flexRow>.leftContainer, .flexRow>.rightContainer {
     width: 40%;
-    height: 100%;
+    height: auto;
     background-color: rgba(220, 20, 60, 0.288);
     display: flex;
     align-items: center;
@@ -91,22 +96,55 @@
 
 .flexRow .left {
     padding-left: 2%;
+    padding-right: 10%;
 }
 
 .flexRow .right {
-    padding-left: 30%;
+    padding-left: 26%;
 }
 
 .flexRow>.leftContainer:hover {
+    z-index: 1;
     animation: flexRowLeft 2s forwards;
 }
 
 .flexRow>.rightContainer:hover {
+    z-index: 1;
     animation: flexRowRight 2s forwards;
 }
 
+.contactMeContainer {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(rgb(200, 155, 243), rgb(236, 115, 247));
+    border-radius: 8px;
+}
+
+.contactMeContainer>.contactMe {
+    margin: 20px
+}
+
+.contactMeContainer>.whatsapp {
+    color: rgb(2, 85, 39);
+}
+
+.contactMeContainer>.messenger {
+    color: rgb(37, 40, 207);
+}
+
+.contactMeContainer>.phone {
+    color: rgb(6, 122, 6);
+}
+
+.contactMeContainer>.envelope {
+    color: rgb(49, 35, 82);
+}
+
 footer>p {
-    margin: 0;
+    margin: 8px 0 0 0;
     background-color: rgba(104, 104, 104, 0.466);
     height: 20px;
     text-align: center;
@@ -127,8 +165,9 @@ footer>p {
 
 @keyframes flexRowLeft {
     to {
-        transform: scaleX(1.3) scaleY(1.5) translateX(11.5%);
+        transform: translateX(11.5%) scaleX(1.3) scaleY(1.5);
         background-color: rgba(230, 105, 130, 0.801);
+        z-index: 2;
     }
 }
 
@@ -136,5 +175,36 @@ footer>p {
     to {
         transform: translateX(-11.5%) scaleX(1.3) scaleY(1.5);
         background-color: rgba(230, 105, 130, 0.801);
+        z-index: 2;
+    }
+}
+
+@media(max-width:1400px) {
+    .flexRow>.leftContainer, .flexRow>.rightContainer {
+        width: 45%;
+    }
+}
+
+@media(max-width:1220px) {
+    .flexRow>.leftContainer, .flexRow>.rightContainer {
+        width: 49%;
+    }
+}
+
+@media(max-width:1130px) {
+    .flexRow>.leftContainer, .flexRow>.rightContainer {
+        width: 80%;
+    }
+    .flexRow>.rightContainer {
+        align-self: flex-end;
+    }
+    .container>.flexContainer>.flexRow {
+        flex-direction: column;
+    }
+}
+
+@media(max-width:600px) {
+    .flexRow .left {
+        padding-right: 18%;
     }
 }
