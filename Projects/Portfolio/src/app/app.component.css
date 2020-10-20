@@ -124,19 +124,29 @@
 }
 
 .contactMeContainer>.contactMe {
-    margin: 20px
+    margin: 15px;
+    padding: 5px;
+}
+
+.contactMeContainer>.contactMe:hover {
+    transform: rotate(360deg);
+    transition: 1.1s ease-out;
+}
+
+.contactMeContainer>.contactMe:hover:nth-child(odd) {
+    transform: skew(-20deg);
 }
 
 .contactMeContainer>.whatsapp {
     color: rgb(2, 85, 39);
 }
 
-.contactMeContainer>.messenger {
-    color: rgb(37, 40, 207);
-}
-
 .contactMeContainer>.phone {
     color: rgb(6, 122, 6);
+}
+
+.contactMeContainer>.messenger {
+    color: rgb(37, 40, 207);
 }
 
 .contactMeContainer>.envelope {
