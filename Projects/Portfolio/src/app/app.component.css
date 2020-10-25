@@ -35,7 +35,7 @@
     color: rgb(22, 34, 68);
     background-color: rgba(230, 167, 243, 0.753);
     text-shadow: 0.4px 0.4px 0.4px rgb(146, 17, 17);
-    animation: header 2s forwards;
+    animation: header 2s forwards 0.2s;
 }
 
 .container>.header>h1:hover {
