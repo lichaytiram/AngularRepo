@@ -72,10 +72,15 @@
 .flexRow h3 {
     text-transform: capitalize;
     text-align: center;
+    color: rgb(0, 29, 160);
 }
 
 .flexRow h3, .flexRow h4 {
     margin: 5px;
+}
+
+.flexRow .note {
+    color: rgb(97, 0, 153);
 }
 
 .flexRow>.leftContainer, .flexRow>.rightContainer {
@@ -83,6 +88,7 @@
     height: auto;
     background-color: rgba(220, 20, 60, 0.288);
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -105,12 +111,12 @@
 
 .flexRow>.leftContainer:hover {
     z-index: 1;
-    animation: flexRowLeft 2s forwards;
+    animation: flexRowLeft .4s forwards;
 }
 
 .flexRow>.rightContainer:hover {
     z-index: 1;
-    animation: flexRowRight 2s forwards;
+    animation: flexRowRight .4s forwards;
 }
 
 .contactMeContainer {
