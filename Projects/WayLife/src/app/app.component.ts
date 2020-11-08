@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { gsap } from "gsap";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { IUser } from './shared/models/IUser.model';
+import { User } from './shared/models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +14,54 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export class AppComponent implements OnInit {
   title = 'WayLife';
 
+  public user: IUser;
+  public inputTouch: boolean;
+  public inputValid: boolean;
+  public emailValid: boolean;
+  public emailSentSuccessfully: boolean;
+
   ngOnInit() {
+
+    this.user = new User(undefined, undefined, undefined);
 
     this.gsap();
 
+  }
+
+  public submit(): void {
+
+    this.inputTouch = true;
+    this.inputValidation();
+
+    if (this.inputValid) {
+      console.log(this.user); // email will send by http request to the server on real website
+      this.emailSentSuccessfully = true;
+    }
+
+  }
+
+  public inputValidation(): void {
+
+    const user: IUser = this.user;
+    if (!user.firstName || !user.lastName || !user.email ||
+      user.firstName.length <= 0 || user.lastName.length <= 0 || user.email.length <= 0) {
+      this.inputValid = false;
+      return;
+    }
+
+    const pattrn = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+    const regex = new RegExp(pattrn);
+    if (!regex.test(user.email)) {
+      this.inputValid = false;
+      return;
+    }
+
+    this.inputValid = true;
+
+  }
+
+  public toggleMessage(): void {
+    this.emailSentSuccessfully = false;
   }
 
   private gsap(): void {

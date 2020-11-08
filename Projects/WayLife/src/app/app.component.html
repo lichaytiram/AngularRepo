@@ -62,21 +62,39 @@
         <h3>so your last step for change your life. </h3>
         <h4>just to fulfil the lines and we will contact with you</h4>
 
-        <div class="form">
-          <input type="text" class="">
-          <input type="text" class="">
-          <input type="text" class="">
-          <input type="submit" class="">
-        </div>
+        <form (change)="inputValidation()" (ngSubmit)="submit()">
 
+          <div class="grid grid-1">
+            <input type="text" name="firstName" [(ngModel)]="user.firstName" required>
+            <label>first name</label>
+          </div>
+
+          <div class="grid grid-2">
+            <input type="text" name="lastName" [(ngModel)]="user.lastName" required>
+            <label>last name</label>
+          </div>
+
+          <div class="grid grid-3">
+            <input type="text" name="email" [(ngModel)]="user.email" required>
+            <label>email</label>
+          </div>
+
+          <input type="submit" [disabled]="inputTouch && !inputValid" class="grid-4">
+
+        </form>
+
+      </div>
+
+      <div *ngIf="emailSentSuccessfully" class="messageContainer">
+        <div class="messageSent">
+          <p>It was sent successfully</p>
+          <p>we'll be in touch with you</p>
+          <button (click)="toggleMessage()">close</button>
+        </div>
       </div>
 
     </div>
 
-
   </div>
-
-
-
 
 </div>

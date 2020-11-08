@@ -130,6 +130,8 @@
   left: 420px;
 }
 
+/* formContainer */
+
 .formContainer {
   height: 100vh;
   background: linear-gradient(rgb(236, 144, 127), rgb(61, 155, 243));
@@ -168,7 +170,7 @@
   background-repeat: no-repeat;
 }
 
-.formOuter {
+.formContainer>.formOuter {
   width: 80%;
   height: 40%;
   border-radius: 30px;
@@ -179,11 +181,133 @@
   left: 10%;
 }
 
-.form {
+.formContainer>.formOuter>form {
   padding: 12px 25% 10px 25%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4px;
+  grid-template-areas: 'grid-1 grid-2' 'grid-3 grid-3' 'grid-4 grid-4';
+  grid-gap: 7px;
+}
+
+.formContainer>.formOuter>form>.grid {
+  position: relative;
+  height: 50px;
+}
+
+.formContainer>.formOuter>form input {
+  height: 100%;
+  width: 100%;
+  outline: 0;
+  padding-top: 20px;
+  padding-left: 7px;
+  box-shadow: 1px 1px 1px 1px rgb(240, 219, 219), 1px 1px 1px 1px rgb(155, 35, 35);
+  /* disable input border v */
+  border: 1px solid rgb(236, 160, 160);
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.formContainer>.formOuter>form>.grid-1 {
+  grid-area: grid-1;
+}
+
+.formContainer>.formOuter>form>.grid-2 {
+  grid-area: grid-2;
+}
+
+.formContainer>.formOuter>form>.grid-3 {
+  grid-area: grid-3;
+}
+
+.formContainer>.formOuter>form>.grid-4 {
+  grid-area: grid-4;
+  padding: 4px 1px;
+  background: repeating-linear-gradient(to right, rgb(216, 167, 228), rgb(152, 222, 235), rgb(236, 97, 121));
+  background-size: 200%;
+  background-position: left;
+  transition: 1.2s ease-in;
+  height: 30px;
+}
+
+.formContainer>.formOuter>form>.grid-4:hover {
+  background-position: right;
+}
+
+.formContainer>.formOuter>form>.grid-4:disabled {
+  opacity: 0.6;
+  color: black;
+  background: rgba(209, 11, 11, 0.76);
+  border: 2px solid rgb(20, 20, 20);
+}
+
+.formContainer>.formOuter>form label {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  padding-left: 7px;
+  pointer-events: none;
+}
+
+.formContainer>.formOuter>form>.grid>label {
+  transition: .5s ease-out;
+  text-transform: capitalize;
+}
+
+.formContainer>.formOuter>form>.grid>input:focus+label, .formContainer>.formOuter>form>.grid>input:valid+label {
+  color: rgb(247, 59, 169);
+  border: 1px black;
+  font-size: 14px;
+  transform: translateY(-22px);
+}
+
+.formContainer>.messageContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer>.messageContainer>.messageSent {
+  height: 40%;
+  width: 60%;
+  border-radius: 4px;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgb(236, 98, 126), rgb(223, 163, 175), rgb(219, 124, 203), rgba(255, 135, 135, 0.808));
+  background-size: 100% 300%;
+  background-position: top;
+  transition: 1.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.formContainer>.messageContainer>.messageSent:hover {
+  background-position: bottom;
+}
+
+.formContainer>.messageContainer>.messageSent>p {
+  margin: 10px;
+  font-size: x-large;
+  font-weight: bold;
+  color: rgb(7, 18, 121);
+}
+
+.formContainer>.messageContainer>.messageSent>p::first-letter {
+  color: rgb(12, 35, 243);
+  text-transform: uppercase;
+}
+
+.formContainer>.messageContainer>.messageSent>button {
+  padding: 5px;
+  margin: 10px;
+  width: 40%;
+  font-size: x-large;
+  font-weight: bold;
+  color: rgb(79, 2, 151);
+  background-color: rgba(241, 149, 87, 0.74);
+  outline-style: inherit;
+  border-radius: 50px;
 }
 
 /* @keyframes container1 {
