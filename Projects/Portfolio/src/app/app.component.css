@@ -223,4 +223,7 @@ footer>p {
     .flexRow .left {
         padding-right: 18%;
     }
+    .container>.header>h1 {
+        width: 80%;
+    }
 }
