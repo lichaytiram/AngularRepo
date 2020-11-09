@@ -137,6 +137,9 @@
   background: linear-gradient(rgb(236, 144, 127), rgb(61, 155, 243));
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .formContainer>.coverShape-left {
@@ -163,6 +166,7 @@
   height: 300px;
   right: 10px;
   top: 10px;
+  border: 1px solid black;
   clip-path: circle(63.6% at 50% 50%);
   background-image: url("../assets/photos/treesIsland.jpg");
   background-size: cover;
@@ -177,8 +181,7 @@
   border: 5px solid rgb(65, 180, 247);
   background: radial-gradient(rgb(224, 175, 243), rgb(194, 235, 233));
   position: absolute;
-  top: 40%;
-  left: 10%;
+  margin-top: 75px;
 }
 
 .formContainer>.formOuter>form {
@@ -271,6 +274,7 @@
   height: 40%;
   width: 60%;
   border-radius: 4px;
+  padding: 2px;
   z-index: 1;
   background: linear-gradient(to bottom, rgb(236, 98, 126), rgb(223, 163, 175), rgb(219, 124, 203), rgba(255, 135, 135, 0.808));
   background-size: 100% 300%;
@@ -287,7 +291,7 @@
 }
 
 .formContainer>.messageContainer>.messageSent>p {
-  margin: 10px;
+  margin: 0;
   font-size: x-large;
   font-weight: bold;
   color: rgb(7, 18, 121);
@@ -300,7 +304,6 @@
 
 .formContainer>.messageContainer>.messageSent>button {
   padding: 5px;
-  margin: 10px;
   width: 40%;
   font-size: x-large;
   font-weight: bold;
@@ -332,5 +335,49 @@
 @media (max-width:450px) {
   .box {
     left: 120px;
+  }
+  .formContainer>.picture {
+    width: 126px;
+    height: 126px;
+  }
+  .formContainer>.formOuter {
+    padding: 4px;
+    width: 95%;
+    height: 64%;
+  }
+  .formContainer>.formOuter>form {
+    padding: 5px;
+  }
+  .formContainer>.messageContainer>.messageSent {
+    height: 50%;
+    width: 88%;
+  }
+}
+
+@media (max-height:450px) {
+  .formContainer>.picture {
+    display: none;
+  }
+  .formContainer>.formOuter {
+    margin: 0;
+    padding: 2px;
+    width: 95%;
+    height: 80%;
+  }
+  .formContainer>.formOuter>form {
+    padding: 5px 10%;
+  }
+  .formContainer>.messageContainer>.messageSent {
+    height: 65%;
+    width: 76%;
+  }
+}
+
+@media (max-height:350px) {
+  .formContainer>.formOuter {
+    height: 88%;
+  }
+  .formContainer>.messageContainer>.messageSent {
+    height: 70%;
   }
 }

@@ -36,11 +36,11 @@
     background-color: rgba(230, 167, 243, 0.753);
     text-shadow: 0.4px 0.4px 0.4px rgb(146, 17, 17);
     animation: header 2s forwards 0.2s;
+    transition-duration: 3s;
 }
 
 .container>.header>h1:hover {
     background-color: rgb(247, 176, 232);
-    transition-duration: 3s;
     color: rgb(115, 167, 245);
     text-shadow: 0.4px 0.4px 0.4px rgb(48, 2, 85);
 }
@@ -179,6 +179,18 @@ footer>p {
     }
 }
 
+@keyframes headerSmallSize {
+    0% {
+        transform: translateY(-100px) scale(0.1);
+    }
+    50% {
+        transform: translateY(30px) scale(1.2);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
 @keyframes flexRowLeft {
     to {
         transform: translateX(11.5%) scaleX(1.3) scaleY(1.5);
@@ -225,5 +237,6 @@ footer>p {
     }
     .container>.header>h1 {
         width: 80%;
+        animation-name: headerSmallSize;
     }
 }
