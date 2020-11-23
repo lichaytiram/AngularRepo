@@ -1,98 +1,83 @@
-<div>
+<div class="container">
 
-  <!-- <div class="container">
+  <div class="textContainer">
 
-    <div class="container1">
-      <h1>Are you waiting for good life?</h1>
+    <p>draft draft draft</p>
+    <p>draft draft draft</p>
+    <p>draft draft draft</p>
+    <p>draft draft draft</p>
 
-      <img src="../assets/photos/parallax1.jpg" alt="beach" class="imgContainer outImg">
+  </div>
 
-      <div class="right">
-        <img src="../assets/photos/parallax3.jpg" alt="skateboard" class="imgContainer">
-        <img src="../assets/photos/parallax6.jpg" alt="skateboard" class="smallImg">
-        <div>
-          <h2>If your answer is yes</h2>
-          <h3>Do something about it!</h3>
+  <div class="imgContainer">
+
+    <h3>we can offer you better life</h3>
+
+    <div class="flex">
+      <img src="../assets/photos/walk.jpg" alt="walk" class="walk">
+      <img src="../assets/photos/yoga.jpg" alt="yoga" class="yoga">
+    </div>
+
+    <h3>and more</h3>
+
+    <div class="flex">
+      <img src="../assets/photos/seaAtNight.jpg" alt="seaAtNight" class="seaAtNight">
+      <img src="../assets/photos/elephant.jpg" alt="elephant" class="elephant">
+    </div>
+
+    <h3>and a lot more then this</h3>
+
+  </div>
+
+  <div class="parallaxContainer">
+
+    <img src="../assets/photos/surf.jpg" alt="surf" class="background">
+
+    <div class="parallax-bg box1" data-speed="0.09"></div>
+    <div class="parallax-bg box2" data-speed="0.33"></div>
+
+  </div>
+
+  <div class="formContainer">
+
+    <div class="coverShape-left"></div>
+    <div class="coverShape-right"></div>
+    <div class="picture"></div>
+
+    <div class="formOuter">
+
+      <h3>last step for change your life</h3>
+      <h4>fulfil the lines and we will contact with you</h4>
+
+      <form (change)="inputValidation()" (ngSubmit)="submit()">
+
+        <div class="grid grid-1">
+          <input type="text" name="firstName" [(ngModel)]="user.firstName" required>
+          <label>first name</label>
         </div>
-      </div>
+
+        <div class="grid grid-2">
+          <input type="text" name="lastName" [(ngModel)]="user.lastName" required>
+          <label>last name</label>
+        </div>
+
+        <div class="grid grid-3">
+          <input type="text" name="email" [(ngModel)]="user.email" required>
+          <label>email</label>
+        </div>
+
+        <input type="submit" value="let's continue" [disabled]="inputTouch && !inputValid" class="grid-4">
+
+      </form>
 
     </div>
 
-  </div> -->
-
-  <div class="container2">
-
-    <!-- <div class="text">
-
-      <h3>we can offer you better life</h3>
-
-      <div class="space">
-
-        <div class="flex">
-          <img src="../assets/photos/walk.jpg" alt="walk" class="walk">
-          <img src="../assets/photos/yoga.jpg" alt="yoga" class="yoga">
-        </div>
-
-        <div class="flex">
-          <img src="../assets/photos/seaAtNight.jpg" alt="seaAtNight" class="seaAtNight">
-          <img src="../assets/photos/treesIsland.jpg" alt="treesIsland" class="treesIsland">
-        </div>
-
+    <div *ngIf="emailSentSuccessfully" class="messageContainer">
+      <div class="messageSent">
+        <p>It was sent successfully</p>
+        <p>we'll be in touch with you</p>
+        <button (click)="toggleMessage()">close</button>
       </div>
-
-      <h3>and more</h3>
-
-    </div> -->
-
-    <!-- <div class="parallaxContainer">
-
-      <img src="../assets/photos/surf.jpg" alt="surf" class="background">
-
-      <div class="parallax-bg box" data-speed="0.09"></div>
-
-    </div> -->
-
-    <div class="formContainer">
-
-      <div class="coverShape-left"></div>
-      <div class="coverShape-right"></div>
-      <div class="picture"></div>
-
-      <div class="formOuter">
-        <h3>so your last step for change your life. </h3>
-        <h4>just to fulfil the lines and we will contact with you</h4>
-
-        <form (change)="inputValidation()" (ngSubmit)="submit()">
-
-          <div class="grid grid-1">
-            <input type="text" name="firstName" [(ngModel)]="user.firstName" required>
-            <label>first name</label>
-          </div>
-
-          <div class="grid grid-2">
-            <input type="text" name="lastName" [(ngModel)]="user.lastName" required>
-            <label>last name</label>
-          </div>
-
-          <div class="grid grid-3">
-            <input type="text" name="email" [(ngModel)]="user.email" required>
-            <label>email</label>
-          </div>
-
-          <input type="submit" [disabled]="inputTouch && !inputValid" class="grid-4">
-
-        </form>
-
-      </div>
-
-      <div *ngIf="emailSentSuccessfully" class="messageContainer">
-        <div class="messageSent">
-          <p>It was sent successfully</p>
-          <p>we'll be in touch with you</p>
-          <button (click)="toggleMessage()">close</button>
-        </div>
-      </div>
-
     </div>
 
   </div>
