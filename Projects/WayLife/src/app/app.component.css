@@ -66,8 +66,7 @@
   height: 50px;
   width: 50px;
   position: absolute;
-  /* top: 950px; */
-  top: 0px;
+  top: 300px;
   left: 30%;
 }
 
@@ -77,8 +76,7 @@
   height: 50px;
   width: 50px;
   position: absolute;
-  /* top: 950px; */
-  top: 10px;
+  top: 300px;
   left: 44%;
 }
 
