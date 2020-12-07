@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { gsap } from "gsap";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+// import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IUser } from './shared/models/IUser.model';
 import { User } from './shared/models/user.model';
@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
 
     const flex1 = gsap.timeline({
       scrollTrigger: {
-        trigger: '.container .walk',
+        trigger: '.imgContainer .walk',
         start: 'bottom 98%',
         end: 'center top',
         toggleActions: 'play reverse play reverse'
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
     });
     const flex2 = gsap.timeline({
       scrollTrigger: {
-        trigger: '.container .seaAtNight',
+        trigger: '.imgContainer .seaAtNight',
         start: 'bottom 98%',
         end: 'center top',
         toggleActions: 'play reverse play reverse'
@@ -93,14 +93,14 @@ export class AppComponent implements OnInit {
     });
 
     flex1
-      .from('.walk', { x: -300, opacity: 0, duration: .8, ease: 'Power0.easeNone' })
-      .from('.yoga', { x: 300, opacity: 0, duration: .8, ease: 'Power0.easeNone' }, "-=");
+      .from('.walk', { x: -300, opacity: 0, duration: .8, ease: 'power2.out' })
+      .from('.yoga', { x: 300, opacity: 0, duration: .8, ease: 'power2.out' }, "<");
     flex2
-      .from('.seaAtNight', { x: -300, opacity: 0, duration: 1.1, ease: 'Power0.easeNone' })
-      .from('.elephant', { x: 300, opacity: 0, duration: 1.1, ease: 'Power0.easeNone ' }, "-=");
+      .from('.seaAtNight', { x: -300, opacity: 0, duration: 1.1, ease: 'power2.out' })
+      .from('.elephant', { x: 300, opacity: 0, duration: 1.1, ease: 'power2.out' }, "<");
 
     gsap.utils.toArray('.imgContainer .flex>img').forEach((element: HTMLElement) => {
-      const spaceHover = gsap.to(element, { scaleX: 1.12, scaleY: 1.12, scaleZ: 1.5, duration: 1.2, paused: true, ease: "ease-in-out" });
+      const spaceHover = gsap.to(element, { scaleX: 1.12, scaleY: 1.12, duration: 1.2, paused: true, ease: 'none' });
       element.addEventListener('mouseenter', () => spaceHover.play());
       element.addEventListener('mouseleave', () => spaceHover.reverse());
     });
@@ -121,12 +121,13 @@ export class AppComponent implements OnInit {
     gsap.to(".parallax-bg", {
       scrollTrigger: {
         trigger: ".parallaxContainer",
-        start: 'top 40%',
+        start: 'top 70%',
         end: `+=${totalScroll}`,
-        scrub: true
+        scrub: true,
+        // markers: true
       },
       y: (i, target) => -totalScroll * target.dataset.speed,
-      ease: "none"
+      ease: "none",
     });
 
   }
