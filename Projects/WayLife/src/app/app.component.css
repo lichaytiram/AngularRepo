@@ -2,11 +2,6 @@
 
 .textContainer {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: rgb(88, 26, 80);
   position: relative;
   z-index: 1;
   background: radial-gradient(rgb(175, 184, 235), rgb(185, 130, 207));
@@ -22,6 +17,432 @@
   opacity: 0.1;
 }
 
+.textContainer>h1, .textContainer>h2, .textContainer>p {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+.textContainer>h1>.upper, .textContainer>h2, .textContainer>p {
+  text-transform: capitalize;
+}
+
+.textContainer>h1 {
+  padding-top: 50px;
+  font-size: 2.3rem;
+  color: rgb(88, 26, 60);
+}
+
+/* animate header */
+
+.textContainer>h1>span:nth-child(1) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.3s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(2) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.32s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(4) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.34s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(5) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.36s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(6) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.38s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(8) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.4s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(9) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.42s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(10) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.44s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(11) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.46s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(13) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.48s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(14) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.5s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(16) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.52s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(17) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.54s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(18) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.56s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(19) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.58s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(20) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.6s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(21) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.62s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(22) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.64s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(24) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.66s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(25) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.68s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(26) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.7s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(27) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.72s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(29) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.74s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(30) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.76s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(31) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.78s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(32) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.8s forwards linear;
+}
+
+.textContainer>h1>span:nth-child(33) {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: scale(0.5) skew(50deg);
+  display: inline-block;
+  opacity: .1;
+  animation: textContainerHeader .3s 1.82s forwards linear;
+}
+
+@keyframes textContainerHeader {
+  to {
+    opacity: 1;
+    right: 0px;
+    top: 0px;
+    transform: skew(0deg) scale(1);
+  }
+}
+
+.textContainer>h2, .textContainer>p {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: textContainerSmallHeader .3s 1.6s forwards linear;
+  color: rgb(48, 8, 27);
+}
+
+.textContainer>h2 {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
+@keyframes textContainerSmallHeader {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.textContainer>.inner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  height: 50%;
+  border-left: 2px solid rgba(228, 112, 112, 0.616);
+  border-top: 2px solid rgba(143, 1, 1, 0.322);
+  box-shadow: -3px -3px 100px #f1b0b0;
+  background-color: rgba(7, 125, 172, 0.171);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textContainer>.text {
+  position: absolute;
+  width: 53%;
+  height: 57%;
+  bottom: 5%;
+  left: 5%;
+  padding: 5px;
+}
+
+.textContainer>.text p::first-letter, .textContainer>.text ul li::first-letter, .textContainer>.text>strong {
+  text-transform: capitalize;
+}
+
+.textContainer>.text ul li::marker {
+  color: #6b6767;
+}
+
+.textContainer>.text ul li:nth-child(odd)::marker {
+  color: #3b3434;
+}
+
+.textContainer>.text p, .textContainer>.text ul li, .textContainer>.text>strong {
+  font-size: x-large;
+}
+
+.textContainer>.text p {
+  color: rgb(88, 0, 66);
+  transition-duration: .2s;
+}
+
+.textContainer>.text p:hover {
+  transform: skew(-10deg);
+}
+
+.textContainer>.text ul li::first-letter {
+  color: #860d3b;
+}
+
+.textContainer>.text ul {
+  width: fit-content;
+}
+
+.textContainer>.text ul li {
+  padding: 5px;
+  background-color: rgba(205, 181, 228, 0.404);
+}
+
+.textContainer>.text ul li:first-child {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.textContainer>.text ul li:last-child {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.textContainer>.text ul li:hover {
+  transition-duration: .8s;
+  transform: rotateX(360deg);
+  transition-timing-function: ease-in-out;
+}
+
+.textContainer>.text>strong {
+  color: rgb(83, 2, 129);
+  margin-top: 50px;
+  text-align: center;
+  display: block;
+  animation: textContainerBigStrong 1s ease alternate-reverse infinite;
+  cursor: default;
+  user-select: none;
+}
+
+.textContainer>.text>strong::after {
+  content: '..';
+  color: #2a004d;
+  font-size: xx-large;
+}
+
+.textContainer>.inner {
+  padding: 13px;
+  transition-duration: .7s;
+  transition-timing-function: ease-out;
+}
+
+.textContainer>.inner:hover {
+  padding: 0;
+}
+
+.textContainer>.inner img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
 /* imgContainer */
 
 .imgContainer {
@@ -29,6 +450,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 1;
   background: radial-gradient(rgb(29, 133, 219), rgb(222, 169, 236));
@@ -45,10 +467,13 @@
 
 .imgContainer>h3 {
   margin: 0;
-  padding: 5px;
-  color: rgb(128, 1, 111);
-  text-transform: capitalize;
+  padding: 10px;
+  width: fit-content;
   text-align: center;
+  color: rgb(128, 1, 111);
+  background-color: rgba(255, 127, 80, 0.315);
+  text-transform: capitalize;
+  border-radius: 12px;
 }
 
 .imgContainer .flex {
@@ -292,6 +717,15 @@
   border-radius: 50px;
 }
 
+@keyframes textContainerBigStrong {
+  0% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
 @media (max-width:1300px) {
   .imgContainer .flex>img {
     width: 350px;
@@ -312,6 +746,9 @@
 }
 
 @media (max-width:450px) {
+  .imgContainer>h3 {
+    padding: 7px;
+  }
   .imgContainer .flex {
     flex-direction: column;
     align-items: center;
@@ -354,6 +791,9 @@
 }
 
 @media (max-height:450px) {
+  .imgContainer>h3 {
+    padding: 7px;
+  }
   .imgContainer .flex>img {
     width: 240px;
     height: 120px;
