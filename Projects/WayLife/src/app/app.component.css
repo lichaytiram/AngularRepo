@@ -819,7 +819,10 @@
     bottom: 40%;
   }
   .textContainer>.text>strong {
-    margin-top: 15px;
+    margin-top: 10px;
+  }
+  .textContainer>.text>strong::after {
+    font-size: larger;
   }
   .imgContainer>h3 {
     padding: 7px;
@@ -868,16 +871,19 @@
     margin-top: 0;
   }
   .textContainer>.text {
-    height: 47%;
-    bottom: 38%;
+    height: 45%;
+    bottom: 40%;
     padding: 10px 2px 2px 10px;
   }
   .textContainer>.text ul {
     margin: 7px 0;
   }
-  .textContainer>.text p, .textContainer>.text ul li, .textContainer>.text>strong {
+  .textContainer>.text p, .textContainer>.text>strong {
     font-size: smaller;
-    margin: 0;
+    margin: 1px;
+  }
+  .textContainer>.text>strong {
+    margin: 5px 0 0 0;
   }
   .imgContainer .flex>img {
     width: 200px;
