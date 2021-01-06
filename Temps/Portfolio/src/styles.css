@@ -10,6 +10,7 @@ html, body {
     min-height: 100vh;
     overflow-x: hidden;
     box-sizing: border-box;
+    direction: rtl;
 }
 
 body {
