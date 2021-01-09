@@ -167,18 +167,18 @@ header>.center>.examples+h3 {
     background-color: rgb(77, 76, 76);
 }
 
-.container>section:last-child>.coverDown {
+.container>section:last-child>.coverDown, .container>section:first-child>.coverUp {
     background-color: inherit;
 }
 
 .container>section>.textContainer {
     position: absolute;
     min-height: 65%;
-    width: 38%;
+    width: 42%;
     border-radius: 7px;
     right: 0;
     top: 0;
-    margin: 170px 8%;
+    margin: 8% 6%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -193,12 +193,13 @@ header>.center>.examples+h3 {
 
 .container>section:nth-child(odd)>.textContainer {
     background-color: rgb(41, 37, 37);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgb(206, 183, 183);
 }
 
 .container>section>.textContainer>.information, .container>section>.textContainer>.purpose, .container>section>.textContainer>.links {
     padding: 6px;
     border-radius: 15px;
+    margin: 1.5px 0;
     opacity: 0;
     transform: translateY(50px);
 }
@@ -219,13 +220,44 @@ header>.center>.examples+h3 {
     background-color: rgba(87, 77, 60, 0.075);
 }
 
-.container>section>.textContainer h1, .container>section>.textContainer h2, .container>section>.textContainer h4, .container>section>.textContainer p {
+.container>section>.textContainer h1, .container>section>.textContainer h2 {
+    text-align: center;
+    padding-bottom: 4.5px;
+}
+
+.container>section>.textContainer h1 {
+    font-size: 1.8em;
+}
+
+.container>section>.textContainer h2 {
+    font-size: 1.5em;
+}
+
+.container>section>.textContainer h4, .container>section>.textContainer p {
     padding-right: 2.5px;
+    font-size: 1.05em;
 }
 
 .container>section>.textContainer p {
     padding-top: .7px;
     padding-bottom: .7px;
+}
+
+.container>section>.textContainer p>span {
+    text-transform: uppercase;
+}
+
+.container>section>.textContainer p>span.capitalize {
+    text-transform: capitalize;
+}
+
+.container>section>.textContainer p>span.bold {
+    font-weight: bold;
+}
+
+.container>section>.textContainer>.links a {
+    color: inherit;
+    padding: 1px;
 }
 
 .container>section>.imgContainer {
@@ -234,8 +266,6 @@ header>.center>.examples+h3 {
     top: 28%;
     width: 36%;
     height: 40%;
-    display: flex;
-    justify-content: center;
 }
 
 .container>section>.imgContainer>img {
@@ -269,6 +299,7 @@ header>.center>.examples+h3 {
     padding: 10px;
     border-radius: 10px;
     font-size: xx-large;
+    margin: auto;
 }
 
 .container>section>.imgContainer>img:hover+p {
@@ -519,5 +550,75 @@ footer>.contactMeContainer>a.envelope {
     header>img.left {
         margin-top: 4%;
         height: 35%;
+    }
+}
+
+/* new media quary */
+
+@media (max-width:1400px) {
+    .container>section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+    .container>section>.textContainer {
+        position: static;
+        margin: 4%;
+        width: 80%;
+        height: fit-content;
+    }
+    .container>section>.imgContainer {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-bottom: 4%;
+    }
+    /* .container>section>.imgContainer>img {
+        position: relative;
+    } */
+    /* .container>section>.imgContainer>p {
+        position: absolute;
+    }  */
+}
+
+@media (min-width:900px) and (max-width:1400px) {
+    .container>section>.imgContainer {
+        width: 60%;
+        height: 300px;
+        max-width: 650px;
+    }
+}
+
+@media (min-width:500px) and (max-width:899px) {
+    .container>section>.imgContainer {
+        width: 95%;
+        max-width: 550px;
+        height: 300px;
+    }
+}
+
+@media (max-width:499px) {
+    .container>section>.textContainer {
+        width: 93%;
+    }
+    .container>section>.textContainer h1 {
+        font-size: 1.5em;
+    }
+    .container>section>.textContainer h2 {
+        font-size: 1.3em;
+    }
+    .container>section>.textContainer h4, .container>section>.textContainer p {
+        padding-right: 1.5px;
+        font-size: medium;
+    }
+    .container>section>.imgContainer {
+        width: 95%;
+        height: 200px;
+    }
+    .container>section>.imgContainer>p {
+        transform: translateY(50px);
+        font-size: x-large;
     }
 }
