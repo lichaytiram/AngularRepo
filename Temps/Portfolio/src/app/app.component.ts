@@ -56,6 +56,49 @@ export class AppComponent implements OnInit {
       });
     });
 
+
+    this.imgContainer();
   }
+
+  private imgContainer() {
+
+    const selector: string = ".container>section>.imgContainer";
+
+    ScrollTrigger.saveStyles(`${selector}>img , ${selector}>p`);
+    ScrollTrigger.matchMedia({
+      "(max-width:1399px)": () => {
+
+        gsap.utils.toArray(selector).forEach((targetElementContainer: HTMLElement) => {
+
+          if (targetElementContainer.hasChildNodes && targetElementContainer.childNodes.length == 2) {
+
+            const imgElement: Element = targetElementContainer.children[0];
+            const pElement: Element = targetElementContainer.children[1];
+
+            gsap.to(imgElement, {
+              scrollTrigger: {
+                trigger: imgElement, start: 'top 70%', markers: true
+              },
+              borderRadius: '50', opacity: 1, scale: '1.02', zIndex: '1', ease: 'Power1.Out', duration: '1.2'
+            });
+
+            gsap.to(pElement, {
+              scrollTrigger: {
+                trigger: imgElement, start: 'top 70%', markers: true
+              },
+              opacity: 0, ease: 'Power1.Out', duration: '1.2'
+            });
+          }
+          else console.log('update imgContainer gsap mod');
+
+        });
+
+      }
+    });
+
+  }
+
+
+
 
 }

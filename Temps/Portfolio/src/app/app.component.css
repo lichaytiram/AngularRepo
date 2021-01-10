@@ -152,11 +152,11 @@ header>.center>.examples+h3 {
 }
 
 .container>section>.coverUp {
-    clip-path: polygon(0 0, 50% 0, 0 3vw);
+    clip-path: polygon(0 -1px, 50% 0, 0 3vw);
 }
 
 .container>section>.coverDown {
-    clip-path: polygon(50% 100%, 100% calc(100% - 3vw), 100% 100%);
+    clip-path: polygon(50% 100%, 100% calc(100% - 3vw), 100% 101%);
 }
 
 .container>section:nth-child(even), .container>section:nth-child(odd)>.coverUp, .container>section:nth-child(odd)>.coverDown {
@@ -188,7 +188,7 @@ header>.center>.examples+h3 {
 
 .container>section:nth-child(even)>.textContainer {
     background-color: rgb(77, 76, 76);
-    color: black;
+    color: white;
 }
 
 .container>section:nth-child(odd)>.textContainer {
@@ -280,30 +280,18 @@ header>.center>.examples+h3 {
     transition: 1.2s ease-out;
 }
 
-.container>section>.imgContainer>img:hover {
-    opacity: 1;
-    border-radius: 50px;
-    transform: scale(1.02);
-    z-index: 1;
-}
-
 .container>section>.imgContainer>p {
     width: fit-content;
     height: fit-content;
-    transform: translateY(100px);
-    transition: 1.2s ease-out;
+    border-radius: 10px;
     font-weight: bold;
-    background: rgb(48, 48, 47);
+    font-size: xx-large;
+    padding: 10px;
+    margin: auto;
     background-image: linear-gradient(rgba(34, 13, 13, 0.493), rgba(49, 49, 54, 0.623)), repeating-radial-gradient(rgb(63, 49, 49), rgb(58, 58, 65), rgb(19, 50, 78));
     color: rgb(221, 219, 217);
-    padding: 10px;
-    border-radius: 10px;
-    font-size: xx-large;
-    margin: auto;
-}
-
-.container>section>.imgContainer>img:hover+p {
-    opacity: 0;
+    transform: translateY(100px);
+    transition: 1.2s ease-out;
 }
 
 /* footer */
@@ -555,13 +543,28 @@ footer>.contactMeContainer>a.envelope {
 
 /* new media quary */
 
-@media (max-width:1400px) {
+@media(min-width:1400px) {
+    .container>section>.imgContainer>img:hover {
+        opacity: 1;
+        border-radius: 50px;
+        transform: scale(1.02);
+        z-index: 1;
+    }
+    .container>section>.imgContainer>img:hover+p {
+        opacity: 0;
+    }
+}
+
+@media (max-width:1399px) {
     .container>section {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: fit-content;
+    }
+    .container>section>.coverUp, .container>section>.coverDown {
+        display: none;
     }
     .container>section>.textContainer {
         position: static;
@@ -575,15 +578,9 @@ footer>.contactMeContainer>a.envelope {
         top: 0;
         margin-bottom: 4%;
     }
-    /* .container>section>.imgContainer>img {
-        position: relative;
-    } */
-    /* .container>section>.imgContainer>p {
-        position: absolute;
-    }  */
 }
 
-@media (min-width:900px) and (max-width:1400px) {
+@media (min-width:900px) and (max-width:1399px) {
     .container>section>.imgContainer {
         width: 60%;
         height: 300px;
