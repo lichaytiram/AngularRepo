@@ -64,7 +64,12 @@ export class AppComponent implements OnInit {
 
     const selector: string = ".container>section>.imgContainer";
 
-    ScrollTrigger.saveStyles(`${selector}>img , ${selector}>p`);
+    ScrollTrigger.matchMedia({
+      "(min-width:1400px)": () => {
+        ScrollTrigger.saveStyles(`${selector}>img , ${selector}>p`);
+      }
+    });
+
     ScrollTrigger.matchMedia({
       "(max-width:1399px)": () => {
 
@@ -77,14 +82,14 @@ export class AppComponent implements OnInit {
 
             gsap.to(imgElement, {
               scrollTrigger: {
-                trigger: imgElement, start: 'top 70%', markers: true
+                trigger: imgElement, start: 'top 70%'
               },
               borderRadius: '50', opacity: 1, scale: '1.02', zIndex: '1', ease: 'Power1.Out', duration: '1.2'
             });
 
             gsap.to(pElement, {
               scrollTrigger: {
-                trigger: imgElement, start: 'top 70%', markers: true
+                trigger: imgElement, start: 'top 70%'
               },
               opacity: 0, ease: 'Power1.Out', duration: '1.2'
             });
