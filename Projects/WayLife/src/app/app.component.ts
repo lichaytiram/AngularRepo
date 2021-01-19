@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { gsap } from "gsap";
-// import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IUser } from './shared/models/IUser.model';
 import { User } from './shared/models/user.model';
@@ -66,7 +66,8 @@ export class AppComponent implements OnInit {
 
   private gsap(): void {
 
-    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
     this.imgContainer();
     this.parallaxContainer();
@@ -109,7 +110,7 @@ export class AppComponent implements OnInit {
 
   private parallaxContainer(): void {
 
-    const totalScroll = 1500;
+    const totalScroll = 2600;
 
     gsap.to(".parallaxContainer", {
       scrollTrigger: {
@@ -118,16 +119,123 @@ export class AppComponent implements OnInit {
       }
     });
 
-    gsap.to(".parallax-bg", {
+    gsap.to(".parallax-bg-up", {
       scrollTrigger: {
         trigger: ".parallaxContainer",
-        start: 'top 70%',
-        end: `+=${totalScroll}`,
-        scrub: true,
-        // markers: true
+        start: 'top 70%', end: `+=${totalScroll} top`,
+        scrub: true
       },
       y: (i, target) => -totalScroll * target.dataset.speed,
-      ease: "none",
+      ease: "none"
+    });
+
+    gsap.to(".parallax-bg-stop", {
+      scrollTrigger: {
+        trigger: ".parallaxContainer",
+        start: 'top 70%', end: `+=${totalScroll} 90%`,
+        scrub: true
+      },
+      y: (i, target) => -totalScroll * target.dataset.speed,
+      ease: "none"
+    });
+
+    gsap.to('.skateboard', {
+      scrollTrigger: {
+        trigger: '.skateboard',
+        start: 'top 80%', end: 'center 40%',
+        scrub: true
+      },
+      opacity: 1
+    });
+
+    gsap.to('.sunbathing', {
+      scrollTrigger: {
+        trigger: '.sunbathing',
+        start: 'top 80%', end: 'center 40%',
+        scrub: true
+      },
+      scale: 1
+    });
+
+    gsap.to('.busTrip', {
+      scrollTrigger: {
+        trigger: '.busTrip',
+        start: 'top center', end: 'center 40%',
+        scrub: true
+      },
+      scale: 0, x: 100
+    });
+
+    const lookAtTreesTimeline = gsap.timeline();
+    lookAtTreesTimeline.to('.lookAtTrees', {
+      scrollTrigger: {
+        trigger: '.lookAtTrees',
+        start: '1400 80%', end: '1400 60%',
+        scrub: true
+      },
+      filter: 'blur(10px)'
+    })
+      .to('.lookAtTrees', {
+        scrollTrigger: {
+          trigger: '.lookAtTrees',
+          start: '1400 center', end: '1400 30%',
+          scrub: true
+        },
+        skewX: 90, scale: 0.05
+      });
+
+    gsap.to('.parallaxContainer>.firstText', {
+      scrollTrigger: {
+        trigger: '.parallaxContainer>.firstText',
+        start: 'center center', end: 'center 30%',
+        scrub: true
+      },
+      x: -100, opacity: 0
+    });
+
+    gsap.to('.parallaxContainer>.secondText', {
+      scrollTrigger: {
+        trigger: '.parallaxContainer>.secondText',
+        start: 'center 40%', end: 'center 20%',
+        scrub: true
+      },
+      x: 100, opacity: 0
+    });
+
+    const pillowsTimeline = gsap.timeline();
+    pillowsTimeline.to('.pillows', {
+      scrollTrigger: {
+        trigger: '.pillows',
+        start: 'top 70%', end: 'center 40%',
+        scrub: true
+      },
+      x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
+    })
+      .to('.pillows', {
+        scrollTrigger: {
+          trigger: '.pillows',
+          start: 'center 40%', end: 'center 10%',
+          scrub: true
+        },
+        opacity: 0, x: '+=150', immediateRender: false
+      });
+
+    gsap.to('.ship', {
+      scrollTrigger: {
+        trigger: '.ship',
+        start: 'top 30%', end: 'bottom top',
+        scrub: true
+      },
+      skewX: 90, scale: 0.2
+    });
+
+    gsap.to('.specialYoga', {
+      scrollTrigger: {
+        trigger: '.specialYoga',
+        start: '700 40%', end: '700 20%',
+        scrub: true
+      },
+      borderRadius: 15
     });
 
   }
