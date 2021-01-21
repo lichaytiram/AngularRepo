@@ -166,8 +166,7 @@ export class AppComponent implements OnInit {
       scale: 0, x: 100
     });
 
-    const lookAtTreesTimeline = gsap.timeline();
-    lookAtTreesTimeline.to('.lookAtTrees', {
+    gsap.to('.lookAtTrees', {
       scrollTrigger: {
         trigger: '.lookAtTrees',
         start: '1400 80%', end: '1400 60%',
@@ -175,14 +174,15 @@ export class AppComponent implements OnInit {
       },
       filter: 'blur(10px)'
     })
-      .to('.lookAtTrees', {
-        scrollTrigger: {
-          trigger: '.lookAtTrees',
-          start: '1400 center', end: '1400 30%',
-          scrub: true
-        },
-        skewX: 90, scale: 0.05
-      });
+
+    gsap.to('.lookAtTrees', {
+      scrollTrigger: {
+        trigger: '.lookAtTrees',
+        start: '1400 center', end: '1400 30%',
+        scrub: true
+      },
+      skewX: 90, scale: 0.05, immediateRender: false
+    });
 
     gsap.to('.parallaxContainer>.firstText', {
       scrollTrigger: {
@@ -202,23 +202,54 @@ export class AppComponent implements OnInit {
       x: 100, opacity: 0
     });
 
-    const pillowsTimeline = gsap.timeline();
-    pillowsTimeline.to('.pillows', {
-      scrollTrigger: {
-        trigger: '.pillows',
-        start: 'top 70%', end: 'center 40%',
-        scrub: true
-      },
-      x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
-    })
-      .to('.pillows', {
-        scrollTrigger: {
-          trigger: '.pillows',
-          start: 'center 40%', end: 'center 10%',
-          scrub: true
-        },
-        opacity: 0, x: '+=150', immediateRender: false
-      });
+    // pillows for mobile screen
+    ScrollTrigger.matchMedia({
+      "(max-height:450px)": () => {
+
+        gsap.to('.pillows', {
+          scrollTrigger: {
+            trigger: '.pillows',
+            start: '800 70%', end: '850 40%',
+            scrub: true
+          },
+          x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
+        });
+
+        gsap.to('.pillows', {
+          scrollTrigger: {
+            trigger: '.pillows',
+            start: '850 40%', end: '900 10%',
+            scrub: true
+          },
+          opacity: 0, x: '+=150', immediateRender: false
+        });
+      }
+
+    });
+
+    ScrollTrigger.matchMedia({
+      "(min-height:451px)": () => {
+
+        gsap.to('.pillows', {
+          scrollTrigger: {
+            trigger: '.pillows',
+            start: 'top 70%', end: 'center 40%',
+            scrub: true
+          },
+          x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
+        });
+
+        gsap.to('.pillows', {
+          scrollTrigger: {
+            trigger: '.pillows',
+            start: 'center 40%', end: 'center 10%',
+            scrub: true
+          },
+          opacity: 0, x: '+=150', immediateRender: false
+        });
+
+      }
+    });
 
     gsap.to('.ship', {
       scrollTrigger: {

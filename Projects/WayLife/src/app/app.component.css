@@ -512,7 +512,7 @@
 
 .parallaxContainer>.skateboard {
   background-image: url("../assets/photos/parallaxContainer/skateboard.jpg");
-  top: 0px;
+  top: 0;
   left: 20%;
   opacity: 0;
 }
@@ -896,6 +896,7 @@
   .textContainer>.inner {
     width: 100%;
     height: 38%;
+    border-right: 2px solid rgba(228, 112, 112, 0.616);
   }
   .textContainer>h1 {
     font-size: x-large;
@@ -970,13 +971,10 @@
     padding: 6px;
   }
   .parallaxContainer>.firstText {
-    top: 900px;
     left: 2%;
   }
-  
   .parallaxContainer>.secondText {
     top: 920px;
-    left: 31%;
   }
   .parallaxContainer>.pillows {
     top: 1000px;
@@ -1079,7 +1077,54 @@
     margin: 9px;
   }
   .parallaxContainer .background {
-    width: 70%;
+    width: 80%;
+  }
+  .parallaxContainer>.imageBox {
+    height: 238px;
+    width: 167px;
+  }
+  .parallaxContainer>.sunbathing {
+    top: 250px;
+  }
+  .parallaxContainer>.busTrip {
+    left: 40%;
+  }
+  .parallaxContainer>.lookAtTrees {
+    top: 440px;
+    height: 118px;
+    width: 180px;
+  }
+  .parallaxContainer>.lookAtTrees::before {
+    top: 3px;
+    right: -101px;
+    padding: 6px;
+    font-size: small;
+  }
+  .parallaxContainer>.lookAtTrees::after {
+    width: 24px;
+    height: 13px;
+    right: 25px;
+    bottom: 73px;
+  }
+  .parallaxContainer>.parallaxTextContainer {
+    font-size: medium;
+    padding: 7px;
+  }
+  .parallaxContainer>.firstText {
+    top: 790px;
+    left: 12%;
+  }
+  .parallaxContainer>.secondText {
+    top: 800px;
+  }
+  .parallaxContainer>.pillows {
+    top: 1200px;
+  }
+  .parallaxContainer>.ship {
+    top: 950px;
+  }
+  .parallaxContainer>.specialYoga {
+    top: 1800px;
   }
   .formContainer>.picture {
     display: none;
