@@ -532,7 +532,7 @@
 
 .parallaxContainer>.lookAtTrees {
   background-image: url("../assets/photos/parallaxContainer/LookAtTrees.jpg");
-  top: 900px;
+  top: 850px;
   left: 10%;
   position: absolute;
   background-position: center;
@@ -590,13 +590,13 @@
 }
 
 .parallaxContainer>.firstText {
-  top: 900px;
+  top: 700px;
   left: 25%;
 }
 
 .parallaxContainer>.secondText {
-  top: 950px;
-  left: 50%;
+  top: 750px;
+  left: 55%;
 }
 
 .parallaxContainer>.pillows {
@@ -950,7 +950,7 @@
     left: 30%;
   }
   .parallaxContainer>.lookAtTrees {
-    top: 780px;
+    top: 680px;
     height: 118px;
     width: 180px;
   }
@@ -973,17 +973,14 @@
   .parallaxContainer>.firstText {
     left: 2%;
   }
-  .parallaxContainer>.secondText {
-    top: 920px;
-  }
   .parallaxContainer>.pillows {
-    top: 1000px;
+    top: 890px;
   }
   .parallaxContainer>.ship {
     top: 1400px;
   }
   .parallaxContainer>.specialYoga {
-    top: 2100px;
+    top: 1750px;
     left: 62%;
   }
   .formContainer>.picture {
@@ -1090,7 +1087,7 @@
     left: 40%;
   }
   .parallaxContainer>.lookAtTrees {
-    top: 440px;
+    top: 355px;
     height: 118px;
     width: 180px;
   }
@@ -1124,7 +1121,7 @@
     top: 950px;
   }
   .parallaxContainer>.specialYoga {
-    top: 1800px;
+    top: 1600px;
   }
   .formContainer>.picture {
     display: none;

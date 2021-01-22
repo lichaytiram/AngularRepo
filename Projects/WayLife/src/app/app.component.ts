@@ -119,24 +119,32 @@ export class AppComponent implements OnInit {
       }
     });
 
-    gsap.to(".parallax-bg-up", {
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".parallaxContainer",
         start: 'top 70%', end: `+=${totalScroll} top`,
-        scrub: true
-      },
-      y: (i, target) => -totalScroll * target.dataset.speed,
-      ease: "none"
+        scrub: true, refreshPriority: -1
+      }
     });
 
-    gsap.to(".parallax-bg-stop", {
+    gsap.utils.toArray(".parallax-bg-up").forEach((target: any) => {
+      const speed = target.dataset.speed;
+      const movement = -(target.offsetHeight * speed)
+      tl.to(target, { y: movement, ease: "none" }, 0)
+    });
+
+    const t2 = gsap.timeline({
       scrollTrigger: {
         trigger: ".parallaxContainer",
         start: 'top 70%', end: `+=${totalScroll} 90%`,
-        scrub: true
-      },
-      y: (i, target) => -totalScroll * target.dataset.speed,
-      ease: "none"
+        scrub: true, refreshPriority: -1
+      }
+    });
+
+    gsap.utils.toArray(".parallax-bg-stop").forEach((target: any) => {
+      const speed = target.dataset.speed;
+      const movement = -(target.offsetHeight * speed)
+      tl.to(target, { y: movement, ease: "none" }, 0)
     });
 
     gsap.to('.skateboard', {
@@ -166,28 +174,11 @@ export class AppComponent implements OnInit {
       scale: 0, x: 100
     });
 
-    gsap.to('.lookAtTrees', {
-      scrollTrigger: {
-        trigger: '.lookAtTrees',
-        start: '1400 80%', end: '1400 60%',
-        scrub: true
-      },
-      filter: 'blur(10px)'
-    })
-
-    gsap.to('.lookAtTrees', {
-      scrollTrigger: {
-        trigger: '.lookAtTrees',
-        start: '1400 center', end: '1400 30%',
-        scrub: true
-      },
-      skewX: 90, scale: 0.05, immediateRender: false
-    });
-
+    // parallaxTextContainer
     gsap.to('.parallaxContainer>.firstText', {
       scrollTrigger: {
         trigger: '.parallaxContainer>.firstText',
-        start: 'center center', end: 'center 30%',
+        start: '600 center', end: '600 30%',
         scrub: true
       },
       x: -100, opacity: 0
@@ -196,68 +187,123 @@ export class AppComponent implements OnInit {
     gsap.to('.parallaxContainer>.secondText', {
       scrollTrigger: {
         trigger: '.parallaxContainer>.secondText',
-        start: 'center 40%', end: 'center 20%',
+        start: '600 40%', end: '600 20%',
         scrub: true
       },
       x: 100, opacity: 0
     });
 
-    // pillows for mobile screen
-    ScrollTrigger.matchMedia({
-      "(max-height:450px)": () => {
-
-        gsap.to('.pillows', {
-          scrollTrigger: {
-            trigger: '.pillows',
-            start: '800 70%', end: '850 40%',
-            scrub: true
-          },
-          x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
-        });
-
-        gsap.to('.pillows', {
-          scrollTrigger: {
-            trigger: '.pillows',
-            start: '850 40%', end: '900 10%',
-            scrub: true
-          },
-          opacity: 0, x: '+=150', immediateRender: false
-        });
-      }
-
-    });
-
-    ScrollTrigger.matchMedia({
-      "(min-height:451px)": () => {
-
-        gsap.to('.pillows', {
-          scrollTrigger: {
-            trigger: '.pillows',
-            start: 'top 70%', end: 'center 40%',
-            scrub: true
-          },
-          x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
-        });
-
-        gsap.to('.pillows', {
-          scrollTrigger: {
-            trigger: '.pillows',
-            start: 'center 40%', end: 'center 10%',
-            scrub: true
-          },
-          opacity: 0, x: '+=150', immediateRender: false
-        });
-
-      }
-    });
-
-    gsap.to('.ship', {
+    gsap.to('.pillows', {
       scrollTrigger: {
-        trigger: '.ship',
-        start: 'top 30%', end: 'bottom top',
+        trigger: '.pillows',
+        start: '300 70%', end: '300 center',
         scrub: true
       },
-      skewX: 90, scale: 0.2
+      x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
+    });
+
+    gsap.to('.pillows', {
+      scrollTrigger: {
+        trigger: '.pillows',
+        start: '300 45%', end: '300 20%',
+        scrub: true
+      },
+      opacity: 0, x: '+=150', immediateRender: false
+    });
+
+    ScrollTrigger.matchMedia({
+
+      // for desktop screen
+
+      "(min-width:451px)": () => {
+
+        gsap.to('.ship', {
+          scrollTrigger: {
+            trigger: '.ship',
+            start: '500 center', end: '500 30%',
+            scrub: true
+          },
+          skewX: 90, scale: 0.2
+        });
+
+      },
+
+      "(min-width:900px)": () => {
+
+        gsap.to('.lookAtTrees', {
+          scrollTrigger: {
+            trigger: '.lookAtTrees',
+            start: '1300 center', end: '1300 35%',
+            scrub: true
+          },
+          filter: 'blur(10px)'
+        });
+
+        gsap.to('.lookAtTrees', {
+          scrollTrigger: {
+            trigger: '.lookAtTrees',
+            start: '1300 35%', end: '1300 20%',
+            scrub: true
+          },
+          skewX: 90, scale: 0.05, immediateRender: false
+        });
+
+      },
+
+      "(min-width:451px) and (max-width:899px)": () => {
+
+        gsap.to('.lookAtTrees', {
+          scrollTrigger: {
+            trigger: '.lookAtTrees',
+            start: '1200 80%', end: '1200 65%',
+            scrub: true
+          },
+          filter: 'blur(10px)'
+        });
+
+        gsap.to('.lookAtTrees', {
+          scrollTrigger: {
+            trigger: '.lookAtTrees',
+            start: '1200 65%', end: '1200 45%',
+            scrub: true
+          },
+          skewX: 90, scale: 0.05, immediateRender: false
+        });
+
+      },
+
+      // for mobile screen
+      "(max-width:450px)": () => {
+
+        gsap.to('.lookAtTrees', {
+          scrollTrigger: {
+            trigger: '.lookAtTrees',
+            start: '1600 center', end: '1600 35%',
+            scrub: true
+          },
+          filter: 'blur(10px)'
+        });
+
+        gsap.to('.lookAtTrees', {
+          scrollTrigger: {
+            trigger: '.lookAtTrees',
+            start: '1600 35%', end: '1600 20%',
+            scrub: true
+          },
+          skewX: 90, scale: 0.05, immediateRender: false
+        });
+
+        gsap.to('.ship', {
+          scrollTrigger: {
+            trigger: '.ship',
+            start: '1000 center', end: '1000 30%',
+            scrub: true
+          },
+          skewX: 90, scale: 0.2
+        });
+
+      }
+
     });
 
     gsap.to('.specialYoga', {
