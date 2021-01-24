@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
     gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
     this.imgContainer();
-    this.informationContainer();
+    this.parallaxContainer();
 
   }
 
@@ -108,145 +108,198 @@ export class AppComponent implements OnInit {
 
   }
 
-  private informationContainer(): void {
+  private parallaxContainer(): void {
 
-    // pin for media query
-    const informationContainer: string = '.informationContainer';
+    const totalScroll = 2600;
 
-    // layer images for cover
-    const layer0: string = '.informationContainer>img.layer0'
-    const layer1: string = '.informationContainer>img.layer1'
-    const layer2: string = '.informationContainer>img.layer2'
-    const layer3: string = '.informationContainer>img.layer3'
-    const layer5: string = '.informationContainer>img.layer5'
+    gsap.to(".parallaxContainer", {
+      scrollTrigger: {
+        pin: ".parallaxContainer",
+        end: `+=${totalScroll}`
+      }
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".parallaxContainer",
+        start: 'top 70%', end: `+=${totalScroll} top`,
+        scrub: true
+      }
+    });
+
+    gsap.utils.toArray(".parallax-bg").forEach((target: any) => {
+      const speed = target.dataset.speed;
+      const movement = -(target.offsetHeight * speed)
+      tl.to(target, { y: movement, ease: "none" }, 0)
+    });
+
+    gsap.to('.skateboard', {
+      scrollTrigger: {
+        trigger: '.skateboard',
+        start: 'top 80%', end: 'center 40%',
+        scrub: true
+      },
+      opacity: 1
+    });
+
+    gsap.to('.sunbathing', {
+      scrollTrigger: {
+        trigger: '.sunbathing',
+        start: 'top 80%', end: 'center 40%',
+        scrub: true
+      },
+      scale: 1
+    });
+
+    gsap.to('.busTrip', {
+      scrollTrigger: {
+        trigger: '.busTrip',
+        start: 'top center', end: 'center 40%',
+        scrub: true
+      },
+      scale: 0, x: 100
+    });
+
+    // parallaxTextContainer
+    gsap.to('.parallaxContainer>.firstText', {
+      scrollTrigger: {
+        trigger: '.parallaxContainer>.firstText',
+        start: '600 center', end: '600 30%',
+        scrub: true
+      },
+      x: -100, opacity: 0
+    });
+
+    gsap.to('.parallaxContainer>.secondText', {
+      scrollTrigger: {
+        trigger: '.parallaxContainer>.secondText',
+        start: '600 40%', end: '600 20%',
+        scrub: true
+      },
+      x: 100, opacity: 0
+    });
+
+    gsap.to('.pillows', {
+      scrollTrigger: {
+        trigger: '.pillows',
+        start: '300 70%', end: '300 center',
+        scrub: true
+      },
+      x: '-=200%', rotation: 360, visibility: 'visible', scale: 1, opacity: 1
+    });
+
+    gsap.to('.pillows', {
+      scrollTrigger: {
+        trigger: '.pillows',
+        start: '300 45%', end: '300 20%',
+        scrub: true
+      },
+      opacity: 0, x: '+=150', immediateRender: false
+    });
+
     ScrollTrigger.matchMedia({
 
-      // for desktop && height position on mobile
-      "(min-height:451px)": () => {
+      // for desktop screen
 
-        // main container
-        gsap.to(informationContainer, {
-          scrollTrigger: {
-            trigger: informationContainer,
-            pin: true,
-            pinSpacing: false,
-            refreshPriority: -1
-          }
-        });
+      "(min-width:451px)": () => {
 
-        // layer pictures
-        gsap.to(layer0, {
+        gsap.to('.ship', {
           scrollTrigger: {
-            trigger: layer0,
-            start: 'top top',
+            trigger: '.ship',
+            start: '500 center', end: '500 30%',
             scrub: true
           },
-          y: 50, ease: 'none'
-        });
-
-        gsap.to(layer1, {
-          scrollTrigger: {
-            trigger: layer1,
-            start: 'top top',
-            scrub: true
-          },
-          y: 15, x: 30, ease: 'none'
-        });
-
-        gsap.to(layer2, {
-          scrollTrigger: {
-            trigger: layer2,
-            start: 'center center',
-            scrub: true
-          },
-          x: -30, ease: 'none'
-        });
-
-        gsap.to(layer3, {
-          scrollTrigger: {
-            trigger: layer3,
-            start: 'center center',
-            scrub: true
-          },
-          yPercent: -10, ease: 'none'
-        });
-
-        gsap.to(layer5, {
-          scrollTrigger: {
-            trigger: layer5,
-            start: 'center 20%',
-            scrub: true
-          },
-          x: 20, ease: 'none'
+          skewX: 90, scale: 0.2
         });
 
       },
 
-      // for width position on mobile
-      "(max-height:450px)": () => {
+      "(min-width:900px)": () => {
 
-        // main container
-        gsap.to(informationContainer, {
+        gsap.to('.lookAtTrees', {
           scrollTrigger: {
-            trigger: informationContainer,
-            start: '10% top',
-            pin: true,
-            pinSpacing: false,
-            refreshPriority: -1
-          }
-        });
-
-        // layer pictures
-        gsap.to(layer0, {
-          scrollTrigger: {
-            trigger: layer0,
-            start: 'top top',
+            trigger: '.lookAtTrees',
+            start: '1300 center', end: '1300 35%',
             scrub: true
           },
-          y: 15, ease: 'none'
+          // filter: 'blur(10px)'
         });
 
-        gsap.to(layer1, {
+        gsap.to('.lookAtTrees', {
           scrollTrigger: {
-            trigger: layer1,
-            start: 'top 10%',
+            trigger: '.lookAtTrees',
+            start: '1300 35%', end: '1300 20%',
             scrub: true
           },
-          y: 15, x: 10, ease: 'none'
+          skewX: 90, scale: 0.05, immediateRender: false
         });
 
-        gsap.to(layer2, {
+      },
+
+      "(min-width:451px) and (max-width:899px)": () => {
+
+        gsap.to('.lookAtTrees', {
           scrollTrigger: {
-            trigger: layer2,
-            start: 'center center',
+            trigger: '.lookAtTrees',
+            start: '1200 80%', end: '1200 65%',
             scrub: true
           },
-          x: -10, ease: 'none'
+          // filter: 'blur(10px)'
         });
 
-        gsap.to(layer3, {
+        gsap.to('.lookAtTrees', {
           scrollTrigger: {
-            trigger: layer3,
-            start: 'center center',
+            trigger: '.lookAtTrees',
+            start: '1200 65%', end: '1200 45%',
             scrub: true
           },
-          yPercent: -7, ease: 'none'
+          skewX: 90, scale: 0.05, immediateRender: false
         });
 
-        gsap.to(layer5, {
+      },
+
+      // for mobile screen
+      "(max-width:450px)": () => {
+
+        gsap.to('.lookAtTrees', {
           scrollTrigger: {
-            trigger: layer5,
-            start: 'center 20%',
+            trigger: '.lookAtTrees',
+            start: '1600 center', end: '1600 35%',
             scrub: true
           },
-          x: 15, ease: 'none'
+          // filter: 'blur(10px)'
+        });
+
+        gsap.to('.lookAtTrees', {
+          scrollTrigger: {
+            trigger: '.lookAtTrees',
+            start: '1600 35%', end: '1600 20%',
+            scrub: true
+          },
+          skewX: 90, scale: 0.05, immediateRender: false
+        });
+
+        gsap.to('.ship', {
+          scrollTrigger: {
+            trigger: '.ship',
+            start: '1000 center', end: '1000 30%',
+            scrub: true
+          },
+          skewX: 90, scale: 0.2
         });
 
       }
 
     });
 
-
+    gsap.to('.specialYoga', {
+      scrollTrigger: {
+        trigger: '.specialYoga',
+        start: '700 40%', end: '700 20%',
+        scrub: true
+      },
+      borderRadius: 15
+    });
 
   }
 

@@ -481,73 +481,143 @@
   box-shadow: 1px 1px 3px 1px rgb(248, 75, 75);
 }
 
-/* informationContainer */
+/* parallaxContainer */
 
-.informationContainer {
-  height: 130vh;
-  max-height: 1300px;
-  min-height: 900px;
-  width: 100vw;
-  background-image: url("../assets/photos/informationContainer/cover/cover.jpg");
+.parallaxContainer {
+  position: relative;
+  min-height: 100vh;
+  background: repeating-linear-gradient(-20deg, rgba(212, 236, 243, 0.281) 7%, transparent 90%), rgba(179, 221, 231, 0.5) repeating-linear-gradient(20deg, rgba(174, 245, 242, 0.281) 4%, rgba(219, 169, 169, 0.5) 96%);
+  z-index: 1;
+}
+
+.parallaxContainer .background {
+  width: 100%;
+  max-width: 1350px;
+  height: 100vh;
+  margin: auto;
+  display: block;
+}
+
+.parallaxContainer>.imageBox {
+  height: 300px;
+  width: 220px;
+  position: absolute;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  box-shadow: 0 0 40px 10px inset rgb(58, 51, 58);
+  border: 1px solid rgba(37, 37, 37, 0.774);
+  border-radius: 100px 50px;
 }
 
-.informationContainer>img {
-  position: absolute;
-}
-
-.informationContainer>img.layer0 {
-  height: 55%;
-  width: 25%;
-  z-index: 2;
-}
-
-.informationContainer>img.layer1 {
-  height: 15%;
-  width: 15%;
-  right: 3%;
-  top: 5%;
-  opacity: 0.4;
-}
-
-.informationContainer>img.layer2 {
-  height: 30%;
-  width: 30%;
-  left: 0%;
-  top: 35%;
-  opacity: 0.9;
-}
-
-.informationContainer>img.layer3 {
-  height: 40%;
-  width: 35%;
+.parallaxContainer>.skateboard {
+  background-image: url("../assets/photos/parallaxContainer/skateboard.jpg");
+  top: 0;
   left: 20%;
-  top: 35%;
+  opacity: 0;
 }
 
-.informationContainer>img.layer4 {
-  height: 40%;
-  width: 20%;
-  right: 40%;
-  bottom: 0%;
-  opacity: 0.5;
+.parallaxContainer>.sunbathing {
+  background-image: url("../assets/photos/parallaxContainer/sunbathing.jpg");
+  top: 300px;
+  left: 70%;
+  transform: scale(0.5);
 }
 
-.informationContainer>img.layer5 {
-  height: 40%;
-  width: 40%;
-  right: 30%;
-  top: 15%;
-  opacity: 0.7;
+.parallaxContainer>.busTrip {
+  background-image: url("../assets/photos/parallaxContainer/busTrip.jpg");
+  top: 700px;
+  left: 50%;
 }
 
-.informationContainer>.informationInnerContainer {
-  display: grid;
-  height: 100%;
-  width: 100%;
+.parallaxContainer>.lookAtTrees {
+  background-image: url("../assets/photos/parallaxContainer/LookAtTrees.jpg");
+  top: 850px;
+  left: 10%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 40px 10px inset rgb(58, 51, 58);
+  border: 1px solid rgba(37, 37, 37, 0.774);
+  border-radius: 100px 50px;
+  height: 200px;
+  width: 400px;
+}
+
+.parallaxContainer>.lookAtTrees::before, .parallaxContainer>.lookAtTrees::after {
+  position: absolute;
+  background-color: rgba(47, 204, 26, 0.753);
+  color: black;
+}
+
+.parallaxContainer>.lookAtTrees::before {
+  content: 'The nature is so incredible';
+  padding: 10px;
+  border-radius: 10px;
+  right: -34px;
+  top: 11px;
+  border: 1px solid black;
+}
+
+.parallaxContainer>.lookAtTrees::after {
+  content: '';
+  width: 40px;
+  height: 20px;
+  right: 113px;
+  bottom: 129px;
+  clip-path: polygon(0 0, 0px 100%, 100% 0%);
+}
+
+.parallaxContainer>.parallaxTextContainer {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  border: 2px solid rgb(187, 71, 71);
+  color: rgba(235, 224, 224, 0.849);
+  text-align: center;
+  font-size: x-large;
+  padding: 9px;
+}
+
+.parallaxContainer>.firstText>p, .parallaxContainer>.secondText>p {
+  margin: 0;
+}
+
+.parallaxContainer>.firstText>p::first-letter, .parallaxContainer>.secondText>p::first-letter {
+  text-transform: uppercase;
+  color: rgb(201, 212, 247);
+}
+
+.parallaxContainer>.firstText {
+  top: 700px;
+  left: 25%;
+}
+
+.parallaxContainer>.secondText {
+  top: 750px;
+  left: 55%;
+}
+
+.parallaxContainer>.pillows {
+  background-image: url("../assets/photos/parallaxContainer/pillows.jpg");
+  top: 1150px;
+  left: 72%;
+  visibility: hidden;
+  transform: scale(0.2);
+  opacity: 0;
+}
+
+.parallaxContainer>.ship {
+  background-image: url("../assets/photos/parallaxContainer/ship.jpg");
+  top: 1800px;
+  left: 48%;
+}
+
+.parallaxContainer>.specialYoga {
+  background-image: url("../assets/photos/parallaxContainer/specialYoga.jpg");
+  top: 2400px;
+  left: 65%;
 }
 
 /* formContainer */
@@ -869,38 +939,49 @@
     height: 130px;
     margin: 9px;
   }
-  .informationContainer>img.layer0 {
-    height: 32%;
-    width: 50%;
+  .parallaxContainer>.imageBox {
+    height: 200px;
+    width: 120px;
   }
-  .informationContainer>img.layer1 {
-    height: 12%;
-    width: 17%;
-    right: 3%;
-    top: 4%;
+  .parallaxContainer>.sunbathing {
+    left: 65%;
   }
-  .informationContainer>img.layer2 {
-    height: 22%;
-    width: 38%;
-    top: 22%;
+  .parallaxContainer>.busTrip {
+    left: 30%;
   }
-  .informationContainer>img.layer3 {
-    height: 28%;
-    width: 40%;
-    left: 26%;
-    top: 20%;
+  .parallaxContainer>.lookAtTrees {
+    top: 680px;
+    height: 118px;
+    width: 180px;
   }
-  .informationContainer>img.layer4 {
-    height: 23%;
-    width: 49%;
-    right: 12%;
-    bottom: 25%;
+  .parallaxContainer>.lookAtTrees::before {
+    right: -92px;
+    top: 3px;
+    font-size: small;
+    padding: 7px;
   }
-  .informationContainer>img.layer5 {
-    height: 30%;
-    width: 61%;
-    right: 1%;
-    top: 16%;
+  .parallaxContainer>.lookAtTrees::after {
+    width: 25px;
+    height: 12px;
+    right: 33px;
+    bottom: 72px;
+  }
+  .parallaxContainer>.parallaxTextContainer {
+    font-size: medium;
+    padding: 6px;
+  }
+  .parallaxContainer>.firstText {
+    left: 2%;
+  }
+  .parallaxContainer>.pillows {
+    top: 890px;
+  }
+  .parallaxContainer>.ship {
+    top: 1400px;
+  }
+  .parallaxContainer>.specialYoga {
+    top: 1750px;
+    left: 62%;
   }
   .formContainer>.picture {
     width: 126px;
@@ -992,40 +1073,55 @@
     height: 120px;
     margin: 9px;
   }
-  .informationContainer>img.layer0 {
-    height: 28%;
-    width: 31%;
-    top: 10%;
+  .parallaxContainer .background {
+    width: 80%;
   }
-  .informationContainer>img.layer1 {
-    height: 13%;
-    width: 20%;
-    right: 3%;
-    top: 4%;
+  .parallaxContainer>.imageBox {
+    height: 238px;
+    width: 167px;
   }
-  .informationContainer>img.layer2 {
-    height: 19%;
-    width: 24%;
-    top: 31%;
+  .parallaxContainer>.sunbathing {
+    top: 250px;
   }
-  .informationContainer>img.layer3 {
-    height: 22%;
-    width: 25%;
-    left: 17%;
-    top: 29%;
+  .parallaxContainer>.busTrip {
+    left: 40%;
   }
-  .informationContainer>img.layer4 {
-    height: 23%;
-    width: 49%;
-    right: 34%;
-    bottom: 44%;
-    z-index: 1;
+  .parallaxContainer>.lookAtTrees {
+    top: 355px;
+    height: 118px;
+    width: 180px;
   }
-  .informationContainer>img.layer5 {
-    height: 28%;
-    width: 52%;
-    right: 16%;
-    top: 13%;
+  .parallaxContainer>.lookAtTrees::before {
+    top: 3px;
+    right: -101px;
+    padding: 6px;
+    font-size: small;
+  }
+  .parallaxContainer>.lookAtTrees::after {
+    width: 24px;
+    height: 13px;
+    right: 25px;
+    bottom: 73px;
+  }
+  .parallaxContainer>.parallaxTextContainer {
+    font-size: medium;
+    padding: 7px;
+  }
+  .parallaxContainer>.firstText {
+    top: 790px;
+    left: 12%;
+  }
+  .parallaxContainer>.secondText {
+    top: 800px;
+  }
+  .parallaxContainer>.pillows {
+    top: 1200px;
+  }
+  .parallaxContainer>.ship {
+    top: 950px;
+  }
+  .parallaxContainer>.specialYoga {
+    top: 1600px;
   }
   .formContainer>.picture {
     display: none;
