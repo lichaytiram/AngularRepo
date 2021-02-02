@@ -495,17 +495,22 @@
   position: relative;
 }
 
-.informationContainer>img {
+.informationContainer>.cover {
+  opacity: 0.9;
+}
+
+.informationContainer>.cover>img {
   position: absolute;
 }
 
-.informationContainer>img.layer0 {
+.informationContainer>.cover>img.layer0 {
   height: 55%;
   width: 25%;
   z-index: 2;
+  opacity: 0.9;
 }
 
-.informationContainer>img.layer1 {
+.informationContainer>.cover>img.layer1 {
   height: 15%;
   width: 15%;
   right: 3%;
@@ -513,7 +518,7 @@
   opacity: 0.4;
 }
 
-.informationContainer>img.layer2 {
+.informationContainer>.cover>img.layer2 {
   height: 30%;
   width: 30%;
   left: 0%;
@@ -521,14 +526,14 @@
   opacity: 0.9;
 }
 
-.informationContainer>img.layer3 {
+.informationContainer>.cover>img.layer3 {
   height: 40%;
   width: 35%;
   left: 20%;
   top: 35%;
 }
 
-.informationContainer>img.layer4 {
+.informationContainer>.cover>img.layer4 {
   height: 40%;
   width: 20%;
   right: 40%;
@@ -536,7 +541,7 @@
   opacity: 0.5;
 }
 
-.informationContainer>img.layer5 {
+.informationContainer>.cover>img.layer5 {
   height: 40%;
   width: 40%;
   right: 30%;
@@ -545,9 +550,132 @@
 }
 
 .informationContainer>.informationInnerContainer {
-  display: grid;
-  height: 100%;
+  position: relative;
+  height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.informationContainer>.informationInnerContainer>.text {
+  padding: 10px;
+  background: #49b6e031;
+  border-radius: 20px;
+}
+
+.informationContainer>.informationInnerContainer>.text>h4 {
+  margin: 0;
+  padding: 5px;
+  font-size: xx-large;
+  background-image: linear-gradient( 2deg, rgb(28, 29, 28) 35%, rgb(231, 52, 201));
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+.informationContainer>.informationInnerContainer>.text>h4::first-letter {
+  text-transform: uppercase;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard {
+  height: 60vh;
+  width: 55%;
+  margin: 5vh 0;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>.text {
+  padding: 10px;
+  height: fit-content;
+  width: 45%;
+  background-color: rgba(129, 153, 167, 0.192);
+  border-radius: 5px;
+  margin-top: 8%;
+  z-index: 1;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>.text>h5::first-letter, .informationContainer>.informationInnerContainer>.containerCard>.text>p::first-letter {
+  text-transform: uppercase;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>.text>h5 {
+  margin: 10px 0;
+  font-size: larger;
+  text-align: center;
+  background-color: rgba(141, 141, 143, 0.13);
+  border-radius: 10px;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>.text>p {
+  margin: 5px 0;
+  font-size: large;
+  padding: 3px;
+  background-color: #fcc9dd25;
+  border-radius: 5px;
+  transition: .3s ease-out;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>.text>p:hover {
+  transform: scale(1.02);
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul {
+  list-style-type: none;
+  position: relative;
+  height: 100%;
+  width: 520px;
+  max-width: 80vw;
+  padding: 0;
+  margin: 0;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul>li>img {
+  position: absolute;
+  padding: 3px;
+  width: 230px;
+  height: 300px;
+  border: 1px rgb(37, 36, 36) solid;
+  border-radius: 30px;
+  transform: skewX(20deg);
+  opacity: 0.95;
+  cursor: pointer;
+  filter: blur(0);
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(1)>img {
+  right: 0;
+  top: 0;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(2)>img {
+  right: 40px;
+  top: 30px;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(3)>img {
+  right: 80px;
+  top: 60px;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(4)>img {
+  right: 120px;
+  top: 90px;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(5)>img {
+  right: 160px;
+  top: 120px;
+}
+
+.informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(6)>img {
+  right: 200px;
+  top: 150px;
 }
 
 /* formContainer */
@@ -787,6 +915,28 @@
   }
 }
 
+@media (min-width:900px) and (max-width:1400px) {
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li>img {
+    width: 190px;
+    height: 250px;
+  }
+}
+
+@media (min-width:1201px) and (max-width:1400px) {
+  .informationContainer>.informationInnerContainer>.containerCard {
+    width: 68%;
+  }
+}
+
+@media (min-width: 900px) and (max-width:1200px) {
+  .informationContainer>.informationInnerContainer>.text>h4 {
+    font-size: x-large;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard {
+    width: 75%;
+  }
+}
+
 @media (max-width:1300px) {
   .textContainer>.text p, .textContainer>.text ul li, .textContainer>.text>strong {
     font-size: larger;
@@ -869,38 +1019,94 @@
     height: 130px;
     margin: 9px;
   }
-  .informationContainer>img.layer0 {
+  .informationContainer>.cover>img.layer0 {
     height: 32%;
     width: 50%;
+    opacity: 0.6;
   }
-  .informationContainer>img.layer1 {
+  .informationContainer>.cover>img.layer1 {
     height: 12%;
     width: 17%;
     right: 3%;
     top: 4%;
   }
-  .informationContainer>img.layer2 {
+  .informationContainer>.cover>img.layer2 {
     height: 22%;
     width: 38%;
     top: 22%;
   }
-  .informationContainer>img.layer3 {
+  .informationContainer>.cover>img.layer3 {
     height: 28%;
     width: 40%;
     left: 26%;
     top: 20%;
   }
-  .informationContainer>img.layer4 {
+  .informationContainer>.cover>img.layer4 {
     height: 23%;
     width: 49%;
     right: 12%;
     bottom: 25%;
   }
-  .informationContainer>img.layer5 {
+  .informationContainer>.cover>img.layer5 {
     height: 30%;
     width: 61%;
     right: 1%;
     top: 16%;
+  }
+  .informationContainer>.informationInnerContainer {
+    max-height: 800px;
+  }
+  .informationContainer>.informationInnerContainer>.text {
+    padding: 3px;
+  }
+  .informationContainer>.informationInnerContainer>.text>h4 {
+    font-size: larger;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard {
+    width: 92%;
+    height: 74vh;
+    max-height: 500px;
+    min-height: 435px;
+    margin-bottom: 7px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>.text {
+    margin: 0;
+    width: 100%;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>.text>h5 {
+    font-size: large;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>.text>p {
+    font-size: medium;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul {
+    height: 200px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li>img {
+    width: 110px;
+    height: 140px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(2)>img {
+    right: 20px;
+    top: 10px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(3)>img {
+    right: 40px;
+    top: 20px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(4)>img {
+    right: 60px;
+    top: 30px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(5)>img {
+    right: 80px;
+    top: 40px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(6)>img {
+    right: 100px;
+    top: 50px;
   }
   .formContainer>.picture {
     width: 126px;
@@ -992,40 +1198,88 @@
     height: 120px;
     margin: 9px;
   }
-  .informationContainer>img.layer0 {
+  .informationContainer>.cover>img.layer0 {
     height: 28%;
     width: 31%;
     top: 10%;
+    opacity: 0.6;
   }
-  .informationContainer>img.layer1 {
+  .informationContainer>.cover>img.layer1 {
     height: 13%;
     width: 20%;
     right: 3%;
     top: 4%;
   }
-  .informationContainer>img.layer2 {
+  .informationContainer>.cover>img.layer2 {
     height: 19%;
     width: 24%;
     top: 31%;
   }
-  .informationContainer>img.layer3 {
+  .informationContainer>.cover>img.layer3 {
     height: 22%;
     width: 25%;
     left: 17%;
     top: 29%;
   }
-  .informationContainer>img.layer4 {
+  .informationContainer>.cover>img.layer4 {
     height: 23%;
     width: 49%;
     right: 34%;
     bottom: 44%;
     z-index: 1;
   }
-  .informationContainer>img.layer5 {
+  .informationContainer>.cover>img.layer5 {
     height: 28%;
     width: 52%;
     right: 16%;
     top: 13%;
+  }
+  .informationContainer>.informationInnerContainer>.text {
+    padding: 3px;
+  }
+  .informationContainer>.informationInnerContainer>.text>h4 {
+    font-size: x-large;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard {
+    width: 94%;
+    padding: 0 10px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>.text {
+    margin-top: 4%;
+    width: 100%;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>.text>h5 {
+    font-size: larger;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>.text>p {
+    font-size: medium;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul {
+    width: 415px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li>img {
+    width: 110px;
+    height: 140px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(2)>img {
+    right: 20px;
+    top: 25px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(3)>img {
+    right: 40px;
+    top: 50px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(4)>img {
+    right: 60px;
+    top: 75px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(5)>img {
+    right: 80px;
+    top: 100px;
+  }
+  .informationContainer>.informationInnerContainer>.containerCard>ul>li:nth-child(6)>img {
+    right: 100px;
+    top: 125px;
   }
   .formContainer>.picture {
     display: none;

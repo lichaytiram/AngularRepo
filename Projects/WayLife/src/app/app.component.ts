@@ -114,11 +114,11 @@ export class AppComponent implements OnInit {
     const informationContainer: string = '.informationContainer';
 
     // layer images for cover
-    const layer0: string = '.informationContainer>img.layer0'
-    const layer1: string = '.informationContainer>img.layer1'
-    const layer2: string = '.informationContainer>img.layer2'
-    const layer3: string = '.informationContainer>img.layer3'
-    const layer5: string = '.informationContainer>img.layer5'
+    const layer0: string = '.informationContainer>.cover>img.layer0'
+    const layer1: string = '.informationContainer>.cover>img.layer1'
+    const layer2: string = '.informationContainer>.cover>img.layer2'
+    const layer3: string = '.informationContainer>.cover>img.layer3'
+    const layer5: string = '.informationContainer>.cover>img.layer5'
     ScrollTrigger.matchMedia({
 
       // for desktop && height position on mobile
@@ -246,7 +246,50 @@ export class AppComponent implements OnInit {
 
     });
 
+    // animation for images
+    const images: string = '.informationContainer>.informationInnerContainer>.containerCard>ul>li>img';
+    const imageActions = [];
+    let clickable: boolean = false;
+    ScrollTrigger.saveStyles(images);
+    ScrollTrigger.addEventListener("refreshInit", () => imageActions.forEach(elementAnimation => elementAnimation.invalidate()));
 
+    gsap.to(images, {
+      scrollTrigger: {
+        trigger: images,
+        start: 'top center'
+      },
+      top: 100, y: 5, x: 30, duration: 2.3, ease: 'power4.out', rotate: '5deg',
+      yoyo: true, repeat: 1, repeatDelay: 0, yoyoEase: 'power4.in',
+      onComplete: function () {
+        this.kill();
+        clickable = true
+      }
+    });
+
+    // events
+    gsap.utils.toArray(images).forEach((element: HTMLElement, index) => {
+
+      // click event
+      const action = gsap.to(element, {
+        top: 200, scale: 1.4, opacity: 1, skewX: 0, zIndex: 5, duration: 0.45,
+        yoyo: true, repeat: 1, repeatDelay: 0.4, paused: true
+      });
+      imageActions[index] = action;
+      element.addEventListener("click", () => {
+        elementHover.pause(0);
+        clickable && action.play(0);
+      });
+
+      // hover event
+      const elementHover = gsap.to(element, {
+        scale: 1.05, duration: .3, ease: 'power4.out', yoyo: true, repeat: 1, yoyoEase: 'power4.out', paused: true
+      });
+      element.addEventListener("mouseenter", () => {
+        if (!action.isActive() == true)
+          clickable && elementHover.play(0)
+      });
+
+    });
 
   }
 
