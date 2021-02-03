@@ -486,17 +486,18 @@
 .informationContainer {
   height: 130vh;
   max-height: 1300px;
-  min-height: 900px;
+  min-height: 950px;
   width: 100vw;
   background-image: url("../assets/photos/informationContainer/cover/cover.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  overflow-x: hidden;
 }
 
 .informationContainer>.cover {
-  opacity: 0.9;
+  opacity: .9;
 }
 
 .informationContainer>.cover>img {
@@ -507,7 +508,7 @@
   height: 55%;
   width: 25%;
   z-index: 2;
-  opacity: 0.9;
+  opacity: .9;
 }
 
 .informationContainer>.cover>img.layer1 {
@@ -515,7 +516,7 @@
   width: 15%;
   right: 3%;
   top: 5%;
-  opacity: 0.4;
+  opacity: .5;
 }
 
 .informationContainer>.cover>img.layer2 {
@@ -523,7 +524,7 @@
   width: 30%;
   left: 0%;
   top: 35%;
-  opacity: 0.9;
+  opacity: .9;
 }
 
 .informationContainer>.cover>img.layer3 {
@@ -538,7 +539,7 @@
   width: 20%;
   right: 40%;
   bottom: 0%;
-  opacity: 0.5;
+  opacity: .6;
 }
 
 .informationContainer>.cover>img.layer5 {
@@ -546,7 +547,7 @@
   width: 40%;
   right: 30%;
   top: 15%;
-  opacity: 0.7;
+  opacity: .7;
 }
 
 .informationContainer>.informationInnerContainer {
@@ -594,7 +595,7 @@
   padding: 10px;
   height: fit-content;
   width: 45%;
-  background-color: rgba(129, 153, 167, 0.192);
+  background-color: rgba(129, 153, 167, 0.2);
   border-radius: 5px;
   margin-top: 8%;
   z-index: 1;
@@ -606,17 +607,17 @@
 
 .informationContainer>.informationInnerContainer>.containerCard>.text>h5 {
   margin: 10px 0;
-  font-size: larger;
+  font-size: x-large;
   text-align: center;
-  background-color: rgba(141, 141, 143, 0.13);
+  background-color: rgba(141, 141, 143, 0.3);
   border-radius: 10px;
 }
 
 .informationContainer>.informationInnerContainer>.containerCard>.text>p {
   margin: 5px 0;
-  font-size: large;
+  font-size: larger;
   padding: 3px;
-  background-color: #fcc9dd25;
+  background-color: rgba(255, 198, 243, 0.2);
   border-radius: 5px;
   transition: .3s ease-out;
 }
