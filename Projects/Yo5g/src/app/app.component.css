@@ -1,0 +1,394 @@
+/* all screen sizes */
+
+header {
+    height: 100vh;
+    position: relative;
+}
+
+header>img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .5;
+}
+
+header>.title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+header>.title>h1 {
+    text-transform: capitalize;
+    position: relative;
+    animation: .7s title ease-out;
+}
+
+header>.title>h2 {
+    animation: .8s title ease-in-out;
+}
+
+header>.cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: .1;
+    background-color: rgba(217, 182, 245, 0.05);
+    animation: .3s cardContainer .8s linear forwards;
+}
+
+header>.cardContainer>h3 {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+header>.cardContainer>.cards {
+    display: flex;
+    min-height: fit-content;
+}
+
+header>.cardContainer>.cards>.card {
+    background-color: rgba(226, 209, 209, 0.7);
+    border-radius: 4px;
+    border: 2px solid black;
+    transition: .4s ease-out;
+    min-height: fit-content;
+    filter: blur(0);
+}
+
+header>.cardContainer>.cards>.card:hover {
+    background-color: rgba(188, 95, 241, 0.8);
+    color: white;
+}
+
+header>.cardContainer>.cards>.card>img {
+    float: left;
+    border-radius: 12px;
+}
+
+header>.cardContainer>.cards>.card>strong {
+    color: rgb(31, 29, 29);
+    font-weight: bolder;
+}
+
+header+div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header+div>h3 {
+    background-color: rgba(78, 76, 76, 0.5);
+    border-radius: 10px;
+    color: white;
+}
+
+.security {
+    display: grid;
+    background-color: rgba(71, 30, 109, 0.644);
+}
+
+.security>img {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .9;
+}
+
+.security>.textBigContainer, .security>.textSmallContainer {
+    border-radius: 30px;
+}
+
+.security>.textBigContainer {
+    background: repeating-linear-gradient(30deg, rgba(137, 43, 226, 0.1) 10%, rgba(137, 43, 226, 0.1) 50%, rgba(36, 35, 35, 0.2) 51%, rgba(85, 4, 133, 0.253) 52%, rgba(36, 35, 35, 0.1) 55%);
+}
+
+.security>.textSmallContainer {
+    background: repeating-linear-gradient(-20deg, rgba(123, 28, 211, 0.1) 0%, rgba(100, 26, 170, 0.1) 10%, rgba(96, 94, 241, 0.1) 35%, rgba(131, 62, 196, 0.1) 40%, rgba(137, 43, 226, 0.1) 50%, rgba(53, 11, 25, 0.1) 60%, rgba(38, 2, 59, 0.1) 70%, rgba(68, 7, 109, 0.1) 80%, rgba(146, 4, 115, 0.1) 90%);
+}
+
+.security>.textBigContainer>h1, .security>.textSmallContainer>h2 {
+    text-align: center;
+}
+
+/* keyframes */
+
+@keyframes title {
+    from {
+        transform: scale(0);
+        transform-origin: bottom;
+        color: rgba(77, 2, 100, 0.664);
+        filter: blur(70px);
+    }
+}
+
+@keyframes cardContainer {
+    to {
+        opacity: 1;
+    }
+}
+
+/* desktop open */
+
+@media (min-width:1400px) {
+    .security {
+        height: 400px;
+        padding: 50px 150px 50px 70px;
+        grid-template-columns: 350px repeat(2, 1fr);
+        grid-template-rows: 170px 1fr;
+        grid-gap: 12px;
+    }
+    .security>img {
+        border-radius: 5px;
+    }
+    .security>.textBigContainer {
+        grid-column: 2/3;
+        grid-row: 1/3;
+    }
+    .security>.textBigContainer, .security>.textSmallContainer {
+        padding: 10px;
+    }
+    .security>.textBigContainer>h1 {
+        font-size: 1.6em;
+        margin-bottom: 7px;
+    }
+    .security>.textBigContainer>p {
+        font-size: 1.2em;
+    }
+    .security>.textSmallContainer>h2 {
+        font-size: large;
+    }
+    .security>img.antennas {
+        grid-column: 3/4;
+        grid-row: 1/3;
+    }
+}
+
+/* tablet width open */
+
+@media (min-width:1200px) {
+    header>.title>h2 {
+        font-size: 4em;
+    }
+    header>.cardContainer>.cards>.card {
+        margin: 10px;
+    }
+    header>.cardContainer>.cards>.card:hover {
+        transform: scale(1.07);
+    }
+    header>.mergeImage {
+        height: 400px;
+        width: 400px;
+    }
+    header+div {
+        background: url('../assets/photos/header+div/background3.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+/* tablet open */
+
+@media (min-width:900px) {
+    header>img+img {
+        position: absolute;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1;
+        opacity: 0.5;
+        height: 148px;
+        width: 247px;
+        left: 28px;
+        bottom: 0;
+    }
+    header>.title {
+        height: 300px;
+    }
+    header>.title>h1 {
+        font-size: 5.2em;
+        margin-top: 50px;
+    }
+    header>.title>h2 {
+        margin-bottom: 50px;
+    }
+    header>.cardContainer {
+        height: 350px;
+    }
+    header>.cardContainer>h3 {
+        font-size: xx-large;
+        background-color: rgba(185, 152, 247, 0.226);
+    }
+    header>.cardContainer>.cards {
+        margin-top: 20px;
+        font-size: large;
+        flex-direction: row;
+    }
+    header>.cardContainer>.cards>.card {
+        height: 250px;
+        width: 320px;
+        padding: 16px;
+    }
+    header>.cardContainer>.cards>.card>img {
+        height: 130px;
+        width: 150px;
+        margin-right: 7px;
+    }
+    header>.cardContainer>.cards>.card>strong {
+        font-size: larger;
+    }
+    header+div {
+        height: 470px;
+    }
+    header+div>h3 {
+        padding: 5px 10px;
+        font-size: xx-large;
+    }
+}
+
+/* tablet close */
+
+@media (min-width:900px) and (max-width:1399px) {
+    header {
+        max-height: 900px;
+    }
+    header>.title>h2 {
+        font-size: 3.5em;
+    }
+}
+
+/* tablet width close*/
+
+@media (min-width:1200px) and (max-width:1399px) {}
+
+/* tablet height close*/
+
+@media (min-width:900px) and (max-width:1199px) {
+    header>.cardContainer>.cards>.card {
+        margin: 3px;
+    }
+    header>.cardContainer>.cards>.card:hover {
+        transform: scale(1.03);
+    }
+    header+div {
+        background: url('../assets/photos/header+div/background2.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+/* mobile open */
+
+@media (max-width:899px) {
+    header>img+img {
+        display: none;
+    }
+    header>.title {
+        height: 100px;
+    }
+    header>.title>h1 {
+        font-size: xx-large;
+        margin-top: 5px;
+    }
+    header>.title>h2 {
+        margin-bottom: 10px;
+    }
+    header>.cardContainer {
+        height: fit-content;
+    }
+    header>.cardContainer>.cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    header>.cardContainer>h3 {
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    header>.cardContainer>.cards>.card {
+        height: 265px;
+        margin: 8px;
+        font-size: larger;
+    }
+    header>.cardContainer>.cards>.card>img {
+        height: 130px;
+        width: 150px;
+        margin-right: 7px;
+    }
+    header>.cardContainer>.cards>.card>strong {
+        font-size: larger;
+    }
+}
+
+/* mobile width close */
+
+@media (min-width:450px) and (max-width:899px) {
+    header {
+        height: fit-content;
+    }
+    header>.title>h2 {
+        font-size: x-large;
+    }
+    header>.cardContainer>h3 {
+        font-size: x-large;
+        background-color: rgba(185, 152, 247, 0.15);
+    }
+    header>.cardContainer>.cards>.card {
+        width: 300px;
+        padding: 8px;
+    }
+    header+div {
+        height: 200px;
+        background: url('../assets/photos/header+div/background3.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    header+div>h3 {
+        padding: 5px 10px;
+        font-size: x-large;
+    }
+}
+
+/* mobile height open */
+
+@media (max-width:449px) {
+    header {
+        height: 1020px;
+    }
+    header>.title>h2 {
+        font-size: larger;
+    }
+    header>.cardContainer>h3 {
+        font-size: larger;
+        background-color: rgba(185, 152, 247, 0.08);
+    }
+    header>.cardContainer>.cards>.card {
+        width: 320px;
+        padding: 13px;
+        max-width: 94vw;
+    }
+    header+div {
+        height: 250px;
+        background: url('../assets/photos/header+div/background.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    header+div>h3 {
+        padding: 4px 7px;
+        font-size: larger;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+}

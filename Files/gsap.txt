@@ -1,4 +1,4 @@
-1) type - inside project, npm install gsap
+1) type - inside project, npm i gsap
 
 2) type - on ts file 
 
@@ -8,3 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 inside ngOnInit function type 
 
 gsap.registerPlugin(ScrollTrigger);
+
+for CSSRulePlugin
+
+gsap.registerPlugin(CSSRulePlugin);
+
+under styleUrls in component.ts add -
+,encapsulation:ViewEncapsulation.None

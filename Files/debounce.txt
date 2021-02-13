@@ -1,0 +1,58 @@
+create debounce on angular
+
+way 1:
+
+  private id:any;
+
+  public in() {
+    clearTimeout(this.id)
+    this.id = setTimeout(() => {
+      console.log('in');
+    }, 2000);
+  }
+
+way 2: - Angular input
+
+  // html
+  <input type="text" id="myId">
+  
+  // ts
+  ngOnInit(): void {
+
+    const searchBox = document.getElementById('myId');
+    const typeahead = fromEvent(searchBox, 'input').pipe(
+      map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
+      debounceTime(1000),
+      distinctUntilChanged()
+    );
+
+    typeahead.subscribe((data) => {
+      // Handle the data from the API
+      console.log(data);
+    });
+
+  }
+
+  way 3: - Angular buttom
+
+  // html
+  <input type="text" id="myId">
+
+  // ts
+  ngOnInit(): void {
+
+    const searchBox = document.getElementById('myId');
+    const typeahead = fromEvent(searchBox, 'click').pipe(
+      map((e: KeyboardEvent) => (e.target as HTMLButtonElement).value),
+      filter(text => text.length > 2), // if I want to some filters.
+      debounceTime(1000),
+      switchMap(searchTerm => ajax(`/api/endpoint?search=${searchTerm}`)) if I want ajax request.
+    );
+
+    typeahead.subscribe(() => {
+      // Handle the data from the API
+      console.log('in');
+    });
+
+  }
+
