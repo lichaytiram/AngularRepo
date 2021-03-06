@@ -1,0 +1,7 @@
+fix CORS issue on chrome
+
+blocking CORS
+"C:\Program Files\Google\Chrome\Application\chrome.exe"
+
+open CORS
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --allow-file-access-from-files

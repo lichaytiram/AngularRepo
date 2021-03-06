@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+}
+
+table {
+    border: 1px solid rgba(70, 68, 68, 0.288);
+    border-collapse: collapse;
+}
+
+table tr>th, table tr>td {
+    border: 1px solid black;
+    padding: 7px;
+    min-width: 80px;
+}
+
+table tr:first-child {
+    background-color: rgb(186, 186, 190);
+}
+
+table tr.center>td:first-child {
+    color: red;
+}
+
+table tr>td {
+    direction: ltr;
+}
+
+table tr.amount>td:last-child, table tr:last-child>td:last-child {
+    background-color: rgba(255, 255, 0, 0.8);
+}
