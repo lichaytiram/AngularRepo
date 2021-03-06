@@ -55,6 +55,13 @@ export class AppComponent implements OnInit {
 
   private container(): void {
 
+    this.textContainer();
+    this.imgContainer();
+
+  }
+
+  private textContainer(): void {
+
     const selector: string = ".container>section>.textContainer>";
 
     gsap.utils.toArray(`${selector}.information`).forEach((targetElement: HTMLElement) => {
@@ -84,21 +91,18 @@ export class AppComponent implements OnInit {
       });
     });
 
-
-    this.imgContainer();
   }
 
-  private imgContainer() {
+  private imgContainer(): void {
 
     const selector: string = ".container>section>.imgContainer";
 
     ScrollTrigger.matchMedia({
+
       "(min-width:1400px)": () => {
         ScrollTrigger.saveStyles(`${selector}>img , ${selector}>p`);
-      }
-    });
+      },
 
-    ScrollTrigger.matchMedia({
       "(max-width:1399px)": () => {
 
         gsap.utils.toArray(selector).forEach((targetElementContainer: HTMLElement) => {
@@ -122,7 +126,6 @@ export class AppComponent implements OnInit {
               opacity: 0, ease: 'Power1.Out', duration: '1.2'
             });
           }
-          else console.log('update imgContainer gsap mod');
 
         });
 
