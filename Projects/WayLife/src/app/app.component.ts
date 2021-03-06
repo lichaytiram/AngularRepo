@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
     if (this.inputValid) {
       console.log(this.user); // email will send by http request to the server on real website
-      this.emailSentSuccessfully = true;
+      this.emailSentSuccessfully = true; // will be on callback^
     }
 
   }
