@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public popupToggle: boolean;
   public infoToggle: boolean;
 
-  private clearInterval = [];
+  private clearTimeOut = [];
   private unSubscribe: Subscription[] = [];
 
   constructor(private store: Store<IProductsState>, private router: Router, private showCalculator: showCalculator) { }
@@ -76,14 +76,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
 
     this.store.dispatch(UserPopupOff());
-    this.clearInterval.forEach(id => clearInterval(id));
+    this.clearTimeOut.forEach(id => clearTimeout(id));
     this.unSubscribe.forEach(subscribe => subscribe.unsubscribe());
 
   }
 
   public popup(): void {
 
-    this.clearInterval.push(setTimeout(() => {
+    this.clearTimeOut.push(setTimeout(() => {
 
       if (!this.user)
         this.store.dispatch(UserPopupOn());
@@ -152,11 +152,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     let timeToShow = 100;
     const { id, ...protein } = this.protein;
     Object.keys(protein).forEach(key => {
-      this.clearInterval.push(setTimeout(() => this.visibilityOn(key), timeToShow));
+      this.clearTimeOut.push(setTimeout(() => this.visibilityOn(key), timeToShow));
       timeToShow += 250;
     });
 
-    this.clearInterval.push(setTimeout(() => this.visibilityOn("submit"), timeToShow));
+    this.clearTimeOut.push(setTimeout(() => this.visibilityOn("submit"), timeToShow));
 
   }
 
