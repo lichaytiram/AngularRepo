@@ -11,19 +11,33 @@ import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+  private onResizePreWidth: number;
+
   private onResizeID: ReturnType<typeof setTimeout>;
-  private AnimationID: ReturnType<typeof setTimeout>;
+  private clearTimeoutDestroy: ReturnType<typeof setTimeout>[];
 
   ngOnInit(): void {
 
+    this.onResizePreWidth = window.innerWidth;
+    this.clearTimeoutDestroy = [];
+
     this.gsap();
+
+    const mainAnimation: string = '.packages>.container>.ulWrapper>.animation';
+    const innerAnimation: string = '.packages>.container>.ulWrapper>.animation>ul';
+
+    const mainElement: HTMLUListElement = document.querySelector(mainAnimation);
+    const innerElement: HTMLUListElement = document.querySelector(innerAnimation);
+    mainElement.addEventListener('animationend', () => {
+      console.log('Animation ended');
+    });
 
   }
 
   ngOnDestroy(): void {
 
-    clearTimeout(this.onResizeID);
-    clearTimeout(this.AnimationID);
+    this.clearTimeoutDestroy.push(this.onResizeID);
+    this.clearTimeoutDestroy.forEach(ID => clearTimeout(ID));
 
   }
 
@@ -31,13 +45,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
     gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
-    this.headerDiv();
-    this.security();
-    this.packages();
+    this.gsapHeaderDiv();
+    this.gsapSecurity();
+    this.gsapPackages();
 
   }
 
-  private headerDiv(): void {
+  private gsapHeaderDiv(): void {
 
     const headerDiv: string = 'header+div>h3';
 
@@ -55,7 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
-  private security(): void {
+  private gsapSecurity(): void {
 
     const h1: string = '.security>.textBigContainer>h1';
     const textBigContainerP: string = '.security>.textBigContainer>p';
@@ -101,9 +115,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
-  private packages(): void {
+  // packages typescript section
 
-    const selector: string = '.packages>.ulWrapper>ul';
+  private gsapPackages(): void {
+
+    const selector: string = '.packages>.container>.ulWrapper>.animation>ul';
     const elements: HTMLUListElement = document.querySelector(selector);
     let elementDuplicate: number;
 
@@ -135,8 +151,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
-  private onResizePreWidth: number = window.innerWidth;
-
   @HostListener('window:resize', ['$event'])
   onResize(): void {
 
@@ -150,17 +164,53 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.onResizePreWidth = screenWidth;
 
-        const selector: string = '.packages>.ulWrapper>ul';
-        const element: HTMLUListElement = document.querySelector(selector);
-
-        element.style.animation = "none";
-        element.offsetHeight; /* trigger reflow */
-
-        this.AnimationID = setTimeout(() => element.style.animation = null, 1);
+        this.packagesRestartAnimation();
       }
 
     }, 100);
 
   }
+
+  private packagesRestartAnimation(): void {
+
+    const selector: string = '.packages>.container>.ulWrapper>.animation>ul';
+    const element: HTMLUListElement = document.querySelector(selector);
+
+    element.style.animation = "none";
+    element.offsetHeight; /* trigger reflow */
+
+    this.clearTimeoutDestroy.push(setTimeout(() => element.style.animation = null, 1));
+
+  }
+
+  private jump = 0;
+  // private index = 0;
+  public packagesArrow(direction: string): void {
+
+    const mainAnimation: string = '.packages>.container>.ulWrapper>.animation';
+    const innerAnimation: string = '.packages>.container>.ulWrapper>.animation>ul';
+
+    const mainElement: HTMLUListElement = document.querySelector(mainAnimation);
+    const innerElement: HTMLUListElement = document.querySelector(innerAnimation);
+    // mainElement.style.animationPlayState = 'paused';
+// console.log(mainElement.length);
+
+
+
+    requestAnimationFrame(() => {
+
+      this.jump += 240;
+
+      innerElement.style.transform = `translate(${this.jump}px)`;
+      // innerElement.appendChild(innerElement.children[this.index].cloneNode(true));
+      // this.index++;
+    });
+
+  }
+
+  // @HostListener('window:click', ['$event.target:arrow']) onClick(e){
+  //   window.alert('Current DOM element is');
+  //   console.log(e);
+  // }
 
 }

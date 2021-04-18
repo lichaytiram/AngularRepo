@@ -1,0 +1,42 @@
+.container {
+    height: 100vh;
+    background-color: rgb(188, 241, 248);
+    color: rgb(35, 62, 214);
+}
+
+.container>.header {
+    height: 90px;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container>.header>.box {
+    background-color: lightgreen;
+    height: 60px;
+    width: 100vw;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container>.header>.box>h1::first-letter {
+    text-transform: uppercase;
+}
+
+.container>ol {
+    /* margin: 0 auto; */
+    margin-top: 100px;
+    border-radius: 40px;
+    background-color: rgba(186, 196, 201, 0.281);
+    padding: 50px;
+}
+
+.container>ol>li {
+
+}
+
+

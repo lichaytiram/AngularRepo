@@ -1,0 +1,67 @@
+.header {
+    height: 120px;
+    background-color: rgb(88, 88, 88);
+    color: brown;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header>h1::first-letter, .header>h2::first-letter, .content>h3::first-letter {
+    text-transform: uppercase;
+}
+
+.content {
+    height: 800px;
+    background-color: rgb(221, 207, 207);
+    text-align: center;
+    /* display: flex; */
+}
+
+.content>h3 {
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
+.content>.box {
+    height: 500px;
+    width: 500px;
+    background-color: rgb(201, 144, 168);
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.content>.box>ul {
+    /* list-style: none; */
+    color: rgb(47, 49, 49);
+    /* padding: 0; */
+}
+
+.content>.box>ul>li {
+    position: relative;
+    border: solid black 1px;
+}
+
+.content>.box>ul>li:nth-child(odd) {
+    background-color: rgb(241, 161, 205);
+}
+
+.content>.box>ul>li:nth-child(even)::marker {
+    color: rgb(241, 161, 205);
+}
+
+.content>.box>ul>li>button {
+    position: absolute;
+    right: 0;
+    top:2px;
+    outline: 0;
+    padding: 0;
+    background-color: inherit;
+    color: red;
+    border: 0;
+    margin-right: 10px;
+    cursor: pointer;
+}

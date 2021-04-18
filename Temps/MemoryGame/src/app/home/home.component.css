@@ -1,0 +1,89 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcyan;
+}
+
+.container>h1 {
+    margin-bottom: 180px;
+    text-transform: capitalize;
+    padding: 5px 10px;
+    background-color: lightgray;
+    border-radius: 10px;
+    opacity: 0;
+    animation: header 0.5s 0.3s ease-out forwards;
+    transform: translateY(40px);
+}
+
+.container>button {
+    cursor: pointer;
+    border-radius: 7px;
+    outline: 0;
+    background-color: inherit;
+    border: 1 solid black;
+}
+
+.container>input {
+    border-radius: 7px;
+    outline: 0;
+    background-color: inherit;
+    padding: 3px 3px 3px 7px;
+    margin-top: 20px;
+}
+
+.container>.bulbsWrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 30px;
+    width: calc( var(--width-circle) * 3 + (var(--padding-box) * 2) + 60px);
+    padding: var(--padding-box);
+    border-radius: 30px;
+    background-color: rgba(163, 218, 228, 0.452);
+}
+
+.container>.bulbsWrap>button {
+    width: var(--width-circle);
+    height: var(--width-circle);
+    border-radius: var(--width-circle);
+    border: 1px solid black;
+    cursor: pointer;
+    margin: 10px;
+    outline: 0;
+    transition: 0.3s ease-out;
+}
+
+.container>.bulbsWrap>button:hover {
+    background-color: lightsteelblue;
+}
+
+/* keyframes */
+
+@keyframes header {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* mobile and tablet open */
+
+@media(min-width:900px) {
+    .container>.bulbsWrap {
+        --width-circle: 120px;
+        --padding-box: 20px;
+    }
+}
+
+/* mobile open  */
+
+@media (max-width:899px) {
+    .container>.bulbsWrap {
+        --width-circle: 80px;
+        --padding-box: 5px;
+    }
+}

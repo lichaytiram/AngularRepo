@@ -1,0 +1,105 @@
+:host {
+    --basic-background-color: rgb(47, 49, 49);
+    --basic-color: rgb(212, 215, 218);
+    --navbar-height: 55px;
+    --footer-height: 30px;
+    --main-min-height: calc(100vh - var(--footer-height) - var(--navbar-height));
+}
+
+nav {
+    height: var(--navbar-height);
+    background-color: var(--basic-background-color);
+    color: var(--basic-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav>ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+nav>ul>li {
+    margin: 0 8px;
+}
+
+nav>ul>li>button {
+    color: var(--basic-color);
+    background-color: var(--basic-background-color);
+    padding: 4px 8px;
+    margin: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    font-size: large;
+    text-transform: capitalize;
+}
+
+nav>ul>li>button:hover {
+    background-color: rgba(119, 136, 153, 0.575);
+    color: black;
+}
+
+nav>ul>li>button>i {
+    margin-right: 2px;
+}
+
+main {
+    min-height: var(--main-min-height);
+}
+
+footer {
+    height: var(--footer-height);
+    background-color: var(--basic-background-color);
+    color: var(--basic-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+}
+
+footer>small>i {
+    display: inline-block;
+    margin-right: 5px;
+    animation: copyright 5s linear infinite;
+}
+
+footer>small>span {
+    display: inline-block;
+    animation: creator 4s linear infinite alternate;
+}
+
+@keyframes copyright {
+    20% {
+        transform: scale(1.25);
+    }
+    60% {
+        transform: scale(.9);
+    }
+}
+
+@keyframes creator {
+    to {
+        transform: translateX(5px);
+        color: rgba(230, 223, 210, 0.692);
+    }
+}
+
+@media (min-width:900px) {}
+
+/* mobile open */
+
+@media (max-width:899px) {
+    .container {
+        --navbar-height: fit-content;
+    }
+    nav>ul {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,17 @@
+<div class="container">
+
+    <div class="header">
+        <div class="box">
+            <h1>welcome to favorite list</h1>
+        </div>
+    </div>
+
+    <ol>
+        <li *ngFor="let favorite of favorites$ | async">
+            {{favorite.shirt}}
+            {{favorite.pants}}
+            {{favorite.lower}}
+        </li>
+    </ol>
+
+</div>

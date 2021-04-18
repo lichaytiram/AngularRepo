@@ -1,0 +1,40 @@
+.container {
+    position: relative;
+    --main-background-color: blanchedalmond;
+    min-height: var(--main-min-height);
+}
+
+.container>header>h1 {
+    text-align: center;
+    padding: 7px;
+    text-transform: capitalize;
+    background-color: var(--main-background-color);
+}
+
+.container>.wrap {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: larger;
+}
+
+.container>.wrap>.left, .container>.wrap>.right {
+    height: fit-content;
+    width: 150px;
+    background-color: var(--main-background-color);
+    padding: 15px;
+    margin: 3px;
+    --border-radius: 15px;
+}
+
+.container>.wrap>.left {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.container>.wrap>.right {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}

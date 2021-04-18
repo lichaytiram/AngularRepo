@@ -1,0 +1,18 @@
+<div class="container">
+
+    <h1>memory game</h1>
+    <button (click)="startGame()">start a game</button>
+    <input type="text" name="name" [(ngModel)]="name">
+
+    <div class="bulbsWrap">
+
+        <button (click)="playCheck($event)" position="0"></button>
+        <button (click)="playCheck($event)" position="1"></button>
+        <button (click)="playCheck($event)" position="2"></button>
+        <button (click)="playCheck($event)" position="3"></button>
+        <button (click)="playCheck($event)" position="4"></button>
+        <button (click)="playCheck($event)" position="5"></button>
+
+    </div>
+
+</div>

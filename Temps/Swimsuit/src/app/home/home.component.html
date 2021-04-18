@@ -1,0 +1,24 @@
+<div class="header">
+
+    <h1>we are best shop website</h1>
+    <h2>we have a lot of variety</h2>
+</div>
+
+<section class="content">
+
+    <h3>we are selling swimsuit with good prices</h3>
+    <div class="box">
+
+        <h4>swimsuit list</h4>
+        <ul>
+            <li *ngFor="let swimsuit of swimsuits$ | async">
+                {{swimsuit.shirt}}
+                {{swimsuit.pants}}
+                {{swimsuit.lower}}
+                <button (click)="favorite(swimsuit)">love</button>
+            </li>
+        </ul>
+
+    </div>
+
+</section>

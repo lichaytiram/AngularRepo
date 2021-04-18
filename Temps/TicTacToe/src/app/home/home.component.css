@@ -1,0 +1,119 @@
+button {
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container>h1 {
+    text-transform: capitalize;
+    margin: 5px 0 30px 0;
+}
+
+.container>button {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: darkgreen;
+    color: lightpink;
+    padding: 7px 10px;
+    border: 1px solid blue;
+    box-shadow: 0 0 3px blue;
+}
+
+.container>.wrap {
+    background-color: lightsteelblue;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.container>.wrap>button {
+    background-color: inherit;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 3px 6px;
+    position: absolute;
+    top: 0;
+    margin-top: 5px;
+}
+
+.container>.wrap>p:first-of-type {
+    color: blue;
+}
+
+.container>.wrap>p:last-of-type {
+    color: red;
+}
+
+.container>.wrap>p {
+    padding: 5px;
+    text-align: center;
+}
+
+.container>.wrap>.box {
+    border: 1px solid black;
+}
+
+.container>.wrap>.box>.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.container>.wrap>.box>.row>button {
+    outline: 0;
+    padding: 0;
+}
+
+.container>.wrap>.box>.row>.column {
+    border: 1px solid black;
+    transition: 0.4s ease-out;
+}
+
+.container>.wrap>.box>.row>.column:hover {
+    background-color: lightslategray;
+}
+
+@media (min-width:900px) {
+    .container>h1 {
+        margin: 5px 0 30px 0;
+    }
+    .container>.wrap {
+        height: 800px;
+        width: 900px;
+    }
+    .container>.wrap>.box {
+        width: 600px;
+        height: 600px;
+    }
+    .container>.wrap>.box>.row>.column {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width:899px) {
+    .container>h1 {
+        margin: 3px 0 5px 0;
+    }
+    .container>.wrap {
+        height: 320px;
+        width: 320px;
+    }
+    .container>.wrap>.box {
+        width: 210px;
+        height: 210px;
+    }
+    .container>.wrap>.box>.row>.column {
+        width: 70px;
+        height: 70px;
+    }
+}

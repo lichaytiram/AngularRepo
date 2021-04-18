@@ -1,0 +1,48 @@
+{
+  "clothes": [
+    {
+      "id": 1,
+      "shirt": "adidas",
+      "pants": "adidas",
+      "lower": "adidas"
+    },
+    {
+      "id": 2,
+      "shirt": "kappa",
+      "pants": "kappa",
+      "lower": "kappa"
+    },
+    {
+      "id": 3,
+      "shirt": "nike",
+      "pants": "nike",
+      "lower": "nike"
+    },
+    {
+      "id": 4,
+      "shirt": "fox",
+      "pants": "fox",
+      "lower": "fox"
+    },
+    {
+      "id": 5,
+      "shirt": "calvin klein",
+      "pants": "calvin klein",
+      "lower": "calvin klein"
+    }
+  ],
+  "carts": [
+    {
+      "id": 2,
+      "shirt": "kappa",
+      "pants": "kappa",
+      "lower": "kappa"
+    },
+    {
+      "id": 3,
+      "shirt": "nike",
+      "pants": "nike",
+      "lower": "nike"
+    }
+  ]
+}

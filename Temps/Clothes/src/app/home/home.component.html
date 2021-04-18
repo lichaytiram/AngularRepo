@@ -1,0 +1,29 @@
+<div class="container">
+
+    <h1>welcome to clothes shop</h1>
+
+    <div class="box">
+
+        <ul>
+            <h2>choose clothe you want to add</h2>
+
+            <li *ngFor="let clothe of clothes$ | async">
+
+                <div class="flex">
+                    <p> <span>shirt:</span> <span>{{clothe.shirt}}</span></p>
+                    <p> <span>pants:</span> <span>{{clothe.pants}}</span></p>
+                    <p> <span>lower:</span> <span>{{clothe.lower}}</span></p>
+                </div>
+
+                <button (click)="saveToCart(clothe)">add to cart</button>
+            </li>
+        </ul>
+
+        <div class="failUpload" *ngIf="addCart | async">
+            <p>you already have this item in your cart</p>
+            <button (click)="getFailAddCartOff()">X</button>
+        </div>
+
+    </div>
+
+</div>

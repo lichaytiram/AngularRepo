@@ -1,0 +1,33 @@
+<div class="container">
+
+    <h1>tic tac toe game</h1>
+    <button (click)="startGame()">start game</button>
+
+    <div class="wrap">
+        <button (click)="resetGame">reset game</button>
+        <p>player 1</p>
+        <div class="box">
+
+            <div class="row">
+                <button (click)="chosen($event)" position="0" class="column">1</button>
+                <button (click)="chosen($event)" position="1" class="column">2</button>
+                <button (click)="chosen($event)" position="2" class="column">3</button>
+            </div>
+
+            <div class="row">
+                <button (click)="chosen($event)" position="3" class="column">4</button>
+                <button (click)="chosen($event)" position="4" class="column">5</button>
+                <button (click)="chosen($event)" position="5" class="column">6</button>
+            </div>
+
+            <div class="row">
+                <button (click)="chosen($event)" position="6" class="column">7</button>
+                <button (click)="chosen($event)" position="7" class="column">8</button>
+                <button (click)="chosen($event)" position="8" class="column">9</button>
+            </div>
+
+        </div>
+        <p>player 2</p>
+    </div>
+
+</div>
