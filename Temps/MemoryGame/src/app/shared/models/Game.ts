@@ -10,12 +10,14 @@ export class Game implements IGame {
     maxScore = 0;
 
     startGame(): number {
-        const randomNumber = this.runGame();
+
+        this.restartGame();
+        const randomNumber = this.randomNumber();
 
         return randomNumber;
     }
 
-    runGame(): number {
+    randomNumber(): number {
 
         let randomNumber = -1;
 
@@ -33,48 +35,37 @@ export class Game implements IGame {
                 randomNumber = randomValue;
             }
 
-            if (this.isWin() == true) {
-                return randomNumber;
-            }
-
         }
+
         return randomNumber;
 
     }
 
-    // check equals value in index of historyBoard
-    clickSequence(clickValue: number): number {
+    clickSequence(clickIndex: number): number | boolean {
 
-        const historyBoardLength: number = this.historyBoard.length;
+        if (this.isWin())
+            return true;
 
-        if (this.amountClicks > historyBoardLength) {
-            this.gameOver();
+        if (this.isLoss(clickIndex))
+            return false;
+
+
+        if (this.finishRound()) {
+
+            this.amountClicks++;
+            this.indexToCheck = 0;
+
+            // if ((this.board.length - 1) != this.indexToCheck)
+            return this.randomNumber();
+
         } else {
-
-            const historyBoard: Array<number> = this.historyBoard;
-            const index: number = this.indexToCheck;
-
-            if (historyBoard[index] != clickValue)
-                this.gameOver();
-
-            else {
-
-                this.amountClicks++;
-                this.indexToCheck++;
-
-                if (historyBoardLength == index) {
-
-                    // this function is not finish.
-                    return this.runGame();
-
-                }
-            }
-
+            this.indexToCheck++;
         }
+
         return -1;
     }
 
-    gameOver(): void {
+    restartGame(): void {
 
         this.board = [false, false, false, false, false, false];
         this.historyBoard = [];
@@ -85,15 +76,46 @@ export class Game implements IGame {
 
     newGame(): void {
 
-        this.gameOver();
+        this.restartGame();
         this.maxScore = 0;
     }
 
     isWin(): boolean {
 
         const board: Array<boolean> = this.board;
+        const amountClicks: number = this.amountClicks;
+        const indexToCheck: number = this.indexToCheck;
 
-        return !board.includes(false);
+        const isWin: boolean = !board.includes(false) && amountClicks == board.length && indexToCheck == (board.length - 1);
+        
+        if(isWin){
+            
+        }
+
+
+        return isWin;
+
+    }
+
+    isLoss(value: number): boolean {
+
+        const historyBoard: Array<number> = this.historyBoard;
+        const isLoss: boolean = historyBoard[this.indexToCheck] != value ? true : false;
+
+        // Restart the game (can be delete and create a separate button)
+        isLoss == true && this.restartGame();
+
+        return isLoss;
+    }
+
+    finishRound(): boolean {
+
+        this.score += 10;
+        if (this.maxScore < this.score)
+            this.maxScore = this.score;
+
+        return (this.amountClicks - 1) == this.indexToCheck;
+
     }
 
 }

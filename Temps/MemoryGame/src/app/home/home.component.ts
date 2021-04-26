@@ -9,12 +9,13 @@ import { IGame } from '../shared/models/IGame.model';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
+  private isGameStart: boolean = false;
   public name: string = '';
   public game: IGame = new Game();
+
   private clearTimeout: ReturnType<typeof setTimeout>[] = [];
 
   constructor() { }
-
 
   ngOnInit(): void {
 
@@ -26,16 +27,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
+  // start game
   public startGame(): void {
 
     if (this.name.length > 0) {
 
+      this.isGameStart = true;
       const game: IGame = this.game;
       const randomNumber: number = game.startGame();
 
-      const selector: string = '.container>.bulbsWrap>button';
-      const element: NodeListOf<HTMLElement> = document.querySelectorAll(selector);
-      const elementSelected: HTMLElement = element[randomNumber];
+      const elementSelected: HTMLButtonElement = this.getButtonElementByHisPosition(randomNumber);
       this.showTimeOut(elementSelected);
 
     }
@@ -44,15 +45,56 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public playCheck(event: any): void {
 
-    const element: HTMLElement = event.currentTarget;
-    const elementIndex: number = event.currentTarget.getAttribute('position');
+    const gameStart: boolean = this.isGameStart;
 
-    const game: IGame = this.game;
+    if (gameStart) {
 
+      // Indicate element index
+      const elementIndex: number = event.currentTarget.getAttribute('position');
+
+      const game: IGame = this.game;
+      const newNumberRandom: number | boolean = game.clickSequence(elementIndex);
+
+      // Check if user win or loss  
+      if (typeof newNumberRandom === 'boolean') {
+        this.isGameStart = false;
+
+        if (newNumberRandom == true) {
+          console.log('Won');
+        }
+        else {
+          console.log('Loss');
+        }
+
+      }
+
+      // The game continue
+      else if (newNumberRandom != -1) {
+
+        console.log('keep play');
+
+        const nextNumber: number = newNumberRandom as number;
+
+        const newElement: HTMLButtonElement = this.getButtonElementByHisPosition(nextNumber);
+        this.showTimeOut(newElement);
+
+      }
+
+    }
 
   }
 
-  private showTimeOut(element: HTMLElement): void {
+  private getButtonElementByHisPosition(position: number): HTMLButtonElement {
+
+    const selector: string = '.container>.bulbsWrap>button';
+    const buttonList: NodeListOf<HTMLButtonElement> = document.querySelectorAll(selector);
+
+    const element: HTMLButtonElement = buttonList.item(position);
+
+    return element;
+  }
+
+  private showTimeOut(element: HTMLButtonElement): void {
 
     element.style.backgroundColor = 'pink';
     this.clearTimeout.push(setTimeout(() => {

@@ -22,14 +22,14 @@ export class Game implements IGame {
 
             } else if (this.isGameFinish()) {
 
-                
+
             } else {
                 this.currentPlayer = this.currentPlayer == 1 ? 2 : 1;
             }
 
         }
-        console.log(this.playersWins);
 
+        console.log(this.playersWins);
 
     }
 
