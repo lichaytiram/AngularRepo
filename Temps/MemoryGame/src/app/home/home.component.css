@@ -2,51 +2,243 @@
     height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: lightcyan;
+    background-color: var(--background-color-cover);
+    position: relative;
+    --background-color-cover: lightcyan;
 }
 
-.container>h1 {
-    margin-bottom: 180px;
+.container>.infoWrap, .container>.gameWrap {
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+}
+
+.container>.infoWrap {
+    left: 0;
+    top: 0;
+    z-index: 1;
+    overflow-x: hidden;
+    text-align: center;
+    background-color: darkgray;
+    width: var(--widthInfoWrap);
+    transition: var(--transition-info-wrap);
+    --transition-info-wrap: .8s ease-out;
+}
+
+.container>.infoWrap>.information h1, .container>.infoWrap>.information h2 {
+    text-transform: capitalize;
+}
+
+.container>.infoWrap>.information {
+    transition: .4s ease-out;
+}
+
+.container>.infoWrap>.information h1, .container>.infoWrap>.information h2, .container>.infoWrap>.information p {
+    font-size: large;
+}
+
+.container>.infoWrap>.information h1 {
+    margin-bottom: 7px;
+}
+
+.container>.infoWrap>.information h2 {
+    border-radius: 15px;
+    padding: 5px 11px;
+    background-color: rgba(92, 68, 68, 0.2);
+    margin-bottom: 10px;
+}
+
+.container>.infoWrap>.information p {
+    margin-bottom: 5px;
+}
+
+.container>.infoWrap>.information p::first-letter {
+    text-transform: uppercase;
+}
+
+.container>.infoWrap>.information p>span {
+    font-weight: bold;
+}
+
+/* arrow class*/
+
+.container>.infoWrap>.information+i {
+    margin-top: 20px;
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    background-color: var(--background-color-cover);
+}
+
+.container>.infoWrap>.information+i.arrow {
+    transition: var(--transition-info-wrap);
+    animation: arrowRight 1.6s ease-out infinite alternate;
+}
+
+.container>.gameWrap {
+    width: calc(100vw - var(--widthInfoWrap));
+    right: 0;
+}
+
+.container>.gameWrap>h1 {
     text-transform: capitalize;
     padding: 5px 10px;
     background-color: lightgray;
     border-radius: 10px;
     opacity: 0;
-    animation: header 0.5s 0.3s ease-out forwards;
     transform: translateY(40px);
+    animation: header .5s .3s ease-out forwards;
 }
 
-.container>button {
+.container>.gameWrap>.introduction {
+    border-radius: 20px;
+    background: repeating-linear-gradient( -30deg, rgba(218, 194, 198, 0.2) 1%, rgba(247, 150, 90, 0.055) 30%), rgba(135, 160, 165, 0.05);
+    color: rgb(41, 40, 40);
+    transform: translateX(20%);
+    opacity: 0;
+    animation: introductionAndForm .8s .6s ease-out forwards;
+}
+
+.container>.gameWrap>.introduction.d-none {
+    display: none;
+}
+
+.container>.gameWrap>.introduction>h2::first-letter, .container>.gameWrap>.introduction>h3::first-letter {
+    text-transform: uppercase;
+}
+
+.container>.gameWrap>.introduction>h2 {
+    text-align: center;
+    background: linear-gradient(180deg, rgba(203, 211, 223, 0.1), rgba(112, 133, 124, 0.1));
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.container>.gameWrap>.introduction>h3 {
+    font-size: medium;
+}
+
+.container>.gameWrap>form {
+    margin: 5px 3px;
+    border-radius: 8px;
+    background-color: rgba(224, 240, 255, 0.836);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px inset rgba(112, 182, 112, 0.5);
+    transition: 0.5s ease-out;
+    transform: translateX(-20%);
+    opacity: 0;
+    animation: introductionAndForm .9s .8s ease-out forwards;
+}
+
+.container>.gameWrap>form:hover {
+    box-shadow: 0 0 10px inset rgba(129, 216, 129, 0.6), 0 0 8px rgba(112, 182, 112, 0.6);
+}
+
+.container>.gameWrap>form.d-none {
+    display: none;
+}
+
+.container>.gameWrap>form>input {
+    text-align: center;
+    border-radius: 7px;
+    outline: 0;
+    background-color: inherit;
+    padding: 5px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    transition: 1s ease-in-out;
+}
+
+.container>.gameWrap>form>input:hover {
+    background-color: rgba(109, 137, 212, 0.1);
+}
+
+.container>.gameWrap>form>input::placeholder {
+    text-transform: capitalize;
+    transition: 1s ease-in-out;
+}
+
+.container>.gameWrap>form>input:hover::placeholder {
+    color: black;
+}
+
+.container>.gameWrap>form>select {
+    padding: 5px;
+    border-radius: 9px;
+    background-color: inherit;
+}
+
+.container>.gameWrap>form>select>option {
+    background-color: rgb(216, 233, 247);
+    text-transform: capitalize;
+}
+
+.container>.gameWrap>form>small {
+    color: rgb(226, 30, 30);
+    width: 90%;
+    text-align: center;
+    display: block;
+    background-color: rgba(165, 42, 42, 0.068);
+    border-radius: 30px;
+    padding: 5px 0;
+}
+
+.container>.gameWrap>form>small::first-letter {
+    text-transform: uppercase;
+}
+
+.container>.gameWrap>form>small+input.button:disabled {
+    border: 1px solid rgb(248, 131, 131);
+}
+
+.container>.gameWrap>form>input.button {
     cursor: pointer;
     border-radius: 7px;
     outline: 0;
+    padding: 3px 6px;
     background-color: inherit;
-    border: 1 solid black;
+    --border-color-horizon: black;
+    --border-color-vertical: purple;
+    border-left: 1px solid var(--border-color-horizon);
+    border-right: 1px solid var(--border-color-horizon);
+    border-bottom: 1px solid var(--border-color-vertical);
+    border-top: 1px solid var(--border-color-vertical);
+    transition: .7s linear;
 }
 
-.container>input {
-    border-radius: 7px;
-    outline: 0;
-    background-color: inherit;
-    padding: 3px 3px 3px 7px;
-    margin-top: 20px;
+.container>.gameWrap>form>input.button:hover {
+    background-color: rgba(104, 102, 107, 0.08);
+    border-left: 1px solid var(--border-color-vertical);
+    border-right: 1px solid var(--border-color-vertical);
+    border-bottom: 1px solid var(--border-color-horizon);
+    border-top: 1px solid var(--border-color-horizon);
 }
 
-.container>.bulbsWrap {
+.container>.gameWrap>.bulbsWrap {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    margin-top: 30px;
     width: calc( var(--width-circle) * 3 + (var(--padding-box) * 2) + 60px);
     padding: var(--padding-box);
     border-radius: 30px;
     background-color: rgba(163, 218, 228, 0.452);
 }
 
-.container>.bulbsWrap>button {
+.container>.gameWrap>.bulbsWrap.d-none {
+    display: none;
+}
+
+.container>.gameWrap>.bulbsWrap>button {
     width: var(--width-circle);
     height: var(--width-circle);
     border-radius: var(--width-circle);
@@ -57,11 +249,78 @@
     transition: 0.3s ease-out;
 }
 
-.container>.bulbsWrap>button:hover {
+.container>.gameWrap>.bulbsWrap>button:hover {
     background-color: lightsteelblue;
 }
 
+.container>.gameWrap>.gameEndWrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container>.gameWrap>.gameEndWrap>button {
+    background-color: inherit;
+    cursor: pointer;
+    outline: 0;
+    padding: 0;
+    border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.container>.gameWrap>.gameEndWrap>button.winButton {
+    color: rgb(226, 23, 23);
+}
+
+.container>.gameWrap>.gameEndWrap>button.lossButton {
+    color: rgb(69, 130, 243);
+}
+
+.container>.gameWrap>.gameEndWrap>button+.gameEnd {
+    transition: 0.7s ease-out;
+}
+
+.container>.gameWrap>.gameEndWrap>button:hover+.gameEnd {
+    transform: scale(0.95) translateX(17px) translateY(-30px) skew(3deg) rotate(8deg);
+    opacity: 0.95;
+}
+
+.container>.gameWrap>.gameEndWrap>.win, .container>.gameWrap>.gameEndWrap>.loss {
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container>.gameWrap>.gameEndWrap>.win {
+    background-color: rgb(99, 191, 252);
+}
+
+.container>.gameWrap>.gameEndWrap>.loss {
+    background-color: rgb(255, 116, 116);
+}
+
+.container>.gameWrap>.gameEndWrap p::first-letter {
+    text-transform: uppercase;
+}
+
+.container>.gameWrap>.gameEndWrap p {
+    text-transform: lowercase;
+    text-align: center;
+}
+
 /* keyframes */
+
+@keyframes arrowRight {
+    to {
+        transform: translateX(12px);
+    }
+}
 
 @keyframes header {
     to {
@@ -70,20 +329,238 @@
     }
 }
 
-/* mobile and tablet open */
+@keyframes introductionAndForm {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* desktop and tablet width open */
+
+@media(min-width:1200px) {
+    .container>.gameWrap {
+        --padding-right: 150px;
+        padding-right: var(--padding-right);
+    }
+    .container>.gameWrap>.gameEndWrap {
+        padding-right: var(--padding-right);
+    }
+    .container>.gameWrap>.gameEndWrap>button {
+        padding-right: var(--padding-right);
+    }
+}
+
+/* desktop and tablet open */
 
 @media(min-width:900px) {
-    .container>.bulbsWrap {
+    .container {
+        --widthInfoWrap: 250px;
+    }
+    .container>.infoWrap:hover {
+        width: 600px;
+    }
+    .container>.infoWrap:hover>.information {
+        transform: scale(1.46);
+    }
+    .container>.infoWrap>.information+i {
+        width: 120px;
+        height: 80px;
+    }
+    .container>.gameWrap>h1 {
+        margin-bottom: 100px;
+    }
+    .container>.gameWrap>.introduction {
+        width: 650px;
+        margin: 5px 0 30px 0;
+        padding: 13px 13px 20px 20px;
+    }
+    .container>.gameWrap>.introduction>h2 {
+        font-size: large;
+        margin-bottom: 12px;
+    }
+    .container>.gameWrap>form {
+        width: 500px;
+        padding: 15px;
+    }
+    .container>.gameWrap>form>input, .container>.gameWrap>form>select, .container>.gameWrap>form>input.button {
+        width: 180px;
+        margin: 10px;
+    }
+    .container>.gameWrap>.bulbsWrap {
         --width-circle: 120px;
         --padding-box: 20px;
+    }
+    .container>.gameWrap>.gameEndWrap>button {
+        margin-top: 12px;
+        margin-right: 20px;
+        font-size: xx-large;
+    }
+    .container>.gameWrap>.gameEndWrap>.win, .container>.gameWrap>.gameEndWrap>.loss {
+        height: 260px;
+        width: 460px;
+        border-radius: 40px;
+    }
+    .container>.gameWrap>.gameEndWrap p {
+        font-size: x-large;
+    }
+}
+
+/* desktop, tablet and mobile-width open */
+
+@media(min-width:450px) {
+    .container>.infoWrap>button {
+        display: none;
+    }
+    .container>.infoWrap:hover>.information+i.arrow {
+        opacity: 0;
     }
 }
 
 /* mobile open  */
 
 @media (max-width:899px) {
-    .container>.bulbsWrap {
-        --width-circle: 80px;
+    .container>.gameWrap>h1 {
+        font-size: larger;
+    }
+    .container>.gameWrap>.introduction {
+        width: calc( 100vw - var(--widthInfoWrap) - 10px);
+        margin: 5px 0 10px 0;
+        padding: 13px 13px 10px 20px;
+    }
+    .container>.gameWrap>.introduction>h2 {
+        font-size: large;
+        font-size: medium;
+        margin-bottom: 8px;
+    }
+    .container>.gameWrap>form {
+        padding: 12px;
+    }
+    .container>.gameWrap>.bulbsWrap {
+        --width-circle: 60px;
         --padding-box: 5px;
+    }
+}
+
+/* mobile width close */
+
+@media (min-width:450px) and (max-width:899px) {
+    .container {
+        --widthInfoWrap: 165px;
+    }
+    .container>.infoWrap:hover {
+        width: 320px;
+    }
+    .container>.infoWrap:hover>.information {
+        transform: scale(1.3);
+    }
+    .container>.infoWrap>.information+i {
+        width: 75px;
+        height: 45px;
+    }
+    .container>.gameWrap>h1 {
+        margin-bottom: 10px;
+    }
+    .container>.gameWrap>.introduction {
+        width: 480px;
+        max-width: calc(100vw - var(--widthInfoWrap) - 10px);
+    }
+    .container>.gameWrap>form {
+        width: 390px;
+    }
+    .container>.gameWrap>form.invalid {
+        padding: 10px;
+    }
+    .container>.gameWrap>form>small {
+        width: 95%;
+    }
+    .container>.gameWrap>form>input, .container>.gameWrap>form>select, .container>.gameWrap>form>input.button {
+        width: 160px;
+        margin: 5px;
+    }
+    .container>.gameWrap>.gameEndWrap>button {
+        margin-top: 3px;
+        margin-right: 11px;
+        font-size: x-large;
+    }
+    .container>.gameWrap>.gameEndWrap>.win, .container>.gameWrap>.gameEndWrap>.loss {
+        height: 190px;
+        width: 352px;
+        border-radius: 20px;
+    }
+    .container>.gameWrap>.gameEndWrap p {
+        font-size: larger;
+    }
+}
+
+@media (max-width:449px) {
+    .container {
+        --widthInfoWrap: 45px;
+    }
+    .container>.infoWrap>.information {
+        display: none;
+    }
+    .container>.infoWrap>.information+i {
+        width: 25px;
+        height: 15px;
+        margin-right: 10px;
+    }
+    .container>.infoWrap>button {
+        border: 0;
+        padding: 0;
+        outline: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 30px;
+    }
+    .container>.gameWrap>.introduction {
+        width: calc( 100vw - var(--widthInfoWrap) - 10px);
+    }
+    .container>.infoWrap>button>.lines, .container>.infoWrap>button>.lines::before, .container>.infoWrap>button>.lines::after {
+        width: 20px;
+        height: 2px;
+        background-color: cornsilk;
+    }
+    .container>.infoWrap>button>.lines::before, .container>.infoWrap>button>.lines::after {
+        content: '';
+        display: block;
+    }
+    .container>.infoWrap>button>.lines::before {
+        transform: translateY(-6px);
+    }
+    .container>.infoWrap>button>.lines::after {
+        transform: translateY(4px);
+    }
+    .container>.gameWrap>h1 {
+        margin-bottom: 35px;
+    }
+    .container>.gameWrap>form {
+        width: calc( 100vw - var(--widthInfoWrap) - 30px);
+        min-width: 250px;
+        height: 180px;
+        --fieldsWidth: 220px;
+    }
+    .container>.gameWrap>form.invalid {
+        height: 230px;
+    }
+    .container>.gameWrap>form>small {
+        width: var(--fieldsWidth);
+    }
+    .container>.gameWrap>form>input, .container>.gameWrap>form>select, .container>.gameWrap>form>input.button {
+        width: var(--fieldsWidth);
+        margin: 3px;
+    }
+    .container>.gameWrap>.gameEndWrap>button {
+        margin-top: 3px;
+        margin-right: 10px;
+        font-size: large;
+    }
+    .container>.gameWrap>.gameEndWrap>.win, .container>.gameWrap>.gameEndWrap>.loss {
+        height: 200px;
+        width: calc(100vw - var(--widthInfoWrap) - 25px);
+        border-radius: 12px;
+    }
+    .container>.gameWrap>.gameEndWrap p {
+        font-size: large;
     }
 }

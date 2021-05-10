@@ -1,20 +1,27 @@
 import { IGame } from "./IGame.model";
+import { Level } from "./Level.model";
+import { IStartGame } from "./IStartGame.model";
+import { StartGame } from "./StartGame.model";
 
 export class Game implements IGame {
 
-    board: boolean[] = [false, false, false, false, false, false];
+    board: boolean[] = [];
     historyBoard: number[] = [];
     amountClicks = 1;
     indexToCheck = 0;
+    winToggle = false;
+    lossToggle = false;
     score = 0;
-    maxScore = 0;
+    bestScore = 0;
 
-    startGame(): number {
+    startGame(level: Level): IStartGame {
 
-        this.restartGame();
+        this.restartGame(level);
         const randomNumber = this.randomNumber();
+        const boardLength = this.board.length;
+        const startGame: IStartGame = new StartGame(randomNumber, boardLength);
 
-        return randomNumber;
+        return startGame;
     }
 
     randomNumber(): number {
@@ -24,7 +31,8 @@ export class Game implements IGame {
         while (randomNumber == -1) {
 
             // generate a new random number (new random box).
-            const randomValue: number = Math.round(Math.random() * 5);
+            const maxNumber: number = this.board.length - 1;
+            const randomValue: number = Math.round(Math.random() * maxNumber);
 
             if (this.board[randomValue] == false) {
 
@@ -43,19 +51,19 @@ export class Game implements IGame {
 
     clickSequence(clickIndex: number): number | boolean {
 
-        if (this.isWin())
+        if (this.isWin()) {
+            this.addScore();
             return true;
+        }
 
         if (this.isLoss(clickIndex))
             return false;
 
-
-        if (this.finishRound()) {
+        if (this.isRoundFinish()) {
 
             this.amountClicks++;
             this.indexToCheck = 0;
 
-            // if ((this.board.length - 1) != this.indexToCheck)
             return this.randomNumber();
 
         } else {
@@ -65,19 +73,35 @@ export class Game implements IGame {
         return -1;
     }
 
-    restartGame(): void {
+    restartGame(level: Level): void {
 
-        this.board = [false, false, false, false, false, false];
+        let amount: number = 0;
+
+        // detect which level user choose
+        switch (level.toString()) {
+            case 'Easy':
+                amount = 6;
+                break;
+            case 'Normal':
+                amount = 9;
+                break;
+            case 'Hard':
+                amount = 12;
+                break;
+            default:
+                break;
+        }
+        this.board = new Array<boolean>(amount).fill(false);
+
         this.historyBoard = [];
         this.amountClicks = 1;
         this.indexToCheck = 0;
         this.score = 0;
     }
 
-    newGame(): void {
+    resetScore(): void {
 
-        this.restartGame();
-        this.maxScore = 0;
+        this.bestScore = 0;
     }
 
     isWin(): boolean {
@@ -87,14 +111,12 @@ export class Game implements IGame {
         const indexToCheck: number = this.indexToCheck;
 
         const isWin: boolean = !board.includes(false) && amountClicks == board.length && indexToCheck == (board.length - 1);
-        
-        if(isWin){
-            
+
+        if (isWin) {
+            this.winToggle = true;
         }
 
-
         return isWin;
-
     }
 
     isLoss(value: number): boolean {
@@ -102,19 +124,25 @@ export class Game implements IGame {
         const historyBoard: Array<number> = this.historyBoard;
         const isLoss: boolean = historyBoard[this.indexToCheck] != value ? true : false;
 
-        // Restart the game (can be delete and create a separate button)
-        isLoss == true && this.restartGame();
-
         return isLoss;
     }
 
-    finishRound(): boolean {
+    isRoundFinish(): boolean {
+
+        const isRoundFinish: boolean = (this.amountClicks - 1) == this.indexToCheck;
+
+        if (isRoundFinish)
+            this.addScore();
+
+        return isRoundFinish;
+    }
+
+    addScore(): void {
 
         this.score += 10;
-        if (this.maxScore < this.score)
-            this.maxScore = this.score;
 
-        return (this.amountClicks - 1) == this.indexToCheck;
+        if (this.bestScore < this.score)
+            this.bestScore = this.score;
 
     }
 

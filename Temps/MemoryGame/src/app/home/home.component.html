@@ -1,17 +1,95 @@
 <div class="container">
 
-    <h1>memory game</h1>
-    <button (click)="startGame()">start a game</button>
-    <input type="text" name="name" [(ngModel)]="name">
+    <div class="infoWrap">
 
-    <div class="bulbsWrap">
+        <div class="information">
 
-        <button (click)="playCheck($event)" position="0"></button>
-        <button (click)="playCheck($event)" position="1"></button>
-        <button (click)="playCheck($event)" position="2"></button>
-        <button (click)="playCheck($event)" position="3"></button>
-        <button (click)="playCheck($event)" position="4"></button>
-        <button (click)="playCheck($event)" position="5"></button>
+            <div *ngIf="isGameStart">
+
+                <h1>hello <br> {{name}}</h1>
+
+                <div class="hover">
+                    <p>your score is: {{score}}</p>
+                    <p>your <span>best</span> score is: {{bestScore}}</p>
+                </div>
+
+            </div>
+
+            <div *ngIf="!isGameStart">
+
+                <h2>lets start</h2>
+                <p>your <span>best</span> score is: {{bestScore}}</p>
+
+            </div>
+
+        </div>
+
+        <i class="arrow"></i>
+
+        <button (click)="infoScreenMobile()">
+            <div class="lines"></div>
+        </button>
+
+    </div>
+
+    <div class="gameWrap">
+
+        <h1>memory game</h1>
+
+        <div [class.d-none]="isGameStart" class="introduction">
+            <h2>how to play</h2>
+            <h3>the user need to click on a glow circle, whenever there is a new glow circle you will need to remember
+                and click the entire sequence up to the new glow circle.</h3>
+        </div>
+
+        <form [class.d-none]="isGameStart" (ngSubmit)="startGame()"
+            [class.invalid]="myName.touched && myName.invalid || myLevel.touched && myLevel.pristine">
+
+            <input type="text" name="name" #myName="ngModel" required placeholder="enter your name" [(ngModel)]="name">
+
+            <select name="level" #myLevel="ngModel" required [(ngModel)]="level">
+                <option *ngFor="let level of levelKeys" [disabled]="level === 'Level'" [value]="level">
+                    <span>{{level}}</span>
+                </option>
+            </select>
+
+            <small *ngIf="myName.touched && myName.invalid || myLevel.touched && myLevel.pristine">
+                please enter the all fields above
+            </small>
+
+            <input type="submit" [disabled]="myName.touched && myName.invalid || myLevel.touched && myLevel.pristine"
+                value="Start game" class="button">
+            <input type="button" value="Reset score" [disabled]="bestScore==0" (click)="resetScore()" class="button">
+
+        </form>
+
+        <div [class.d-none]="!isGameStart" class="bulbsWrap">
+
+            <button *ngFor="let index of buttonElement" (click)="playCheck(index)"></button>
+
+        </div>
+
+        <div class="gameEndWrap">
+
+            <button (click)="gameEnd()" *ngIf="isWin || isLoss" [class.winButton]="isWin"
+                [class.lossButton]="isLoss">x</button>
+
+            <div *ngIf="isWin" class="gameEnd win">
+
+                <p>congratulations you won {{level}} level</p>
+                <p>your score is: {{score}}</p>
+                <p>you can try harder levels</p>
+            </div>
+
+            <div *ngIf="isLoss" class="gameEnd loss">
+
+                <p>ohh nice try</p>
+                <p>your score is: {{score}}</p>
+                <p>you can start a new game</p>
+
+            </div>
+
+        </div>
 
     </div>
 
