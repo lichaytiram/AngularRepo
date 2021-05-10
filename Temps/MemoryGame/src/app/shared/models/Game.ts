@@ -1,6 +1,7 @@
 import { IGame } from "./IGame.model";
-import { Level } from "./Level.model";
 import { IStartGame } from "./IStartGame.model";
+
+import { Level } from "./Level.model";
 import { StartGame } from "./StartGame.model";
 
 export class Game implements IGame {

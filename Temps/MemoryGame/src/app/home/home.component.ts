@@ -1,8 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Game } from '../shared/models/Game';
+
 import { IGame } from '../shared/models/IGame.model';
 import { IStartGame } from '../shared/models/IStartGame.model';
+
+import { Game } from '../shared/models/Game';
 import { Level } from '../shared/models/Level.model';
+
 
 @Component({
   selector: 'app-home',
@@ -12,21 +15,23 @@ import { Level } from '../shared/models/Level.model';
 export class HomeComponent implements OnInit, OnDestroy {
 
   // Game values
-  public isGameStart: boolean = false;
   public game: IGame = new Game();
-  public buttonElement: number[] = [];
-  public score: number = 0;
-  public bestScore: number = 0;
+  public isGameStart: boolean = false;
   public isWin: boolean = false;
   public isLoss: boolean = false;
+  public score: number = 0;
+  public bestScore: number = 0;
+  public levelKeys: string[] = [];
 
+  // form values
   public name: string = '';
   public level: Level = Level.EMPTY;
-  public levelKeys: string[] = [];
-  private clearTimeout: ReturnType<typeof setTimeout>[] = [];
+
+  public buttonElement: number[] = [];
 
   // Mobile screen
   public mobileSetTimeoutID: ReturnType<typeof setTimeout> | null = null;
+  private clearTimeout: ReturnType<typeof setTimeout>[] = [];
 
   constructor() { }
 
@@ -166,6 +171,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const wrapSelector: string = '.container>.infoWrap';
     const informationSelector: string = '.container>.infoWrap>.information';
     const arrowSelector: string = '.container>.infoWrap>.information+i.arrow';
+
     const wrapElement: HTMLElement | null = document.querySelector(wrapSelector);
     const informationElement: HTMLElement | null = document.querySelector(informationSelector);
     const arrowElement: HTMLElement | null = document.querySelector(arrowSelector);
@@ -176,9 +182,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
       const rootContainer: any = document.querySelector('.container');
       // contain px
-      const widthWrap: string = getComputedStyle(rootContainer).getPropertyValue('--widthWrap');
+      const widthInfoWrap: string = getComputedStyle(rootContainer).getPropertyValue('--widthInfoWrap');
+
       // delete px from value
-      var widthFromHTML: number = Number.parseInt(widthWrap.replace(/[^0-9]/g, ''));
+      var widthFromHTML: number = Number.parseInt(widthInfoWrap.replace(/[^0-9]/g, ''));
 
       if (width <= widthFromHTML) {
         wrapElement.style.width = "80vw";
