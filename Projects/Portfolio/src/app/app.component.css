@@ -262,9 +262,14 @@ header>.coverBox {
     font-weight: bold;
 }
 
+.container>section>.textContainer>.links i {
+    color: rgb(142, 105, 238);
+}
+
 .container>section>.textContainer>.links a {
     color: inherit;
     padding: 1px;
+    color: rgb(95, 195, 235);
 }
 
 .container>section>.imgContainer {
