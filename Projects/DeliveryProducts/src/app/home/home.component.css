@@ -62,7 +62,7 @@
 .container>.options>form {
     margin: 15px 0;
     width: 850px;
-    height: 300px;
+    height: 280px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -81,7 +81,7 @@
 .container>.options>form>.valueInput {
     width: 100%;
     height: 50%;
-    margin-top: 10px;
+    margin-top: 15px;
     flex-grow: 1;
     flex-shrink: 0;
     display: grid;
@@ -128,8 +128,16 @@
     text-align: center;
     cursor: pointer;
     border-radius: 13px;
-    padding: 5px 8px;
+    padding: 6px 8px;
     text-transform: capitalize;
+    --form-input-border-color-top-bottom: rgb(48, 4, 68);
+    --form-input-border-px-top-bottom: 2px;
+    --form-input-border-color-left-right: rgb(23, 23, 24);
+    --form-input-border-px-left-right: 4px;
+    border-top: var(--form-input-border-px-top-bottom) solid var(--form-input-border-color-top-bottom);
+    border-bottom: var(--form-input-border-px-top-bottom) solid var(--form-input-border-color-top-bottom);
+    border-left: var(--form-input-border-px-left-right) solid var(--form-input-border-color-left-right);
+    border-right: var(--form-input-border-px-left-right) solid var(--form-input-border-color-left-right);
 }
 
 .container>.options>form>.actions>input:first-of-type {
@@ -150,6 +158,7 @@
     height: 220px;
     border-radius: 20px;
     border: 1px solid gray;
+    box-shadow: 0 0 1px 1px inset rgb(117, 219, 117), 0 0 2px rgb(143, 174, 233);
     background-color: white;
     padding: 10px;
     margin: auto;

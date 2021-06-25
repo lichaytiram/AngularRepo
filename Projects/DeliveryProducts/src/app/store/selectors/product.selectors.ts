@@ -18,9 +18,12 @@ export const getProductsFilter = (filterData: string) => createSelector(
     getAllProducts,
     (products) => {
 
+        // upper case and lower case is allow 
+        filterData = filterData?.toLowerCase();
+
         if (filterData.trim() === '')
             return products;
         else
-            return products.filter(value => value.name.includes(filterData) || value?.description.includes(filterData));
+            return products.filter(value => value.name.toLowerCase().includes(filterData) || value?.description.toLowerCase().includes(filterData));
 
     });

@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public product: IProduct;
 
   // Toggles
-  public addProductToggle: boolean = true;
+  public addProductToggle: boolean = false;
 
   // Observables
   public getProductSaved$: Observable<boolean> = this.store.select(getProductSaved);
@@ -90,6 +90,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const currentDateNumber: number = currentDate.getTime();
 
     const { id, date, ...restProduct } = this.product;
+
     const product: IProduct = { id: productId, date: currentDateNumber, ...restProduct };
 
     this.store.dispatch(AddProduct({ product }));
@@ -147,14 +148,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     const currentPosition: number = this.currentPagePX;
 
-    let pageJump: number = (height + heightMargin) * amount + heightMargin;
+    let pagePX: number = (height + heightMargin) * amount + heightMargin;
 
     let currentPage: number = this.currentPage;
     const lastPage: number = this.lastPage;
 
     // Detect next page or prev page
     if (page === 'nextPage') {
-      pageJump *= -1;
+      pagePX *= -1;
       currentPage++;
     } else
       currentPage--;
@@ -163,10 +164,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     // Update page position
     if (updatePageValid) {
-      pageJump += currentPosition;
-      this.currentPagePX = pageJump;
-      this.currentPage = currentPage;
-      element.style.transform = `translateY(${pageJump}px)`;
+      pagePX += currentPosition;
+      this.updatePagePosition(element, pagePX, currentPage);
     }
 
   }
@@ -191,6 +190,10 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.products = productFilter;
           this.initializeLastPage();
 
+          // initialize first page
+          const selector: string = '.container>.products>.ulWrap>ul';
+          const element: HTMLElement = document.querySelector(selector);
+          this.updatePagePosition(element, 0, 1);
         }
       ));
 
@@ -211,6 +214,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     const color: string = getComputedStyle(elementToColor).getPropertyValue("--basic-background-color");
     elementToColor.style.backgroundColor = color;
 
+  }
+
+  private updatePagePosition(element: HTMLElement, pagePX: number, currentPage: number): void {
+    this.currentPagePX = pagePX;
+    this.currentPage = currentPage;
+    element.style.transform = `translateY(${pagePX}px)`;
   }
 
   private initializeLastPage(): void {
