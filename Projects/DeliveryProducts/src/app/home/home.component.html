@@ -1,0 +1,163 @@
+<div class="container">
+
+    <div class="options">
+
+        <div class="clickable" [class.d-none]="addProductToggle === true">
+
+            <button (click)="addProductSwitch()">+ add</button>
+            <input type="text" id="boxControl" placeholder="search products">
+
+            <select name="sortList" [(ngModel)]="sortListSelected" (change)="sortProducts()">
+                <option *ngFor="let value of sortList" [disabled]="value === 'sort by'" [value]="value">{{value}}
+                </option>
+            </select>
+
+        </div>
+
+        <form #addProductForm='ngForm' (ngSubmit)="addProduct(addProductForm)"
+            [class.d-none]="addProductToggle === false">
+
+            <div class="valueInput">
+
+                <div class="nameWrap">
+                    <input type="text" #name="ngModel" name="name" placeholder="Enter name" required
+                        [(ngModel)]="product.name" [class.inputInvalid]="name.touched && !(name.value?.length > 2)">
+
+                    <div *ngIf="name.touched">
+                        <small *ngIf=" name.invalid">please enter name</small>
+                        <small *ngIf=" !(name.value?.length > 2) && name.valid">name must be bigger then two
+                            letters</small>
+                    </div>
+                </div>
+
+                <div class="priceWrap">
+                    <input type="number" #price="ngModel" name="price" placeholder="Enter price" required
+                        [(ngModel)]="product.price" [class.inputInvalid]="price.touched && !(price.value > 0)">
+                    <small *ngIf="price.touched && !(price.value > 0)">please enter price bigger then 0</small>
+                </div>
+
+                <div class="thumbnailUrlWrap">
+                    <input type="url" #thumbnailUrl="ngModel" name="thumbnailUrl" placeholder="Enter thumbnail url"
+                        pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+                        required [(ngModel)]="product.thumbnailUrl"
+                        [class.inputInvalid]="thumbnailUrl.touched && thumbnailUrl.invalid">
+                    <small *ngIf="thumbnailUrl.touched && thumbnailUrl.invalid">please enter thumbnail url</small>
+                </div>
+
+                <div class="urlWrap">
+                    <input type="url" #url="ngModel" name="url" placeholder="Enter url"
+                        pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+                        required [(ngModel)]="product.url" [class.inputInvalid]="url.touched && url.invalid">
+                    <small *ngIf="url.touched && url.invalid">please enter url</small>
+                </div>
+
+                <input type="text" name="description" placeholder="Enter description" [(ngModel)]="product.description"
+                    class="gridFullRow">
+
+            </div>
+
+            <div class="actions">
+
+                <input type="submit" value="+ add" [disabled]="
+                name.touched && !(name.value?.length > 2) || price.touched && !(price.value > 0) ||
+                thumbnailUrl.touched && thumbnailUrl.invalid || url.touched && url.invalid">
+                <input type="button" value="cancel / exit" (click)="addProductSwitch()">
+
+            </div>
+
+            <!-- <div class="saveSuccess" *ngIf="getProductSaved$ | async"> -->
+            <div class="saveSuccess">
+                <p>your product add successfully</p>
+                <p>you can add more products</p>
+                <input type="button" value="&#xf00c;" (click)="saveSuccessOff()" class="fas">
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="products">
+
+        <div class="ulWrap">
+
+            <ul>
+                <li id="{{product.id}}" *ngFor="let product of products">
+
+                    <button (click)="editDetail(product)" class="coverButton">
+
+                        <img src="{{product.thumbnailUrl}}" alt="thumbnail">
+                        <label>
+                            <strong>{{product.name}}</strong>
+                            <p>{{product.description}}</p>
+                        </label>
+
+                    </button>
+
+                    <button (click)="deleteProduct(product.id)" class="delete">delete</button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="details">
+
+            <div *ngIf="!chosenProduct" class="detailsOff">
+
+                <p>please choose a product</p>
+
+            </div>
+
+            <div *ngIf="chosenProduct" class="detailsOn">
+
+                <h3 class="cover">{{chosenProduct.name}}</h3>
+
+                <img src="{{chosenProduct.url}}" alt="url">
+
+                <div class="nameWrap">
+                    <p>name</p>
+                    <input type="text" name="name" [class.invalidInput]="name.touched && !(name.value.length > 0)"
+                        #name="ngModel" [(ngModel)]="chosenProduct.name">
+                </div>
+
+                <div class="descriptionsWrap">
+                    <p>description</p>
+                    <textarea name="description" cols="30" rows="3" [(ngModel)]="chosenProduct.description"></textarea>
+                </div>
+
+                <div class="priceWrap">
+                    <p>price</p>
+                    <input type="number" name="price" [class.invalidInput]="price.touched && !(price.value > 0)"
+                        #price="ngModel" [(ngModel)]="chosenProduct.price"> $
+                </div>
+
+                <div class="saveButtonWrap">
+                    <button (click)="updateProduct()"
+                        [disabled]="price.touched && !(price.value > 0) || name.touched && !(name.value.length > 0)">save</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="pages">
+
+        <button (click)="changePage('prevPage')">
+            <i class="arrowLeft"></i>
+            prev page
+        </button>
+
+        <p>{{currentPage}} of {{lastPage}}</p>
+
+        <button (click)="changePage('nextPage')">
+            <i class="arrowRight"></i>
+            next page
+        </button>
+
+    </div>
+
+</div>
