@@ -1,17 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { select, Store } from '@ngrx/store';
-import { fromEvent, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { SubSink } from 'subsink';
-import { IProduct } from '../shared/models/IProduct.model';
-import { Product } from '../shared/models/Product.model';
-import { SortList } from '../shared/models/sortList.enum';
+import { fromEvent, Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
+import { select, Store } from '@ngrx/store';
 import { IProductsState } from '../store';
 
 import { LoadProducts, AddProduct, DeleteProduct, UpdateProduct, SavedProductOff } from '../store/actions/product.action';
 import { getAllProducts, getProductsFilter, getProductSaved } from '../store/selectors/product.selectors';
+
+import { SubSink } from 'subsink';
+import { SortList } from '../shared/models/sortList.enum';
+import { Product } from '../shared/models/Product.model';
+import { IProduct } from '../shared/models/IProduct.model';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Toggles
   public addProductToggle: boolean = false;
+  public addProductOpacityToggle: boolean = false;
 
   // Observables
   public getProductSaved$: Observable<boolean> = this.store.select(getProductSaved);
@@ -74,7 +76,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Crud functions
 
-  public addProductSwitch(): void {
+  public addProductSwitch(addProductForm?: NgForm): void {
+
+    if (!this.addProductToggle)
+      addProductForm.reset();
+
     this.addProductToggle = !this.addProductToggle;
   }
 
@@ -84,20 +90,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       return;
 
     // Should generate by server
-    const productId: string = String(this.productId++);
+    const productId: number = this.productId++;
 
     const currentDate: Date = new Date();
     const currentDateNumber: number = currentDate.getTime();
 
-    const { id, date, ...restProduct } = this.product;
+    const { id, creationDate, ...restProduct } = this.product;
 
-    const product: IProduct = { id: productId, date: currentDateNumber, ...restProduct };
+    const product: IProduct = { id: productId, creationDate: currentDateNumber, ...restProduct };
 
     this.store.dispatch(AddProduct({ product }));
+    this.addProductOpacityToggle = true;
 
   }
 
-  public deleteProduct(id: string): void {
+  public deleteProduct(id: number): void {
 
     this.chosenProduct = undefined;
     this.store.dispatch(DeleteProduct({ id }));
@@ -112,6 +119,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
   public saveSuccessOff(): void {
+    this.addProductOpacityToggle = false;
     this.store.dispatch(SavedProductOff());
   }
 
@@ -124,15 +132,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     else if (sortList === 'price')
       list.sort((x, y) => x.price - y.price);
     else
-      list.sort((x, y) => x.date - y.date);
+      list.sort((x, y) => x.creationDate - y.creationDate);
 
   }
 
   public editDetail(product: IProduct): void {
 
     this.editDetailGlowColor(product);
-    const { id, name, price, date, thumbnailUrl, url, description } = product;
-    this.chosenProduct = new Product(id, name, price, date, thumbnailUrl, url, description);
+    const { id, name, price, creationDate, thumbnailUrl, url, description } = product;
+    this.chosenProduct = new Product(id, name, price, creationDate, thumbnailUrl, url, description);
 
   }
 
@@ -209,7 +217,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       clearHistoryColor.style.backgroundColor = "";
 
     const { id } = product;
-    const elementToColor: HTMLElement = document.getElementById(id);
+    const elementToColor: HTMLElement = document.getElementById(String(id));
     this.currentElementClick = elementToColor;
     const color: string = getComputedStyle(elementToColor).getPropertyValue("--basic-background-color");
     elementToColor.style.backgroundColor = color;

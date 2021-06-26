@@ -8,6 +8,10 @@
     border: 2px solid red !important;
 }
 
+.opacity {
+    opacity: 0.1 !important;
+}
+
 /* main container */
 
 .container {
@@ -195,7 +199,7 @@
 .container>.products {
     --height-inner-element: 80px;
     --height-inner-element-margin-buttom: 10px;
-    --height-element-padding: 10px;
+    --height-element-padding: 20px;
     --amount-li-elements: 5;
     height: calc( (var(--height-inner-element) + var( --height-inner-element-margin-buttom)) * var(--amount-li-elements) + ( var(--height-element-padding) * 2));
     --width-inner-ul: 500px;
@@ -459,3 +463,5 @@
     clip-path: polygon(100% 0, 0 50%, 100% 100%, 50% 50%);
     left: -10px;
 }
+
+/* @media (max-width:1400px) {} */

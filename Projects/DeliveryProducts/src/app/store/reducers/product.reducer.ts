@@ -1,5 +1,5 @@
-import { createEntityAdapter, EntityAdapter, EntityState, Update } from "@ngrx/entity";
-import { UpdateStr } from "@ngrx/entity/src/models";
+import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { UpdateNum } from "@ngrx/entity/src/models";
 import { createReducer, on } from "@ngrx/store";
 import { IProduct } from "src/app/shared/models/IProduct.model";
 
@@ -53,7 +53,7 @@ export const productReducer = createReducer<IProductState>(
 
             const { id, ...newProduct } = product;
             const changes: Partial<IProduct> = newProduct;
-            const update: UpdateStr<IProduct> = { id, changes };
+            const update: UpdateNum<IProduct> = { id, changes };
 
             return adapter.updateOne(update, state);
         }

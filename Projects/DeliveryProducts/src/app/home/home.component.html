@@ -4,7 +4,7 @@
 
         <div class="clickable" [class.d-none]="addProductToggle === true">
 
-            <button (click)="addProductSwitch()">+ add</button>
+            <button (click)="addProductSwitch(addProductForm)">+ add</button>
             <input type="text" id="boxControl" placeholder="search products">
 
             <select name="sortList" [(ngModel)]="sortListSelected" (change)="sortProducts()">
@@ -17,7 +17,7 @@
         <form #addProductForm='ngForm' (ngSubmit)="addProduct(addProductForm)"
             [class.d-none]="addProductToggle === false">
 
-            <div class="valueInput">
+            <div class="valueInput" [class.opacity]="addProductOpacityToggle">
 
                 <div class="nameWrap">
                     <input type="text" #name="ngModel" name="name" placeholder="Enter name" required
@@ -56,12 +56,12 @@
 
             </div>
 
-            <div class="actions">
+            <div class="actions"  [class.opacity]="addProductOpacityToggle">
 
-                <input type="submit" value="+ add" [disabled]="
+                <input type="submit" value="+ add" [disabled]="addProductOpacityToggle ||
                 name.touched && !(name.value?.length > 2) || price.touched && !(price.value > 0) ||
                 thumbnailUrl.touched && thumbnailUrl.invalid || url.touched && url.invalid">
-                <input type="button" value="cancel / exit" (click)="addProductSwitch()">
+                <input type="button" value="cancel / exit" [disabled]="addProductOpacityToggle" (click)="addProductSwitch()">
 
             </div>
 
