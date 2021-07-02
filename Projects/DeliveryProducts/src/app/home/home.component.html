@@ -23,6 +23,7 @@
                     <input type="text" #name="ngModel" name="name" placeholder="Enter name" required
                         [(ngModel)]="product.name" [class.inputInvalid]="name.touched && !(name.value?.length > 2)">
 
+                    <label [class.d-none]="name.value?.length > 2">*require</label>
                     <div *ngIf="name.touched">
                         <small *ngIf=" name.invalid">please enter name</small>
                         <small *ngIf=" !(name.value?.length > 2) && name.valid">name must be bigger then two
@@ -33,6 +34,7 @@
                 <div class="priceWrap">
                     <input type="number" #price="ngModel" name="price" placeholder="Enter price" required
                         [(ngModel)]="product.price" [class.inputInvalid]="price.touched && !(price.value > 0)">
+                    <label [class.d-none]="price.value > 0">*require</label>
                     <small *ngIf="price.touched && !(price.value > 0)">please enter price bigger then 0</small>
                 </div>
 
@@ -41,6 +43,7 @@
                         pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                         required [(ngModel)]="product.thumbnailUrl"
                         [class.inputInvalid]="thumbnailUrl.touched && thumbnailUrl.invalid">
+                    <label [class.d-none]="thumbnailUrl.valid">*require</label>
                     <small *ngIf="thumbnailUrl.touched && thumbnailUrl.invalid">please enter thumbnail url</small>
                 </div>
 
@@ -48,6 +51,7 @@
                     <input type="url" #url="ngModel" name="url" placeholder="Enter url"
                         pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                         required [(ngModel)]="product.url" [class.inputInvalid]="url.touched && url.invalid">
+                    <label [class.d-none]="url.valid">*require</label>
                     <small *ngIf="url.touched && url.invalid">please enter url</small>
                 </div>
 
@@ -56,12 +60,13 @@
 
             </div>
 
-            <div class="actions"  [class.opacity]="addProductOpacityToggle">
+            <div class="actions" [class.opacity]="addProductOpacityToggle">
 
                 <input type="submit" value="+ add" [disabled]="addProductOpacityToggle ||
                 name.touched && !(name.value?.length > 2) || price.touched && !(price.value > 0) ||
                 thumbnailUrl.touched && thumbnailUrl.invalid || url.touched && url.invalid">
-                <input type="button" value="cancel / exit" [disabled]="addProductOpacityToggle" (click)="addProductSwitch()">
+                <input type="button" value="cancel / exit" [disabled]="addProductOpacityToggle"
+                    (click)="addProductSwitch()">
 
             </div>
 

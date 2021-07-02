@@ -1,7 +1,6 @@
 :host {
     --basic-background-color: rgb(120, 164, 231);
     --basic-color: rgb(212, 215, 218);
-    --header-height: 75px;
     --footer-height: 30px;
     --main-min-height: calc(100vh - var(--footer-height) - var(--header-height));
 }
@@ -15,7 +14,6 @@ header {
 }
 
 header>h1 {
-    font-size: xx-large;
     margin-left: 40px;
     text-transform: capitalize;
     font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -63,12 +61,25 @@ footer>small>span {
     }
 }
 
-@media (min-width:900px) {}
+@media (min-width:900px) {
+    :host {
+        --header-height: 75px;
+    }
+    header>h1 {
+        font-size: xx-large;
+    }
+}
 
 /* mobile open */
 
 @media (max-width:899px) {
+    :host {
+        --header-height: 55px;
+    }
     .container {
         --header-height: fit-content;
+    }
+    header>h1 {
+        font-size: x-large;
     }
 }

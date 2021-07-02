@@ -1,0 +1,47 @@
+/* desktop open */
+
+@media (min-width:1400px) {
+
+}
+
+/* tablet open */
+
+@media (min-width:900px) {
+
+}
+
+/* tablet close */
+
+@media (min-width:900px) and (max-width:1399px) {
+
+}
+
+/* tablet width close*/
+
+@media (min-width:1200px) and (max-width:1399px) {
+
+}
+
+/* tablet height close*/
+
+@media (min-width:900px) and (max-width:1199px) {
+
+}
+
+/* mobile open */
+
+@media (max-width:899px) {
+
+}
+
+/* mobile width close */
+
+@media (min-width:450px) and (max-width:899px) {
+
+}
+
+/* mobile height open */
+
+@media (max-width:449px) {
+
+}

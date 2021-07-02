@@ -185,7 +185,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const searchBox = document.getElementById('boxControl');
     const typeahead = fromEvent(searchBox, 'input').pipe(
       map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-      debounceTime(1000),
+      debounceTime(500),
       distinctUntilChanged()
     );
 

@@ -35,12 +35,6 @@
     padding: 5px;
 }
 
-.container>.options>.clickable {
-    width: 480px;
-    display: flex;
-    justify-content: space-around;
-}
-
 .container>.options>.clickable>button, .container>.options>.clickable>input, .container>.options>.clickable>select {
     font-size: large;
     padding: 7px 10px;
@@ -65,34 +59,27 @@
 
 .container>.options>form {
     margin: 15px 0;
-    width: 850px;
-    height: 280px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border: 1px solid rgba(153, 94, 192, 0.144);
-    border-radius: 50px;
     position: relative;
 }
 
 .container>.options>form input {
     outline: 0;
-    width: 220px;
 }
 
 .container>.options>form>.valueInput {
     width: 100%;
-    height: 50%;
-    margin-top: 15px;
-    flex-grow: 1;
-    flex-shrink: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 10px;
-    justify-items: center;
+    height: 100%;
+}
+
+.container>.options>form>.valueInput>.nameWrap, .container>.options>form>.valueInput>.priceWrap, .container>.options>form>.valueInput>.thumbnailUrlWrap, .container>.options>form>.valueInput>.urlWrap {
+    position: relative;
+    width: fit-content;
 }
 
 .container>.options>form>.valueInput input {
@@ -102,6 +89,16 @@
     border-radius: 10px;
     border: 2px solid rgb(54, 54, 54);
     box-shadow: 0 0 2px inset rgba(81, 173, 81, 0.623);
+}
+
+.container>.options>form>.valueInput label {
+    color: rgb(230, 93, 93);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6px 10px 6px 0;
+    font-size: smaller;
+    cursor: inherit;
 }
 
 .container>.options>form>.valueInput small {
@@ -158,7 +155,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    width: 350px;
     height: 220px;
     border-radius: 20px;
     border: 1px solid gray;
@@ -199,14 +195,9 @@
 .container>.products {
     --height-inner-element: 80px;
     --height-inner-element-margin-buttom: 10px;
-    --height-element-padding: 20px;
     --amount-li-elements: 5;
-    height: calc( (var(--height-inner-element) + var( --height-inner-element-margin-buttom)) * var(--amount-li-elements) + ( var(--height-element-padding) * 2));
-    --width-inner-ul: 500px;
-    --width-inner-details: 400px;
-    width: calc(var(--width-inner-ul) + var(--width-inner-details));
+    --height-ulWrap: calc( (var(--height-inner-element) + var( --height-inner-element-margin-buttom)) * var(--amount-li-elements));
     display: flex;
-    flex-direction: row;
     margin: 20px 0;
     padding: var(--height-element-padding);
     border-radius: 8px;
@@ -214,8 +205,8 @@
 }
 
 .container>.products>.ulWrap {
-    overflow: hidden;
-    width: var(--width-inner-ul);
+    height: var(--height-ulWrap);
+    overflow-y: hidden;
 }
 
 .container>.products>.ulWrap>ul {
@@ -234,8 +225,6 @@
     transition: .3s ease-out;
     border-radius: 5px;
     margin-bottom: var( --height-inner-element-margin-buttom);
-    --delete-button-width: 80px;
-    --delete-magrin-right: 15px;
 }
 
 .container>.products>.ulWrap>ul>li:hover {
@@ -248,7 +237,6 @@
     border: 0;
     cursor: pointer;
     height: 80px;
-    width: calc(100% - var(--delete-button-width) - var(--delete-magrin-right));
     display: flex;
     flex-direction: row;
     justify-content: inherit;
@@ -269,20 +257,15 @@
 }
 
 .container>.products>.ulWrap>ul>li>.coverButton>label {
-    width: 80%;
     text-align: start;
     padding-left: 10px;
     line-height: 25px;
     padding: 5px;
-}
-
-.container>.products>.ulWrap>ul>li>.coverButton>label>strong {
-    font-size: large;
+    width: calc(100% - var(--delete-button-width) - var(--delete-magrin-right));
+    margin-right: 10px;
 }
 
 .container>.products>.ulWrap>ul>li>.coverButton>label>p {
-    width: 90%;
-    font-size: larger;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -299,7 +282,6 @@
     background-color: rgb(248, 192, 89);
     border-radius: 5px;
     border: 2px solid black;
-    padding: 6px 1px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -311,8 +293,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: var(--width-inner-details);
-    margin-left: 15px;
     border: 2px solid black;
     padding: 15px;
     border-radius: 5px;
@@ -326,7 +306,7 @@
 }
 
 .container>.products>.details>.detailsOff>p {
-    font-size: x-large;
+    text-align: center;
 }
 
 .container>.products>.details>.detailsOff>p::first-letter {
@@ -343,7 +323,6 @@
     position: absolute;
     top: -12px;
     left: 0;
-    font-size: large;
     font-weight: normal;
     margin-left: 15px;
     background: white;
@@ -357,8 +336,6 @@
 .container>.products>.details>.detailsOn>h3.cover::first-letter {
     text-transform: uppercase;
 }
-
-/* .container>.products>.details>.detailsOn when invalid*/
 
 .invalidInput {
     border: 2px solid var(--disabled-invalid-color);
@@ -426,14 +403,9 @@
 }
 
 .container>.pages {
-    width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.container>.pages>button, .container>.pages>p {
-    font-size: medium;
 }
 
 .container>.pages>button {
@@ -464,4 +436,237 @@
     left: -10px;
 }
 
-/* @media (max-width:1400px) {} */
+/* desktop open */
+
+@media (min-width:1400px) {
+    .container>.options>form input {
+        width: 220px;
+    }
+}
+
+/* tablet width open */
+
+@media (min-width:1200px) {
+    .container>.options>form {
+        width: 850px;
+    }
+}
+
+/* tablet open */
+
+@media (min-width:900px) {
+    .container>.products {
+        --width-inner-ul: 500px;
+        --width-inner-details: 400px;
+        --height-element-padding: 20px;
+    }
+    .container>.products>.ulWrap>ul>li {
+        --delete-button-width: 80px;
+        --delete-magrin-right: 15px;
+    }
+    .container>.products>.ulWrap>ul>li>.coverButton>label>strong {
+        font-size: large;
+    }
+    .container>.products>.ulWrap>ul>li>.coverButton>label>p {
+        font-size: larger;
+    }
+    .container>.products>.ulWrap>ul>li>.delete {
+        padding: 6px 1px;
+    }
+    .container>.products>.details>.detailsOff>p {
+        font-size: x-large;
+    }
+    .container>.products>.details>.detailsOn>h3.cover {
+        font-size: large;
+    }
+    .container>.pages {
+        width: 400px;
+    }
+    .container>.pages>button, .container>.pages>p {
+        font-size: medium;
+    }
+}
+
+/* mobile width open */
+
+@media (min-width:450px) {
+    .container>.options>.clickable {
+        width: 480px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .container>.options>form {
+        height: 280px;
+        border-radius: 50px;
+    }
+    .container>.options>form>.valueInput {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        display: grid;
+        grid-gap: 10px;
+        justify-items: center;
+        margin-top: 15px;
+    }
+    .container>.options>form>.saveSuccess {
+        width: 350px;
+    }
+    .container>.products {
+        flex-direction: row;
+        width: calc(var(--width-inner-ul) + var(--width-inner-details) + ( 2 * var(--height-element-padding)));
+    }
+    .container>.products>.ulWrap {
+        width: var(--width-inner-ul);
+    }
+    .container>.products>.ulWrap>ul>li>.coverButton {
+        width: calc(100% - var(--delete-button-width) - var(--delete-magrin-right));
+    }
+    .container>.products>.details {
+        margin-left: 15px;
+        width: var(--width-inner-details);
+    }
+}
+
+/* tablet close */
+
+@media (min-width:900px) and (max-width:1399px) {
+    .container>.options>form input {
+        width: 205px;
+    }
+}
+
+/* tablet width close*/
+
+@media (min-width:1200px) and (max-width:1399px) {}
+
+/* tablet height close*/
+
+@media (min-width:900px) and (max-width:1199px) {
+    .container>.options>form {
+        width: 800px;
+    }
+}
+
+/* mobile open down*/
+
+@media (max-width:899px) {
+    .container>.pages>button, .container>.pages>p {
+        font-size: small;
+    }
+}
+
+/* mobile width close */
+
+@media (min-width:450px) and (max-width:899px) {
+    .container>.options>form {
+        width: 93vw;
+        max-width: 610px;
+    }
+    .container>.options>form input {
+        width: 195px;
+    }
+    .container>.products {
+        --width-inner-ul: 57vw;
+        --width-inner-details: 34vw;
+        --height-element-padding: 15px;
+    }
+    .container>.products>.ulWrap>ul>li {
+        --delete-button-width: 70px;
+        --delete-magrin-right: 10px;
+    }
+    .container>.products>.ulWrap>ul>li>.coverButton>label>strong {
+        font-size: medium;
+    }
+    .container>.products>.ulWrap>ul>li>.coverButton>label>p {
+        font-size: small;
+    }
+    .container>.products>.ulWrap>ul>li>.delete {
+        padding: 3px 1px;
+    }
+    .container>.products>.details>.detailsOff>p {
+        font-size: large;
+    }
+    .container>.products>.details>.detailsOn>h3.cover {
+        font-size: medium;
+    }
+    .container>.pages {
+        width: 300px;
+    }
+}
+
+/* mobile height open */
+
+@media (max-width:449px) {
+    .container>.options>.clickable {
+        width: 85vw;
+        max-width: 280px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 8px;
+    }
+    .container>.options>.clickable>button {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .container>.options>.clickable>input {
+        grid-column: 1/3;
+        grid-row: 2/3;
+    }
+    .container>.options>.clickable>select {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+    .container>.options>form {
+        width: 93vw;
+        height: 350px;
+        border-radius: 23px;
+    }
+    .container>.options>form>.valueInput {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 8px;
+    }
+    .container>.options>form>.valueInput>.nameWrap, .container>.options>form>.valueInput>.priceWrap, .container>.options>form>.valueInput>.thumbnailUrlWrap, .container>.options>form>.valueInput>.urlWrap {
+        height: 50px;
+    }
+    .container>.options>form>.valueInput input {
+        width: 250px;
+    }
+    .container>.options>form>.actions>input {
+        width: 130px;
+    }
+    .container>.options>form>.saveSuccess {
+        width: 90vw;
+        max-width: 350px;
+    }
+    .container>.products {
+        flex-direction: column;
+        --products-width: 90vw;
+        --width-inner-ul: var(--products-width);
+        --width-inner-details: var(--products-width);
+        --height-details: 400px;
+        --height-details-margin-top: 10px;
+        --height-element-padding: 15px;
+        width: var(--products-width);
+    }
+    .container>.products>.ulWrap {
+        width: 100%;
+    }
+    .container>.products>.ulWrap>ul>li {
+        --delete-button-width: 60px;
+        --delete-magrin-right: 5px;
+    }
+    .container>.products>.ulWrap>ul>li>.coverButton {
+        width: calc(100% - var(--delete-button-width) - var(--delete-magrin-right));
+    }
+    .container>.products>.details {
+        width: 100%;
+        margin-top: 15px;
+        height: 400px;
+    }
+    .container>.pages {
+        width: 250px;
+    }
+}
