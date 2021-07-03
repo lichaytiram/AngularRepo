@@ -13,8 +13,8 @@ import { reducers, effects } from './store';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -45,10 +45,11 @@ import { environment } from 'src/environments/environment';
     StoreModule.forFeature('products', reducers),
 
     // Only a tool for developers will delete on products
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
+    // StoreDevtoolsModule.instrument({
+    //   maxAge: 25,
+    //   logOnly: environment.production,
+    // }),
+
   ],
   providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
