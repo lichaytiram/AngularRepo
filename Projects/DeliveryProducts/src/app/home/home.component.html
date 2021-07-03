@@ -150,14 +150,14 @@
 
     <div class="pages">
 
-        <button (click)="changePage('prevPage')">
+        <button (click)="changePage('prevPage')" [class.disabled]="!(currentPage > 1)">
             <i class="arrowLeft"></i>
             prev page
         </button>
 
         <p>{{currentPage}} of {{lastPage}}</p>
 
-        <button (click)="changePage('nextPage')">
+        <button (click)="changePage('nextPage')" [class.disabled]="currentPage === lastPage">
             <i class="arrowRight"></i>
             next page
         </button>
