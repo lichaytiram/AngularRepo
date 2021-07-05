@@ -8,7 +8,6 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import * as productActions from '../actions/product.action';
 import { IProduct } from 'src/app/shared/models/IProduct.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
