@@ -1,3 +1,21 @@
 <p>home works!</p>
 
-{{myValue}}
+<!-- <input
+  type="text"
+  [ngModel]="myNumber | customPipe"
+  (ngModelChange)="setMyNumber($event)"
+/> -->
+
+<input type="text" [(ngModel)]="myNumber" appCustomDirective />
+<button (click)="logIt()">log</button>
+
+<ng-content></ng-content>
+
+<ng-container>
+<app-txt-input controlName="banana" [formGroup]="formGroup"></app-txt-input>
+<app-txt-input [disabled]="true" controlName="banana2" [formGroup]="formGroup"></app-txt-input>
+<app-txt-input [disabled]="true" controlName="banana3" [formGroup]="formGroup"></app-txt-input>
+<app-txt-input controlName="banana4" [formGroup]="formGroup"></app-txt-input>
+<app-txt-input controlName="banana5" [formGroup]="formGroup"></app-txt-input>
+</ng-container>
+

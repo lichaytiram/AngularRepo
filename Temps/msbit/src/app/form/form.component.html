@@ -1,0 +1,12 @@
+<form (ngSubmit)="submit()">
+
+    <ng-content select="h3"></ng-content>
+    <ng-content select="h4"></ng-content>
+    <p>first name</p>
+    <input type="text" name="firstName" [(ngModel)]="firstName">
+    {{firstName}}
+    <p>last name</p>
+    <input type="text" name="lastName" [(ngModel)]="lastName">
+
+    <input type="submit">
+</form>
