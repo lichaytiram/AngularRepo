@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>please login or <span>create account</span></h1>
+
+  <div class="forms">
+    <button (click)="selectForm(eSelectedForm.Login)">login</button>
+    <button (click)="selectForm(eSelectedForm.Register)">create account</button>
+  </div>
+
+  <div class="appForm">
+    <ng-container [ngSwitch]="selectedForm">
+      {{'Hello ' + (trimmedEmail$ | async)}}
+      <app-form *ngSwitchCase="eSelectedForm.Login" [form]="form">
+        <h2>login</h2>
+        <input type="submit"  [disabled]="form.invalid" value="login">
+      </app-form>
+
+      <app-form *ngSwitchCase="eSelectedForm.Register" [form]="form">
+        <h2>create account</h2>
+        <input type="submit"  [disabled]="form.invalid" value="create account">
+      </app-form>
+
+    </ng-container>
+  </div>
+
+</div>

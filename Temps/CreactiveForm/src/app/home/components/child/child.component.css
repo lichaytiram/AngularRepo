@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  min-height: var(--main-height);
+  padding: 10px;
+}
+
+.container > h1 {
+  font-size: larger;
+}
+
+.container > h1 > span {
+  color: rgba(87, 10, 87, 0.801);
+}
+
+.container > h1::first-letter {
+  text-transform: uppercase;
+}
+
+.container > .forms {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rosybrown;
+  padding: 50px 80px;
+  border-radius: 40px;
+  min-height: 200px;
+  width: 90vw;
+  margin-bottom: 100px;
+}
+
+.container > .forms > button {
+  width: 32%;
+  border-radius: 30px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgba(110, 141, 235, 0.349);
+  border: 1px solid black;
+  box-shadow: 0 0 2px inset rgb(67, 89, 126);
+  transition: 0.4s ease-out;
+}
+
+.container > .forms > button:hover {
+  background-color: rgba(110, 141, 235, 0.55);
+  box-shadow: 0 0 3px 1px rgb(71, 103, 160);
+}

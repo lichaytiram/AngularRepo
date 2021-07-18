@@ -1,0 +1,19 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <ng-content select="h2"></ng-content>
+
+  <div>
+    <input type="email" placeholder="enter email" formControlName="email" />
+    <small *ngIf="form.email.touched && !!form.email.errors">please enter valid email</small>
+  </div>
+
+  <div>
+    <input
+      type="password"
+      placeholder="enter password"
+      formControlName="password"
+    />
+    <small *ngIf="form.password.touched && !!form.password.errors">please enter valid password</small>
+  </div>
+
+  <ng-content select="input"></ng-content>
+</form>

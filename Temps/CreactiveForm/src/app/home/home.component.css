@@ -1,0 +1,26 @@
+:host {
+  --header-height: 60px;
+  --main-height: calc(100vh - var(--header-height));
+}
+
+header {
+  height: var(--header-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(81, 213, 236);
+}
+
+header > h1 {
+  width: 100%;
+  text-align: center;
+  font-size: x-large;
+}
+
+header > h1::first-letter {
+  text-transform: uppercase;
+}
+
+main {
+  min-height: var(--main-height);
+}
