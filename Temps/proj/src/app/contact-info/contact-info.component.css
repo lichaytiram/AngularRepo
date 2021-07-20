@@ -1,0 +1,29 @@
+.container {
+  min-height: var(--contact-info-min-height);
+  --padding: 3px 3px 3px 20px;
+  --height-header: 30px;
+}
+
+.container > h2 {
+  background-color: rgb(221, 217, 214);
+  font-size: large;
+  padding: var(--padding);
+  border-bottom: 1px solid var(--border-color);
+  height: var(--height-header);
+}
+
+.container > h2::first-letter {
+  text-transform: uppercase;
+}
+
+.container > .boxWrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.container > .boxWrap > .box {
+  padding: 20px;
+  width: 50%;
+  height: 250px;
+}

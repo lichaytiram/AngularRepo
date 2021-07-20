@@ -1,0 +1,19 @@
+<div class="container" [formGroup]="parent">
+  <h2>contact information</h2>
+
+  <div class="boxWrap" fromArray="contactInfo">
+    <div class="box" *ngFor="let stock of stocks; let i = index">
+      <div [formGroup]="stock">
+        <select name="" id="">
+          <option value=""></option>
+        </select>
+
+        <!-- {{ stock.value }} -->
+        <input type="text" formControlName="label" />
+        <input type="text" formControlName="value" />
+      </div>
+    </div>
+
+
+  </div>
+</div>

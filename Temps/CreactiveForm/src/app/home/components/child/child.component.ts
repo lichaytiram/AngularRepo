@@ -15,12 +15,10 @@ export class ChildComponent implements OnInit {
   public eSelectedForm: typeof ESelectedForm = ESelectedForm;
 
   form: LoginFormGroup = new LoginFormGroup();
-  trimmedEmail$: Observable<string> = this.form.trimmerText$;
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public selectForm(form: ESelectedForm) {
     this.selectedForm = form;

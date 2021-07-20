@@ -1,6 +1,12 @@
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import {filter, map, startWith, tap} from 'rxjs/operators';
-export class Form {
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { filter, map, startWith, tap } from 'rxjs/operators';
+
+export interface IForm {
+  email: string;
+  password: string;
+}
+
+export class Form implements IForm {
   constructor(public email: string, public password: string) {}
 }
 
@@ -24,11 +30,4 @@ export class LoginFormGroup extends FormGroup {
     return this.email.valueChanges;
   }
 
-  get trimmerText$() {
-    return this.emailText$.pipe( startWith(' '), filter(email => !!email), map((email) => email.trim()) );
-  }
-
-  get password$() {
-    return this.password.valueChanges;
-  }
 }

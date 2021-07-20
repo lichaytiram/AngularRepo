@@ -1,0 +1,18 @@
+<div class="container" [formGroup]="parent">
+  <h2>user profile</h2>
+
+  <div class="contactProfileWrap" formGroupName="userProfile">
+    <div class="userWrap">
+      <p>name</p>
+      <input type="text" formControlName="name" />
+      <small *ngIf="parent.get('userProfile.name')?.hasError('required') &&
+      parent.get('userProfile.name')?.touched"
+        >name is require!</small
+      >
+    </div>
+    <div class="organizationWrap">
+      <p>organization</p>
+      <input type="text" formControlName="organization" />
+    </div>
+  </div>
+</div>

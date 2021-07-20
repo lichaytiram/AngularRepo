@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { FormGroup, FormControl } from '@angular/forms';
-import { Form, LoginFormGroup } from './form.model';
+import { Form, IForm, LoginFormGroup } from './form.model';
 
 @Component({
   selector: 'app-form',
@@ -20,8 +20,8 @@ export class FormComponent implements OnInit {
   public submit() {
     const email: string = this.form.email.value;
     const password: string = this.form.password.value;
+    const form: IForm = new Form(email, password);
     this.form.reset();
-    const form: Form = new Form(email, password);
     console.log(form);
   }
 

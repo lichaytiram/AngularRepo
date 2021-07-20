@@ -1,0 +1,59 @@
+.container {
+  height: var(--user-info-height);
+  --padding: 3px 3px 3px 20px;
+  --height-header: 30px;
+}
+
+.container > h2 {
+  background-color: rgb(221, 217, 214);
+  font-size: large;
+  padding: var(--padding);
+  border-bottom: 1px solid var(--border-color);
+  height: var(--height-header);
+}
+
+.container > h2::first-letter {
+  text-transform: uppercase;
+}
+
+.container > .contactProfileWrap {
+  height: calc(100% - var(--height-header));
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container > .contactProfileWrap > .userWrap,
+.container > .contactProfileWrap > .organizationWrap {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+}
+
+.container > .contactProfileWrap > .userWrap > input,
+.container > .contactProfileWrap > .organizationWrap > input {
+  border: 1px solid var(--border-color);
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin: 7px 0;
+}
+
+.container > .contactProfileWrap > .userWrap > p::first-letter,
+.container > .contactProfileWrap > .organizationWrap > p::first-letter {
+  text-transform: uppercase;
+}
+
+.container > .contactProfileWrap > .userWrap > small,
+.container > .contactProfileWrap > .organizationWrap > small {
+  color: rgb(211, 58, 58);
+}
+
+.container > .contactProfileWrap > .userWrap > small::first-letter,
+.container > .contactProfileWrap > .organizationWrap > small::first-letter {
+  text-transform: uppercase;
+}

@@ -1,0 +1,16 @@
+:host {
+  --header-height: 50px;
+  --footer-height: 20px;
+  --main-height:calc(100vh - var(--header-height) - var(--footer-height));
+}
+header {
+  height: var(--header-height);
+}
+
+main {
+  min-height:var(--main-height);
+}
+
+footer {
+  height: var(--footer-height);
+}

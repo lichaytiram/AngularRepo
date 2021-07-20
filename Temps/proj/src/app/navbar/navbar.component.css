@@ -1,0 +1,6 @@
+nav {
+  height: 100%;
+  width: 100vw;
+  --header-color: rgb(236, 220, 250);
+  background-color: var(--header-color);
+}
