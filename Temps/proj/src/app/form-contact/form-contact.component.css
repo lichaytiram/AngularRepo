@@ -1,13 +1,10 @@
 .container {
   height: 100%;
-
   --user-info-height: 150px;
   --buttons-height: 30px;
-  --contact-info-min-height: calc(
-    100% - var(--user-info-height) - var(--buttons-height)
-  );
+  --contact-info-min-height: calc( 100% - var(--user-info-height) - var(--buttons-height));
 }
 
-.container > form {
+.container>form {
   height: 100%;
 }

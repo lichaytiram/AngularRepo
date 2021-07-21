@@ -5,10 +5,10 @@
     <div class="userWrap">
       <p>name</p>
       <input type="text" formControlName="name" />
-      <small *ngIf="parent.get('userProfile.name')?.hasError('required') &&
-      parent.get('userProfile.name')?.touched"
-        >name is require!</small
-      >
+      <small *ngIf="
+          parent.get('userProfile.name')?.hasError('required') &&
+          parent.get('userProfile.name')?.touched
+        ">name is required!</small>
     </div>
     <div class="organizationWrap">
       <p>organization</p>

@@ -1,14 +1,14 @@
 <div class="container">
-
   <form [formGroup]="form" (ngSubmit)="submit()">
     <app-user-profile [parent]="form"></app-user-profile>
-    <app-contact-info [parent]="form"></app-contact-info>
+    <app-contact-info
+      [parent]="form"
+      (remove)="removeContact($event)"
+    ></app-contact-info>
 
     <div class="buttons">
       <input type="button" (click)="addContact()" value="add contact" />
       <input type="submit" value="save user profile" />
     </div>
-
   </form>
-
 </div>
