@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  @Input() parent: FormGroup = new FormGroup({});
+  @Input() userProfile: FormGroup = new FormGroup({});
 
   constructor() {}
 

@@ -10,21 +10,21 @@ import { IContactInfo } from '../shared/models/IContactInfo.model';
   styleUrls: ['./contact-info.component.css'],
 })
 export class ContactInfoComponent implements OnInit {
-  @Input() parent: FormGroup = new FormGroup({});
-  @Output() remove: EventEmitter<any> = new EventEmitter<any>();
+  @Input() contactInfo: FormArray = new FormArray([]);
+  @Output() remove: EventEmitter<number> = new EventEmitter<number>();
 
   typeOfContactSelected: string[] = Object.values(ETypeOfContact);
+  ETypeOfContact = ETypeOfContact;
+  constructor() { }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   get contacts(): FormGroup[] {
-    return (this.parent.get('contactInfo') as FormArray)
-      .controls as FormGroup[];
+    return this.contactInfo.controls as FormGroup[];
   }
 
   public removeContact(index: number): void {
-    this.remove.emit(  index );
+    this.remove.emit(index);
   }
+
 }

@@ -1,10 +1,14 @@
+.error {
+  border: 1px solid var(--validator-error-color) !important;
+}
+
 .container {
   min-height: var(--contact-info-min-height);
   --padding: 3px 3px 3px 20px;
   --height-header: 30px;
 }
 
-.container > h2 {
+.container>h2 {
   background-color: rgb(221, 217, 214);
   font-size: large;
   padding: var(--padding);
@@ -12,18 +16,96 @@
   height: var(--height-header);
 }
 
-.container > h2::first-letter {
+.container>h2::first-letter {
   text-transform: uppercase;
 }
 
-.container > .boxWrap {
+.container>.boxWrap {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
 
-.container > .boxWrap > .box {
-  padding: 20px;
+.container>.boxWrap>.box {
+  padding: 8px;
+  width: calc(50% - (var(--box-margin) * 2));
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  --inner-padding: 5px;
+  --height-input-select: 22px;
+  --box-margin: 8px;
+  border-radius: 10px;
+  border: 1px solid rgb(160, 158, 158);
+  margin: var(--box-margin);
+  transition: 0.2s ease-out;
+}
+
+.container>.boxWrap>.box:hover {
+  transform: scale(1.01);
+  background-color: rgba(241, 241, 241, 0.4);
+}
+
+.container>.boxWrap>.box small {
+  color: var(--validator-error-color);
+}
+
+.container>.boxWrap>.box input {
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  padding-left: 6px;
+  height: var(--height-input-select);
+}
+
+.container>.boxWrap>.box input, .container>.boxWrap>.box select {
+  margin: 5px 0;
+}
+
+.container>.boxWrap>.box p::first-letter, .container>.boxWrap>.box small::first-letter {
+  text-transform: uppercase;
+}
+
+.container>.boxWrap>.box .firstRow {
+  display: flex;
+}
+
+.container>.boxWrap>.box .firstRow>.col {
+  display: flex;
+  flex-direction: column;
+  padding: var(--inner-padding);
+  height: 75px;
   width: 50%;
-  height: 170px;
+}
+
+.container>.boxWrap>.box .firstRow>.col>select {
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  padding-left: 6px;
+  height: var(--height-input-select);
+}
+
+.container>.boxWrap>.box .secondRow {
+  display: flex;
+  flex-direction: column;
+  padding: var(--inner-padding);
+  height: 75px;
+}
+
+.container>.boxWrap>.box .thirdRow {
+  float: right;
+}
+
+.container>.boxWrap>.box .thirdRow>input {
+  background-color: var(--validator-error-color);
+  color: white;
+  padding: 3px 8px;
+  height: 30px;
+  cursor: pointer;
+  transition: .5s ease-out;
+}
+
+.container>.boxWrap>.box .thirdRow>input:hover {
+  background-color: rgb(240, 72, 72);
 }

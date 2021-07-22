@@ -1,35 +1,53 @@
-<div class="container" [formGroup]="parent">
+<div class="container">
   <h2>contact information</h2>
 
-  <div class="boxWrap" formArrayName="contactInfo">
+  <div class="boxWrap">
+
     <div class="box" *ngFor="let contact of contacts; let i = index">
+
       <div [formGroup]="contact">
-        <div>
-          <p>type of contact</p>
-          <select formControlName="typeOfContact">
-            <option *ngFor="let type of typeOfContactSelected" [ngValue]="type">
-              {{ type }}
-            </option>
-          </select>
 
-          <small>type of contact is required!</small>
+        <div class="firstRow">
+
+          <div class="col">
+            <p>type of contact</p>
+            <select formControlName="typeOfContact">
+              <option *ngFor="let type of typeOfContactSelected" [ngValue]="type">
+                {{ type }}
+              </option>
+            </select>
+
+            <small *ngIf="contact.get('typeOfContact')?.touched && contact.get('typeOfContact')?.errors">type of contact
+              is required!</small>
+          </div>
+
+          <div class="col">
+            <p>contact label</p>
+            <input type="text" formControlName="label"
+              [class.error]="contact.get('label')?.touched && contact.get('label')?.errors" />
+            <small *ngIf="contact.get('label')?.touched && contact.get('label')?.errors">label is required!</small>
+          </div>
+
         </div>
 
-        <div>
-          <p>contact label</p>
-          <input type="text" formControlName="label" />
-          <small>label is required!</small>
-        </div>
-        <div>
+        <div class="secondRow">
           <p>email/phone no.</p>
-          <input type="text" formControlName="value" />
-          <small>email/phone is required!</small>
+          <input type="text" formControlName="value"
+            [class.error]="contact.get('value')?.touched && (contact.get('value')?.errors || contact?.hasError('isInValid'))" />
+          <small
+            *ngIf="contact.get('value')?.touched && !!contact.get('value')?.errors">
+            <span *ngIf="contact?.getError('invalidType') === ETypeOfContact.EMAIL">email</span>
+            <span *ngIf="contact?.getError('invalidType') === ETypeOfContact.PHONE">phone</span>
+            is required!
+          </small>
         </div>
 
-        <div>
+        <div class="thirdRow">
           <input type="button" value="Remove" (click)="removeContact(i)" />
         </div>
+
       </div>
+
     </div>
   </div>
 </div>

@@ -3,8 +3,51 @@
   --user-info-height: 150px;
   --buttons-height: 30px;
   --contact-info-min-height: calc( 100% - var(--user-info-height) - var(--buttons-height));
+  --validator-error-color: rgb(211, 58, 58);
 }
 
 .container>form {
   height: 100%;
+}
+
+.container>form>.buttons {
+  height: 35px;
+  padding: 5px;
+  display: flex;
+  margin: 5px 0;
+  justify-content: center;
+}
+
+.container>form>.buttons>input {
+  outline: 0;
+  margin: 0 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid rgb(107, 106, 106);
+  color: white;
+}
+
+.container>form>.buttons>input:nth-child(1) {
+  background-color: rgb(126, 173, 235);
+  transition: .7s ease-in-out;
+}
+
+.container>form>.buttons>input:nth-child(1):hover {
+  background-color: rgb(160, 197, 245);
+  color: black;
+}
+
+.container>form>.buttons>input:nth-child(2) {
+  background-color: rgb(146, 226, 130);
+  transition: .7s ease-in-out;
+}
+
+.container>form>.buttons>input:nth-child(2):hover {
+  background-color: rgb(159, 229, 145);
+  color: black;
+}
+
+.container>form>.buttons>input:nth-child(2):disabled {
+  color: rgb(209, 198, 198);
+  background-color: rgb(129, 129, 129);
 }
