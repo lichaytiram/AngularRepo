@@ -33,12 +33,15 @@
         <div class="secondRow">
           <p>email/phone no.</p>
           <input type="text" formControlName="value"
-            [class.error]="contact.get('value')?.touched && (contact.get('value')?.errors || contact?.hasError('isInValid'))" />
+            [class.error]="contact.get('value')?.touched && (contact.get('value')?.errors || contact?.hasError('invalidType'))" />
           <small
-            *ngIf="contact.get('value')?.touched && !!contact.get('value')?.errors">
-            <span *ngIf="contact?.getError('invalidType') === ETypeOfContact.EMAIL">email</span>
-            <span *ngIf="contact?.getError('invalidType') === ETypeOfContact.PHONE">phone</span>
-            is required!
+            *ngIf="contact.get('value')?.touched && ( contact.get('value')?.hasError('required') || contact?.hasError('invalidType') )">
+            <span *ngIf="contact?.getError('typeOfContact') === ETypeOfContact.EMAIL">email</span>
+            <span *ngIf="contact?.getError('typeOfContact') === ETypeOfContact.PHONE">phone</span>
+            is
+            <span *ngIf="contact.get('value')?.hasError('required')">required!</span>
+            <span *ngIf="!contact.get('value')?.hasError('required') && contact?.hasError('invalidType')">invalid!</span>
+
           </small>
         </div>
 

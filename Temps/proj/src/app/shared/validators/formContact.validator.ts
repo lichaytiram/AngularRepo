@@ -13,21 +13,20 @@ export class FormContactValidators {
 
         const typeOfContactValue: string = typeOfContact.value;
         const currentValue: string = value.value;
+
         switch (typeOfContactValue) {
             case ETypeOfContact.EMAIL:
-                console.log('email ' + currentValue);
-                if (!emailRegex.test(currentValue)) {
-                    console.log('email test');
-                    return { invalidType: ETypeOfContact.EMAIL };
-                }
-                    break;
+                if (emailRegex.test(currentValue))
+                    return { typeOfContact: ETypeOfContact.EMAIL };
+                else
+                    return { invalidType: true, typeOfContact: ETypeOfContact.EMAIL };
             case ETypeOfContact.PHONE:
-                console.log('phone ' + currentValue);
-                if (!phoneRegex.test(currentValue))
-                    return { invalidType: ETypeOfContact.PHONE };
-                    break;
+                if (phoneRegex.test(currentValue))
+                    return { typeOfContact: ETypeOfContact.PHONE };
+                else
+                    return { invalidType: true, typeOfContact: ETypeOfContact.PHONE };
         }
-        
+
         return null;
     }
 
