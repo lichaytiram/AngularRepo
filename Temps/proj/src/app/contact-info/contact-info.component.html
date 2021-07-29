@@ -34,15 +34,17 @@
           <p>email/phone no.</p>
           <input type="text" formControlName="value"
             [class.error]="contact.get('value')?.touched && (contact.get('value')?.errors || contact?.hasError('invalidType'))" />
-          <small
-            *ngIf="contact.get('value')?.touched && ( contact.get('value')?.hasError('required') || contact?.hasError('invalidType') )">
-            <span *ngIf="contact?.getError('typeOfContact') === ETypeOfContact.EMAIL">email</span>
-            <span *ngIf="contact?.getError('typeOfContact') === ETypeOfContact.PHONE">phone</span>
-            is
-            <span *ngIf="contact.get('value')?.hasError('required')">required!</span>
-            <span *ngIf="!contact.get('value')?.hasError('required') && contact?.hasError('invalidType')">invalid!</span>
+          <ng-container *ngIf="contact.get('value')?.touched">
+            <small *ngIf="contact?.getError('invalidType') as formatType">
+              <span *ngIf="formatType === ETypeOfContact.EMAIL">email</span>
+              <span *ngIf="formatType === ETypeOfContact.PHONE">phone</span>
+              is invalid!
+            </small>
+            <small *ngIf="contact.get('value')?.hasError('required')">
+              this field is required!
+            </small>
+          </ng-container>
 
-          </small>
         </div>
 
         <div class="thirdRow">

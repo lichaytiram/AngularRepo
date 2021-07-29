@@ -15,6 +15,7 @@ export class ContactInfoComponent implements OnInit {
 
   typeOfContactSelected: string[] = Object.values(ETypeOfContact);
   ETypeOfContact = ETypeOfContact;
+
   constructor() { }
 
   ngOnInit(): void { }

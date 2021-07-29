@@ -1,0 +1,23 @@
+{
+  "shop": [
+    "banana",
+    "apple",
+    "cucumber",
+    "tomato",
+    "eggplant",
+    "cabbage",
+    "Carrot",
+    "pepper",
+    "nuts"
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "moshe",
+      "cart": [
+        "banana",
+        "nuts"
+      ]
+    }
+  ]
+}
