@@ -43,7 +43,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatListModule,
     MatExpansionModule,
     MatTabsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
 
   ],
   providers: [],

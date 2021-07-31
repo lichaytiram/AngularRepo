@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container>h2 {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 300px;
+}
