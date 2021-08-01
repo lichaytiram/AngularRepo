@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ShopService } from '../shared/services/shop.service';
 
@@ -10,9 +9,15 @@ import { ShopService } from '../shared/services/shop.service';
 })
 export class ShopListComponent implements OnInit {
 
+  shopList$?: Observable<string[]>
 
-  constructor(private service: ShopService, private nav: Router) { }
+  constructor(private service: ShopService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+    this.shopList$ = this.service.getShops();
+
+  }
+
 
 }

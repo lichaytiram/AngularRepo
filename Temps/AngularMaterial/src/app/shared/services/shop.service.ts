@@ -8,7 +8,7 @@ import { map, tap } from 'rxjs/operators';
 })
 export class ShopService {
 
-  private api: string = 'http://localhost:3000/';
+  private api: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
