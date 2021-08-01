@@ -9,7 +9,7 @@ import { ShopService } from '../shared/services/shop.service';
 })
 export class ShopListComponent implements OnInit {
 
-  shopList$?: Observable<string[]>
+  shopList$!: Observable<string[]>
 
   constructor(private service: ShopService) { }
 
@@ -17,6 +17,10 @@ export class ShopListComponent implements OnInit {
 
     this.shopList$ = this.service.getShops();
 
+  }
+
+  public addToCart(item: string): void {
+    this.service.addToCart(item);
   }
 
 

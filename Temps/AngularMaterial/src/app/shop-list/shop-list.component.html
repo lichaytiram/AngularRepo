@@ -1,5 +1,23 @@
-<div *ngFor="let shopList of shopList$ | async">
+<div fxLayout="flex" class="container">
 
-    <mat-card>Simple card</mat-card>
+    <div fxFlex class="s">
+
+        <mat-card *ngFor="let item of shopList$ | async">
+
+            <label fxFlex fxFlexAlign="center">
+                {{item}}
+            </label>
+
+            <button mat-stroked-button (click)="addToCart(item)">
+                <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+
+        </mat-card>
+
+    </div>
+
+    <div class="image">
+
+    </div>
 
 </div>

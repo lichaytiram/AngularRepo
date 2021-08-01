@@ -9,11 +9,12 @@ import { ShopService } from '../shared/services/shop.service';
 })
 export class CartComponent implements OnInit {
 
+  carts$!: Observable<string[]>
 
   constructor(private service: ShopService) { }
 
   ngOnInit(): void {
-
+    this.carts$ = this.service.getCarts();
   }
 
 
