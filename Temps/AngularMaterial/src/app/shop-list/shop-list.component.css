@@ -11,10 +11,17 @@
     background-color: rgb(243, 243, 243);
 }
 
-.container mat-card >button{
-color: green;
+.container mat-card>label::first-letter {
+    text-transform: uppercase;
 }
 
-.container>.image {
-    width: 300px;
+.container mat-card>button {
+    color: green;
+}
+
+.container>.image>img {
+    height: 100%;
+    width: 100%;
+    opacity: .6;
+    border-radius: 10px;
 }

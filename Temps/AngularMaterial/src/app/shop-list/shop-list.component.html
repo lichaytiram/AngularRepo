@@ -1,6 +1,6 @@
-<div fxLayout="flex" class="container">
+<div fxLayout="flex" fxLayout.lt-md="column" fxLayoutGap="10px" class="container">
 
-    <div fxFlex class="s">
+    <div fxFlex>
 
         <mat-card *ngFor="let item of shopList$ | async">
 
@@ -16,8 +16,9 @@
 
     </div>
 
-    <div class="image">
+    <div fxFlex.lt-md="0 0 100vw" fxFlex.gt-md="0 0 700px" class="image">
 
+        <img src="https://images.all-free-download.com/images/graphicthumb/fruits_sweet_fruit_213988.jpg" alt="image">
     </div>
 
 </div>

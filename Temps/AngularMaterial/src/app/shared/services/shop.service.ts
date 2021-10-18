@@ -10,7 +10,8 @@ import { IShopStore } from '../models/shop.models/shopt.model';
 export class ShopService {
 
   private api: string = 'http://localhost:3000';
-  private shopStore: BehaviorSubject<IShopStore> = new BehaviorSubject<IShopStore>({ shop: [], cart: ['loon'], favorite: [] });
+  private shopStore: BehaviorSubject<IShopStore> = new BehaviorSubject<IShopStore>({ shop: [], cart: [], favorite: [] });
+
   constructor(private http: HttpClient) { }
 
   public getShops(): Observable<string[]> {
